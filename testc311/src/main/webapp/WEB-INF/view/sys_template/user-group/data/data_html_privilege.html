@@ -1,0 +1,39 @@
+[@ec_privilege queryType="tree";list]
+	[@tabletree nodes=list /]
+[/@ec_privilege]
+[#-- 数据表格树形结构 --]
+[#macro tabletree nodes parentId=""]
+[#if nodes?? && (nodes?size > 0)]
+[#list nodes as node]
+	[#if parentId?? && parentId != ""]
+		[#assign nodeId ='${parentId}-${node.id!}' /]
+	[#else]
+		[#assign nodeId ='${node.id!}' /]
+	[/#if]
+	[#if (node.children)?? && (node.children?size > 0)]
+		[#assign nodeCls ='branch' /]
+		[#assign nameCls ='folder' /]
+	[#else]
+		[#assign nodeCls ='leaf' /]
+		[#assign nameCls ='file' /]
+	[/#if]
+	<tr data-tt-id="${nodeId!}" data-tt-parent-id="${parentId!}" class="${nodeCls!}">
+		<td class=""><span class="${nameCls!}">${node.name}</span></td>
+		<td class="hidden-480"><a href="#">${node.uri}</a></td>
+		<td>
+			<div class="hidden-phone visible-desktop btn-group">
+				[@ec_privilege_check uri="/management/privilege/edit"]
+				<button class="btn btn-mini tooltip-info btn-info" data-rel="tooltip" title="" onclick="modal.open({url:'${path}${AUTH_MENU.privilege.uri!}?id=${node.id!}'});" data-original-title="${AUTH_MENU.name}"><i class="icon-edit"></i></button>
+				[/@ec_privilege_check]
+				[@ec_privilege_check uri="/management/privilege/delete"]AUTH_MENU.privilege.uri!
+				<button class="btn btn-mini tooltip-info btn-danger" data-rel="tooltip" title="" onclick="confirm('${path}${AUTH_MENU.privilege.uri!}?ids=${node.id!}')" data-original-title="${AUTH_MENU.name}"><i class="icon-trash"></i></button>
+				[/@ec_privilege_check]
+			</div>
+		</td>
+	</tr>
+	[#if (node.children)?? && (node.children?size > 0)]
+	[@tabletree nodes=node.children parentId="${nodeId}"/]
+	[/#if]
+[/#list]
+[/#if]
+[/#macro]

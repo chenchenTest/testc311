@@ -1,0 +1,81 @@
+    <div class="modal " tabindex="-1" role="dialog" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title"><span class="label label-info  arrowed-right"><i class="icon-user"></i></span>Add User</h4>
+                </div>
+                <form class="form-horizontal" action="${path}/management/user/add" method="post" id="addUser" >
+                <div class="modal-body">
+                        <div class="control-group">
+                            <label class="control-label" for="name">Username:</label>
+                            <div class="controls">
+                                <input type="text" name="name" id="name" placeholder=""/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="realname">Realname:</label>
+                            <div class="controls">
+                                <input type="text"  name="realname" id="realname" placeholder="">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="email">Email:</label>
+                            <div class="controls">
+                                <input type="email" name="email" id="email" placeholder="email例如:xxx@126.com">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="password">Password:</label>
+                            <div class="controls">
+                                <input type="password" name="password" id="password" placeholder="password">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="confirmPassword">Confirm Password:</label>
+                            <div class="controls">
+                                <input type="password" name="confirmPassword" id="confirmPassword" placeholder="confPassword">
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-small" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary btn-small" data-loading-text="Saving..."><i class="icon-ok"></i>Save</button>
+                </div>
+                    </form>
+            </div>
+        </div>
+<script type="text/javascript">
+	$(function(){
+		formValidtor.modalValid({
+			handler:"#addUser",
+			rules : {
+        		name : {
+        			required : true
+        			,remote : "${path}/management/user?func=exist"
+        		},
+        		realname : {
+        			required : true
+        		},
+        		email : {
+        			email:true
+        		},
+        		password : {
+        			required : true
+        		}
+        		,confirmPassword : {
+        			required : true
+        			,equalTo:$("#addUser").find("input[name='password']")
+        		}
+        	}
+        	,messages : {
+        		name : {
+        			remote:"The username has been used,please change another one."
+        		}
+        	}
+		})
+	}); 
+</script>
+    </div>

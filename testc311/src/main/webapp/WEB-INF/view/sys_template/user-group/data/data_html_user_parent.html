@@ -1,0 +1,22 @@
+[@ec_user 
+	queryType="list" 
+	roleId=(form.roleId[0])!(u.roles[0].id)!
+	departmentId=(form.departmentId)!(department.id)!
+	func = "findSupUser"
+	;parentList]
+[#if parentList?? && (parentList?size > 0)]
+<label class="control-label" for="parentId">Parent Role:</label>
+<div class="controls">
+	[#list parentList as p]
+	[#if (u.parent)?? && (u.parent.id) == p.id]
+		[#assign on='checked="checked"']
+	[#else]
+		[#assign on='']
+	[/#if]
+	<label>
+		<input type="radio" name="parentId" id="parentId" placeholder="" value="${p.id!}" ${on!}><span class="lbl"> ${p.realname!}(${(p.roles[0].name)!})</span>
+	</label>
+	[/#list]
+</div>
+[/#if]
+[/@ec_user]

@@ -1,0 +1,35 @@
+[@ec_model 
+	order="${(form.order)!}"
+	sort="${(form.sort)!}"
+	queryType = "list"
+;list]
+{"total":${list?size},"rows":[
+[#if list?? && (list?size > 0)]
+[#list list as m]
+    {
+    "ids":"${m.id!}"
+    ,"id":"${m.id!}"
+    ,"name":"${m.name!}"
+    ,"alias":"${(m.alias)!}"
+    ,"tplPath":"${(m.tplPath)!}"
+    ,"channelStaticize":"${(m.channelStaticize?string('是','否'))!}"
+    ,"contentStaticize":"${(m.contentStaticize?string('是','否'))!}"
+    ,"links":[
+    	[@ec_privilege_check uri="/management/info/model/edit"]
+    	{
+	    	"title":"${AUTH_MENU.name}"
+	    	,"url":"${path!}${AUTH_MENU.uri!}?id=${m.id!}"
+	    	,"table":"#modelDataTable"
+	    	,"func":"openDialog"
+	    	,"cls":"EC-btn-edit"
+    	}
+    	[/@ec_privilege_check]
+    	]
+    }
+    [#if m_index != (list?size - 1)]
+    ,
+    [/#if]
+[/#list]
+[/#if]
+]}
+[/@ec_model]

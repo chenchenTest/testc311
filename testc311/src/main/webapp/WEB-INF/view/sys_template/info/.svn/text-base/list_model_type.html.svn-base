@@ -1,0 +1,61 @@
+<script type="text/javascript">
+    $(function(){
+        //进行表单验证
+    operator.dataTable({
+    	table:"#${selector!}DataTable"
+	   	,url:'${path}${current_uri!}'
+        ,toolbar: "#${selector!}ToolBar"
+    });
+    
+    
+    });
+    
+</script>
+<!-- 工具栏 -->
+<div class="EC-right-content">
+    <h2 class="EC-title-1">当前位置:<i class="icon-user EC-icon-layout"></i>[@EC.location /]</h2>
+
+    <div class="EC-toolbar" id="${selector!}ToolBar">
+    	[@ec_privilege_check uri="${current_uri}/add"]
+		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="operator.refreshTab({
+			table:'#${selector!}DataTable',
+			title:'${AUTH_MENU.name}',
+			url:'${path}${AUTH_MENU.uri}',
+			icon:'icon-add',
+			width:750
+		});
+		">${AUTH_MENU.name}</a>
+		[/@ec_privilege_check]
+		
+		[@ec_privilege_check uri="${current_uri}/delete"]
+		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" onclick="
+		operator.remote({
+			table:'#${selector!}DataTable'
+			,url:'${path}${AUTH_MENU.uri}'
+			,key:'id'
+			,checkboxValid:true
+    		,confirm:true
+    		,title:'${AUTH_MENU.name}'
+    		,content:'您确定要执行删除操作?一旦删除将不可恢复'
+		})
+		">${AUTH_MENU.name}</a>
+		[/@ec_privilege_check]
+		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-reload'" onclick="
+			operator.refresh({
+	    			table:'#${selector!}DataTable'
+	    		});
+		">Reload</a>
+    </div>
+    
+        <table id="${selector!}DataTable" title="模型类型列表">
+            <thead>
+                <tr>
+                    <th data-options="field:'ids',checkbox:true">ID</th>
+                    <th data-options="field:'id',width:5,align:'center',sortable:true,styler:tdPadding">ID</th>
+                    <th data-options="field:'name',width:25,align:'center',sortable:true">类型名称</th>
+                    <th data-options="field:'operation',width:25,align:'center',formatter:operator.links">操作</th>
+                </tr>
+            </thead>
+            
+        </table>
+    </div>

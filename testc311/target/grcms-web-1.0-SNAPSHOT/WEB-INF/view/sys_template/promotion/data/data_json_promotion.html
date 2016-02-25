@@ -1,0 +1,51 @@
+[@ec_promotion 
+	queryType = "list"
+	filter = "${form.filter!}"
+	pageNum = "${(form.page)!1}"  
+	pagesize = "${(form.rows)!}" 
+	order = "${form.order!'desc'}"
+	sort = "${form.sort!}"
+	pageable=1
+;list]
+{
+"recordsFiltered":${count!0} ,
+"recordsTotal":${count!0} ,
+"data":[
+[#if list?? && (list?size > 0)]
+[#list list as r]
+    {
+    "id":"<label><input type='checkbox' name='ids' value='${r.proId!}'/><span class='lbl'></span></label>"
+    ,"no":${r_index+1!}
+    ,"name":"${r.proName!}"
+    ,"local":"${r.localMinutes}"
+    ,"overseas":"${r.overseasMinutes}"
+    ,"startTime":"${r.startTime}"
+    ,"endTime":"${r.endTime}"
+    ,"links":[
+    	[@ec_privilege_check uri="/management/promotion/update"]
+    	{
+	    	"title":"${AUTH_MENU.name}"
+	    	,"onclick":"modal.open({url:'${path}${AUTH_MENU.privilege.uri!}?id=${r.proId!}'});"
+	    	,"icon":"icon-edit"
+	    	,"clz":"btn-info"
+    	},
+    	[/@ec_privilege_check]
+    	
+    	[@ec_privilege_check uri="/management/promotion/delete"]
+    	{
+	    	"title":"${AUTH_MENU.name!}"
+	    	,"onclick":"confirm('${path}${AUTH_MENU.privilege.uri!}?ids=${r.proId!}')"
+	    	,"icon":"icon-trash"
+	    	,"clz":"btn-danger"
+    	},
+    	[/@ec_privilege_check]
+    	{}
+    	]
+    }
+    [#if r_index != (list?size - 1)]
+    ,
+    [/#if]
+[/#list]
+[/#if]
+]}
+[/@ec_promotion]

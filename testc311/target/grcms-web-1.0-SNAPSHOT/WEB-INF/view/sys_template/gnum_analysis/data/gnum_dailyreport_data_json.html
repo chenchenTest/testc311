@@ -1,0 +1,39 @@
+[@ec_gnum_dailyreport
+	queryType = "list"
+	order = "${form.order!'desc'}"
+	sort = "${form.sort!'id'}"
+	filter = "${form.filter!}"
+	logId="${form.logId!}"  
+	callId="${(form.callId)!}" 
+	callee="${(form.callee)!}" 
+	remoteIP="${(form.remoteIP)!}" 
+	browser="${(form.browser)!}" 
+	callStartTime="${(form.callStartTime)!}"  
+	pageNum="${(form.page)!1}"  
+	pagesize="${(form.rows)!}"
+	;list]
+	{"total":${count},"rows":[
+	[#if list?? && (list?size > 0)]
+	[#list list as report]
+	    {
+	    "id":"${report.id?date!}"
+	    ,"Dates":"${report.id?date!}"
+	    ,"Total_Registers":"${report.total_Registers!}"
+	    ,"New_registers":"${report.new_registers!}"
+	    ,"Active_users":"${(report.active_users?trim)!}"
+	    ,"New_actived":"${(report.new_actived?trim)!}"
+	    ,"Calls_per__day":"${(report.calls_per__day?trim)!}"
+	    ,"Total_calls":"${(report.total_calls?trim)!}"
+	    ,"Call_minutes_per__day":"${(report.call_minutes_per__day?trim)!}"
+	    ,"Avg__calls_minutes_per__day":"${(report.avg__calls_minutes_per__day?trim)!}"
+	    ,"Total_call_minutes":"${(report.total_call_minutes?trim)!}"
+	    ,"Avg__call_minutes":"${(report.avg__call_minutes?trim)!}"
+	    ,"remark":"${(report.remark?trim)!}"
+	    }
+	    [#if report_index != (list?size - 1)]
+	    ,
+	    [/#if]
+	[/#list]
+	[/#if]
+	]}
+[/@ec_gnum_dailyreport]

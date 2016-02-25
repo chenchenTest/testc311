@@ -1,0 +1,63 @@
+<link rel="stylesheet" type="text/css" href="${res!}/resources/css/foot.css"/>
+<!--footer begin-->
+
+<footer class="container-fluid">
+    [@ec_node code="common";nod]
+    <div class="row ff">
+        <div class="col-lg-offset-3 col-md-offset-2 col-sm-offset-1 col-xs-offset-0 col-lg-6 col-md-8 col-sm-10 col-xs-12">
+            <!--logo begin-->
+            <div class="row">
+                <div class="col-lg-1 col-md-2 col-sm-12 col-xs-12"><a href="/" class="logo"></a></div>
+                <div class="col-lg-11 col-md-10 col-sm-12 col-xs-12 text1">
+                    <a href="${res!}/privacy/">PRIVACY POLICY</a>
+                    <a href="${res!}/terms/">TERMS & CONDITION OF USE</a>
+                    <div class="text1_2">
+                        <a href="${res!}/about/">ABOUT</a>
+                        <a href="${res!}/support/">FAQ</a>
+                    </div>
+
+                </div>
+            </div>
+            <!--logo end-->
+
+            <!--hr begin-->
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><hr/></div>
+            </div>
+            <!--hr end-->
+
+            <!--facebook begin-->
+            <div class="row">
+                <div class="col-lg-3 col-md-3 hidden-xs hidden-sm">
+                        [@ec_info queryType="list" nodeId="${nod.id!}" groupName="share";list]
+                            [#if list?? && (list?size >0)]
+                                [#list list as info]
+                                    <a href="${info.fields['url']}" class="share" target="_blank" style="background-image:url(${path!}/${info.fields['image']!});"></a>
+                                [/#list]
+                            [/#if]
+                        [/@ec_info]
+                </div>
+
+
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 text2">
+
+                    <span>${nod.fields['foot-copyright-1']!}</span>
+                    <span>${nod.fields['foot-copyright-2']!}<b>${nod.fields['foot-copyright-3']!}</b></span>
+                </div>
+
+                <div class="col-sm-12 col-xs-12 visible-xs visible-sm">
+                        [@ec_info queryType="list" nodeId="${nod.id!}" groupName="share";list]
+                            [#if list?? && (list?size >0)]
+                            [#list list as info]
+                                <a href="${info.fields['url']}" class="share" target="_blank" style="background-image:url(${path!}/${info.fields['image']!})"></a>
+                            [/#list]
+                            [/#if]
+                        [/@ec_info]
+
+                </div>
+            </div>
+            <!--facebook end-->
+        </div>
+    </div>
+    [/@ec_node]
+</footer>

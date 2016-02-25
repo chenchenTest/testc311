@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>404</title>
+
+    [#include "macro/macros.html"/]
+    [#include "common/common-js.html" /]
+    [#include "common/common-css.html" /]
+    [#include "common/common-js-validate.html" /]
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/plugins/bootstrap-3.3.4-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/css/common.css">
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/css/head.css"/>
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/css/foot.css"/>
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/css/404page.css"/>
+</head>
+<body>
+[#include "common/google-tag-manager.html" /]
+<div id="head">
+    [#include "common/head.html" ]
+</div>
+<div class="container-fluid fzfPage">
+    <div class="row">
+        <div class="col-md-8 col-lg-8 center-grid">
+            <div class="row text-center">
+                <div class="pageImg center-block">
+                    <!--<img src="${res!}/resources/images/goat404.png"/>-->
+                </div>
+            </div>
+            <div class="row Ftips text-center">
+                <!-- <span class="msgAh">Ahhhhh!</span>-->
+                <span class="msgExist">The URL does not exist.<br><span class="small">Please make sure it is entered correctly.</span></span>
+            </div>
+            <div class="row Ttips text-center">
+                <span class="msgToHome">Not to worry.you can head back to</span>&nbsp;&nbsp;<a
+                    href="http://www.gnum.com" class="msgHref">our homepage</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="foot">
+    [#include "common/foot.html" ]
+</div>
+</body>
+</html>

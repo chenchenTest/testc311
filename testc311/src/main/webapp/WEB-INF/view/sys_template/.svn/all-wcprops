@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template
+END
+login.html
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/login.html
+END
+404.html
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/404.html
+END
+custom_excepiton.html
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/custom_excepiton.html
+END
+login_ajax.html
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/login_ajax.html
+END
+500.html
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/500.html
+END
+no_privilege.html
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/no_privilege.html
+END
+index.html
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/index.html
+END

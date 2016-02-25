@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+
+    [#include "macro/macros.html"/]
+    [#include "common/common-js.html" /]
+    [#include "common/common-css.html" /]
+    [#include "common/common-js-validate.html" /]  
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/plugins/bootstrap-3.3.4-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/css/common.css">
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/css/head.css"/>
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/css/foot.css"/>
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/css/forgotcallname.css"/>
+    <title>callname get email</title>
+</head>
+
+<body>
+[#include "common/google-tag-manager.html" /]
+<div id="head">
+	[#include "common/head.html" ]
+</div>
+
+    <div class="container-fluid message-area forgetCallnameEmail-area">
+        <div class="row">
+            <div class="col-md-8 col-lg-8 center-grid">
+            [#if forgetForm.result??]
+            [#if forgetForm.result][#assign txt='success'][#else][#assign txt='failed'][/#if]
+                <h2 class="title">CallName Reminder Email Has Been Sent ${txt}.</h2>
+                <hr>
+            [#if forgetForm.result]
+                <div class="row">
+                    <div class="col-md-6 col-lg-4 center-grid">
+                        <a href="${res!}/signin/" class="btn btn-default btn-a btn-custom btn-color-a btn-send">Sign In</a>
+                    </div>
+                </div>
+            [#else]
+            	<div class="row">
+                    <div class="col-md-6 col-lg-4 center-grid">
+                        <a href="${res!}/forget/email/reSent/handle/?email=${forgetForm.email}" class="btn btn-default btn-a btn-custom btn-color-a btn-send">Resent</a>
+                    </div>
+                </div>
+            [/#if]
+            [/#if]
+            </div>
+        </div>
+    </div>
+<!--foot begin-->
+<div class="foot">
+	[#include "common/foot.html" ]
+</div>
+<!--foot end-->
+
+</body>
+
+</html>

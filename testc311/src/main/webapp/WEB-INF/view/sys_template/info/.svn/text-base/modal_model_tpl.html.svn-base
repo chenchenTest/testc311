@@ -1,0 +1,105 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+      //进行表单验证
+		var $form = $('#roleAddForm');
+		var url = $form.attr("action");
+        var $btn = $form.find("a.btn").eq(0);
+        
+        $form.validate({
+        	rules : {
+        		name : {
+        			required : true
+        		}
+        	}
+        	,submitHandler:function(form){
+        		disableBtn($btn);
+        		var $form = $(form);
+            	var url = $form.attr("action");
+            	var method = $form.attr("method");
+            	var nvp = $form.serialize();
+            	var nodes = $('#tree').tree('getChecked', ['checked','indeterminate']);
+        		if(nodes != null) {
+        			var prarams = "";
+        			for(var i=0;i<nodes.length;i++){
+        				prarams += nodes[i].id + ",";
+        			}
+        			prarams = prarams.substring(0, prarams.length-1);
+        			nvp+="&privilegeId="+prarams;
+        		}
+            	$.ajax({
+    				url:url,
+    				type:method,
+    				data:nvp,
+    				success:function(data){
+    					enableBtn($btn);
+    		        	   if(data){
+    					      $.messager.confirm('添加成功', "添加成功是否继续添加？<p><center>继续请点[确定]，否则点[取消]</center></p>", function(r){
+    					    	  if(r){
+    					    		  $form.form("clear");
+    					    	  }else{
+		    		        		  operator.refresh();
+    					    		  operator.closeDialog();
+    					    	  }
+    					      });
+    		        	   }else{
+    					      $.messager.alert('添加失败', "添加失败", 'error');
+    		        	   }
+    				}
+    			});
+			}
+        });
+        
+        
+        var $tree = $("#modelTree");
+        $tree.tree({
+        	onSelect:function(){
+        	var node = $tree.tree('getSelected');
+        	$("#tplPath").val(node.attributes);
+        	}
+        });
+});
+</script>
+        <!-- 内容区 开始 -->
+        <div class="EC-modal-content">
+            <div class="EC-form-layout">
+                <form action="${path}/management/role/add" method="post" id="roleAddForm">
+                    <table class="EC-form-table">
+                        <tbody>
+                            <tr>
+                                <td valign="top">选择模板:</td>
+                                <td valign="top">
+                                [@ec_theme queryType="tree" enable="1";list]
+									<ul id="modelTree" class="easyui-tree" data-options="
+                                    animate:true,
+                                    checkbox:false,
+                                    iconCls:'icon-add',
+                                    state:'close'
+                                    ">
+										[#list tplList as tpl]
+										
+										[#if tpl.directory]
+										<li data-options="
+											 state:'closed' 
+										">
+										[#else]
+										<li data-options="attributes:'${tpl.path}'">
+										[/#if]
+											<span for="${tpl.name}" >${tpl.name}</span>
+			                                [#include "data/tplIteration.html" /]
+										</li>
+										[/#list]
+									</ul>
+								[/@ec_theme]
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td><a href="javascript:void(0);" onclick="submitReq(this);" class="btn easyui-linkbutton" iconCls="icon-ok">确定</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+                
+            </div>
+        </div>
+        <!-- 内容区 结束 -->

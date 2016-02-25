@@ -1,0 +1,93 @@
+.EC-icon-home{
+    background:url('icons/home.png') no-repeat center center;
+}
+.EC-icon-users{
+    background:url('icons/users.png') no-repeat center center;
+}
+.EC-icon-user{
+    background:url('icons/user.png') no-repeat center center;
+}
+.EC-icon-useredit{
+    background:url('icons/user-edit.gif') no-repeat center center;
+}
+.EC-icon-department{
+    background:url('icons/contact_blue.png') no-repeat center center;
+}
+.EC-icon-rd{
+    background:url('icons/documents.png') no-repeat center center;
+}
+.EC-icon-rd-source{
+    background:url('icons/box.png') no-repeat center center;
+}
+.EC-icon-rd-type{
+    background:url('icons/folder_modernist.png') no-repeat center center;
+}
+.EC-icon-rd-file{
+    background:url('icons/folder_classic.png') no-repeat center center;
+}
+.EC-icon-rd-def{
+    background:url('icons/document_copy.png') no-repeat center center;
+}
+.EC-icon-rd-deploy-task{
+    background:url('icons/page_white_edit.png') no-repeat center center;
+}
+.EC-icon-rd-task{
+    background:url('icons/book_open.png') no-repeat center center;
+}
+.EC-icon-rd-task-todo{
+    background:url('icons/email_open_image.png') no-repeat center center;
+}
+.EC-icon-rd-task-assign{
+    background:url('icons/email_open.png') no-repeat center center;
+}
+.EC-icon-role{
+    background:url('icons/group_blue.png') no-repeat center center;
+}
+.EC-icon-role-add{
+    background:url('icons/group_blue_add.png') no-repeat center center;
+}
+.EC-icon-role-edit{
+    background:url('icons/group_blue_edit.png') no-repeat center center;
+}
+.EC-icon-role-remove{
+    background:url('icons/group_blue_remove.png') no-repeat center center;
+}
+.EC-icon-key{
+    background:url('icons/key.png') no-repeat center center;
+}
+.EC-icon-logout{
+    background:url('icons/home--arrow.png') no-repeat center center;
+}
+.EC-icon-remove{
+    background:url('icons/bin_closed.png') no-repeat center center;
+}
+.EC-icon-edit{
+    background:url('icons/pencil.png') no-repeat center center;
+}
+.EC-icon-setting{
+    background:url('icons/gear.png') no-repeat center center;
+}
+.EC-icon-loading{
+    background:url('icons/loading_1.gif') no-repeat center center;
+}
+.EC-icon-menu{
+    background:url('icons/menu.png') no-repeat center center;
+}
+.EC-icon-database{
+    background:url('icons/database.png') no-repeat center center;
+}
+.EC-icon-database-recover{
+    background:url('icons/database-import.png') no-repeat center center;
+}
+.EC-icon-drive{
+    background:url('icons/drive.png') no-repeat center center;
+}
+.EC-icon-log{
+    background:url('icons/view_more_text.png') no-repeat center center;
+}
+.EC-icon-task-post{
+    background:url('icons/folder_go.png') no-repeat center center;
+}
+.EC-icon-task-receive{
+    background:url('icons/report.png') no-repeat center center;
+}

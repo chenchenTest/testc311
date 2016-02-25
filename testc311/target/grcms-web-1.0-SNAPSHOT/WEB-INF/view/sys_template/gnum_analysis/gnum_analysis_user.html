@@ -1,0 +1,261 @@
+<script type="text/javascript"
+	src="${path}/resources/js/highcharts-4.0.1/highcharts.js"></script>
+<script type="text/javascript"
+	src="${path}/resources/js/highcharts-4.0.1/no-data-to-display.js"></script>
+<script type="text/javascript">
+	Highcharts.theme = {
+		colors : [ "#7cb5ec", "#f7a35c", "#90ee7e", "#7798BF", "#aaeeee",
+				"#ff0066", "#eeaaee", "#55BF3B", "#DF5353", "#7798BF",
+				"#aaeeee" ],
+		chart : {
+			backgroundColor : null,
+			style : {
+				fontFamily : "Dosis, sans-serif"
+			}
+		},
+		title : {
+			style : {
+				fontSize : '16px',
+				fontWeight : 'bold',
+				textTransform : 'uppercase'
+			}
+		},
+		tooltip : {
+			borderWidth : 0,
+			backgroundColor : 'rgba(219,219,216,0.8)',
+			shadow : false
+		},
+		legend : {
+			itemStyle : {
+				fontWeight : 'bold',
+				fontSize : '13px'
+			}
+		},
+		xAxis : {
+			gridLineWidth : 1,
+			labels : {
+				style : {
+					fontSize : '12px'
+				}
+			}
+		},
+		yAxis : {
+			minorTickInterval : 'auto',
+			title : {
+				style : {
+					textTransform : 'uppercase'
+				}
+			},
+			labels : {
+				style : {
+					fontSize : '12px'
+				}
+			}
+		},
+		plotOptions : {
+			candlestick : {
+				lineColor : '#404048'
+			}
+		},
+
+		// General
+		background2 : '#F0F0EA'
+
+	};
+	// Apply the theme
+	var highchartsOptions = Highcharts.setOptions(Highcharts.theme);
+	/**
+	 *  
+	 */
+	function userAnalysis(type, date, total, active,subtitle) {
+		var setting = {
+			title : 'Analysis For Gnum\'s User',
+			xValue : date,
+			yAxis : 'Total User',
+			subtitle:subtitle || 'in the last 7 days',
+			series : [ {
+				name : 'Total Register User',
+				data : total
+			}, {
+				name : 'Total Active User',
+				data : active
+			} ]
+		}
+		spline('#user_' + type || '', setting);
+	}
+	function callAnalysis(type, date, total,subtitle) {
+		var setting = {
+			title : 'Analysis For Gnum\'s Calls',
+			xValue : date,
+			subtitle:subtitle || 'in the last 7 days',
+			yAxis : 'Calls ',
+			series : [ {
+				name : 'Total Calls',
+				data : total
+			} ]
+		}
+		spline('#call_' + type || '', setting);
+	}
+	function spline(selector, setting) {
+		$(selector).highcharts(
+				{
+					chart : {
+						type : 'spline',
+						margin : [ 50, 50, 100, 80 ]
+					},
+					title : {
+						text : setting.title
+					},
+					subtitle : {
+						text : setting.subtitle 
+					},
+					xAxis : {
+						categories : setting.xValue,
+						labels : {
+							rotation : -45,
+							align : 'right',
+							style : {
+								fontSize : '10px'
+							}
+						}
+					},
+					yAxis : {
+						title : {
+							text : setting.yAxis
+						}
+					},
+					tooltip : {
+						enabled : true,
+						formatter : function() {
+							return '<b>' + this.series.name + '</b><br/>'
+									+ this.x + ': ' + '<b>' + this.y + '</b>';
+						}
+					},
+					plotOptions : {
+						line : {
+							dataLabels : {
+								enabled : true
+							},
+							enableMouseTracking : false
+						}
+					},
+					series : setting.series
+				});
+	}
+
+	function chart(categories, data) {
+		var chart = $('#current').highcharts(
+				{
+					chart : {
+						type : 'column'
+					},
+					title : {
+						text : 'The current total number of statistics'
+					},
+					subtitle : {
+						text : ''
+					},
+					xAxis : {
+						categories : categories
+					},
+					yAxis : {
+						title : {
+							text : 'Total count'
+						}
+					},
+					plotOptions : {
+						column : {
+							dataLabels : {
+								enabled : true,
+								style : {
+									fontWeight : 'bold'
+								},
+								formatter : function() {
+									return this.y;
+								}
+							}
+						}
+					},
+					tooltip : {
+						formatter : function() {
+							var point = this.point, s = this.x + ':<b>'
+									+ this.y + '</b><br/>';
+							return s;
+						}
+					},
+					series : [ {
+						name : 'The current total',
+						data : data,
+						color : '#2f7ed8'
+					} ],
+					exporting : {
+						enabled : false
+					}
+				}).highcharts(); // return chart
+	}
+	function anaysisMonth(){
+		var month=$("#selectmonth").val() || '';
+		
+		$.post("${path}/gnumanalysis/month", {
+			month : month
+		}, function(reData) {
+			if (!reData) {
+				return;
+			}
+			var data = $.parseJSON(reData) || {};
+			var date = data.date || [];
+			var totalUser = data.totalUser || [];
+			var activeUser = data.activeUser || [];
+			var totalCalls = data.totalCalls || [];
+			userAnalysis('month', date, totalUser, activeUser,'at '+month);
+			callAnalysis('month', date, totalCalls,'at '+month);
+		});
+	}
+	$(function() {
+		$("#selectmonth").val(new Date().getFullYear()+"-"+(new Date().getMonth()+1));
+		$.post("${path}/gnumanalysis/user", {
+			startTime : "",
+			endTime : ""
+		}, function(reData) {
+			if (!reData) {
+				return;
+			}
+			var data = $.parseJSON(reData) || {};
+			var date = data.date || [];
+			var totalUser = data.totalUser || [];
+			var activeUser = data.activeUser || [];
+			var totalCalls = data.totalCalls || [];
+			userAnalysis('', date, totalUser, activeUser,'');
+			callAnalysis('', date, totalCalls,'');
+			var currentTotal = data.currentTotal;
+			var categories=[],currentArr=[];
+			categories.push("Total Register User");
+			categories.push("Total Active User");
+			categories.push("Total Calls");
+			currentArr.push(Number(currentTotal['Total_Registers']));
+			currentArr.push(Number(currentTotal['Active_users']));
+			currentArr.push(Number(currentTotal['Total_calls']));
+			chart(categories,currentArr);
+		});
+	});
+</script>
+<table>
+	<tr>
+		<td><div id="current" style="min-width: 500px"></div></td>
+		<td><div id="user_"></div></td>
+		<td><div id="call_"></div></td>
+	</tr>
+	<tr>
+		<td valign="top"><div >
+				<label>&nbsp;&nbsp;&nbsp;Choose month</label> <input id="selectmonth"
+					type="text" class="EC-form-input EC-form-search Wdate" name="month"
+					readonly="readonly" onkeydown="repeal(event);"
+					onFocus="timePannel({'dateFmt':'yyyy-MM',lang:'en'})" /> <a
+					href="javascript:void(0);" onclick="anaysisMonth();"
+					class="btn easyui-linkbutton" iconCls="icon-search">Okay</a>
+			</div></td>
+		<td><div id="user_month"></div></td>
+		<td><div id="call_month"></div></td>
+	</tr>
+</table>
+

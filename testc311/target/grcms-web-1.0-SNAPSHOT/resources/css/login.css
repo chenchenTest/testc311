@@ -1,0 +1,95 @@
+.EC-login {
+	position: relative;
+	background: url("../images/login_box.png") no-repeat scroll 0 0
+		transparent;
+	height: 254px;
+	margin: 0 auto;
+	padding: 30px;
+	top: 200px;
+	width: 475px;
+	padding-top: 100px;
+}
+
+.EC-login-content {
+	margin-left: 30px;
+}
+
+.EC-login-content table {
+	margin-left: 15px;
+}
+
+.EC-login-content table td {
+	padding: 5px;
+}
+
+input.login-submit {
+	display: block;
+	background: #EBA11F;
+	height: 40px;
+	line-height: 40px;
+	color: #fff;
+	text-align: center;
+	margin-top: 5px;
+	font-size: 1.5em;
+	text-decoration: none;
+	clear: both;
+	width: 230px;
+	border: none;
+	border-radius:5px;
+}
+input.login-submit-ajax {
+	display: block;
+	background: #256EB0;
+	height: 30px;
+	line-height: 30px;
+	color: #fff;
+	text-align: center;
+	margin-top: 5px;
+	font-size: 1.5em;
+	text-decoration: none;
+	clear: both;
+	width: 200px;
+	border: none;
+	border-radius:5px;
+}
+input.login-submit-disabled {
+	background: #ccc;
+}
+
+.EC-login-span {
+	margin: 10px;
+	margin-left: 0px;
+}
+
+.EC-login-copyright {
+	color: #FFFFFF;
+	padding-top: 10px;
+	position: relative;
+	text-align: center;
+	top: 20px;
+	width: 300px;
+}
+
+.EC-login-copyright span {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.error-mess {
+	font-size: 14px !important;
+	color: #E40D00;
+	width: 100%;
+}
+
+/*Ajax 登录框*/
+
+
+button,html input[type="button"],input[type="reset"],input[type="submit"]
+	{
+	cursor: pointer;
+	-webkit-appearance: button;
+}
+
+.error-tips {
+	color: #ff0000;
+	padding: 0px 10px;
+}

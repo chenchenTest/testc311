@@ -1,0 +1,54 @@
+[@ec_news
+	queryType = "list"
+	filter = "${form.filter!}"
+	pageNum = "${(form.page)!1}"  
+	pagesize = "${(form.rows)!}" 
+	order = "${form.order!'desc'}"
+	sort = "${form.sort!}"
+	search = "${searchValue!}"
+	search0=""
+	pageable=1
+;list]
+{
+"data":[
+[#if list?? && (list?size > 0)]
+[#list list as m]
+    {
+    "id":"<label><input type='checkbox' name='id' value='${m.id!}'/><span class='lbl'></span></label>"
+    ,"title":"${m.title!}"
+    ,"author":"${m.author!}"
+    ,"type":"${m.type!}"
+    ,"createTime":"${m.createTime!}"
+    ,"updateTime":"${m.updateTime!}"
+    ,"links":[
+    	{
+	    	"title":"编辑新闻"
+	    	,"onclick":"loadFile('${path}/management/news/edit?id=${m.id!}')"
+	    	,"icon":"icon-edit"
+	    	,"clz":"btn-info"
+    	},
+    	
+    	{
+	    	"title":"查看新闻"
+	    	,"onclick":"loadFile('${path}/management/news/findOne?id=${m.id!}')"
+	    	,"icon":"icon-sitemap"
+	    	,"clz":"btn-yellow"
+    	},
+    	
+    	{
+	    	"title":"删除新闻"
+	    	,"onclick":"confirm('${path}/management/news/delete?id=${m.id!}')"
+	    	,"icon":"icon-trash"
+	    	,"clz":"btn-danger"
+    	},
+    	
+    	{}
+    	]
+    }
+    [#if m_index != (list?size - 1)]
+    ,
+    [/#if]
+[/#list]
+[/#if]
+]}
+[/@ec_news]

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no"/>
+    [#include 'common/common-meta.html']
+    <title>GNum Dashboard</title>
+    [#include 'common/common-css.html']
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/css/main.css">
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/css/dashboard-menu.css">
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/css/contacts.css">
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/css/right-slider.css">
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/css/profile.css">
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/css/calllog.css">
+    [#include 'common/common-js.html']
+    <script type="text/javascript" src="${res!}/resources/js/dashboard-menu.js"></script>
+
+</head>
+<body style="background-color: #f3f3f3;">
+[#include "common/google-tag-manager.html" /]
+<div class="row no-right-margin">
+<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 dashboard-header">
+    <!--header begin ͷ��-->
+    <nav class="navbar navbar-default navbar-static-top head headWhite">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-head">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="${res!}/"><img src="${res!}/resources/images/index/footerlogohover.png" alt="" class="logo"/></a>
+            </div>
+
+            <!--right begin-->
+            <div class="collapse navbar-collapse" id="navbar-collapse-head">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="${res!}/#indexContent" class="productIndex">PRODUCT</a></li>
+                    <li><a href="${res!}/price/">PRICING</a></li>
+                    <li><a href="${res!}/about/#contact">CONTACT</a></li>
+                    <li class="dashboard visible-xs"><a href="javascript:void(0);">DASHBOARD</a></li>
+                    <li class="call-logs visible-xs"><a href="javascript:void(0);">LOGS</a></li>
+                    <li class="profile visible-xs"><a href="javascript:void(0);">PROFILE</a></li>
+                    [#if user??]
+                    <!--��½-->
+                    <li class="signed hidden-xs">
+                        [#if user.avatar?? && user.avatar != ""]
+                        <img src="${user.avatar!}" alt="" class="img-circle" />
+                        [#else]
+                        <img src="${res!}/resources/images/default_avatar.png" alt="" class="img-circle" />
+                        [/#if]
+                        <ul class="hoverSigned">
+                            <!--<img src="${res!}/resources/images/trangle.png" alt="" class="trangle"/>-->
+                            <div class='icon'><img src='${res!}/resources/images/footer_topnavi/dashboard_top_navi.png'
+                                                   class='popoverImg' alt='dashboard'></div>
+                            <li><a href='${res!}/' >HOME PAGE</a></li>
+                            <li><a href='${res!}/signout/'>SIGN OUT</a></li>
+                        </ul>
+                    </li>
+                    <li class="userName hidden-xs">${user.nickname!}</li>
+                    <li class="visible-xs"><a href='${res!}/signout/'>SIGN OUT</a></li>
+                    [#else]
+                    <!--δ��¼-->
+                    <li class="sign_up"><a href="${res!}/register/" class="btn">SING UP</a></li>
+                    <li class="sign_in"><a href="${res!}/signin/" class="btn">LOG IN</a></li>
+                    [/#if]
+                </ul>
+            </div>
+            <!--right end-->
+        </div>
+    </nav>
+</div>
+</div>
+<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 main-container open" id="main">
+    <div class="col-sm-12 col-xs-12 col-md-1 col-lg-1 container main">
+        [#include 'common/left-menu.html']
+    </div>
+    <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 main-right" id="main-right">
+
+            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-9 center">
+            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                <h2 class="data-title">
+                    <span id="main-title"><img src="${res!}/resources/images/dashboard/dashboard_title.png" alt=""/><label>DASHBOARD</label></span>
+                    <span class="time">PACKAGE:FREE<span>(1000MINS/MONTH)</span>LEFT:<span>${leftTime!'00:00:00'}</span></span>
+                </h2>
+            </div>
+            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" id="data-container">
+                [#include 'dashboard.html']
+            </div>
+            </div>
+
+            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-3" id="right-slider">
+            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 head-0">
+                <h2 class="data-title"><span >SHARE</span></h2>
+            </div>
+            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 content-0">
+                [#include 'common/right-slider.html']
+            </div>
+            </div>
+
+    </div>
+</div>
+[#include 'common/common-js-validate.html']
+<script type="text/javascript" src="${res!}/resources/plugins/zclip/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="${res!}/resources/js/right-slider.js"></script>
+
+<div id="wait" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+     aria-hidden="true">
+    <div style="position: absolute;left: 45%;top: 50%;
+">
+        <i class="icon-spinner icon-spin icon-4x icon-large" style="color:white;"></i>
+    </div>
+</div>
+</body>
+</html>

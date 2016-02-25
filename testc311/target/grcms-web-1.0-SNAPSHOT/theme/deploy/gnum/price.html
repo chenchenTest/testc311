@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GNum Pricing</title>
+    [#include "common/common-meta.html" ]
+    [#include 'common/common-css.html'/]
+    [#include 'common/common-js.html'/]
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/css/price.css"/>
+    <!--<script type="text/javascript" src="${res!}/resources/js/hammer.min.js"></script>-->
+    <script type="text/javascript" src="${res!}/resources/js/price.js"></script>
+</head>
+<body>
+[#include "common/google-tag-manager.html" /]
+    <!--头部 head-->
+    <div id="head">
+        [#include 'common/head.html'/]
+    </div>
+
+    <!--content-->
+    <div class="container-fluid price">
+        <div class="row content">
+            <h3>${node.fields["title"]!}</h3>
+            <div align="center">
+               <div class="select">
+                   <!--free-->
+                   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 free">
+                       <div class="selected">
+                           <h4>${node.fields["packageAName"]!}</h4>
+                           <h5>${node.fields["packageAName"]!}</h5>
+                           <span>${node.fields["packageATimeLimited"]!}</span>
+                           <p>${node.fields["packageADesc"]!}</p>
+                           <button class="btn" onclick="location.href='${res!}/register/'">${node.fields["packageABtnText"]!}</button>
+                       </div>
+                       <div class="box">
+                           <div class="visible-xs col-xs-12 mobile"><span class="pull-left">MOBILE</span> <img src="${res!}/resources/images/price/information.png" alt="" class="pull-right"/></div>
+                           <div class="visible-xs col-xs-12 mobile"><span class="pull-left">DASHBOARD</span> <img src="${res!}/resources/images/price/information.png" alt="" class="pull-right"/></div>
+                       </div>
+                   </div>
+                   <!--pro-->
+                   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pro">
+                       <div class="selected">
+                           <h4>PRO</h4>
+                           <h5>${node.fields["pro_price"]!}</h5><span>1000mins</span>
+                           <p>You need greater connectivity or are a small business. Higher monthly minutes with more features.</p>
+                           <button class="btn">Coming Soon</button>
+                       </div>
+                       <div class="box">
+                           <div class="visible-xs col-xs-12 mobile"><span class="pull-left">MOBILE</span> <img src="${res!}/resources/images/price/information.png" alt="" class="pull-right"/></div>
+                           <div class="visible-xs col-xs-12 mobile"><span class="pull-left">LANDLINE</span> <img src="${res!}/resources/images/price/information.png" alt="" class="pull-right"/></div>
+                           <div class="visible-xs col-xs-12 mobile"><span class="pull-left">SWITCHING OF NUMBERS</span> <img src="${res!}/resources/images/price/information.png" alt="" class="pull-right"/></div>
+                           <div class="visible-xs col-xs-12 mobile"><span class="pull-left">CALL LOG</span> <img src="${res!}/resources/images/price/information.png" alt="" class="pull-right"/></div>
+                           <div class="visible-xs col-xs-12 mobile"><span class="pull-left">DASHBOARD</span> <img src="${res!}/resources/images/price/information.png" alt="" class="pull-right"/></div>
+                           <div class="visible-xs col-xs-12 mobile"><span class="pull-left">CUSTOMISED CALL BUTTON</span> <img src="${res!}/resources/images/price/information.png" alt="" class="pull-right"/></div>
+                       </div>
+                   </div>
+                   <!--business-->
+                   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 business">
+                       <div class="selected">
+                           <h4>ENTERPRISE</h4>
+                           <h5>${node.fields["en_price"]!}</h5><span>UNLIMITED</span>
+                           <p>To be reached by your contacts or customers seamlessly is your top priority. Unlimited minutes with full features.</p>
+                           <button class="btn">Coming Soon</button>
+                       </div>
+                       <div class="box">
+                           <div class="visible-xs col-xs-12 mobile"><span class="pull-left">MOBILE</span> <img src="${res!}/resources/images/price/information.png" alt="" class="pull-right"/></div>
+                           <div class="visible-xs col-xs-12 mobile"><span class="pull-left">LANDLINE</span> <img src="${res!}/resources/images/price/information.png" alt="" class="pull-right"/></div>
+                           <div class="visible-xs col-xs-12 mobile"><span class="pull-left">SWITCHING OF NUMBERS</span> <img src="${res!}/resources/images/price/information.png" alt="" class="pull-right"/></div>
+                           <div class="visible-xs col-xs-12 mobile"><span class="pull-left">CALL LOG</span> <img src="${res!}/resources/images/price/information.png" alt="" class="pull-right"/></div>
+                           <div class="visible-xs col-xs-12 mobile"><span class="pull-left">DASHBOARD</span> <img src="${res!}/resources/images/price/information.png" alt="" class="pull-right"/></div>
+                           <div class="visible-xs col-xs-12 mobile"><span class="pull-left">CUSTOMISED CALL BUTTON</span> <img src="${res!}/resources/images/price/information.png" alt="" class="pull-right"/></div>
+                       </div>
+                   </div>
+               </div>
+            </div>
+        </div>
+
+        <!--表格-->
+        <div class="row features hidden-xs" align="center">
+            <h3>Features under different packages.</h3>
+            <div class="" id="table">
+                <table class="table table-responsive">
+                    <tr>
+                        <th></th>
+                        <th>BASIC</th>
+                        <th>PRO</th>
+                        <th>ENTERPRISE</th>
+                    </tr>
+                    <tr>
+                        <td><span class="pull-left">PRICE</span></td>
+                        <td class="free">FREE</td>
+                        <td>$14.90</td>
+                        <td>$59.90</td>
+                    </tr>
+                    <tr>
+                        <td><span class="pull-left">INCOMING CALLS</span></td>
+                        <td>100MINS</td>
+                        <td>1000MINS</td>
+                        <td class="undefined">UNLIMITED</td>
+                    </tr>
+                    <tr>
+                        <td class="aa"><span class="pull-left">MOBILE</span> <img src="${res!}/resources/images/price/information.png" alt="" class="pull-right"/></td>
+                        <td><img src="${res!}/resources/images/price/rg.png" alt=""/></td>
+                        <td><img src="${res!}/resources/images/price/rg.png" alt=""/></td>
+                        <td><img src="${res!}/resources/images/price/rg.png" alt=""/></td>
+                    </tr>
+                    <tr>
+                        <td><span class="pull-left">LANDLINE</span>  <img src="${res!}/resources/images/price/information.png" alt="" class="pull-right"/></td>
+                        <td> <img src="${res!}/resources/images/price/rg.png" alt=""/></td>
+                        <td><img src="${res!}/resources/images/price/rg.png" alt=""/></td>
+                        <td><img src="${res!}/resources/images/price/rg.png" alt=""/></td>
+                    </tr>
+                    <tr>
+                        <td><span class="pull-left">SWITCHING OF NUMBERS</span> <img src="${res!}/resources/images/price/information.png" alt="" class="pull-right"/></td>
+                        <td></td>
+                        <td><img src="${res!}/resources/images/price/rg.png" alt=""/></td>
+                        <td><img src="${res!}/resources/images/price/rg.png" alt=""/></td>
+                    </tr>
+                    <tr>
+                        <td><span class="pull-left">CALL LOG</span> <img src="${res!}/resources/images/price/information.png" alt="" class="pull-right"/></td>
+                        <td><img src="${res!}/resources/images/price/rg.png" alt=""/></td>
+                        <td><img src="${res!}/resources/images/price/rg.png" alt=""/></td>
+                        <td><img src="${res!}/resources/images/price/rg.png" alt=""/></td>
+                    </tr>
+                    <tr>
+                        <td><span class="pull-left">DASHBOARD</span> <img src="${res!}/resources/images/price/information.png" alt="" class="pull-right"/></td>
+                        <td></td>
+                        <td><img src="${res!}/resources/images/price/rg.png" alt=""/></td>
+                        <td><img src="${res!}/resources/images/price/rg.png" alt=""/></td>
+                    </tr>
+                    <tr>
+                        <td><span class="pull-left">CUSTOMISED CALL BUTTON</span><img src="${res!}/resources/images/price/information.png" alt="" class="pull-right"/></td>
+                        <td></td>
+                        <td><img src="${res!}/resources/images/price/rg.png" alt=""/></td>
+                        <td><img src="${res!}/resources/images/price/rg.png" alt=""/></td>
+                    </tr>
+                </table>
+                <p class="pull-right">*SUBJECT TO FAIR USE POLICY</p>
+            </div>
+        </div>
+    </div>
+
+    <p class="addP"></p>
+
+    <!--尾部 foot-->
+    <div class="foot">
+        [#include 'common/foot.html'/]
+    </div>
+
+  <!--  <script>
+        var width=window.screen.width;          //屏幕宽度
+        var width_va=window.screen.availWidth;   //页面窗口的大小
+        var c_Width=$(document.body)[0].clientWidth;
+        var margin_left=(c_Width-960)/2;
+        if(width>1200||c_Width>1200){
+            $(".price .col-lg-offset-3").css("margin-left",margin_left)
+        }
+    </script>-->
+</body>
+</html>

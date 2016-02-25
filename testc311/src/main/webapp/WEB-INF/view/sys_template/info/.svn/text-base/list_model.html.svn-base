@@ -1,0 +1,135 @@
+<script type="text/javascript">
+    $(function(){
+        //进行表单验证
+        var $form = $('#modelSearchForm');
+        var table = "#modelDataTable";
+        var $table = $(table);
+        var url = $form.attr("action"); 
+        var $btn = $form.find("a.btn").eq(0);
+        var colLength = $table.find("tr").eq(0).find("th").length;
+        
+        $form.form({
+          url:url,
+          onSubmit: function(){
+                if(isFormEmpty($form)) {
+                    $.messager.alert("警告","请输入查询内容!","warning");
+                    return false
+                }
+                var isValid = $form.form('validate');       
+                if(isValid){
+                    disableBtn($btn);
+                }
+                return isValid; // 返回false,将阻止表单提交 
+            },
+          success:function(data){
+              enableBtn($btn);
+              $table.datagrid("loadData",$.parseJSON(data));
+          }
+       });
+    
+    $table.datagrid({
+    	url:'${path}/management/info/model'
+            ,method:'post'
+            ,checkOnSelect:false
+            ,iconCls:'icon-user'
+            ,fitColumns:true
+            ,pagination:true
+            ,pageSize:20
+            ,rowStyler:function(index,row){
+            	return {'class':'EC-table-row'};
+            }
+            ,toolbar: [
+   	            	[@ec_privilege_check uri="/management/info/model/add"]
+   			    	{
+   		            	iconCls: 'icon-add',
+   				    	text:'${AUTH_MENU.name}',
+   				    	plain:true,
+   				    	cls:"easyui-linkbutton",
+   				    	handler: function(){
+   				    		operator.openTab({
+   				    			table:table
+   				    			,title:'${AUTH_MENU.name!}'
+   				    			,url:'${path!}${AUTH_MENU.uri!}'
+   				    			,icon:'icon-add'
+   				    		});
+   						}
+   	            	},
+   	            	[/@ec_privilege_check]
+   	            	
+   					[@ec_privilege_check uri="/management/info/model/delete"]
+   			    	{
+   			    		iconCls: 'icon-remove',
+   				    	text:'${AUTH_MENU.name}',
+   				    	plain:true,
+   				    	handler: function(){
+   				    		operator.remote({
+   				    			table:table
+   				    			,url:'${path!}${AUTH_MENU.uri}'
+   				    			,key:"ids"
+   				    			,checkboxValid:true
+   				    			,confirm:true
+   				    			,title:"${AUTH_MENU.name!}"
+   				    			,content:"您确定要执行删除操作?一旦删除将不可恢复"
+   				    		})
+   						}
+   			    	},
+   	            	[/@ec_privilege_check]
+   	            	{
+   			    		iconCls: 'icon-reload',
+   		 		    	text:'刷新',
+   		 		    	plain:true,
+   		 		    	handler: function(){
+   		 		    		operator.refresh({
+	   		 		    		table:table
+	   		 		    	});
+   		 				}
+   	            	}
+   			    ]
+            ,onLoadSuccess:function(data){
+    	        	if(data.total == 0){
+    	        		$table.datagrid('appendRow',{
+    	        			id: '没有记录'
+    	        		});
+    	        		$table.datagrid('mergeCells',{
+    	        			index: 0,
+    	        			field: 'id',
+    	        			colspan:colLength - 1
+    	        		});
+    	        	}
+    	        }
+    });
+    
+    
+    });
+    
+</script>
+<!-- 工具栏 -->
+<div class="EC-right-content">
+    <h2 class="EC-title-1">当前位置:<i class="icon-user EC-icon-layout"></i>[@EC.location /]</h2>
+    <div class="easyui-panel" title="查询信息" style="margin-bottom: 20px;">
+        <div class="EC-search-pannel EC-fieldset">
+        <form id="modelSearchForm" method="post" action="${path}/management/info/model">
+	        <input type="hidden" name="formatter" value="yyyy-MM-dd" />
+	        <label>模型名称:</label><input type="text" name="name" class="EC-form-input EC-form-search "/>
+            <label>别名:</label><input type="text" name="alias" class="EC-form-input EC-form-search "/>
+            <a href="javascript:void(0);" onclick="submitReq(this);" class="btn easyui-linkbutton" iconCls="icon-search">搜索</a>
+        </form>
+        </div>
+    </div>
+    
+        <table id="modelDataTable" title="模型列表">
+            <thead>
+                <tr>
+                    <th data-options="field:'ids',checkbox:true">ID</th>
+                    <th data-options="field:'id',width:25,align:'center',sortable:true,styler:tdPadding">ID</th>
+                    <th data-options="field:'name',width:25,align:'center',sortable:true">模型名称</th>
+                    <th data-options="field:'alias',width:25,align:'center',sortable:true">别名</th>
+                    <th data-options="field:'tplPath',width:25,align:'center',sortable:true">模板路径</th>
+                    <th data-options="field:'channelStaticize',width:25,align:'center'">栏目静态化</th>
+                    <th data-options="field:'contentStaticize',width:25,align:'center'">内容静态化</th>
+                    <th data-options="field:'operation',width:25,align:'center',formatter:operator.links">操作</th>
+                </tr>
+            </thead>
+            
+        </table>
+    </div>

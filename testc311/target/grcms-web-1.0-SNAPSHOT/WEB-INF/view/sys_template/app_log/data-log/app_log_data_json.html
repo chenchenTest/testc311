@@ -1,0 +1,27 @@
+[@ec_app_log 
+logId="${appLogForm.id!}"  
+appName="${(appLogForm.appName)!}" 
+appVersion="${(appLogForm.appVersion)!}" 
+appOsVersion="${(appLogForm.appOsVersion)!}" 
+time="${(appLogForm.time)!}" 
+type="${(appLogForm.type)!}"  
+pageNum="${(appLogForm.page)!1}"  
+pagesize="${(appLogForm.rows)!}";page]
+	{"total":${page.totalCounts},"rows":[
+	[#if page.datas?? && (page.datas?size > 0)]
+	[#list page.datas as logContent]
+	    {"id":"${logContent.id!}"
+	    ,"aid":"${logContent.id!}"
+	    ,"appName":"${logContent.appName!}"
+	    ,"appVersion":"${logContent.appVersion!}"
+	    ,"appOsVersion":"${logContent.appOsVersion!}"
+	    ,"time":"${logContent.time!}"
+	    ,"type":"${logContent.type!}"
+	    }
+	    [#if logContent_index != (page.datas?size - 1)]
+	    ,
+	    [/#if]
+	[/#list]
+	[/#if]
+	]}
+[/@ec_app_log]

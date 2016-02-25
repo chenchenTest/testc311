@@ -1,0 +1,27 @@
+[#if (tpl.children)?? && (tpl.children?size > 0)]
+<ul>
+	[#list tpl.children as tpl]
+		[#if (role.privileges)?? && (role.privileges?size > 0)]
+			[#list role.privileges as rp]
+				[#if rp.id == privilege.id && privilege.children?size ==0]
+					[#assign pCheck =',checked:true' /]
+					[#break]
+				[#else]
+					[#assign pCheck ='' /]
+				[/#if]
+			[/#list]
+		[/#if]
+		[#if tpl.directory]
+										<li data-options="
+											 state:'closed',
+											 attributes:'${tpl.path}'
+										">
+										[#else]
+										<li>
+										[/#if]
+	    <span>${tpl.name}</span>
+		[#include "tplIteration.html" /]
+	</li>
+	[/#list]
+</ul>
+[/#if] 

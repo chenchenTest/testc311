@@ -1,0 +1,26 @@
+
+{
+"recordsFiltered":${count!0} ,
+"recordsTotal":${count!0} ,
+"data":[
+[#if subscribers?? && (subscribers?size > 0)]
+[#list subscribers as u]
+    {
+{
+"data":"showAcDate"
+}
+    "userId":"<label><input type='checkbox' name='ids' value='${u.userId!}'/><span class='lbl'></span></label>"
+    ,"userName":${u.userName!}
+    ,"status":"${u.status!}"
+    ,"mobilePhone":"${u.mobilePhone!}"
+    ,"balance":"${u.balance!}"
+    ,"callStatus":"${(u.callStatus)!}"
+    ,"showAcDate":"${(u.department.name)!}"
+
+    }
+    [#if u_index != (list?size - 1)]
+    ,
+    [/#if]
+[/#list]
+[/#if]
+]}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>方易资产后台系统</title>
+        [#include "common/resources.html"/]
+		[#include "common/css-import.html"/]
+    </head>
+    <body>
+        <div class="navbar navbar-inverse">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="brand" href="#"><small><i class="icon-leaf"></i>方易资产 后台系统</small> </a>
+                   <!--/.ace-nav-->
+                   [#include "index/top-nav.html"/]
+                </div><!--/.container-fluid-->
+            </div><!--/.navbar-inner-->
+        </div>
+        <div class="container-fluid" id="main-container">
+            <a href="#" id="menu-toggler"><span></span></a><!-- menu toggler -->
+	        <!--/.navbar-->
+	        [#include "index/side-nav.html"/]
+	        <div id="main-content" class="clearfix">
+	        [#include "index/dashboard.html"/]
+	        </div>
+        </div><!--/.fluid-container#main-container-->
+        <a href="#" id="btn-scroll-up" class="btn btn-small btn-inverse"> <i class="icon-double-angle-up icon-only"></i> </a>
+        <div id="holdon" class="modal" style="display: none;background: transparent;border: none;box-shadow:none;">
+		<img alt="" src="${path}/resources/images/482.gif" style="margin: 0px auto;display: block;"/>
+		</div>
+        <!-- basic scripts -->
+        [#include "common/js-import.html"/]
+    </body>
+</html>

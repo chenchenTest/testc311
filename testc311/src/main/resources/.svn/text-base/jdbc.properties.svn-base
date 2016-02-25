@@ -1,0 +1,1 @@
+#jdbcjdbc.driverClassName = com.mysql.jdbc.Driverjdbc.url = jdbc:mysql://10.0.1.103:3306/grwholesms?useUnicode=true&characterEncoding=utf8jdbc.username = grwholesmsjdbc.password = grwholesms201510*28jdbc.database = grwholesms

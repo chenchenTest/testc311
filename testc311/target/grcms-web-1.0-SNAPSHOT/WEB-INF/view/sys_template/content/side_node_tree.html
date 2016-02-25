@@ -1,0 +1,107 @@
+[@ec_node queryType="tree";nodes]
+ [#if nodes?? && (nodes?size > 0)]
+ <ul id="treeNodes" class="filetree treeview">
+    [#list nodes as node]
+    [#if (node.children)?? && (node.children?size > 0)]
+	<li>
+		<div class="EC-side-tree-menu-wrap">
+			<a class="folder content-link" data-id="${node.id!}" data-url="${path}/management/content/info?nodeId=${node.id!}" href="javascript:void(0);">${node.name!}</a>
+			<span class="EC-side-tree-menu">
+				<a href="javascript:void(0);" data-url="${path}/management/content/node/edit?id=${node.id!}" class="EC-side-tree-menu-btn edit-node">[Edit]</a>
+				<a href="javascript:void(0);" onclick="confirm('/management/content/node/delete?id=${node.id!}',refreshTree)" class="EC-side-tree-menu-btn">[Del]</a>
+				<a href="javascript:void(0);" class="EC-side-tree-menu-btn move-pre"><i class="icon-arrow-up"></i></a>
+				<a href="javascript:void(0);" class="EC-side-tree-menu-btn move-next"><i class="icon-arrow-down"></i></a>
+			</span>
+		</div>
+		[#include "data/node_iteration.html"/]
+	</li>
+	    [#else]
+	<li>
+		<div class="EC-side-tree-menu-wrap">
+			<a class="file content-link" data-id="${node.id!}" data-url="${path}/management/content/info?nodeId=${node.id!}" href="javascript:void(0);">${node.name!}</a>
+			<span class="EC-side-tree-menu">
+				<a href="javascript:void(0);" data-url="${path}/management/content/node/edit?id=${node.id!}" class="EC-side-tree-menu-btn edit-node">[Edit]</a>
+				<a href="javascript:void(0);" onclick="confirm('/management/content/node/delete?id=${node.id!}',refreshTree)" class="EC-side-tree-menu-btn">[Del]</a>
+				<a href="javascript:void(0);" class="EC-side-tree-menu-btn move-pre"><i class="icon-arrow-up"></i></a>
+				<a href="javascript:void(0);" class="EC-side-tree-menu-btn move-next"><i class="icon-arrow-down"></i></a>
+			</span>
+		</div>
+	</li>
+    [/#if]
+ [/#list]
+</ul>
+[#else]
+<p>Please add a node</p>
+[/#if]
+[/@ec_node]
+<script type="text/javascript">
+	$(function(){
+		var $root = $("#treeNodes");
+		$root.treeview({});
+		
+		//show content list
+		$("#treeNodes a.content-link").on("click",function(){
+			var $e = $root.data("checked");
+			if($e != null) {
+				$e.removeClass("tree-checked");
+			}
+			
+			var $self = $(this);
+			$root.data("checked",$self.parent("div"));
+			$self.parent("div").addClass("tree-checked");
+			
+			var id = $self.data("id");
+			var url = $self.data("url");
+			loadFile(url,'#EC-side-container')
+		});
+		
+		//edit node
+		$("#treeNodes a.edit-node").on("click",function(){
+			var $e = $root.data("checked");
+			if($e != null) {
+				$e.removeClass("tree-checked");
+			}
+			
+			var $self = $(this);
+			$root.data("checked",$self.closest("div"));
+			$self.closest("div").addClass("tree-checked");
+			
+			var url = $self.data("url");
+			loadFile(url,'#EC-side-container')
+		});
+		
+		//move pre
+		$("#treeNodes a.move-pre").on("click",function(){
+			var $self = $(this);
+			var $from = $self.closest("li");
+			var $to = $from.prev();
+			if(typeof $to[0] != "undefined"){
+				if($from.hasClass("last")) {
+					$from.removeClass("last");
+					$to.addClass("last");
+				}
+				var fromId = $from.find("a.content-link").data("id");
+				var toId = $to.find("a.content-link").data("id");
+				$to.before($from);
+				$.get(path + "/management/content/node?func=changeSeq&fromId=" +fromId + "&toId=" + toId);
+				}
+		});
+		
+		//move next
+		$("#treeNodes a.move-next").on("click",function(){
+			var $self = $(this);
+			var $from = $self.closest("li");
+			var $to = $from.next();
+			if(typeof $to[0] != "undefined"){
+				if($to.hasClass("last")) {
+					$to.removeClass("last");
+					$from.addClass("last");
+				}
+				var fromId = $from.find("a.content-link").data("id");
+				var toId = $to.find("a.content-link").data("id");
+				$to.after($from);
+				$.get(path + "/management/content/node?func=changeSeq&fromId=" +fromId + "&toId=" + toId);
+				}
+			});
+	}); 
+</script>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    [#include '/common/common-meta.html'/]
+    <!--linkedin share for register user-->
+    <meta property="og:title" content="Call ${host!'gnum.com'}/${(mobile)!} for free on GNum"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="http://${host!'gnum.com'}/${(mobile)!}"/>
+    <meta property="og:image" content="http://${host!'gnum.com'}/resources/images/share/gnum-call-icon.jpg"/>
+    <!-- <meta property="og:description" content="You can now contact me for FREE just by clicking on my unique GNum Call Link ${host!'gnum.com'}/${(mobile)!} #gnumsg #sgfreecalls #gnum #callname #freecalls @gnumsg"/> -->
+    <meta property="og:description" content="Call me at ${host!'gnum.com'}/${nickname!} for FREE! Get yours today at gnum.com. #freecalls #GNumSG #sgfreecalls @gnumsg"/>
+    <meta property="og:updated_time" content="1436495860999"/>
+    <!--end-->
+    [#include "../common/common-js.html"]
+    [#include "../common/common-css.html"]
+    <link rel="stylesheet" href="${res!}/resources/css/webCall.css"/>
+    <script src="${res!}/resources/js/jQuery.md5.js" type="text/javascript"></script>
+    <title>GNum Calling Page</title>
+</head>
+<body>
+[#include "../common/google-tag-manager.html" /]
+[#if Session["user"]?exists]
+[#assign user = Session["user"]]
+[#assign userSessionID = user.sessionId]
+[#else]
+[#assign userSessionID = ""]
+[/#if]
+<!--header begin-->
+<div class="header">
+	<nav class="navbar navbar-default navbar-static-top head">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-head">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="${res!}/"><img src="${res!}/resources/images/calling/popup_logo.png" alt="" class="logo"/></a>
+            </div>
+            <!--right begin-->
+            <div class="collapse navbar-collapse" id="navbar-collapse-head">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="${res!}/">PRODUCT</a></li>
+                    <li><a href="${res!}/price/">PRICING</a></li>
+                    <li><a href="${res!}/about/">CONTACT</a></li>
+                    [#if user??]
+                    <!--登陆-->
+                    <li class="signed hidden-xs">
+                        [#if user.avatar?? && user.avatar != ""]
+                        <img src="${user.avatar!}" alt="" class="img-circle" />
+                        [#else]
+                        <img src="${res!}/resources/images/default_avatar.png" alt="" class="img-circle" />
+                        [/#if]
+                        <ul class="hoverSigned">
+                            <!--<img src="${res!}/resources/images/trangle.png" alt="" class="trangle"/>-->
+                            <div class='icon'><img src='${res!}/resources/images/footer_topnavi/dashboard_top_navi.png'
+                                                   class='popoverImg' alt='dashboard'></div>
+                            <li><a href='${res!}/main/'>DASHBOARD</a></li>
+                            <li><a href='${res!}/signout/'>SIGN OUT</a></li>
+                        </ul>
+                    </li>
+                    <li class="userName hidden-xs">${user.nickname!}</li>
+                    <li class="visible-xs"><a href='${res!}/main/'>DASHBOARD</a></li>
+                    <li class="visible-xs"><a href='${res!}/signout/'>SIGN OUT</a></li>
+                    [#else]
+                    <!--未登录-->
+                    <li class="sign_up"><a href="${res!}/register/" class="btn">SIGN UP</a></li>
+                    <li class="sign_in"><a href="${res!}/signin/" class="btn">LOG IN</a></li>
+                    [/#if]
+
+                </ul>
+            </div>
+            <!--right end-->
+        </div>
+    </nav>
+</div>
+<!--header end-->
+<div class="container-fluid center">
+    <div class="container">
+        <!--dialing page begin-->
+        <div class="dial">
+            <div class="row">
+                <div class=" dialing col-lg-8 col-md-8 col-xs-12 col-sm-12 col-lg-offset-2 col-md-offset-2 " >
+                    <div class="portrait"></div>
+                    <div class="portrait"></div>
+                    <div class="headCon center-block text-center">
+                        [#--通话头像  开始--]
+                        [#if !(avatar??) || !(avatar!='')]
+                        [#assign avatar="${res!}/resources/images/default_avatar.png"/]
+                        [/#if]
+                        <img  src="${avatar}" class="headImg img-circle img-responsive center-block"  />
+                        [#--通话头像  结束--]
+                        <p><span class="callName">${callName!''}</span></p>
+                        <em id="call-msg">Ready</em>
+                        <img class="divicer" src="${res!}/resources/images/calling/divicer_ds.png" alt="divicer"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row button">
+                <div class="col-lg-4 col-md-4 col-xs-12 col-sm-12 center-grid text-center">
+                    <button class="sound" id="mute"></button>
+                    <button class="call" id="makecall" data-gnumcall="${mobile!callNumber!'unknown'}"  data-gnumUsername="${(user.middleName)!}" data-gnumPassword="${(user.token)!}" data-updateID="" data-sessionID="${userSessionID}"></button>
+                    <button class="keypad"></button>
+                </div>
+            </div>
+        </div>
+
+        <!--dialing page end-->
+
+
+        <!--thank page begin -->
+        <div class="row webcall-modal">
+            <div class="leaveNumber col-xs-12 col-sm-12 col-md-4 col-lg-4 col-lg-offset-4 col-md-offset-4 ">
+                <div class="closeRow"><img src="${res!}/resources/images/calling/close_popup.png" class="closed"/></div>
+                <div class="leaveNumber-center">
+                    <h1>Thank you for <br/> Using GNum</h1>
+                    <p>Leave contact number for receiver, or sign up <br/> for a FREE GNum account.</p>
+                </div>
+               <div class="leaveNumber-bottom">
+                   <div class="bottomCon">
+                       <div class="dropdown input-group-btn countryCode">
+                           <button type="button" class="btn btn-default content" data-content="+65">+65</button>
+                           <button type="button" class="btn btn-default dropdown-toggle dropdown" data-toggle="dropdown" aria-expanded="false">
+                               <span class="caret"></span>
+                               <span class="sr-only">Toggle Dropdown</span>
+                           </button>
+                           <ul class="dropdown-menu selectul" role="menu">
+                               <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" data-content="+65">+65</a></li>
+                               <li role="presentation"><a role="menuitem" tabindex="-2" href="javascript:void(0);" data-content="+1">+1</a></li>
+                               <li role="presentation"><a role="menuitem" tabindex="-3" href="javascript:void(0);" data-content="+86">+86</a></li>
+                               <li role="presentation"><a role="menuitem" tabindex="-4" href="javascript:void(0);" data-content="+91">+91</a></li>
+                           </ul>
+                           <input type="hidden" name="countryCode" value="65" name="countryCode" id="countryCode">
+                       </div>
+                       <input type="text" placeholder="Mobile Number" name="anonymousNumber" id="anonymousNumber"/>
+                       <button onclick="saveAnonymousNumber();">OK</button>
+                   </div>
+
+               </div>
+            </div>
+        </div>
+        <!--thank page end -->
+
+        <!--missCall page begin-->
+        <div class="row webcall-modal" >
+            <div class="missCall col-xs-12 col-sm-12 col-md-4 col-lg-4 col-lg-offset-4 col-md-offset-4 ">
+                <div class="closeRow"><img src="${res!}/resources/images/calling/close_popup.png" class="closed"/></div>
+                <div class="missCall-center">
+                    <h1>Sorry your <br/> call is missed</h1>
+                    <p>login to leave your contact number <br/> for the receiver.</p>
+                </div>
+                <div class="missCall-bottom">
+                    <div class="bottomCon">
+                        <div class="dropdown input-group-btn countryCode">
+                            <button type="button" class="btn btn-default content" data-content="+91">+91</button>
+                            <button type="button" class="btn btn-default dropdown-toggle dropdown" data-toggle="dropdown" aria-expanded="false">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu selectul" role="menu">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" data-content="+65">+65</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-2" href="javascript:void(0);" data-content="+1">+1</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-3" href="javascript:void(0);" data-content="+86">+86</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-4" href="javascript:void(0);" data-content="+91">+91</a></li>
+                            </ul>
+                            <input type="hidden"  value="65" >
+                        </div>
+                        <input type="text" placeholder="Mobile Number" />
+                        <button >OK</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--missCall page end-->
+
+        <!--PC setting page begin -->
+        <div class="row webcall-modal">
+            <div class="pcSetting col-xs-12 col-sm-12 col-md-4 col-lg-4 col-lg-offset-4 col-md-offset-4 ">
+                <div class="closeRow"><img src="${res!}/resources/images/calling/close_popup.png" class="closed"/></div>
+                <div class="pcSetting-center">
+                    <h1>Your PC Setting</h1>
+                    <img src="${res!}/resources/images/calling/pc_setting.png" alt="computer" class="img-responsive"/>
+                    <div class="list">
+                        <ul class="left">
+                            <li>System</li>
+                            <li>Brower</li>
+                            <li>Flash</li>
+                            <li>Network</li>
+                        </ul>
+                        <ul class="right">
+                            <li class="systemEnvironment">Mac</li>
+                            <li class="browserVersion">Chrome 38.0.2125.111</li>
+                            <li class="flashVersion">15.0 r0</li>
+                            <li class="netConnect">Connected</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--PC setting page end -->
+
+        <!--networkproblem page begin-->
+        <div class="row webcall-modal" >
+            <div class="networkProblem col-xs-12 col-sm-10 col-md-6 col-lg-4 col-lg-offset-4 col-md-offset-3 col-sm-offset-1">
+                <div class="closeRow"><img src="${res!}/resources/images/calling/close_popup.png" class="closed"/></div>
+
+                <div class="networkProblem-center">
+                    <h1 style="text-align: center">Network Problem</h1>
+                    <img src="${res!}/resources/images/calling/pc_setting_wrong.png" alt="networkporblem" class="img-responsive"/>
+                    <p>We are unable to establish the network <br/>
+                        connection. We suspect that this is due to your <br/>
+                        network disconnected, or network/firewall <br/>
+                        settings preventing you from using this service.</p>
+                </div>
+            </div>
+        </div>
+        <!--networkproblem page end-->
+
+        </div>
+
+
+
+
+
+        <!--help part begin-->
+        <div class="row helpRow">
+            <div class=" help col-lg-4 col-md-4 col-xs-10 col-sm-10 col-lg-offset-4 col-md-offset-4 col-xs-offset-1 col-sm-offset-1">
+                <p>If you have problem making a call, please <a>click here</a> to view your current
+                    PC settings and web call operational environment.</p>
+            </div>
+        </div>
+        <!--help part end-->
+
+    </div>
+</div>
+
+<!--pop up keyboard begin-->
+<div class="container-fluid">
+        <div class="shelter">
+            <div class="row keyboard">
+                <div class="col-lg-2 col-md-4 col-xs-6 col-sm-6 col-lg-offset-5 col-md-offset-4 col-sm-offset-3 col-xs-offset-3 keyboardCon">
+                    <div class="closeRow"><img src="${res!}/resources/images/calling/close_keypad.png" class="closeKeyboard"/></div>
+                    <input class="keyWord"/>
+                    <table class="table table-bordered table-condensed keyboardNum">
+                        <tr>
+                            <td><button>1 <p>&nbsp;</p></button></td>
+                            <td><button>2 <p>ABC</p></button></td>
+                            <td><button>3 <p>DEF</p></button></td>
+                        </tr>
+                        <tr>
+                            <td><button>4 <p>GHI</p></button></td>
+                            <td><button>5 <p>JKL</p></button></td>
+                            <td><button>6 <p>MNO</p></button></td>
+                        </tr>
+                        <tr>
+                            <td><button>7 <p>PQRS</p></button></td>
+                            <td><button>8 <p>TUV</p></button></td>
+                            <td><button>9 <p>WXYZ</p></button></td>
+                        </tr>
+                        <tr>
+                            <td style="font-size:2.5rem;"><button>*</button></td>
+                            <td><button>0</button></td>
+                            <td><button>#</button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+</div>
+<!--pop up keyboard end-->
+
+<div class="footer">
+	[#include '../common/foot.html']
+</div>
+<!-- log需要参数-->
+<div>
+    <input type="hidden" id="destNo" value="${code!}" />
+    <input type="hidden" id="flashHost" value="${flashHost!}" />
+    <input type="hidden" id="sipHost" value="${sipHost!}" />
+    <input type="hidden" id="path" value="${res!}/unSupport" />
+    <input type="hidden" id="domain" value="${domain!'www.gnum.com'}" />
+    [#if Session["user"]?exists]
+    [#assign user = Session["user"]]
+    <input type="hidden" value="${user.sessionId}" id="sessionId"/>
+    <input type="hidden" value="${user.token}" id="token"/>
+    <input type="hidden" value="${user.middleName}" id="userName"/>
+    [#else]
+    <input type="hidden" value="${(user.middleName)!'ANONYMOUS'}" id="username"/>
+    [/#if]
+    <input type="hidden" value="${(user.userId)!}" id="userId"/>
+    <input type="hidden" value="${(remoteIP)!}" id="remoteIp"/>
+    <input type="hidden" value="${mobile!'unknown'}" id="callee"/>
+    <input type="hidden" value="${sessionId!}" id="session"/>
+    <input type="hidden" value="${isBlackListNumber!}" id="blackListNumber"/>
+</div>
+<script type="text/javascript" src="${res!}/resources/gnumCall/grcaller.js"></script>
+<script type="text/javascript" src="${res!}/resources/js/webCall.js"></script>
+<script type="text/javascript" src="${res!}/resources/js/webcall_init.js"></script>
+</body>
+</html>

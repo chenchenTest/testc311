@@ -1,0 +1,26 @@
+@charset "UTF-8";
+@import url(fonts.css);
+
+/*update page*/
+.update{
+    margin-top: 50px;
+    background-color: #E7E7E7;
+    padding-bottom: 60px;
+}
+h3{
+    color: #282828;
+    font-size: 36px;
+    font-family: "lato-regular";
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+p{
+    font-size: 16px;
+    font-family: "Lato-Light";
+    color: #555555;
+    margin-bottom: 24px;
+}
+a{
+    display: block;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/resources/js/validate
+END
+validate_extends.js
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/resources/js/validate/validate_extends.js
+END
+jquery.metadata.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/resources/js/validate/jquery.metadata.js
+END
+messages_cn.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/resources/js/validate/messages_cn.js
+END
+messages_en.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/resources/js/validate/messages_en.js
+END
+jquery.validate.min.js
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/resources/js/validate/jquery.validate.min.js
+END

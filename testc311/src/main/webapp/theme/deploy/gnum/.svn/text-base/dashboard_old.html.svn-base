@@ -1,0 +1,53 @@
+ [@gnum_callLogOverview type="${type!3}"]
+<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-container">
+    <table class="table dashboard-table">
+       <tbody>
+        <tr>
+            <td><span class="g-color first-span">DISPLAY NAME</span><span>${user.firstName!}</span></td>
+            <td class="operation" align="right"><a class="btn btn-sm btn-default profile-btn" onclick="loadProfile('#name');" href="javascript:void(0);">EDIT</a></td>
+        </tr>
+        <tr>
+            <td ><span class="g-color first-span">EMAIL</span>${user.email!} - <span class="g-color">
+            [#if user?? &&user.emailStatus??&& user.emailStatus == 'NONE']
+            Not Verified
+            [#else]
+            ${user.emailStatus!}
+            [/#if]
+            
+            </span></td>
+            <td class="operation" align="right"><a class="btn btn-sm btn-default profile-btn" onclick="loadProfile('#email');" href="javascript:void(0);">EDIT</a></td>
+        </tr>
+        <tr>
+            <td><span class="g-color first-span">CALLNAME</span>${user.nickname!}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td ><span class="g-color first-span">MOBILE</span>+${user.mobilePhone!}</td>
+            <td class="operation" align="right"><a class="btn btn-sm btn-default profile-btn" onclick="loadProfile('#newMobile');" href="javascript:void(0);">EDIT</a></td>
+        </tr>
+        <tr>
+            <td ><span class="g-color first-span">USAGE</span>${((callLogOverview.makeCallCount)!0)+((callLogOverview.receiveCallCount)!0)} Calls - <span class="g-color">${(((callLogOverview.outgoingMinutes)!0)?number)+(((callLogOverview.incomingMinutes)!0)?number)} mins</span></td>
+            <td class="operation" align="right"><a class="btn btn-sm btn-default logs-btn" >LOGS</a></td>
+        </tr>
+        <tr>
+            <td ><span class="g-color first-span">INCOMING</span>${(callLogOverview.receiveCallCount)!0} Calls - <span class="g-color">${(callLogOverview.incomingMinutes)!0} mins</span></td>
+            <td class="operation" align="right"><a class="btn btn-sm btn-default logs-btn" >LOGS</a></td>
+        </tr>
+        <!--tr>
+            <td><span class="g-color first-span">OUTGOING</span>${(callLogOverview.makeCallCount)!0} Calls - <span class="g-color">${(callLogOverview.outgoingMinutes)!0} mins</span></td>
+            <td class="operation" align="right"><a class="btn btn-sm btn-default logs-btn" >LOGS</a></td>
+        </tr-->
+       </tbody>
+    </table>
+</div>
+
+[/@gnum_callLogOverview]
+<script type="text/javascript">
+function loadProfile(val){
+	menu.profile($(".profile a"),val);
+}
+
+$(".logs-btn").click(function(){
+	menu.callLogs($(".call-logs a"));
+});
+</script>

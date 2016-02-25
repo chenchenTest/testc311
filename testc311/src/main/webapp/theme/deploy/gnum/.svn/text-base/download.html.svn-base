@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+	[#include "common/common-meta.html" ]
+    <title>GNUM download</title>
+    [#include "common/common-css.html" ]
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/css/download.css"/>
+</head>
+<body>
+    [#include "common/google-tag-manager.html" /]
+    <!--head begin-->
+    <div class="head">
+    	[#include "common/head.html" ]
+    </div>
+    <!--head end-->
+
+    <!--content begin 主页面主要内容-->
+    <div class="container-fluid download">
+        <!--top begin顶部-->
+        <div class="row top">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-0"></div>
+            <!--内容-->
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <h3>APPS</h3>
+            </div>
+            <!--内容-->
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-0"></div>
+        </div>
+        <!--top begin顶部-->
+
+        <!--content begin 内容-->
+        <div class="row content">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-0"></div>
+            <!--内容-->
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <p>Mobile</p>
+                <div class="box">
+                <a href="https://play.google.com/store/apps/details?id=com.globalroam.android.gnum&hl=en">
+                    <span class="icon icon-android box1">Android</span>
+                </a>
+                <a href="https://itunes.apple.com/en/app/gnum/id571207657?mt=8">
+                    <span class="icon icon-apple">iPhone</span>
+                </a>
+                </div>
+                <hr/>
+
+                <p>PC</p>
+                <img src="${res!}/resources/images/download/pc_03.png" alt="" class="img-responsive"/>
+                <small>Simply type your Callname in browsers to make a call.</small>
+            </div>
+            <!--内容-->
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-0"></div>
+        </div>
+        <!--content end 内容-->
+    </div>
+    <!--content end 主页面主要内容-->
+
+    <!--foot begin-->
+    <div class="foot">
+    	[#include "common/foot.html" ]
+    </div>
+    <!--foot end-->
+    [#include "common/common-js.html" ]
+</body>
+</html>

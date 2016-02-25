@@ -1,0 +1,57 @@
+[@ec_model nodeModelId="${(form.id[0])!}";contentModel]
+<form class="form-horizontal " action="${path!}/management/content/model/edit" method="post" id="contentModelForm">
+	[#if contentModel??]
+    <input type="hidden" name="id" value="${contentModel.id!}" />
+	[/#if]
+    <input type="hidden" name="nodeModelId" value="${(form.id[0])!}" />
+    <input type="hidden" name="modelType" value="CONTENT" />
+    <div class="control-group">
+        <label class="control-label" for="modelName">Model Name:</label>
+        <div class="controls">
+            <input type="text" placeholder="" id="modelName" name="modelName" value="${(contentModel.modelName)!}">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="code">Code:</label>
+        <div class="controls">
+            <input type="text" id="code" placeholder="" name="code" value="${(contentModel.code)!}">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="templateFile">Template File:</label>
+        <div class="controls">
+            <input type="text" id="contentTemplateFile" placeholder="" name="templateFile" value="${(contentModel.template)!}" readonly="readonly">
+            <a class="btn btn-mini" href="javascript:modal.open({url:'${path}/management/content/template?target=contentTemplateFile'})">Choose</a>
+        </div>
+    </div>
+    <div class="form-actions">
+        <button class="btn" type="reset">
+            <i class="icon-undo"></i> Reset
+        </button>
+        &nbsp; &nbsp; &nbsp;
+        <button class="btn btn-success" type="submit" data-loading-text="Saving...">
+            <i class="icon-ok"></i> Save
+        </button>
+    </div>
+</form>
+[/@ec_model]
+<script type="text/javascript">
+	$(function() {
+		formValidtor.valid({
+			handler:"#contentModelForm",
+			rules : {
+				modelName : {
+        			required : true
+        		},
+        		code : {
+        			required : true
+        		}
+        	},
+        	callbackFunc:function(data){
+        		if(data.code == "1000") {
+        			loadFile('${path}/management/content/model');
+        		}
+        	}
+		})
+	})
+</script>

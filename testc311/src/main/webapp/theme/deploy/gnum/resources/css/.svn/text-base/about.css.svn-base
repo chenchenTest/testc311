@@ -1,0 +1,309 @@
+html {
+    font-size: 62.5%;
+    font-family: "arial";
+}
+
+body {
+    font-family: "Lato-Regular";
+}
+
+a, img, button {
+    -webkit-transition: all 0.3s; /* Safari and Chrome */
+    -moz-transition: all 0.3s; /* Firefox */
+    -ms-transition: all 0.3s; /*ie内核*/
+    -o-transition: all 0.3s; /* Opera */
+    transition: all 0.3s;
+}
+
+/*top begin 顶部*/
+.about {
+    margin-top: 110px;
+    background-color: #F3F3F3;
+    background-color: #F3F3F3;
+}
+@media (max-width: 768px){
+    .about {
+        margin-top: 60px;
+    }
+    
+    .carousel-indicators{
+    	  position: absolute;
+  bottom: -38px;
+  left: 50%;
+  z-index: 15;
+  width: 60%;
+  padding-left: 0;
+  margin-left: -30%;
+  text-align: center;
+  list-style: none;
+    }
+    
+   .carousel-inner{
+    	  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-left: 0px;
+    } 
+    
+    
+}
+
+.about .top {
+    background-color: #20CAC4;
+    text-align: center;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+.about .top h4 {
+    line-height: 1.5;
+    font-size: 26px;
+}
+.about .top h4 span{
+    color: #191919;
+    font-weight: bold;
+}
+
+h3 {
+    font-family: lato-bold;
+    color: rgb(255, 255, 255);
+    font-size: 8rem;
+    /*margin-top: 130px;*/
+    margin-bottom: 50px;
+}
+
+@media (max-width: 768px){
+    h3 {
+        /*margin-top: 68px;*/
+        /*margin-bottom: 124px;*/
+    }
+}
+
+/*top end 顶部*/
+
+/*content begin 内容*/
+.about .content {
+    height: auto;
+}
+
+.about .content {
+    /*padding-top: 65px;*/
+    padding-bottom: 65px;
+}
+
+.about .content .introduce .people {
+    color: #727272;
+}
+
+.about .icImg {
+    text-align: center;
+}
+.about .icImg .img-responsive{
+    margin: auto;
+}
+
+/*.about .content .introduce .people h4 {*/
+    /*line-height: 30px;*/
+    /*margin-top: 30px;*/
+    /*margin-bottom: 18px;*/
+/*}*/
+/*.about .content h4.gnum span{*/
+    /*color: #19A296;*/
+    /*font-weight: bolder;*/
+/*}*/
+
+.about .content hr {
+    border-top: 1px solid #CACACA;
+    margin-left: 0;
+    margin-top: 14.3%;
+    margin-bottom: 6.9%;
+}
+
+.about .content .contact h4 {
+    color: #575757;
+}
+
+.about .content .contact p a {
+    color: #2DCBC7;
+}
+
+/*content end 内容*/
+
+/*add*/
+.about .top h3 {
+    font-family: "lato-bold";
+    color: #ffffff;
+    font-size: 8rem;
+}
+
+.about .content h4 {
+    font-family: "Lato-Light";
+    font-size: 5.1rem;
+    color: #303030;
+    line-height: 1.4;
+}
+
+.about .content p {
+    font-family: "Lato-Light";
+    font-size: 1.8rem;
+    color: #727272;
+}
+
+.about .content .introduce {
+    margin-top: 90px;
+}
+
+.about .content .introduce h4 {
+    font-family: "lato-regular";
+    font-size: 1.6rem;
+    color: #9d9d9d;
+}
+.about .content .introduce h4 span{
+    color: #303030;
+    font-family: "lato-bold";
+    display: block;
+    padding-bottom: 4px;
+    line-height: normal;
+    font-size: 20px;
+}
+
+.about .content .introduce p {
+    font-family: "lato-regular";
+    font-size: 1.6rem;
+    color: #727272;
+}
+
+.about .content .contact h4 {
+    font-family: "lato-regular";
+    font-size: 3rem;
+}
+
+.about .content .contact p {
+    font-family: "lato-regular";
+    font-size: 1.5rem;
+    color: #939292;
+    margin-top: 15px;
+    line-height: 2;
+    margin-bottom: 36px;
+}
+
+.about .content .contact p strong {
+    font-family: "lato-bold";
+    font-size: 2rem;
+    color: #313131;
+    display: block;
+    line-height: normal;
+}
+
+@media screen and  (max-width: 768px) {
+    /*.about .top {*/
+        /*background-position: 0px -320px;*/
+        /*height: 320px;*/
+    /*}*/
+
+    h3 {
+        font-size: 4.8rem;
+    }
+
+    .about .content h4.gnum {
+        font-size: 2rem;
+    }
+}
+
+/*form begin 表单内容*/
+.about .content form {
+    padding-top: 0;
+    padding-bottom: 4%;
+}
+
+.about .content form h3 {
+    margin: 3% 0;
+}
+
+.about .content form .checkbox {
+    border: 1px solid #D3D3D3;
+    background-color: #ffffff;
+    padding: 4px 15px 0 15px;;
+    height: 75px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    visibility: hidden;
+}
+
+.about .content form .checkbox label {
+    margin-top: 10%;
+}
+
+.about .content form .checkbox div {
+    float: right;
+}
+
+#about-email-support .col-lg-7.col-md-7.col-sm-12.col-xs-12.form-group {
+    padding-left: 10px;
+}
+
+#about-email-support .btn-wrapper {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+@media screen and (max-width: 768px) {
+    #about-email-support .btn-wrapper {
+        position: static;
+    }
+}
+
+
+/*form end 表单内容*/
+
+form .form-control {
+    font-size: 2rem;
+    border: 0px;
+    outline: none;
+    height: 60px;
+}
+
+#textMessage {
+    height: 210px;
+}
+
+form .form-control {
+    top: -11px;
+}
+
+form button.close {
+    position: relative;
+    z-index: 3;
+    top: 25px;
+    left: -10px;
+    visibility: hidden;
+}
+
+form .btn[type="submit"] {
+    background-color: #2dcbc7;
+    color: #ffffff;
+    height: 70px;
+}
+
+form .btn:hover {
+    background-color: #15e1da;
+}
+
+form .form-control:focus {
+    border: 2px solid #05CDB7;
+    color: #05CDB7;
+}
+#errorBox{
+    text-align: left;
+}
+#contact h4 a {
+    margin-left: 60px;
+}
+
+ol.carousel-indicators.buttons li.active {
+    background-color: #11C9C3;
+}
+
+ol.carousel-indicators.buttons li {
+    border: 1px solid #11C9C3;
+}

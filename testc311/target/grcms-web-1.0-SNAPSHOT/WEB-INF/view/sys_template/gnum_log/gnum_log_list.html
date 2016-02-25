@@ -1,0 +1,123 @@
+[@ec_gnum_log id=gnumLogForm.id;log]
+<div class="easyui-layout" data-options="fit:true" style="width: 600px;height: 750px;">
+<script type="text/javascript">
+    $(function(){
+        //进行表单验证  ${path}/gnum/log/list?id=${log.id!}
+	    operator.dataTable({
+	    	url:'${path}${current_uri}?logId=${log.id!}'
+	    		,table:"#gnumLogContentDataTable_${log.id}"
+	            ,toolbar: "#gnumLogContentToolBar_${log.id}"
+            	,onSelect: function(rowIndex, rowData){
+			        detail($("#gnumLogContent_${log.id}"),'${path}/gnum/log/detail',rowData.id);
+            	 }
+	    });
+    });
+    function getImage(value,row,index){
+    	if(value){
+	    	return '<img src='+value+' />';
+    	}
+    	return '';
+    };
+	 
+	function detail(selector, url, id) {
+		var $selector = $(selector);
+		$selector.empty().append("Loading....");
+		$.ajax({
+			type : "POST",
+			url : url,
+			data : 'id=' + id,
+			success : function(data) {
+				$selector.empty();
+				if (data) {
+					$selector.append(data);
+				} else {
+					$selector.append("Load error.");
+				}
+			}
+		});
+	}
+</script>
+<!-- 工具栏 -->
+<div data-options="region:'center',border:false,split:true">
+		<div class="EC-right-content">
+		    <div class="easyui-panel" title="基本信息" style="margin-bottom: 20px;">
+		        <div class="EC-search-pannel EC-fieldset">
+		        <table width="100%">
+		        	<tr>
+		        		<th width="20%">用户名</th>
+		        		<th width="20%">USER ID</th>
+		        		<th width="20%">注册时间</th>
+		        		<th width="20%">注册IP</th>
+		        		<th width="20%">SESSION ID</th>
+		        	</tr>
+		        	<tr>
+		        		<td>${log.username!}</td>
+		        		<td>${log.userId!}</td>
+		        		<td>${log.registerTime!}</td>
+		        		<td>${log.registerIP!}</td>
+		        		<td>${log.sessionId!}</td>
+		        	</tr>
+		        </table>
+		        </div>
+		    </div>
+		    <div class="easyui-panel" title="查询信息" style="margin-bottom: 20px;">
+		        <div class="EC-search-pannel EC-fieldset">
+		        <form id="gnumLogContentSearchForm" method="post" action="${path}/gnum/log/list">
+<!-- 		        		<input type="hidden" name="logId" value="${log.id}"/> -->
+		                <input type="hidden" name="dateFields" value="callStartTime"/>
+        				<input type="hidden" name="formatter" value="yyyy-MM-dd" />
+		                <label>CALL ID:</label><input type="text" name="callId" class="EC-form-input"/>
+		                <label>被叫:</label><input type="text" name="callee" class="EC-form-input"/>
+		                <label>IP:</label><input type="text" name="remoteIP" class="EC-form-input"/>
+        			 <label>开始时间:</label>
+					<input id="startTime" type="text" class="EC-form-input EC-form-search Wdate" name="startTime" readonly="readonly" 
+					onkeydown="repeal(event);"
+					onFocus="timePannel();"/> 
+					<label>到</label>
+					<input id="endTime" type="text" class="EC-form-input EC-form-search Wdate" name="endTime" readonly="readonly" 
+					onkeydown="repeal(event);"
+					onFocus="timePannel({min:'startTime'});"/>
+					
+		                <br/><br/>
+					 <label>浏览器:</label><input type="text" name="browser" class="EC-form-input"/>
+		            <a href="javascript:void(0);" onclick="submitReq(this,'#gnumLogContentDataTable_${log.id}');" class="btn easyui-linkbutton" iconCls="icon-search">搜索</a>
+		        </form>
+		        </div>
+		    </div>
+		    
+		    <div id="dataWrap">
+		        <div id="gnumLogContentToolBar_${log.id}" class="datagrid-toolbar" style="padding: 5px;">
+		           <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-reload'" onclick="
+						operator.refresh({
+				    			table:'#gnumLogContentDataTable_${log.id}'
+				    		});
+					">刷新</a>
+		        </div>
+		        <table id="gnumLogContentDataTable_${log.id}" title="日志列表" class="easyui-datagrid">
+		            <thead>
+		                <tr>
+		                    <th data-options="field:'aid',width:100,align:'center',styler:tdPadding">ID</th>
+		                    <th data-options="field:'status',width:100,align:'center'">状态</th>
+		                    <th data-options="field:'callId',width:100,align:'center',sortable:true">CALL ID</th>
+		                    <th data-options="field:'osName',width:100,align:'center'">系统名称</th>
+		                    <th data-options="field:'browser',width:100,align:'center',sortable:true">浏览器</th>
+		                    <th data-options="field:'browserVersion',width:100,align:'center',sortable:true">浏览器版本</th>
+		                    <th data-options="field:'flashVersion',width:100,align:'center',sortable:true">Flash 版本</th>
+		                    <th data-options="field:'remoteIP',width:100,align:'center',sortable:true">IP</th>
+		                    <th data-options="field:'callee',width:100,align:'center',sortable:true">被叫</th>
+		                    <th data-options="field:'callStartTime',width:100,align:'center',sortable:true">开始时间</th>
+		                    <th data-options="field:'statusCode',width:100,align:'center',sortable:true">状态码</th>
+		                    <th data-options="field:'codeDesc',width:100,align:'center'">状态码说明</th>
+		                    <th data-options="field:'success',width:100,align:'center',formatter: getImage">成功</th>
+		                </tr>
+		            </thead>
+		        </table>
+		    </div>
+		</div>
+</div>
+	<div data-options="region:'south',border:false,split:true" style="height:200px;padding: 5px;" title="日志内容">
+		<div id="gnumLogContent_${log.id}" style="padding: 5px;"></div>
+	</div>
+</div>
+[/@ec_gnum_log]
+<!-- 工具栏 -->

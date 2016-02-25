@@ -1,0 +1,247 @@
+@import url(fonts.css);
+
+/*clear chrome's autofill yellow background color*/
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+.center-grid {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.signup-area,
+.forget-password-area,
+.message-area {
+    background: #F3F3F3;
+    padding-bottom: 4.285714285714286em;
+}
+
+.signup-area hr,
+.forget-password-area hr {
+    border-top: 1px solid #D9D9D9;
+}
+
+.signup-area h2,
+.forget-password-area h2,
+.message-area h2 {
+    color: #3E3E3E;
+    font-size: 3.571428571428571em;
+    font-family: 'Lato-LightItalic';
+    font-weight: lighter;
+    font-style: italic;
+    margin-top: 45px;
+}
+
+.profile-form .form-control,
+.signup-form .form-control,
+.signin-form .form-control,
+.forget-callname-form .form-control,
+.mobile-form .form-control,
+.pwdreset-form .form-control,
+.forget-password-form .form-control,
+.changePWD .form-control{
+    border-radius: 0;
+    border: none;
+    color: #3e3e3e;
+    font-family: 'Lato-Regular';
+    font-size: 1.428571428571429em;
+    height: 2.05em;
+}
+
+.form-control:focus + label {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+}
+
+.form-control::-moz-placeholder {
+    font-size: 0.9em;
+    color: #c8c8c8;
+}
+
+.form-control:-ms-input-placeholder {
+    font-size: 0.9em;
+    color: #c8c8c8;
+}
+
+.form-control::-webkit-input-placeholder {
+    font-size: 0.9em;
+    color: #c8c8c8;
+}
+
+.forget-password-area .form-control,
+.mobile-form .form-control,
+.signup-form .form-control,
+.signin-form .form-control,
+.pwdreset-form .form-control {
+    height: 3em;
+}
+
+.btn-custom:hover {
+    background-color: #15e1da;
+    color: #FFFFFF;
+}
+
+.btn-custom {
+    background-color: #2dcbc7;
+    border: none;
+    /*border-radius: 0;*/
+    color: #FFFFFF;
+    text-transform: uppercase;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.btn-color-a,
+.btn-color-a[disabled] {
+    background-color: #2DCBC7;
+}
+
+.btn-a {
+    width: 100%;
+    background-color: #2DCBC7;
+    color: #FFFFFF;
+    font-size: 1.571428571428571em;
+    text-transform: capitalize;
+    font-family: 'Lato-Regular';
+}
+
+.link-underline {
+    color: #00A593;
+    text-decoration: underline;
+    font-family: 'Lato-Regular';
+    font-size: 1.142857142857143em;
+}
+
+.tips {
+    display: inline-block;
+    margin-top: 1em;
+    color: #E86565;
+    font-weight: normal;
+}
+
+.form-tips {
+    font-family: 'Lato-Regular';
+    font-size: 1.142857142857143em;
+    color: #979797;
+}
+
+.form-tips a {
+    color: #00A593;
+}
+
+/*error message common style*/
+#errorBox,#pc-errorBox{
+    list-style: none;
+    padding-left: 0;
+}
+
+.error-tips {
+    font-family: 'Lato-Regular' !important;
+    font-size: 16px;
+    color: #dd4f4f;
+    padding-left: 10px;
+}
+
+/*end*/
+
+.information {
+    font-family: 'Lato-Regular';
+    font-size: 1.071428571428571em;
+    color: #333333;
+}
+
+#messageModal {
+    top: 50%;
+}
+
+#messageModal .modal-body {
+    text-align: center;
+    height: 100px;
+    color: white;
+    background-color: rgb(86, 85, 85);
+    font-size: 1.5em;
+}
+
+.btn-confirm {
+    background-color: #2DCBC7;
+    color: white;
+}
+
+.btn-confirm {
+    background-color: #2DCBC7;
+    color: white;
+}
+/************custom helper class to change bootstrap default style************/
+/*for custom modal style*/
+.modal-close-btn{
+    background: url("../images/common/close_popup.png");
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+.input-group-gap {
+    display: table-cell;
+    width: 10px;
+}
+.no-padding-xs{
+    padding-left: 0;
+}
+.no-padding-left-xs{
+    padding-left: 0;
+}
+.no-padding-right-xs{
+    padding-right: 0;
+}
+@media screen and (min-width:768px ) {
+    .no-left-padding-sm {
+        padding-left: 0 !important;
+    }
+
+    .no-right-padding-sm {
+        padding-right: 0 !important;
+    }
+}
+@media screen and (min-width:992px ) {
+    .no-left-padding-md {
+        padding-left: 0 !important;
+    }
+
+    .no-right-padding-md {
+        padding-right: 0 !important;
+    }
+}
+@media screen and (min-width:1200px ) {
+    .no-left-padding-lg {
+        padding-left: 0 !important;
+    }
+
+    .no-right-padding-lg {
+        padding-right: 0 !important;
+    }
+}
+.no-left-margin {
+    margin-left: 0 !important;
+}
+.no-right-margin {
+    margin-right: 0 !important;
+}
+.pos-relative{
+    position: relative;
+}
+.pos-absolute{
+    position: absolute;
+}
+.pos-fix{
+    position: fixed;
+}
+ .modal-open{
+     overflow: visible;
+ }
+/****************************************************************************/

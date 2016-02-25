@@ -1,0 +1,58 @@
+{
+"recordsFiltered":${count!0} ,
+"recordsTotal":${count!0} ,
+"data":[
+[#if list?? && (list?size > 0)]
+[#list list as sub]
+    {
+    <!--"id":"<label><input type='checkbox' name='ids' value='${u.id!}'/><span class='lbl'></span></label>"
+    ,-->
+	"no":${u_index+1!}
+    ,"userName":"${u.userName!''}"
+    ,"status":"${u.status!'-'}"
+    ,"mobilePhone":"${mobilePhone!'-'}"
+    ,"balance":"${(u.balance)!'0'}"
+    ,"department":"${(u.department.name)!'-'}"
+    ,"callStatus":"${(u.callStatus)!'-'!}"
+    ,"showAcDate":"${(u.showAcDate)!'-'!}"
+    ,"links":[
+		[#if u.status == 'Active']
+            [@ec_privilege_check uri="/management/subscriber/suspend"]
+            {
+            "title":"${AUTH_MENU.name!}"
+            ,"onclick":"modal.open({url:'${path}${AUTH_MENU.privilege.uri!}?id=${u.userId!}'});"
+            ,"icon":"icon-key"
+            ,"clz":"btn-info"
+            },
+            [/@ec_privilege_check]
+		[/#if]
+        [#if u.status == 'Suspend']
+            [@ec_privilege_check uri="/management/subscriber/active"]
+            {
+            "title":"${AUTH_MENU.name!}"
+            ,"onclick":"modal.open({url:'${path}${AUTH_MENU.privilege.uri!}?id=${u.userId!}'});"
+            ,"icon":"icon-unlock"
+            ,"clz":"btn-info"
+            },
+            [/@ec_privilege_check]
+        [/#if]
+
+    	[@ec_privilege_check uri="/management/user/delete"]
+    	{
+	    	"title":"${AUTH_MENU.name!}"
+	    	,"onclick":"confirm('${path}${AUTH_MENU.privilege.uri!}?ids=${u.userId!}')"
+	    	,"icon":"icon-trash"
+	    	,"clz":"btn-danger"
+    	},
+    	[/@ec_privilege_check]
+
+    	{}
+    	]
+    }
+    [#if u_index != (list?size - 1)]
+    ,
+    [/#if]
+[/#list]
+[/#if]
+]}
+[/@ec_user]

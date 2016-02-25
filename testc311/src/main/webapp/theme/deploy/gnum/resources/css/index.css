@@ -1,0 +1,279 @@
+html{
+    font-size: 62.5%;
+    font-family: Arial;
+}
+body{
+    font-family: "Lato-Regular";
+}
+a,img,button,input,.btn{
+    -webkit-transition: all 0.3s;   /* Safari and Chrome */
+    -moz-transition: all 0.3s;     /* Firefox */
+    -ms-transition: all 0.3s;      /*ie内核*/
+    -o-transition: all 0.3s;     /* Opera */
+    transition: all 0.3s;
+}
+/*top begin顶部*/
+.index .top .topNav{
+    background-color: transparent;
+    border-color: transparent;
+    padding-top: 1%;
+    height: auto;
+}
+.index .navbar-right{
+    margin-right: 0;
+}
+.index .navbar-right li a:hover{
+    color: #00BDB6;
+}
+.index ul.navbar-right li.sign_up,.index ul.navbar-right li.sign_in{
+    width: 132px;
+    border-radius: 4px;
+}
+.index ul.navbar-right li.sign_up{
+    margin-left: 85px;
+    margin-right: 20px;
+}
+.index ul.navbar-right li.sign_up:hover,.index ul.navbar-right li.sign_in:hover{
+    background-color: #2FCBC7;
+    border-color: #2FCBC7;
+}
+.index ul.navbar-right li.sign_up a:hover,.index ul.navbar-right li.sign_in a:hover{
+    color: #ffffff;
+}
+.index .top h1{
+    margin-top: 20%;
+}
+.index .top .learnMore{
+    text-align: center;
+    cursor: pointer;
+    margin-top: 40%;
+    color: #ffffff;
+}
+.index .top .line{
+	text-align:center
+}
+.index .top .learnMore img{
+    color: #1FE2DD;
+    -webkit-animation: iconTop 1s infinite; /* Safari and Chrome */
+    -moz-animation: iconTop 1s infinite;     /* Firefox */
+    -ms-animation: iconTop 1s infinite;      /*ie内核*/
+    -o-animation: iconTop 1s infinite;     /* Opera */
+    animation: iconTop 1s infinite;
+}
+@-webkit-keyframes iconTop{
+    50%{
+        -webkit-transform: translate(0,10px)
+    }
+}
+@-o-keyframes iconTop{
+    50%{
+        -o-transform: translate(0,10px)
+    }
+}
+@-moz-keyframes iconTop{
+    50%{
+        -moz-transform: translate(0,10px)
+    }
+}
+@-ms-keyframes iconTop{
+    50%{
+        -ms-transform: translate(0,10px)
+    }
+}
+@keyframes iconTop{
+    50%{
+        transform: translate(0,10px)
+    }
+}
+
+.index .top .learnMore:hover{
+    color: #1FE2DD;
+}
+/*top end顶部*/
+
+
+
+/*mobile screen Begin*/
+@media screen and (max-width: 768px){
+   #head{
+        height: auto;
+   }
+    .index .top{
+        padding: 5% 0;
+    }
+    .form,.topNav{
+        display: none;
+    }
+
+    .index .top .boxTop span{
+        color: #CCCCCC;
+        display: inline-block;
+        *zoom: 1;
+        *display: inline;
+        width: auto;
+        height: auto;
+        background-color: #ffffff;
+        padding: 5% 5%;
+        cursor: pointer;
+        font-size: 2rem;
+        width: 47%;
+    }
+    .index .top .boxTop .boxTop1{
+        margin-right: 6%;
+    }
+    .index .top .boxTop span:hover{
+        color: #787878;
+    }
+    h3{
+        font-size: 3rem;
+    }
+    h3 span{
+        display: block;
+    }
+}
+/*mobile screen end*/
+
+/*web screen Begin*/
+@media screen and (min-width: 768px){
+    #head{
+        position: fixed;
+        width: 100%;
+        height: auto;
+        z-index: 20;
+        /*display: none;*/
+    }
+
+}
+/*web screen end*/
+
+/*add*/
+.index .top h1{
+    font-family: "lato-thin";
+    font-size: 6rem;
+    color: #ffffff;
+    margin-bottom: 5%;
+}
+.index .top h1 strong{
+    font-family: "lato-bold";
+}
+
+
+form label{
+    color: #ffffff;
+}
+
+form .form-control,form .btn-lg{
+    height: 50px;
+    border: 2px solid transparent;
+    font-size: 2rem;
+}
+form .form-control{
+    background-color: #080808;
+}
+form .btn-lg{
+    top: 12px;
+}
+form button.close{
+    position: relative;
+    z-index: 3;
+    top: 37px;
+    left: -10px;
+    color: #ffffff;
+    visibility: hidden;
+}
+form .btn:hover{
+    background-color: #05CDB7;
+    color: #ffffff;
+}
+form .form-control:focus{
+    border-color: #05CDB7;
+    color: #05CDB7;
+}
+.addBtn{
+    background-color: #05CDB7;
+    color: #ffffff;
+}
+.error-tips{
+    top:34px!important;
+}
+
+
+h3{
+    font-family: "lato-thin";
+    font-size: 6.5rem;
+    color: #ffffff;
+    text-shadow: 1px 1px #000000;
+    text-align: center;
+}
+h3 strong{
+    font-family: "Lato-Semibold";
+}
+h4{
+    font-family: "Lato-Light";
+    font-size: 8rem;
+}
+p{
+    margin: auto;
+    width: 60%;
+    color: #373737;
+    font-size: 2rem;
+}
+video{
+    width: 70%;
+    display: block;
+    margin: auto;
+    margin-top: 6rem;
+}
+
+.content{
+    text-align: center;
+}
+.content .useGnum{
+    background-color: #f9f9f9;
+    padding-top: 5.5%;
+    padding-bottom: 7%;
+}
+
+.content .urlCall{
+    background-color: #ffffff;
+    padding-top: 5.5%;
+    padding-bottom: 19rem;
+}
+
+.content .download{
+    background-color: #33383E;
+    position: relative;
+}
+.content .download img{
+    margin: auto;
+    margin-top: -13rem;
+}
+.content .download hr{
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 51%;
+    border: 0;
+    border-left: 1px solid #ffffff;
+    height: 73%;
+
+
+}
+.content .download .short{
+    border-color: lightblue;
+    top: 85%;
+    height: 15%;
+}
+.content .download span{
+    font-family: "Lato-Light";
+    font-size: 3.6rem;
+    color: #ffffff;
+    position: absolute;
+    bottom: 145px;
+    left:calc(50% - 2.5em);
+}
+
+/*clear*/
+#clear1{
+    clear: both !important;
+}

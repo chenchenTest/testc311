@@ -1,0 +1,125 @@
+	 [@ec_menu id=form.id;menu]    
+    <div class="modal " tabindex="-1" role="dialog" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title"><span class="label label-info  arrowed-right"><i class="icon-user"></i></span>Edit Menu</h4>
+                </div>
+                <form class="form-horizontal" action="${path}/management/menu/edit" method="post" id="editMenu" >
+                <input type="hidden" name="id" value="${menu.id!}" />
+                <div class="modal-body">
+                        <div class="control-group">
+                            <label class="control-label" for="name">Parent Menu:</label>
+                            <div class="controls">
+                                <select name="parentId">
+			                        	<option value="">---Choose parent menu---</option>
+				                    [@ec_menu queryType="tree";list]
+			                        	[@EC.ec_select_tree nodes=list selectId=(menu.parent.id)!"" /]
+			              			[/@ec_menu]          
+			                        </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="name">Menu Name:</label>
+                            <div class="controls">
+                                <input type="text"  name="name" id="name" placeholder="" value="${menu.name!}">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="uri">Privilege:</label>
+                            <div class="controls">
+                            	 <select name="privilegeId">
+			                        	<option value="">---无---</option>
+				                    [@ec_privilege queryType="list" type="free";list]
+				                    [#if list??]
+                            		[#list list as p]
+                            		<option value="${p.id!}">${p.name!} - ${p.uri!}</option>
+                            		[/#list]
+                            		[/#if]
+			              			[/@ec_privilege]
+			              			[#if (menu.privilege)??]
+			                        	<option value="${menu.privilege.id}" selected="selected">${menu.privilege.name}</option>
+			              			[/#if]
+                        		 </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="seq">Sequence:</label>
+                            <div class="controls">
+                                <input type="text"  maxlength="200"  name="seq" id="seq" value="${menu.seq!0}" placeholder="Larger value will order top，value range:0~200">
+                                <p class="text-warning">(Larger value will order top，value range:0~200)</p>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="iconClass">Icon Style:</label>
+                            <div class="controls">
+                                <input type="text"  name="style" id="iconClass" value="${menu.style!}" placeholder="The css style ，e.g:icon-user  ">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="uri">Icon Preview:</label>
+                            <div class="controls">
+                                <span id="showIcon" style="width:40px;float: left;overflow: hidden;"></span>
+		                        [@EC.upload 
+		                        	url="${path}/management/menu/upload;jsessionid=${sessionId!}"
+		                        	fileSizeLimit = "20KB"
+		                        	fileTypeExts = "*.jpg;*.gif;*.png"
+		                        	callback = "showIcon(file,newFilename,response)"
+		                        	modal ="N"
+		                        /]
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="controls">
+                                 <span style="color: #999;">Upload file suffix between (gif,png,jpg)，file size can not greater than 20KB</span>
+								 <div id="uploadQueue"></div>
+                            </div>
+                        </div>
+                         <div class="control-group">
+                            <label class="control-label" for="icon">Icon:</label>
+                            <div class="controls">
+                                <input type="text"  name="iconPath" id="icon" placeholder="" value="${menu.iconPath!}">
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-small" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary btn-small" data-loading-text="Saving..."><i class="icon-ok"></i>Save</button>
+                </div>
+                    </form>
+            </div>
+        </div>
+<script type="text/javascript">
+	$(function(){
+		formValidtor.modalValid({
+			handler:"#editMenu",
+			rules : {
+        		name :{
+        			required : true
+        			,remote : "${path}/management/menu?id=${menu.id!}&func=exist"
+        		},
+        		url : {
+        			required : false
+        		},
+        		seq:{
+        			digits: true,
+        			range: [0, 200]
+        		}
+        	}
+        	,messages : {
+        		name : {
+        			remote:"The menu name has been used,please change another one."
+        		},
+        		seq:{
+        			digits: "Must be a positive integer",
+        			range: "Must between 0~200 postive integer"
+        		}
+        	}
+		})
+	}); 
+</script> 
+    </div>
+ [/@ec_menu]

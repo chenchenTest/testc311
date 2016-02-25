@@ -1,0 +1,59 @@
+<script type="text/javascript">
+    $(function(){
+        operator.dataTable({
+       	 url:'${path}${current_uri}'
+       	 	,table:"#policyDataTable"
+            ,toolbar: "#policyToolbar"
+        });
+    })
+    
+</script>
+<!-- 工具栏 -->
+<div class="EC-right-content">
+	<h2 class="EC-title-1">
+		当前位置:<i class="icon-user EC-icon-layout"></i>[@EC.location /]
+	</h2>
+	
+	<div id="policyToolbar" class="EC-toolbar">
+		[@ec_privilege_check uri="${current_uri}/add"]
+		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="operator.openDialog({
+			table:'#policyDataTable',
+			title:'${AUTH_MENU.name}',
+			url:'${path}${AUTH_MENU.uri}',
+			icon:'icon-add',
+			width:750
+		});
+		">${AUTH_MENU.name}</a>
+		[/@ec_privilege_check]
+		
+		[@ec_privilege_check uri="${current_uri}/delete"]
+		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" onclick="
+		operator.remote({
+			table:'#policyDataTable'
+			,url:'${path}${AUTH_MENU.uri}'
+			,key:'id'
+			,checkboxValid:true
+    		,confirm:true
+    		,title:'${AUTH_MENU.name}'
+    		,content:'您确定要执行删除操作?一旦删除将不可恢复'
+		})
+		">${AUTH_MENU.name}</a>
+		[/@ec_privilege_check]
+		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-reload'" onclick="
+			operator.refresh({
+	    			table:'#policyDataTable'
+	    		});
+		">Reload</a>
+	</div>
+	
+	<table id="policyDataTable" title="Policy List">
+		<thead>
+			<tr>
+				<th data-options="field:'ids',checkbox:true">ID</th>
+				<th data-options="field:'id',align:'center',width:25,sortable:true,styler:tdPadding">ID</th>
+				<th data-options="field:'name',width:25,align:'center',sortable:true">Policy Name</th>
+				<th data-options="field:'operation',width:25,align:'center',formatter:operator.links">操作</th>
+			</tr>
+		</thead>
+	</table>
+</div>

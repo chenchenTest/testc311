@@ -1,0 +1,131 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group
+END
+modal_menu_edit.html
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/modal_menu_edit.html
+END
+modal_user_role.html
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/modal_user_role.html
+END
+list_role.html
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/list_role.html
+END
+user_profile.html
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/user_profile.html
+END
+modal_icon_upload.html
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/modal_icon_upload.html
+END
+modal_menu_add.html
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/modal_menu_add.html
+END
+list_department.html
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/list_department.html
+END
+list_privilege.html
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/list_privilege.html
+END
+modal_user_edit.html
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/modal_user_edit.html
+END
+list_user.html
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/list_user.html
+END
+modal_role_add.html
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/modal_role_add.html
+END
+modal_privilege_edit.html
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/modal_privilege_edit.html
+END
+user_pwd.html
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/user_pwd.html
+END
+index_usergroup.html
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/index_usergroup.html
+END
+modal_department_add.html
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/modal_department_add.html
+END
+modal_department_edit.html
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/modal_department_edit.html
+END
+modal_role_edit.html
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/modal_role_edit.html
+END
+modal_privilege_add.html
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/modal_privilege_add.html
+END
+list_menu.html
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/list_menu.html
+END
+modal_user_add.html
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/modal_user_add.html
+END
+modal_user_password.html
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/modal_user_password.html
+END

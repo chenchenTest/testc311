@@ -1,0 +1,84 @@
+    <!-- Edit User Form -->
+    <div class="modal" tabindex="-1" role="dialog" data-backdrop="static" style="display: none;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title"><span class="label label-info  arrowed-right"><i class="icon-user"></i></span>Edit Promotion</h4>
+                </div>
+                [@ec_promotion id=id;p]
+                <form class="form-horizontal" action="${path}/management/promotion/edit" method="post" id="editPromotion" >
+                <input type="hidden" name="id" value="${p.id!}" />
+                <div class="modal-body">
+                        <div class="control-group">
+                            <label class="control-label" for="name">Promotion Name:</label>
+                            <div class="controls">
+                                <input type="text" value="${p.proName}" name="proName" id="proName" placeholder="">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="name">Start Time:</label>
+                            <div class="controls">
+                                [@EC.form_date id="startTime" name="startTime" class="${class!'Wdate'}" value="${p.startTime}"/] 
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="name">End Time:</label>
+                            <div class="controls">
+                                [@EC.form_date id="endTime" name="endTime" class="${class!'Wdate'}" value="${p.endTime}"/] 
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="name">Local Minutes:</label>
+                            <div class="controls">
+                                <input type="text" value="${p.localMinutes}" name="localMinutes" id="localMinutes" placeholder="">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="name">Overseas Minutes:</label>
+                            <div class="controls">
+                                <input type="text" value="${p.overseasMinutes}" name="overseasMinutes" id="overseasMinutes" placeholder="">
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-small" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary btn-small" data-loading-text="Saving...">Save</button>
+                </div>
+                </form>
+                [/@ec_promotion]
+            </div>
+<script type="text/javascript">
+    $(document).ready(function(){
+    	formValidtor.modalValid({
+    		handler:"#editPromotion",
+    		rules : {
+        		proName : {
+        			required : true
+        		},
+        		startTime:{
+        			required : true
+        		},
+        		endTime:{
+        			required : true
+        		},
+        		localMinutes:{
+        			digits:true
+        		},
+        		overseasMinutes:{
+        			digits:true
+        		}
+        	}
+        	,messages : {
+        		proName : {
+        			remote:"The usename has been used,please change another one."
+        		}
+        	}
+    	})
+	});
+</script>
+        </div>
+    </div>
+

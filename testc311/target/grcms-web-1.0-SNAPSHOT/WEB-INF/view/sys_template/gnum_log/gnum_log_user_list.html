@@ -1,0 +1,64 @@
+<script type="text/javascript">
+    $(function(){
+       operator.dataTable({
+       		 url:'${path}${current_uri}'
+       	 	,table:"#gnumLogDataTable"
+            ,toolbar: "#gnumLogToolBar"
+            ,onDblClickRow:function(index,data){
+				operator.openTab({
+					title : data.username+'的日志列表'
+					,url : '${path}/gnum/log/list?id='+data.id
+					,closable : true
+				})			
+			}
+        });
+    })
+    
+</script>
+<!-- 工具栏 -->
+<div class="EC-right-content">
+	<h2 class="EC-title-1">
+		当前位置:<i class="icon-user EC-icon-layout"></i>[@EC.location /]
+	</h2>
+	  <div class="easyui-panel" title="查询信息" style="margin-bottom: 20px;">
+        <div class="EC-search-pannel EC-fieldset">
+        <form id="userSearchForm" method="post" action="${path}/management/user">
+	         <label>用户名:</label><input type="text" name="username" class="EC-form-input"/>
+                <label>用户ID:</label><input type="text" name="userId" class="EC-form-input"/>
+                <label>注册IP:</label><input type="text" name="registerIP" class="EC-form-input"/>
+                 <input type="hidden" name="dateFields" value="registerTime"/>
+        		 <input type="hidden" name="formatter" value="yyyy-MM-dd" />
+       				 <label>注册时间:</label>
+					<input id="startTime" type="text" class="EC-form-input EC-form-search Wdate" name="startTime" readonly="readonly" 
+					onkeydown="repeal(event);"
+					onFocus="timePannel();"/> 
+					<label>到</label>
+					<input id="endTime" type="text" class="EC-form-input EC-form-search Wdate" name="endTime" readonly="readonly" 
+					onkeydown="repeal(event);"
+					onFocus="timePannel({min:'startTime'});"/>
+                <a href="javascript:void(0);" onclick="submitReq(this,'#gnumLogDataTable');" class="btn easyui-linkbutton" iconCls="icon-search">搜索</a>
+        </form>
+        </div>
+    </div>
+	<div id="gnumLogToolBar" class="EC-toolbar">
+		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-reload'" onclick="
+			operator.refresh({
+	    			table:'#gnumLogDataTable'
+	    		});
+		">刷新</a>
+	</div>
+	
+	 <table id="gnumLogDataTable" title="日志用户列表" >
+            <thead>
+                <tr>
+                    <th data-options="field:'id',checkbox:true">ID</th>
+                    <th data-options="field:'aid',width:100,align:'center',sortable:true,styler:tdPadding">ID</th>
+                    <th data-options="field:'username',width:100,align:'center',sortable:true">用户名</th>
+                    <th data-options="field:'userId',width:100,align:'center'">USER_ID</th>
+                    <th data-options="field:'registerTime',width:100,align:'center',sortable:true">注册时间</th>
+                    <th data-options="field:'registerIP',width:100,align:'center'">注册IP</th>
+                    <th data-options="field:'sessionId',width:100,align:'center'">SESSION ID</th>
+                </tr>
+            </thead>
+	</table>
+</div>

@@ -1,0 +1,64 @@
+<script type="text/javascript">
+    $(function(){
+       operator.dataTable({
+       		 url:'${path}${current_uri}'
+       	 	,table:"#dailyReportTable"
+            ,toolbar: "#dailyReportToolBar"
+        });
+       
+    })
+    function column(value,row,index){
+    	return 'background-color:#EAF2FF;color:red;';
+    }
+</script>
+<!-- 工具栏 -->
+<div class="EC-right-content">
+	<h2 class="EC-title-1">
+		当前位置:<i class="icon-user EC-icon-layout"></i>[@EC.location /]
+	</h2>
+	  <div class="easyui-panel" title="查询信息" style="margin-bottom: 20px;">
+        <div class="EC-search-pannel EC-fieldset">
+        <form id="userSearchForm" method="post" action="${path}/management/user">
+        		<input type="hidden" name="sort" value="id" class="EC-form-input"/>
+        		<input type="hidden" name="dateFields" value="id"/>
+        		<input type="hidden" name="formatter" value="yyyy-MM-dd" />
+        	 <label>From</label>
+			<input id="startTime" type="text" class="EC-form-input EC-form-search Wdate" name="startTime" readonly="readonly" 
+			onkeydown="repeal(event);"
+			onFocus="timePannel();"/> 
+			<label>To</label>
+			<input id="endTime" type="text" class="EC-form-input EC-form-search Wdate" name="endTime" readonly="readonly" 
+			onkeydown="repeal(event);"
+			onFocus="timePannel({min:'startTime'});"/>
+			    <a href="javascript:void(0);" onclick="submitReq(this,'#dailyReportTable');" class="btn easyui-linkbutton" iconCls="icon-search">Search</a>
+        </form>
+        </div>
+    </div>
+	<div id="dailyReportToolBar" class="EC-toolbar">
+		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-reload'" onclick="
+			operator.refresh({
+	    			table:'#dailyReportTable'
+	    		});
+		">Refresh</a>
+	</div>
+	
+	 <table id="dailyReportTable" title="DailyReport" >
+            <thead>
+                <tr>
+                    <th data-options="field:'Dates',checkbox:true"></th>
+                    <th data-options="field:'id',width:50,align:'center',sortable:true,styler:tdPadding">Date</th>
+                    <th data-options="field:'Total_Registers',width:60,align:'center',sortable:true">TOTAL_REGISTERS</th>
+                    <th data-options="field:'New_registers',width:60,align:'center',sortable:true,styler:column">NEW_REGISTERS</th>
+                    <th data-options="field:'Active_users',width:60,align:'center',sortable:true,styler:column">ACTIVE_USERS</th>
+                    <th data-options="field:'New_actived',width:60,align:'center',sortable:true,styler:column">NEW_ACTIVED</th>
+                    <th data-options="field:'Calls_per__day',width:80,align:'center',sortable:true">CALLS_PER_DAY</th>
+                    <th data-options="field:'Call_minutes_per__day',width:100,align:'center',sortable:true">CALL_MINUTES_PER_DAY</th>
+                    <th data-options="field:'Avg__calls_minutes_per__day',width:100,align:'center',sortable:true">AVG_CALLS_MINUTES_PER_DAY</th>
+                    <th data-options="field:'Total_calls',width:60,align:'center',sortable:true">TOTAL_CALLS</th>
+                    <th data-options="field:'Total_call_minutes',width:80,align:'center',sortable:true">TOTAL_CALL_MINUTES</th>
+                    <th data-options="field:'Avg__call_minutes',width:80,align:'center',sortable:true">AVG_CALL_MINUTES</th>
+                    <th data-options="field:'remark',width:80,align:'center'">REMARK</th>
+                </tr>
+            </thead>
+	</table>
+</div>

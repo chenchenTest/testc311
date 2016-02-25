@@ -1,0 +1,30 @@
+[@ec_gnum_log 	
+	queryType = "list"
+	order = "${gnumLogForm.order!'desc'}"
+	sort = "${gnumLogForm.sort!}"
+	filter = "${gnumLogForm.filter!}"
+	username="${(gnumLogForm.username)!}" 
+	userId="${(gnumLogForm.userId)!}" 
+	registerIP="${(gnumLogForm.registerIP)!}" 
+	registerTime="${(gnumLogForm.registerTime)!}" 
+	pageNum="${(gnumLogForm.page)!1}"  
+	pagesize="${(gnumLogForm.rows)!}"
+	;list]
+{"total":${count},"rows":[
+[#if list?? && (list?size > 0)]
+[#list list as log]
+    {"id":"${log.id!}"
+    ,"aid":"${log.id!}"
+    ,"username":"${log.username!}"
+    ,"userId":"${log.userId!}"
+    ,"registerTime":"${log.registerTime!}"
+    ,"registerIP":"${log.registerIP!}"
+    ,"sessionId":"${log.sessionId!}"
+    }
+    [#if log_index != (list?size - 1)]
+    ,
+    [/#if]
+[/#list]
+[/#if]
+]}
+[/@ec_gnum_log]

@@ -1,0 +1,57 @@
+[@ec_model id="${(form.modelId)!}";model]
+[@ec_field
+	queryType = "list"
+	modelId = "${(form.modelId)!}"
+;list]
+{
+"data":[
+[#if list?? && (list?size > 0)]
+[#list list as f]
+    [#if f.fieldCode?starts_with("c_")]
+   		[#assign code=f.fieldCode?substring(2,f.fieldCode?length)]
+   	[#else]
+   		[#assign code=f.fieldCode]
+   	[/#if]
+   	
+   	[#if model.modelType == "NODE"]
+   		[#assign method = 'node.fields[\\"${code!}\\"]!' /]
+   	[#else]
+   		[#assign method = 'info.fields[\\"${code!}\\"]!' /]
+   	[/#if]
+    {
+    "id":"<label><input type='checkbox' name='id' value='${f.id!}'/><span class='lbl'></span></label>"
+    ,"fieldName":"${f.fieldName!}"
+    ,"fieldType":"${f.fieldType!}"
+    ,"fieldCode":"${method!}"
+    ,"links":[
+    	[#if !f.sysField]
+    	[@ec_privilege_check uri="/management/content/model/fields/edit"]
+    	{
+	    	"title":"${AUTH_MENU.name!}"
+	    	,"onclick":"loadFile('${path}${AUTH_MENU.privilege.uri!}?id=${f.id!}&modelId=${(form.modelId)!}')"
+	    	,"icon":"icon-edit"
+	    	,"clz":"btn-info"
+    	},
+    	[/@ec_privilege_check]
+    	[/#if]
+    	
+    	[@ec_privilege_check uri="/management/content/model/fields/delete"]
+    	{
+	    	"title":"${AUTH_MENU.name!}"
+	    	,"onclick":"confirm('${path}${AUTH_MENU.privilege.uri!}?id=${f.id!}')"
+	    	,"icon":"icon-trash"
+	    	,"clz":"btn-danger"
+    	},
+    	[/@ec_privilege_check]
+    	
+    	{}
+    	]
+    }
+    [#if f_index != (list?size - 1)]
+    ,
+    [/#if]
+[/#list]
+[/#if]
+]}
+[/@ec_field]
+[/@ec_model]

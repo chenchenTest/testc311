@@ -1,0 +1,44 @@
+[@ec_model_type
+	queryType = "list"
+	order="${(form.order)!}"
+	sort="${(form.sort)!}"
+	filter="${form.filter!}"
+	pagesize = "${form.rows!1}"
+	pageNum = "${form.page!1}"
+;list]
+{"total":${list?size},"rows":[
+[#if list?? && (list?size > 0)]
+[#list list as m]
+    {
+    "ids":"${m.id!}"
+    ,"id":"${m.id!}"
+    ,"name":"${m.name!}"
+    ,"links":[
+    	[@ec_privilege_check uri="${current_uri}/edit"]
+    	{
+	    	"title":"${AUTH_MENU.name}"
+	    	,"url":"${path!}${AUTH_MENU.uri!}?id=${m.id!}"
+	    	,"table":"#${selector!}DataTable"
+	    	,"func":"openDialog"
+	    	,"cls":"EC-btn-edit"
+    	},
+    	[/@ec_privilege_check]
+    	[@ec_privilege_check uri="${current_uri}/delete"]
+    	{
+	    	"title":"${AUTH_MENU.name}"
+	    	,"url":"${path!}${AUTH_MENU.uri!}?id=${m.id!}"
+	    	,"table":"#${selector!}DataTable"
+	    	,"func":"openDialog"
+	    	,"cls":"EC-btn-remove"
+    	},
+    	[/@ec_privilege_check]
+    	{}
+    	]
+    }
+    [#if m_index != (list?size - 1)]
+    ,
+    [/#if]
+[/#list]
+[/#if]
+]}
+[/@ec_model_type]

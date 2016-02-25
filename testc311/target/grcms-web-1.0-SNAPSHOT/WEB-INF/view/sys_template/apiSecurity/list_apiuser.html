@@ -1,0 +1,78 @@
+<script type="text/javascript">
+    $(function(){
+        operator.dataTable({
+       	 	table:"#apiUserDataTable"
+	       	,url:'${path}${current_uri}'
+            ,toolbar: "#apiUserToolbar"
+        });
+    });
+    
+    function viewAll(e){
+        var $table = $("#apiUserDataTable");
+    	var $e = $(e);
+    	if($e[0].checked == true) {
+	    	var value = $e.val();
+    		$table.datagrid("load",{view:value});
+    		$table.datagrid("reloadFooter");
+    	}else{
+    		$table.datagrid("load",{view:""});
+    		$table.datagrid("reloadFooter");
+    	}
+    }
+    
+</script>
+<!-- 工具栏 -->
+<div class="EC-right-content">
+	<h2 class="EC-title-1">
+		当前位置:<i class="icon-user EC-icon-layout"></i>[@EC.location /]
+	</h2>
+	<div id="apiUserToolbar" class="EC-toolbar">
+		[@ec_privilege_check uri="${current_uri}/add"]
+		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="operator.openDialog({
+			table:'#apiUserDataTable',
+			title:'${AUTH_MENU.name}',
+			url:'${path}${AUTH_MENU.uri}',
+			icon:'icon-add',
+			width:750
+		});
+		">${AUTH_MENU.name}</a>
+		[/@ec_privilege_check]
+		
+		[@ec_privilege_check uri="${current_uri}/delete"]
+		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" onclick="
+		operator.remote({
+			table:'#apiUserDataTable'
+			,url:'${path}${AUTH_MENU.uri}'
+			,key:'id'
+			,checkboxValid:true
+    		,confirm:true
+    		,title:'${AUTH_MENU.name}'
+    		,content:'您确定要执行删除操作?一旦删除将不可恢复'
+		})
+		">${AUTH_MENU.name}</a>
+		[/@ec_privilege_check]
+		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-reload'" onclick="
+			operator.refresh({
+	    			table:'#apiUserDataTable'
+	    		});
+		">Reload</a>
+		
+	 	[@ec_privilege_check uri="${current_uri}/all"]
+		<input type="checkbox" name="view" value="ALL" id="view" onchange="viewAll(this);"><label for="view">${AUTH_MENU.name}</label> 
+		[/@ec_privilege_check]
+	</div>
+	<table id="apiUserDataTable" title="API USER List">
+		<thead>
+			<tr>
+				<th data-options="field:'ids',checkbox:true">ID</th>
+				<th data-options="field:'id',align:'center',width:5,sortable:true,styler:tdPadding">ID</th>
+				<th data-options="field:'userType',width:10,align:'center',sortable:true">User Type</th>
+				<th data-options="field:'APIKey',width:20,align:'center',sortable:true">API Key</th>
+				<th data-options="field:'secretKey',width:20,align:'center',sortable:true">Secret Key</th>
+				<th data-options="field:'policy',width:25,align:'center'">Policy</th>
+				<th data-options="field:'providerId',width:5,align:'center',sortable:true">Provider Id</th>
+				<th data-options="field:'operation',align:'center',formatter:operator.links">Operations</th>
+			</tr>
+		</thead>
+	</table>
+</div>

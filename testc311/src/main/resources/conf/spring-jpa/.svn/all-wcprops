@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/resources/conf/spring-jpa
+END
+spring-data-jpa.xml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/resources/conf/spring-jpa/spring-data-jpa.xml
+END
+spring-data-jpa-oracle.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/resources/conf/spring-jpa/spring-data-jpa-oracle.xml
+END

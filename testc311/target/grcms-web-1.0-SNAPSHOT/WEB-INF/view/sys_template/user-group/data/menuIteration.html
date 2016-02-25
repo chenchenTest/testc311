@@ -1,0 +1,23 @@
+[#if (menu.children)?? && (menu.children?size > 0)]
+<ul>
+	[#list menu.children as menu]
+		[#if (role.menus)?? && (role.menus?size > 0)]
+			[#list role.menus as rp]
+				[#if rp.id == menu.id ]
+					[#assign pCheck ='checked="checked"' /]
+					[#break]
+				[#else]
+					[#assign pCheck ='' /]
+				[/#if]
+			[/#list]
+		[/#if]
+		<li>
+			<label>
+				<input type="checkbox" name="menuId" value="${menu.id}" ${pCheck!}/>
+				<span class="lbl">${menu.name}</span>
+			</label>
+		[#include "menuIteration.html" /]
+	</li>
+	[/#list]
+</ul>
+[/#if] 

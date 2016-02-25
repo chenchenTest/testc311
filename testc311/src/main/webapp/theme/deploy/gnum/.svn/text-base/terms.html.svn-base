@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+	[#include "common/common-meta.html" ]
+    <title>GNUM terms</title>
+    [#include "common/common-css.html" ]
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/css/terms.css"/>
+</head>
+<body>
+[#include "common/google-tag-manager.html" /]
+    <!--head begin-->
+    <div class="head">
+    	[#include "common/head.html" ]
+    </div>
+    <!--head end-->
+
+    <!--content begin terms页面-->
+    <div class="container-fluid terms">
+        <div class="row">
+            <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0"></div>
+            <!--内容-->
+            <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
+                <h3>Terms and Conditions <br/>& Privacy Policy</h3>
+                <div class="sub"><span class="sub1">Terms and Conditions</span><span><a href="${res!}/privacy/">Privacy Policy</a></span></div>
+                <div class="introduction text">
+                    <h5>1. INTRODUCTION</h5>
+                    <p>1.1. These terms and conditions of use (the “Agreement") constitute the legal agreement between GNUM PTE. LTD. (Company Registration No.: 201333697R), a company incorporated in the Republic of Singapore and having its registered office at 10 Ubi Crescent, #02-21, Ubi Techpark, Singapore 408564 (“GNum”, “us” or “our”), and any individual or entity (hereinafter referred to as “you” or the “Customer”) using the products and services (the “Products and Services”) owned by GNum and/or its associated/affiliated companies, whether in Singapore or abroad (collectively, the “Group”) and provided by GNum through GNum’s website <a href="${res!}/">(www.gnum.com)</a> (the “Site”) and/or the associated mobile application (“App”).<br/>
+                    <div id="long1">
+                    1.2. BY COMPLETING THE REGISTRATION PROCESS AND CLICKING THE "I ACCEPT" BUTTON OR BY USING THE SITE, APP AND/OR THE PRODUCTS AND SERVICES, YOU REPRESENT, WARRANT AND ACKNOWLEDGE THAT (I) YOU HAVE READ AND UNDERSTOOD THIS AGREEMENT, AND AGREE TO BE BOUND BY ITS TERMS AND CONDITIONS, (II) THAT YOU ARE OVER 18 YEARS OF AGE AND HAVE THE LEGAL CAPACITY TO ABIDE BY THIS AGREEMENT; AND (III) TO COMPLY WITH ALL APPLICABLE LAWS, REGULATIONS AND RULES IN RELATION TO YOUR ACCESS TO AND USE OF THE SITE, APP AND/OR THE PRODUCTS AND SERVICES. IF YOU DO NOT AGREE TO THE TERMS AND CONDITIONS OF THIS AGREEMENT, YOU SHOULD IMMEDIATELY STOP USING THE SITE, APP AND/OR THE PRODUCTS AND SERVICES.<br/>
+                    1.3. This Agreement shall prevail notwithstanding any amendments by you. Any amended conditions submitted, proposed or stipulated by you, regardless of whether GNum has objected to them explicitly, are expressly waived and excluded.<br/>
+                    1.4. GNum reserves the right to amend, modify, update, change or otherwise alter this Agreement at any time. Any and all terms herein, including without limitation, calling rates, can be changed or otherwise modified by GNum without any reason whatsoever. You are advised to read this Agreement carefully and to check regularly for any updates, changes or modifications. If you do not agree to any change, update or modification to the terms and conditions of this Agreement, you must immediately stop using the the Site, App and/or the Products and Services.
+                    </div>
+                    </p>
+                </div>
+
+                <div class="term text">
+                    <h5>2.TERM</h5>
+                    <p>2.1. GNum may in its sole discretion terminate this Agreement and your account with GNum at any time without notice, if it believes you have in any way breached any of the terms and conditions of this Agreement or violated or acted inconsistently with the spirit of this Agreement or violated the rights of any member of the Group, any other users of the Products and Services and/or third parties.<br/>
+                        2.2. In the event that such termination without notice is expressly prohibited by any applicable law, GNum shall be entitled to terminate this Agreement by providing you with written notice in the event of any breach of this Agreement. Please report any violations of the terms and conditions of this Agreement to
+                        <a href="mailto:support@gnum.com">support@gnum.com.</a>
+                    </p>
+                </div>
+
+                <div class="description text">
+                    <h5>3. DESCRIPTION AND USE OF PRODUCTS AND SERVICES</h5>
+                    <p>3.1. To use the Products and Services, you shall provide for your own access to the World Wide Web and be responsible for any service fees associated with such access, and provide all equipment necessary for you to make such connection to the World Wide Web, including but not limited to a computer and a modem. You hereby acknowledge that GNum provides no assistance, including any technical or customer support, to you, and that your use of the Site, App and/or the Products and Services is of your own volition.<br/>
+                        3.2. You shall be solely responsible for any and all charges incurred due to your use of a local access number or any wireless device including but not limited to the use of a cellular phone.</p>
+                </div>
+
+                <div class="access text">
+                    <h5>4. ACCESS AND USE OF SITE AND/OR APP</h5>
+                    <p>
+                    4.1. Access to the Site and/or App<br/><br/>
+
+                    GNum does not guarantee that the Site and/or App or any content on it will always be available or uninterrupted. Access to the Site and/or App is permitted on a temporary basis and GNum reserves the right to suspend, withdraw, discontinue or change all or any part of the Site and/or App without notice. GNum will not be liable to you if for any reason the Site and/or App is unavailable at any time or for any period.<br/><br/>
+
+                    4.2. Use of the Site, App and/or the Products and Services<br/><br/>
+
+                    4.2.1.You understand and agree that you are strictly prohibited from duplicating, adapting, modifying, commercially distributing, publishing, licensing or selling any information, material or services obtained from the Site and/or App.<br/><br/>
+
+                    4.2.2.You shall not use the the Site, App and/or the Products and Services:<br/><br/>
+
+                    (a) for illegal or unauthorized purposes;<br/>
+                    (b) for the transmission of any material that is unlawful, harassing, defamatory, slanderous, libelous, obscene, threatening, harmful, that portrays any person in a false light;<br/>
+                    (c) in any way that constitutes an invasion of any right to privacy or an infringement on any right to publicity;<br/>
+                    (d) in any way that gives rise to any breach of contract involving any third party or to any business tort or similar claim of a third party or any violation of any local or foreign, federal, state or local statute or regulation, or that otherwise can be reasonably likely to expose the Group or any of its respective agents to criminal or civil actions, or that infringes or may infringe the intellectual property or other rights of another;<br/>
+                    (e) for the transmission of "junk mail", "spam", "chain letters", or unsolicited mass distribution of messages;<br/>
+                    (f) to knowingly transmit any data, send or upload any material that contains viruses, trojan horses, worms, time-bombs, keystroke loggers, spyware, adware or any other harmful programs or similar computer code designed to adversely affect the operation of any computer software or hardware; or<br/>
+                    (g) to collect or harvest personal information about other users or for any other objectionable purposes.<br/>
+                    4.3.Account Registration<br/><br/>
+
+                    4.3.1. If you chose to create an account on the Site and/or App (“Account”), you must complete the registration process by providing GNum with true, accurate, current and complete information about yourself ("User Data").
+                    4.3.2. You agree to maintain and update your User Data to ensure it remains true, accurate, current and complete. If any information provided by you is untrue, inaccurate, not current or incomplete, GNum has the right to terminate this Agreement, the Account and refuse to provide you with access to the Site, App and/or the Products and Services.
+                    4.3.3. Your Account shall be deemed inactive if you fail to log in and/or credits are not added or deducted for a period of no less than six (6) months.
+                    4.3.4. Inactive Accounts and Accounts and credits that are not activated within six (6) months (with effect from the date of registration or the date you top up the credit in your Account) will be deactivated. You shall be entitled to choose the mobile number and password with which to log into your Account upon completing the customer registration process. You shall be responsible for maintaining the confidentiality of your password, and shall be fully responsible for all activities that occur through your Account.
+                    4.3.5. You agree to notify GNum immediately at <a href="mailto:support@gnum.com">support@gnum.com.</a> if you know of or suspect any unauthorised use of your Account or any other breach of security. In the event of unauthorized use of your credit card, you shall notify your credit card provider immediately.
+                    4.3.6. You agree that GNum shall not be liable for any unauthorised use of your Account or any other breach of security.
+                    4.3.7. Please refer to GNum’s Privacy Policy (http://gnum.com/privacy/) for more information on how GNum uses the User Data.
+                    4.4. Call Names and other Rights<br/><br/>
+
+                    4.4.1. For the purpose of your use of the Products and Services, you shall be entitled to select a display name of your choice (“Call Name”). Your Call Name will appear on the relevant device of your intended recipient, including but not limited to a mobile device, computer system, tablet computer, telephone and/or telefax machine.<br/>
+                    4.4.2. Notwithstanding any payment which may have been made by you to GNum or the duration of your use of the Products and Services, you acquire no ownership, rights to or interest in any Call Name and/or Account. GNum is and shall remain at all times, the owner of the Call Name and Account.<br/>
+                    4.4.3. In connection with your use of the Products and Services, GNum grants you a worldwide license to use, modify, store, communicate, publish, publicly display and distribute the Call Name. Accordingly, GNum reserves the right to refuse, change or remove your Call Name and will notify you in the event of such refusal, change or removal.<br/>
+                    4.4.4. You acknowledge and understand that your Call Name and/or Account are non-transferrable and you shall not sell or transfer your Call Name and/or Account for your own commercial gain.<br/>
+                    4.5. Intellectual Property Rights<br/><br/>
+
+                    4.5.1. The Group is the owner(s) or the licensee(s) of all intellectual property rights in the Site and/or App. Such intellectual property rights shall include but are not limited to copyrights, trademarks, industrial design rights, patents, know-how, privileged or similar information, whether registered or not, as well as all other rights related to the Group’s trademarks, Products and Services or business activities.<br/>
+                    4.5.2. You acknowledge and agree that any material, including but not limited to text, software, music, sound, photographs, graphics, video, or other material of the Products and Services or those contained in sponsor advertisements or information presented to you through the Site, App and/or the Products and Services are protected by copyrights, trademarks, service marks, patents, or other proprietary rights and laws.<br/>
+                    4.5.3. In addition, you acknowledge and agree that you are permitted to use these materials and information only as expressly authorized by GNum or the said advertisers and you may not copy, reproduce, transmit, distribute, or create derivative works of such content or information without express written authorization.<br/>
+                    4.6. Refunds<br/><br/>
+
+                    GNum does not provide refunds for any payment made by the Customer for the use of the Products and Services. In the event that the provision of Products and Services is disputed, GNum may at its option terminate the Account and refund the Customer. In order to request for a refund, you must inform GNum in writing or via email at <a href="mailto:support@gnum.com">support@gnum.com.</a> within seven (7) days of GNum’s alleged Product and/or Service failure.<br/><br/>
+
+                    4.7. Promotional Referrals<br/><br/>
+
+                    In the event that you have accepted our promotional offer, you can refer friends and family members to the same promotional offer. The persons referred will receive an unsolicited commercial email indicating that you have referred them. Persons referred that do not sign up with GNum will not receive regular newsletters of upcoming promotions and new product information.<br/>
+                    </p>
+                </div>
+
+                <div class="discalimaer text">
+                    <h5>5. DISCLAIMER AND LIMITATION OF LIABILITY</h5>
+                    <p>5.1. GNUM ASSUMES NO LIABILITY OR RESPONSIBILITY FOR (A) ERRORS, MISTAKES OR INACCURACIES OF THE PRODUCTS AND SERVICES OR ANY OTHER INFORMATION OR MATERIAL SET OUT OR MADE AVAILABLE THROUGH THE SITE AND/OR APP, (B) ANY UNAUTHORIZED ACCESS TO OR USE OF SECURE SERVERS (WHETHER PROVIDED BY GNUM DIRECTLY OR BY THIRD PARTIES APPOINTED BY GNUM) AND/OR ANY AND ALL PERSONAL INFORMATION STORED THEREIN, (C) ANY PROPERTY DAMAGE OF ANY NATURE WHATSOEVER RESULTING FROM YOUR ACCESS TO AND USE OF OR RELIANCE ON ANY PRODUCTS AND SERVICES, SERVICES OR ANY OTHER INFORMATION OR MATERIAL SET OUT OR MADE AVAILABLE THROUGH THE SITE, APP AND/OR ANY LINKED THIRD PARTY WEBSITE(S), (D) ANY INTERRUPTION OR CESSATION OF TRANSMISSION TO OR FROM THE PRODUCTS AND SERVICES PROVIDED ON THE SITE AND/OR APP, (E) ANY VIRUSES, TROJAN HORSES, WORMS, TIME-BOMBS, KEYSTROKE LOGGERS, SPYWARE, ADWARE OR ANY OTHER HARMFUL PROGRAMS OR SIMILAR COMPUTER CODE DESIGNED TO ADVERSELY AFFECT THE OPERATION OF ANY COMPUTER SOFTWARE OR HARDWARE TRANSMITTED THROUGH THE SITE, APP OR ANY LINKED THIRD PARTY WEBSITE(S) AND/OR (F) ANY ERRORS OR OMISSIONS IN THE INFORMATION OR MATERIAL SET OUT OR MADE AVAILABLE THROUGH THE SITE AND/OR APP (INCLUDING BUT NOT LIMITED TO THIRD PARTY WEBSITE(S)) OR FOR ANY LOSS OR DAMAGE OF ANY NATURE INCURRED AS A RESULT OF THE USE OF OR RELIANCE ON ANY OF THE FOREGOING.<br/>
+                        5.2. THIS AGREEMENT SETS OUT THE FULL EXTENT OF GNUM’S OBLIGATIONS AND LIABILITIES IN RESPECT OF THE SUPPLY OF THE PRODUCTS AND SERVICES AND THERE ARE NO WARRANTIES, CONDITIONS OR OTHER TERMS THAT ARE BINDING ON GNUM EXCEPT AS EXPRESSLY STATED IN AGREEMENT.<br/>
+                        5.3. WITHOUT PREJUDICE TO ANY OTHER PROVISION IN THIS AGREEMENT AND EXCEPT TO THE EXTENT REQUIRED BY LAW, THE MAXIMUM AGGREGATE LIABILITY OF GNUM, GNUM’S EMPLOYEES, OFFICERS, SUB-CONTRACTORS OR AGENTS FOR ANY ACT OR OMISSION, WHETHER IN CONTRACT, TORT (INCLUDING NEGLIGENCE) OR OTHERWISE IN RELATION TO THIS AGREEMENT SHALL IN NO CIRCUMSTANCES EXCEED US$10.<br/>
+                        5.4. GNUM SHALL NOT BE LIABLE TO THE CUSTOMER FOR:<br/><br/>
+
+                        5.4.1. ANY INDIRECT, SPECIAL OR CONSEQUENTIAL LOSS OR DAMAGE;<br/>
+                        5.4.2. LOSS OF DATA OR OTHER EQUIPMENT OR PROPERTY;<br/>
+                        5.4.3. ECONOMIC LOSS OR DAMAGE;<br/>
+                        5.4.4. ANY LIABILITY INCURRED BY THE CUSTOMER FOR LOSS OR DAMAGE OF ANY NATURE WHATSOEVER SUFFERED BY THIRD PARTIES (INCLUDING IN EACH CASE INCIDENTAL AND PUNITIVE DAMAGES); OR<br/>
+                        5.4.5. ANY LOSS OF ACTUAL OR ANTICIPATED PROFIT, USE, OPPORTUNITIES, INTEREST, REVENUE, ANTICIPATED SAVINGS, BUSINESS OR DAMAGE TO GOODWILL, EVEN IF GNUM IS ADVISED IN ADVANCE OF THE POSSIBILITY OF SUCH LOSSES OR DAMAGES.<br/>
+                        5.5. GNUM SHALL NOT BE LIABLE FOR LOSSES ARISING FROM YOUR SUBSEQUENT MISUSE OF THE PRODUCTS AND SERVICES INCLUDING BUT NOT LIMITED TO FAILURE TO INSTALL, OPERATE OR USE THE PRODUCTS AND SERVICES IN ACCORDANCE WITH THE USER INSTRUCTIONS, SPECIFICATIONS OR CONDITIONS MADE AVAILABLE TO YOU BY GNUM.<br/>
+                        5.6. ANY PRODUCTS AND SERVICES MADE AVAILABLE OR OBTAINED THROUGH THE SITE AND/OR APP OR ANY LINKED THIRD PARTY WEBSITE IS DONE AT YOUR OWN DISCRETION AND RISK AND YOU SHALL BE SOLELY RESPONSIBLE FOR ANY DAMAGE TO YOUR COMPUTER SYSTEM OR ELECTRONIC DEVICE, OR ANY LOSS OF DATA THAT RESULTS THEREFROM.<br/>
+                        5.7. YOU EXPRESSLY ACKNOWLEDGE AND AGREE THAT THE USE AND RELIANCE UPON ANY AND ALL OF THE PRODUCTS AND SERVICES IS AT YOUR OWN DISCRETION AND RISK AND IS MADE AVAILABLE ON AN “AS IS” AND “AS AVAILABLE” BASIS WITHOUT WARRANTY BY GNUM AND/OR ANY OF ITS LICENSORS OF ANY KIND AND TO THE MAXIMUM EXTENT ALLOWED BY APPLICABLE LAW, GNUM AND/OR ANY OF ITS LICENSORS EXPRESSLY DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, OR ANY WARRANTY OF NON-INFRINGEMENT. EXCEPT AS MAY EXPRESSLY BE STATED HEREIN, GNUM MAKES NO WARRANTIES OR REPRESENTATIONS ABOUT THE ACCURACY OR COMPLETENESS OF THE PRODUCTS AND SERVICES OR ANY OTHER ITEMS OR MATERIALS MADE AVAILABLE OR LINKED TO FROM THE SITE AND/OR APP.<br/>
+                        5.8. GNum does not warrant that the functions contained in the Products and Services will meet your requirements, or that the operation thereof will be uninterrupted, timely, secure or error-free. GNum and/or any of its licensors do not warrant, guarantee, or make any representations regarding the use or the results of the use of the Products and Services with respect to their performance, accuracy, reliability, security capability or otherwise. In addition, GNum makes no warranty as to the results that may be obtained from the use of the Products and Services or as to the accuracy or reliability of any information obtained through the Products and Services or that defects in the Products and Services (if any) will be corrected.<br/>
+                        5.9. Any material and/or data downloaded or otherwise obtained through the use of or from the Products and Services is done at your own discretion and risk and that you will be solely responsible for any damage to your computer system, tablet computer and/or mobile phone or loss of data that results from the download of such material and/ or data. GNum makes no warranty and shall not be liable for any goods, services, information or other material displayed, purchased or obtained through or from the Products and Services or any transaction entered into through the said Products and Services.<br/>
+                        5.10. If you receive any news, messages, alerts or other information as a result of your use of the Products and Services in relation to companies, stock quotes, investments, securities, or other financial information, paragraphs 5 and 6 shall apply in full force and effect. The content and material contained in messages of any kind arising from the use of the Products and Services are provided for informational purposes only and are not intended to be used for any other purpose. GNum shall not be responsible for the content or accuracy of any information transmitted through the Products and Services, and shall not be responsible for any trading or investment decisions made by the Customer based on such information.<br/>
+                        5.11. You agree that regardless of any statute of law to the contrary, any claim or cause of action arising out of or related to the use of the Products and Services or pursuant to this Agreement must be filed within one (1) year from the date on which such claim or cause of action arose. GNum will not be liable in respect of any claim or cause of action following the expiry of the time limit set out in this sub-paragraph.</p>
+                </div>
+
+                <div class="indemnities text">
+                    <h5>6. INDEMNITIES</h5>
+                    <p>You shall keep GNum fully indemnified against all actions, claims, demands, proceedings, liabilities, losses (whether direct, indirect or consequential), costs (including legal costs on a full indemnity basis) and expenses of every kind suffered or incurred by GNum, its subsidiaries, affiliates, officers, and employees, representatives, corporate affiliates and/or agents, arising out of or in connection with:<br/>
+
+                        (a) your use of the Products and Services;<br/>
+                        (b) any actual or alleged breach or non-performance or non-observance of any of your obligations or warranties under this Agreement, or otherwise arising in any way out of the your use of the Site and/or App or purchase and/or use of the Products and Services; or<br/>
+                        (c) your infringement or misappropriation of any third party’s patent, copyright, trademark or other intellectual property rights in connection with the use of the Site and/or App or purchase and/or use of the Products and Services.</p>
+                </div>
+
+                <div class="resale text">
+                    <h5>7. NO RESALE OF PRODUCTS AND SERVICES</h5>
+                    <p>You shall not resell the Products and Services or the use of or access to the Products and Services unless otherwise permitted by GNum. Any person or entity that resells any Products and Services without the prior written consent of GNum may be subject to civil action and/or criminal penalty as prescribed by law.</p>
+                </div>
+
+                <div class="dealing text">
+                    <h5>8. DEALING WITH ADVERTISERS</h5>
+                    <p>The Products and Services may display content that does not belong to GNum. This content is the sole responsibility of the entity that makes it available. GNum may review content to determine whether it is illegal or violates GNum’s policies and may remove or refuse to display content that GNum reasonably believes violates its policies or the law. Accordingly, your correspondence with or participation in any promotion of third party advertisers found on the Site and/or App, including payment and delivery of related goods and/or services and any other terms, conditions, warranties or representations associated with such dealings are solely between you and such advertiser. Consequently, GNum shall not be liable for any loss or damage of any kind incurred as the result of any such dealings.</p>
+                </div>
+
+                <div class="modification text">
+                    <h5>9. MODIFICATION AND MAINTENANCE</h5>
+                    <p>9.1. Modification. GNum retains the right, in its sole discretion, to modify the Site and/or App, or to implement new elements as part of and/or ancillary to the Site and/or App to enhance your overall experience which may affect the previous mode of operation of the Site and/or App. We expect that any such implementation will improve the Site and/or App, but it is possible that you may not agree with us.<br/>
+                        9.2. Software Update. In connection with the aforesaid modification, software updates on your computer, mobile device and/or tablet computer may have to be downloaded from time to time with the intention of improving, enhancing, repairing and/or further developing the Site and/or App. GNum will use best endeavors to provide you with the option of whether or not to install the update. However, do note that in certain circumstances, GNum may require you to install the update to continue accessing and using the Products and Services. In all cases, you agree to permit GNum to deliver these updates to you (and you to receive them) as part of your use of the Products and Services. You shall be solely responsible for any and all charges incurred for the download of such updates.<br/>
+                        9.3. Maintenance. GNum reserves the right to shut down the Site and/or App for maintenance as and when required, in which case notification shall be given to you via the Site and/or App. GNum shall not be responsible for any damages or losses of whatever nature suffered by the Customer as a result the unavailability of the Site and/or App during maintenance.<br/>
+                        9.4. GNum will not bear any responsibility or liability for any damage or loss you may suffer as a result of the aforesaid modifications and/or maintenance, including, without limitation, damages or losses as a result of the deletion of, or failure to make available to you, any content.
+                    </p>
+                </div>
+
+                <div class="notice text">
+                    <h5>10. NOTICES</h5>
+                    <p>10.1. Any notice to you in relation to the Products and Services, to the extent that GNum determines in its sole discretion that such notice be disseminated, shall be made via either voice mail or electronic mail. GNum may also provide you with notices by way of postings on the Site and/or App.<br/>
+                        10.2. Except where otherwise specifically provided for, you may send a notice to us by way of email at <a href="mailto:support@gnum.com"> support@gnum.com</a>.</p>
+                </div>
+
+                <div class="general text">
+                    <h5>11. GENERAL</h5>
+                    <p>
+                        11.1. Inadequacy of Damages. You acknowledge and agree that any unauthorized use of the Products and Services and/or breach of this Agreement may result in irreparable injury to GNum for which damages alone would be inadequate. Accordingly, GNum shall be entitled to and have the right to the remedies of injunction, specific performance or other equitable relief for any threatened or actual breach of the terms of this Agreement and/or any unauthorised use of the Site, App and/or the Products and Services.<br/>
+                        11.2. Assignment. The Customer shall not, without the prior written consent of GNum, assign, transfer, charge or otherwise deal in any other similar manner with all or any of its rights under this Agreement, subcontract any or all of its obligations under this Agreement, or purport to do any of the same.<br/>
+                        11.3. Remedies and Waivers. No failure on the part of GNum to exercise, and no delay on its part in exercising, any right or remedy under this Agreement will operate as a waiver thereof, nor will any single or partial exercise of any right or remedy preclude any other or further exercise thereof or the exercise of any other right or remedy. The rights provided in under this Agreement are cumulative and not exclusive of any rights or remedies provided by law. If GNum does waive a default by the Customer, it will only do so in writing.<br/>
+                        11.4. No Rights of Third Parties. A person who is not a party to this Agreement has no rights under the Contracts (Rights of Third Parties) Act, Chapter 53B of Singapore, to enforce any term of this Agreement, but this does not affect any right or remedy of a third party which exists or is available apart from the said Act.<br/>
+                        11.5. Severability. The illegality, invalidity or unenforceability of any provision of this Agreement under the law of any jurisdiction shall not affect its legality, validity or enforceability under the law of any other jurisdiction nor the legality, validity or enforceability of any other provision.<br/>
+                        11.6. Governing Law and Jurisdiction. This Agreement shall be governed by the laws of the Republic of Singapore without regard to its conflict of law provisions. The Parties agree to submit to the exclusive jurisdiction of the courts of the Republic of Singapore.
+                    </p>
+                </div>
+
+                <div class="customer text">
+                    <h5>12. CUSTOMER CONTACT</h5>
+                    <p>If you have any questions regarding this Agreement, please email us at <a href="mailto:support@gnum.com"> support@gnum.com</a>.</p>
+                </div>
+
+
+            </div>
+            <!--内容-->
+            <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0"></div>
+        </div>
+    </div>
+    <!--content end terms页面-->
+
+    <!--foot begin-->
+    <div class="foot" style="position: relative">
+    	[#include "common/foot.html" ]
+    </div>
+    <!--foot end-->
+     [#include "common/common-js.html" ]
+</body>
+</html>

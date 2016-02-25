@@ -1,0 +1,167 @@
+/**
+ * 表单验证样式
+ */
+#formSignIn input.validate-error{
+	border:1.5px #e25f6a solid;
+	background-color:#FFFFFF;
+	box-shadow: none;
+}
+input.validate-error{
+	border:1px #FFAD77 solid;
+	background-color:#FFFFD0;
+}
+.error-tips,.error-tips-top{
+	position:relative;
+	border:1px solid #FF0000;
+	/*background-color:#FFF5F5;*/
+	color:#ff0000;
+	padding:5px;
+	border-radius:3px;
+	left:15px;
+	padding-top:6px;
+	/* border-left:none; */
+	padding-left:20px;
+	margin-right:20px;
+	background:url("../images/unchecked.gif") no-repeat scroll 4px 7px;
+	font-size: 13px;
+	display: block;
+    float: left;
+    margin-top: 4px;
+    max-width: 300px;
+    word-wrap: break-word;
+}
+.error-tips:before{
+	background: url("../images/error-tips-bg.png") no-repeat scroll 0 0 ;
+    content: "";
+    display: inline;
+    height: 21px;
+    left: -6px;
+    position: absolute;
+    top: -1px;
+    width: 10px;
+}
+
+.error-tips-top:before {
+	background: url("../images/error-tips-bg-top.gif") no-repeat scroll 0 1px transparent;
+    content: "";
+    display: inline;
+    height: 6px;
+    left: -1px;
+    position: absolute;
+    top: -6px;
+    width: 30px;
+}
+.error-tips-left-arrow{
+	position:absolute;
+	left:-7px;
+	top:8px;
+	height:11px;
+	width:7px;
+	background:url("../images/error-tips-icons.png") no-repeat -9px 0px;
+}
+
+/**
+ * ************************
+ *	validate css
+ * *************************
+ */
+.normalError {
+	display:block;
+}
+#signUp p.form-wrap {
+	position:relative;
+}
+.normal-error-wraper {
+	display: block;
+}
+.input-error-msg,.input-success-msg,.input-waiting-msg {
+	border: 1px solid #FFC7C7;
+	font-size: 13px;
+	color: #9f3a1c;
+	border-radius:3px;
+	padding-left:18px;
+	padding-right:4px;
+	line-height:34px;
+	word-break:break-all;
+	word-wrap:break-word;
+	background:#FFECEC url("../images/unchecked.gif") no-repeat 2px 1px;
+	text-indent:20px;
+}
+.input-waiting-msg {
+	background:url("../images/onLoad_3.gif") no-repeat 2px 2px;
+	color:#00a6ff;
+	text-indent:22px;
+	border: none;
+}
+.input-success-msg {
+	background: url("../images/checked.gif") no-repeat 2px 2px;
+	color: #4E8D1A;
+	width:20px;
+	border: none;
+	height:30px;
+	
+	float:left;
+	margin-top:8px;
+}
+
+.input-error {
+	border: 1px solid #FFC7C7 !important;
+	background-color: #FFECEC !important;
+}
+
+.input-success {
+	border: 1px solid #ADDA72 !important;
+	background-color: #d1f0bf !important;
+}
+/**
+ * index validate css
+**/
+form#formTryItForFre p.validation-true, form#formTryItForFre p.validation-false, form#formTryItForFre p.validation-false, form#formTryItForFre p.validation-true {
+	font-family: 'Cabin',sans-serif;
+    font-size: 14px;
+    position: absolute;
+    /* left: 446px; */
+    left:23.5%;
+    top: 32px;
+    color:#599722;
+    /* display:none; */
+    font-weight:bold;
+}
+@media (max-width: 767px) {
+	form#formTryItForFre p.validation-true, form#formTryItForFre p.validation-false, form#formTryItForFre p.validation-false, form#formTryItForFre p.validation-true {
+    left: 30%;
+    top: 78px;
+}
+}
+form#formTryItForFre p.validation-false, form#formTryItForFre p.validation-true {
+	/* left:434px; */
+}
+
+form#formTryItForFre p.validation-false, form#formTryItForFre p.validation-false {
+	color:#FF0000;
+}
+
+.validation-true:before, .validation-false:before {
+	content:"";
+	background: transparent url("../images/index_validation_icons.png") no-repeat 0px 0px;
+	display: inline-block;
+	height: 13px;
+	line-height: 13px;
+	overflow: hidden;
+	vertical-align: baseline;
+	width: 16px;
+}
+.validation-false:before {
+	background: transparent url("../images/index_validation_icons.png") no-repeat 0px -13px;
+}
+.gnum-error-another{
+line-height: 1.42857;
+margin-left:10px;
+text-align: left;
+display: block;
+font-size: 15px;
+position: absolute;
+width: auto;
+height: auto;
+color: #F00;
+}

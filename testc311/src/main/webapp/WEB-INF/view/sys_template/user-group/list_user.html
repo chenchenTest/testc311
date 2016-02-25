@@ -1,0 +1,107 @@
+[@EC.breadcrumbs/]
+
+<div id="page-content" class="clearfix">
+    <div class="page-header position-relative">
+        <h1>User Management</h1>
+        
+    </div><!--/page-header-->
+
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="widget-box">
+                <div class="widget-header widget-header-blue widget-header-flat wi1dget-header-large">
+                    <h4 class="lighter">User List</h4>
+                    <div class="widget-toolbar">
+                        <div class="btn-group">
+                        [@ec_privilege_check uri="${current_uri}/add"]
+                            <button class="btn btn-small btn-success" onclick="modal.open({
+                            	url:'${path}${AUTH_MENU.privilege.uri!}'
+                            	});" >
+                                <i class="icon-plus"></i>${AUTH_MENU.name}
+                            </button>
+                        [/@ec_privilege_check]
+                        [@ec_privilege_check uri="${current_uri}/delete"]
+                            <button class="btn btn-small btn-danger" onclick="batchConfirm(dataTable.tableID,'${path}${AUTH_MENU.privilege.uri!}')">
+                                <i class="icon-remove"></i>${AUTH_MENU.name}
+                            </button>
+                        [/@ec_privilege_check]
+                            <button class="btn btn-small btn-info" onclick="dataTable.refresh();">
+                                <i class="icon-refresh"></i>Refresh
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div class="widget-main">
+                        <table id="userTable" class="table table-striped table-bordered table-hover"> 
+                            <thead>
+                                <tr>
+                                    <th class="center sorting_disabled">
+	                                    <label>
+	                                        <input type="checkbox" onclick="checkAll(this);"/>
+	                                        <span class="lbl"></span>
+	                                    </label> 
+                                    </th>
+                                    <th>No.</th>
+                                    <th>Username</th>
+                                    <th class="hidden-480">Realname</th>
+                                    <th class="hidden-480">Role</th>
+                                    <th class="hidden-phone">Parent Role</th>
+                                    <th class="hidden-480">Department</th>
+                                    <th class="hidden-480">Parent Department</th>
+                                    <th>Operations</th>
+                                </tr>
+                            </thead>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- PAGE CONTENT ENDS HERE -->
+    </div>
+</div>
+
+<script type="text/javascript">
+	$(function() {
+		dataTable.initTable({
+			"serverSide":true,
+			"tableID":"#userTable",
+			//对每列设置排序规则
+			//列的长度必须对应，如果表格有7列，必须写7个，否则会报错
+			"columns": [
+			            {
+			    		  "data":"id",
+			    		  "sortable": false
+			            },
+			            {
+			    		  "data":"no"
+			            },
+			            {
+			    		  "data":"name"
+			            },
+			            {
+			    		  "data":"realname"
+			            },
+			            {
+			    		  "data":"role"
+			            },
+			            {
+			    		  "data":"parent"
+			            },
+			            {
+			    		  "data":"department"
+			            },
+			            {
+			    		  "data":"paprentDepartment"
+			            },
+			            {
+			    		  "data":"links",
+			    		  "sortable": false
+			            }
+	        ],
+	      "url": "${path}${current_uri}",
+	      "order": [[1, "asc" ]]
+		});
+	})
+</script>

@@ -1,0 +1,45 @@
+/*信息显示表格样式*/
+.EC-table{
+    width: 95%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    color: #5A6E7D;
+}
+.EC-table-row{
+	background-color: #fff;
+}
+.EC-table-row:hover{
+	background-color: #EAF2FF;
+}
+.EC-table td,.EC-table th{
+    padding: 10px 0px;
+    border: 1px solid #DEE7EC;
+    text-align: center;
+}
+.EC-table th{
+    background-color: #F0F4F6;
+}
+.EC-table tr:hover{
+    background-color: #F6F8FB;
+}
+
+/*表单布局表格*/
+.EC-form-table{
+    width: 100%;
+    /*
+        margin: 20px;
+        margin-left:100px;*/
+    
+    border-collapse: collapse;
+    color: #5A6E7D;
+    font-size: 12px;
+}
+.EC-form-table td,.EC-form-table th{
+    padding: 15px;
+    text-align: left;
+    position: relative;
+}
+.EC-form-table td:first-child{
+    text-align: right;
+    width: 15%;
+}

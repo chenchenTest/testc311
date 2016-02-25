@@ -1,0 +1,147 @@
+[#include "macro/macros.html"/]
+<div id="table-list-container">
+	<table class="table title1_table">
+		<tr>
+			<td class="feature" style="width: 190px;">
+				<div class="btn feature_select">
+					<span class="all_icon feature_icon"></span><br/><span class="text">ALL</span>
+					<ul class="select">
+						<li class="all"><span class="feature_icon"></span><br/><span class="text">ALL</span></li>
+						<li class="receiving_li"><span class="feature_icon"></span><br/><span class="text">RECEIVING FROM</span></li>
+						<li class="call_li"><span class="feature_icon"></span><br/><span class="text">CALLING TO</span></li>
+						<li class="miss_li"><span class="feature_icon"></span><br/><span class="text">MISSED CALL</span></li>
+					</ul>
+				</div>
+			</td>
+			<td style="width: 130px;">NUMBER</td>
+			<td>DURATION</td>
+		</tr>
+	</table>
+	<div class="calllog">
+	<div class="cal-sm-12 col-xs-12 col-md-12 col-lg-12 container-row">
+
+			<input type="hidden" id="searchType" value="${groupNumber!''}">
+			<input type="hidden" id="searchStatus" value="${searchStatus!''}"/>
+			<input type="hidden" id="leftTime" value="${leftTime!''}"/>
+[@gnum_callLog searchValue="${searchValue!''}" pagesize="${pagesize!10}" pageNum = "${pageNum!1}" searchStatus="${searchStatus!''}" groupNumber="${groupNumber!''}" ]
+		<input type="hidden" value="${pageNum!1}" id="hiddenPageNum">
+		<table id="table_bug_report" class="table">
+			<!-- <thead>
+				<tr style="height: 95px;">
+					<th class="allTh-me">
+						<a class="btn-calllog" id="btn-calllog-all" href="#" onclick="getCallLog('')">All</a>
+					</th>
+					<th ><span  class="inComingTh">
+						<a class="btn-calllog" id="btn-calllog-incoming" href="#" onclick="getCallLog('V01')">INCOMING</a></span></th>
+					<th >
+						<a class="btn-calllog" id="btn-calllog-outgoing" href="#" onclick="getCallLog('V05')">OUTGOING</a></th>
+					<th >DURATION</th>
+					
+					<th>DATE/TIME</th>
+					<th class="text-right">
+					<input type="text" value="${searchValue!''}" id="searchCall" class="form-control form-control-me"/>
+					<button class="searchBtn" type="submit" onclick="searchCalllog()">Search</button>
+					</th>
+				</tr>
+			</thead> -->
+			[#if page??] 
+			[#if (page.datas??) && (page.datas?size > 0)] 					
+				[#list page.datas as callLog]
+					<tr class="calllog-tr">
+						[#if callLog.callType='V01' || callLog.callType='V07']
+							[#if callLog.connectionStatus='REJECTED']
+							<td class="outGoingImgTd-me">
+							<img src="${res!}/resources/images/dash/rejected.png"/>
+							</td>
+							
+							<!-- <td class="inComingTd-me"><img onerror="javascript:this.src='${res!}/resources/images/avatar.jpg';" src="${(callLog.avator)!}" class="incomingImg"></td> -->
+							<td class="outGoingTd-me" id="outGoingTd-me-first"><span class="outGoingTd-n">${(callLog.originateNumber)!'unknown'}</span></td>
+							<td class="outGoingTd-me outGoingTd-me-second"><span class="outGoingTd">${(callLog.phoneNo)!'unknown'}</span></td>
+							[#elseif callLog.connectionStatus='MISSED']
+							<td class="outGoingImgTd-me">
+							<img src="${res!}/resources/images/dash/missed.png" />
+							</td>
+							<!-- <td class="inComingTd-me"><img onerror="javascript:this.src='${res!}/resources/images/avatar.jpg';" src="${(callLog.avator)!}" class="incomingImg"></td> -->
+							<td class="outGoingTd-me" id="outGoingTd-me-first"><span class="outGoingTd-n">${(callLog.originateNumber)!'unknown'}</span></td>
+							<td class="outGoingTd-me outGoingTd-me-second"><span class="outGoingTd">${(callLog.phoneNo)!'unknown'}</span></td>
+							[#else]
+							<td class="outGoingImgTd-me">
+							<img src="${res!}/resources/images/dash/incoming.png"/>
+							</td>
+							<!-- <td class="inComingTd-me"><img onerror="javascript:this.src='${res!}/resources/images/avatar.jpg';" src="${(callLog.avator)!}" class="incomingImg"></td> -->
+							<td class="outGoingTd-me" id="outGoingTd-me-first"><span class="outGoingTd-n">${(callLog.originateNumber)!'unknown'}</span></td>
+							<td class="outGoingTd-me outGoingTd-me-second"><span class="outGoingTd">${(callLog.phoneNo)!'unknown'}</span></td>
+							[/#if]
+							<!-- <td class="durationTd-me hidden-480">${(callLog.originDuration)!}</td> -->
+							<td class="durationTd-me hidden-480"><span>${(callLog.originDuration)!}</span></td>
+							<td class="dateTimeTd-me dateTimeTd-me-YMD hidden-phone"><span>${(callLog.dateYMD)!}</span></td>
+							<td class="dateTimeTd-me dateTimeTd-me-HMM hidden-phone"><span>${(callLog.dateHMM)!}</span></td>
+							<td style="width:774px;">
+							</td>
+						[#elseif callLog.callType='V05']
+							<td class="outGoingImgTd-me">
+							<img src="${res!}/resources/images/dash/outgoing.png"/>
+							</td>
+							<!-- <td class="inComingTd-me"><img onerror="javascript:this.src='${res!}/resources/images/avatar.jpg';" src="${(callLog.avator)!}" class="incomingImg"></td> -->
+							<td class="outGoingTd-me" id="outGoingTd-me-first"><span class="outGoingTd-n">${(callLog.destinationNumber)!'unknown'}</span></td>
+							<td class="outGoingTd-me outGoingTd-me-second"><span class="outGoingTd">${(callLog.phoneNo)!'unknown'}</span></td>
+							<td class="durationTd-me hidden-480"><span>${(callLog.originDuration)!}</span></td>
+							<td class="dateTimeTd-me dateTimeTd-me-YMD hidden-phone"><span>${(callLog.dateYMD)!}</span></td>
+							<td class="dateTimeTd-me dateTimeTd-me-HMM hidden-phone"><span>${(callLog.dateHMM)!}</span></td>
+							<td style="width:774px;">
+							</td>
+							
+						[#else]
+							<!-- 暂时没有定 -->	
+						[/#if]
+							<!-- <td class="searchTd-me hidden-480 text-right">
+							<a href="javascript:void(0);" onmouseover="changeImgs(this)" onmouseout="changeImg(this)" class="delete-btn" onclick="deleteCallLog('${res!}/calllog/delete/${callLog.cdrId}/?_method=delete','${res!}/calllog/data/')">
+							<img src="${res!}/resources/images/contacts/eraise.png"/>
+							</a>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							[#if callLog.callType='V01' || callLog.callType='V07']
+								<a href="javascript:void(0);" class="make-call-btn" onclick="makeCall('${(callLog.originateNumber)!}');">
+							[#elseif callLog.callType='V05']
+								<a href="javascript:void(0);" class="make-call-btn" onclick="makeCall('${(callLog.destinationNumber)!}');">
+							[#else]
+								<a href="javascript:void(0);" class="make-call-btn" onclick="makeCall('${(callLog.originateNumber)!}');">
+							[/#if]
+                    			<img src="${res!}/resources/images/call_btbt.png" class="callBtn-me"/>
+ 								</a>
+							</td> -->
+					</tr>
+				[/#list]
+			[/#if]
+		[/#if]				
+		</table>
+		[/@gnum_callLog]
+		
+	[@gnum_page_pannel_calllog pageNum="${page.pageNum}"
+				pagesize="${page.pagesize}" 
+				start="${page.startPage}"
+				end="${page.endPage}" 
+				pageCount="${page.pageCount}" 
+				totalCounts ="${page.totalCounts}"
+				searchValue="${searchValue!''}"
+				overAll="${overAll}"
+				incoming="${incoming}"
+				searchStatus="${searchStatus!''}"
+				url ="${res!}/calllog/data/"
+				/]
+		</div>
+		<script>
+			$(function(){
+				var pageNum = parseInt($("#hiddenPageNum").val()) ;
+				if(pageNum>9){
+					$(".calllog").find(".pagination").find(".number-active").css('padding','5px 7px');
+				}else{
+					$(".calllog").find(".pagination").find(".number-active").css('padding','5px 11px');
+				}
+			})
+		</script>
+
+
+</div>
+
+</div>
+<script type="text/javascript" src="${res!}/resources/js/calllog.js"></script>

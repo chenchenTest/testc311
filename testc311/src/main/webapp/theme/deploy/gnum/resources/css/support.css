@@ -1,0 +1,252 @@
+html{
+    font-size: 62.5%;
+    font-family: "arial";
+}
+body{
+    font-family: "Lato-Regular";
+}
+a,img,button{
+    -webkit-transition: all 0.3s;   /* Safari and Chrome */
+    -moz-transition: all 0.3s;     /* Firefox */
+    -ms-transition: all 0.3s;      /*ie内核*/
+    -o-transition: all 0.3s;     /* Opera */
+    transition: all 0.3s;
+}
+
+.support{
+    margin-top: 110px;
+}
+form .form-control,form .btn-lg{
+    height: 60px;
+    /*border: 2px solid transparent;*/
+    font-size: 2rem;
+    border: 0px;
+    outline: none;
+    /*color: #05CDB7;*/
+    box-shadow:none;
+}
+form .form-control{
+    top:-2px;
+}
+form button.close{
+    position: relative;
+    z-index: 3;
+    top: 25px;
+    left: -10px;
+    visibility: hidden;
+}
+form .btn[type="submit"]{
+    background-color: #2dcbc7;
+    color: #ffffff;
+    height: 70px;
+}
+form .btn:hover{
+    background-color: #15e1da;
+}
+#textMessage{
+    height: 210px;
+}
+form .form-control:focus{
+    border: 2px solid  #05CDB7;
+    color: #05CDB7;
+}
+form .topSearch .form-control:focus{
+    border: 0;
+    box-shadow:none;
+}
+.form-control:focus,.btn.active, .btn:active{
+	box-shadow:none;
+}
+.btn:focus{
+	outline:none;
+}
+form .addBtn{
+    background-color: #05CDB7;
+    color: #ffffff;
+}
+/*top begin 顶部*/
+
+.support .topBgimg{
+	height: 540px;
+    width:100%;
+}
+.support .top{
+    height: 540px;
+    padding: 5% 0;
+}
+.support .top h3{
+    font-family: "lato-bold";
+    color: #ffffff;
+    font-size: 8rem;
+    text-align: center;
+}
+.support .top .topSearch{
+    border-bottom: 2px solid #14e9e3;
+    margin-top:40px;
+}
+
+.support .top .topSearch input,.support .top .topSearch button{
+    background-color: transparent;
+}
+.support .top .topSearch input{
+    line-height: 1.6;
+}
+.support .top .topSearch input::-webkit-input-placeholder{/* WebKit browsers */
+	color:#838383;
+	font-family:"Lato-Bold";
+	font-size:3rem;
+	line-height:1;
+}
+.support .top .topSearch input:-moz-placeholder{/* Mozilla Firefox 4 to 18 */
+	color:#838383;
+	font-family:"Lato-Bold";
+	font-size:3rem;
+	line-height:1;
+}
+.support .top .topSearch input::-moz-placeholder{/* Mozilla Firefox 19+ */
+	color:#838383;
+	font-family:"Lato-Bold";
+	font-size:3rem;
+	line-height:1;
+}
+.support .top .topSearch input:-ms-input-placeholder{ /* Internet Explorer 10+ */
+	color:#838383;
+	font-family:"Lato-Bold";
+	font-size:3rem;
+	line-height:1;
+}
+/*top end 顶部*/
+
+/*content begin 内容*/
+.support .content{
+    padding: 4% 0;
+    background-color: #F3F3F3;
+    color: #878787
+}
+/*FQA begin内容*/
+.support .content .fqa{
+    border-bottom: 1px solid #cacaca;
+    padding-bottom: 8%;
+}
+.support .content .fqa h4{
+    font-family: "Lato-Light";
+    font-size: 5.1rem;
+    color: #3e3e3e;
+}
+.support .content .fqa p {
+    font-size: 3rem;
+}
+.support .content .fqa .info{
+    font-size: 2rem;
+    color: #727272;
+}
+.support .content .fqa .box{
+    margin: 2% 0;
+}
+.support .content .fqa .box span{
+    color: #CCCCCC;
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+    width: auto;
+    height: auto;
+    background-color: #ffffff;
+    padding: 2% 2%;
+    cursor: pointer;
+    font-size: 2rem;
+}
+.support .content .fqa .box .box1{
+    margin-right: 5%;
+    color: #00A593;
+}
+.support .content .fqa .box span:hover{
+    color: #00A593;
+}
+.support .content .fqa .searchInfo{
+    margin: 4% 0;
+}
+.support .content .fqa .searchInfo p{
+    color: #05CDB7;
+}
+.support .content .fqa .NO p{
+    color: #00A593;
+}
+/*FQA end内容*/
+
+/*form begin 表单内容*/
+.support .content form{
+    padding: 4% 0;
+}
+.support .content form h3{
+    margin: 3% 0;
+}
+.support .content form .checkbox1{
+    border: 1px solid #D3D3D3;
+    background-color: #ffffff;
+    padding: 15px;
+    height:93px;
+}
+.support .content form .checkbox1 label{
+    margin-top: 30px;
+}
+.support .content form .checkbox1 div{
+    float: right;
+}
+
+.check{
+	position:relative;
+}
+
+
+@media screen and (min-width: 768px){
+	.checkbox{
+		width:auto;
+		height:93px;
+	}
+	.send{
+	position:absolute;
+	right:0px;
+	bottom:0;
+	}
+	.support .content form .checkbox1 div{
+    margin-left:80px;
+	}
+}
+@media screen and (max-width: 768px){
+    .support{
+        margin-top: 65px;
+    }
+    .support .top{
+        height:220px;
+    }
+    .support .top h3{
+        font-size: 5rem;
+    }
+    .support .content .fqa .box span{
+    font-size:1.8rem;
+    }
+}
+
+/*form end 表单内容*/
+
+/*content end 内容*/
+
+.topImg{
+    position: absolute;
+    top: 110px;
+    height: 540px;
+    width: 100%;
+    overflow: hidden;
+}
+.topImg>img{
+    width: 100%;
+}
+@media screen and (max-width: 768px){
+    .topImg{
+        top: 60px;
+        height: 320px;
+    }
+    .topImg>img{
+        height: 220px;
+    }
+}

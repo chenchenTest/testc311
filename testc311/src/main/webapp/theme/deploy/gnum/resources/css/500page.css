@@ -1,0 +1,41 @@
+
+.fzzPage .pageImg {
+	margin-top:120px;
+}
+
+.fzzPage .Ftips{
+	margin-top: 30px;
+}
+
+.fzzPage .Ttips{
+	margin-top: 24px;
+	margin-bottom: 240px;
+}
+
+.fzzPage .msgAh {
+	font-family: LATO REGULER;
+	font-size: 40px;
+	color: #00938e;
+}
+
+.fzzPage .msgExist {
+	font-family: lato-bold;
+	font-size: 40px;
+	color: #00938e;
+}
+.fzzPage .msgExist .small {
+    font-size: 30px;
+}
+
+.fzzPage .msgToHome{
+	font-family: LATO REGULER;
+	font-size: 18px;
+	color: #404040;
+}
+
+.fzzPage .msgHref{
+	font-family: LATO REGULER;
+	font-size: 18px;
+	color: #00938e;
+	text-decoration: none;
+}

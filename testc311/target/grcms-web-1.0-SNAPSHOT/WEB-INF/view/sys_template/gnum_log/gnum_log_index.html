@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Easy CMS - 后台管理</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        [#include "/sys_template/common/resources.html"/]
+    </head>
+
+    <body class="easyui-layout">
+        <!-- 顶部菜单 开始 -->
+        <div data-options="region:'north',border:false,split:false">
+        [#include "/sys_template/common/top-nav.html"]
+        [#include "/sys_template/common/nav.html"]
+        </div>
+        <!-- 顶部菜单 结束 -->
+
+ 		<!-- 左侧菜单 开始 -->
+        <div title="导航菜单" style="width:180px;" data-options="region:'west',split:false,iconCls:'icon-menu'">
+           [#include "/sys_template/common/side-nav.html"] 
+        </div>
+        <!-- 左侧菜单 结束 -->
+        
+        <!-- 内容区域 开始 -->
+        <div data-options="region:'center',border:false"> 
+            <div id="tab" class="easyui-tabs">
+                <div title="设置说明" id="userIndex" data-options="iconCls:'icon-help'">
+                    <div class="EC-right-content"></div>
+                </div>            
+            </div>
+        </div>
+        <!-- 内容区域 结束 -->
+        
+        <!-- 底部区域 开始 -->
+        <div data-options="region:'south',iconCls:'icon-ok'" style="height: 50px;line-height: 50px;">
+            <center>Copyright @2014</center>
+        </div>
+        <!-- 底部区域 结束 -->
+    </body>
+</html>

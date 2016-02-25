@@ -1,0 +1,63 @@
+[@ec_department 
+	queryType = "list"
+	filter = "${form.filter!}"
+	pageNum = "${(form.page)!1}"  
+	pagesize = "${(form.rows)!}" 
+	order = "${form.order!'desc'}"
+	sort = "${form.sort!}"
+	pageable = 1
+;list]
+{
+"recordsFiltered":${count!0} ,
+"recordsTotal":${count!0} ,
+"data":[
+[#if list?? && (list?size > 0)]
+[#list list as d]
+    {
+    "id":"<label><input type='checkbox' name='ids' value='${d.id!}'/><span class='lbl'></span></label>"
+    ,"no":${d_index+1!}
+    ,"name":"${d.name!}"
+    ,"parentName":"${(d.parent.name)!'-'}"
+    [#if d.roles?? && d.roles?size >0]
+    	[#list d.roles as role ]
+    		[#if role_index == 0]
+    			[#if role.users?? &&role.users?size > 0]
+	    			[#list role.users as user]
+	    				,"leader":"${(user.realname)!'-'}"
+	    			[/#list]
+    			[#else]
+    			 ,"leader":"-"
+    			[/#if]
+    		[/#if]
+    	[/#list]
+    [#else]
+    ,"leader":"-"
+    [/#if]
+    ,"links":[
+    	[@ec_privilege_check uri="/management/department/edit"]
+    	{
+	    	"title":"${AUTH_MENU.name}"
+	    	,"onclick":"modal.open({url:'${path}${AUTH_MENU.privilege.uri!}?id=${d.id!}'});"
+	    	,"icon":"icon-edit"
+	    	,"clz":"btn-info"
+    	},
+    	[/@ec_privilege_check]
+    	
+    	[@ec_privilege_check uri="/management/department/delete"]
+    	{
+	    	"title":"${AUTH_MENU.name!}"
+	    	,"onclick":"confirm('${path}${AUTH_MENU.privilege.uri!}?ids=${d.id!}')"
+	    	,"icon":"icon-trash"
+	    	,"clz":"btn-danger"
+    	},
+    	[/@ec_privilege_check]
+    	{}
+    	]
+    }
+    [#if d_index != (list?size - 1)]
+    ,
+    [/#if]
+[/#list]
+[/#if]
+]}
+[/@ec_department]

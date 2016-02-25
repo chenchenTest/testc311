@@ -1,0 +1,59 @@
+<script type="text/javascript">
+    $(function(){
+       operator.dataTable({
+       		 url:'${path}${current_uri}'
+       	 	,table:"#errorlogTable"
+            ,toolbar: "#errorlogToolBar"
+            ,rownumbers: true
+       		,pagination:false
+        });
+    operator.download=function(settings){
+    	window.location.href=settings.path;
+    }
+    })
+</script>
+<!-- 工具栏 -->
+<div class="EC-right-content">
+	<h2 class="EC-title-1">
+		当前位置:<i class="icon-user EC-icon-layout"></i>[@EC.location /]
+	</h2>
+	  <div class="easyui-panel" title="查询信息" style="margin-bottom: 20px;">
+        <div class="EC-search-pannel EC-fieldset">
+        <form id="userSearchForm" method="post" action="${path}/management/user">
+        		<input type="hidden" name="sort" value="lastModified" class="EC-form-input"/>
+        		<input type="hidden" name="dateFields" value="lastModified"/>
+        		<input type="hidden" name="formatter" value="yyyy-MM-dd" />
+        	 <label>FileName:</label>
+        	<input type="text" name="fileName" value="" />
+        	 <label>LastModified:</label>
+			<input id="startTime" type="text" class="EC-form-input EC-form-search Wdate" name="startTime" readonly="readonly" 
+			onkeydown="repeal(event);"
+			onFocus="timePannel();"/> 
+			<label>to</label>
+			<input id="endTime" type="text" class="EC-form-input EC-form-search Wdate" name="endTime" readonly="readonly" 
+			onkeydown="repeal(event);"
+			onFocus="timePannel({min:'startTime'});"/>
+			    <a href="javascript:void(0);" onclick="submitReq(this,'#errorlogTable');" class="btn easyui-linkbutton" iconCls="icon-search">搜索</a>
+        </form>
+        </div>
+    </div>
+	<div id="errorlogToolBar" class="EC-toolbar">
+		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-reload'" onclick="
+			operator.refresh({
+	    			table:'#errorlogTable'
+	    		});
+		">Refresh</a>
+	</div>
+	 <table id="errorlogTable" title="List" >
+            <thead>
+                <tr>
+                    <th data-options="field:'id',hidden:true"></th>
+                    <th data-options="field:'fileName',width:40,align:'center',styler:tdPadding">FileName</th>
+                    <th data-options="field:'lastModified',width:30,align:'center'">LastModified</th>
+                    <th data-options="field:'fileSize',width:20,align:'center'">FileSize</th>
+                    <th data-options="field:'path',hidden:true">Path</th>
+                    <th data-options="field:'operation',width:15,align:'center',formatter:operator.links">Download</th>
+                </tr>
+            </thead>
+	</table>
+</div>

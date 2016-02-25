@@ -1,0 +1,140 @@
+/*表单布局*/
+.EC-form-layout {
+	margin: 20px auto;
+}
+/*表单样式*/
+.EC-form-search {
+	width: 150px !important;
+}
+
+.EC-form-input {
+	width: 250px;
+	height: 20px;
+	line-height: 20px;
+	padding: 3px 12px;
+	font-size: 12px;
+	color: #555;
+	background-color: #fff;
+	vertical-align: middle;
+	/*background-color: #fff;
+    background-image: none;*/
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-webkit-transition: border-color ease-in-out .15s, box-shadow
+		ease-in-out .15s;
+	transition: border 0.5s, box-shadow 0.5s;
+}
+
+.EC-form-input::before {
+	content: "*";
+	display: block;
+}
+
+.EC-form-required {
+	background: url("images/red_asterisk.png") no-repeat 98% center;
+}
+
+.EC-form-input:focus {
+	border: 1px solid #89C1EE;
+	box-shadow: 0px 0px 8px #CEE5F7;
+}
+
+.EC-form-checkbox {
+	border: 1px solid #C1D1DB;
+	cursor: pointer;
+}
+
+.EC-form-select {
+	border: 1px solid #C1D1DB;
+	padding: 4px 12px;
+	font-size: 12px;
+	color: #555;
+	border-radius: 4px;
+	background-color: #fff;
+}
+
+.EC-form-textarea {
+	border: 1px solid #C1D1DB;
+	padding: 4pxpx;
+	font-size: 12px;
+	color: #555;
+	border-radius: 4px;
+	width: 80%;
+	height: 100px;
+}
+
+
+.EC-form-tips {
+	color: #E96C6D;
+	font-size: 12px;
+	margin-left: 20px;
+	margin-right: 10px;
+}
+
+/*表单验证样式*/
+.EC-form-highlight {
+	background-color: #ffffcc;
+	border: 1px solid #ffcc66;
+}
+/*表单域样式*/
+.EC-form-highlight:focus {
+	border: 1px solid #ffcc66;
+}
+/*错误提示*/
+.EC-form-error
+,.EC-form-error-arrow-top
+,.EC-form-error-arrow-right
+,.EC-form-error-arrow-bottom
+ {
+	position: relative;
+	color: #E96C6D;
+	font-size: 12px;
+	background-color: #ffffcc;
+	border: 1px solid #ffcc66;
+	padding: 5px;
+	border-radius: 5px;
+	left: 10px;
+}
+/*箭头方向*/
+/*默认向左*/
+.EC-form-error:before
+,.EC-form-error:after 
+/*朝上*/
+,.EC-form-error-arrow-top:before 
+,.EC-form-error-arrow-top:after 
+/*朝右*/
+,.EC-form-error-arrow-right:before 
+,.EC-form-error-arrow-right:after 
+/*朝下*/
+,.EC-form-error-arrow-bottom:before 
+,.EC-form-error-arrow-bottom:after 
+{
+	content: '';
+	position: absolute;
+	height: 0;
+	width: 0;
+	border: 6px solid transparent;
+}
+
+.EC-form-error:before {
+	border-right-color:#FFFFCC;
+	left: -11px;
+    top: 6px;
+    z-index: 2;
+}
+.EC-form-error:after{
+	border-right-color:#FFCC66;
+ 	left: -13px;
+    top: 6px;
+    z-index: 1;
+}
+
+.EC-form-disable {
+	background-color: #eee;
+	border: 1px solid #ccc;
+}
+.EC-form-disable:focus{
+	border: 1px solid #ccc;
+}

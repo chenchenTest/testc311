@@ -1,0 +1,174 @@
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-12 avatar">
+            <div class="col-md-6 avatar_content">
+            [@gnum_callLogOverview]
+                <h5>
+                    ${(callLogOverview.minutesUsed?number+callLogOverview.minutesRemain?number)!}
+               </h5>
+                <button>Overall Mins</button>
+            </div>
+            <div class="col-md-6 avatar_content">
+                <h5>${callLogOverview.minutesRemain!}</h5>
+                <button>Mins Left</button>
+            </div>
+            <!--<button type="button" id="browse" class="btn-custom change-avatar">change profile photo</button>-->
+            [/@gnum_callLogOverview]
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="img-div">
+            [@gnum.avatar class="img-circle img-circle-width"/]
+        </div>
+        <form class="form-horizontal profile-form">
+            <input type="hidden" name="_method" value="PUT">
+            <input type="hidden" name="userId" value="${(user.userId)!}">
+            <input type="hidden" name="original_email" value="${(user.email)!}">
+            <input type="hidden" name="email_status" value="${(user.emailStatus)!}">
+            <input type="hidden" name="voicemail_status" value="${(user.voiceMailStatus)!}">
+
+            <div class="form-group">
+                <label for="name" class="col-sm-12 col-md-12 col-lg-2 control-label">NAME</label>
+
+                <div class="input-group col-sm-12 col-md-12 col-md-3 input-col">
+                    <input type="text" tabindex="1" class="form-control" id="name" name="name"
+                           placeholder="Display Name" value="${(user.firstName)!}">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-custom btn-color-a save-name">save</button>
+                    </span>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="password" class="col-sm-12 col-md-12 col-lg-2 control-label">password</label>
+
+                <div class="input-group col-sm-12 col-md-12 col-lg-3 input-col">
+                    <input type="text" tabindex="2" class="form-control" id="password" name="password"
+                           placeholder="Password" value="*******" disabled>
+                    <span class="input-group-btn">
+                       <button type="button" class="btn btn-default btn-custom save-pwd-btn">change</button>
+                    </span>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="email" class="col-sm-12 col-md-12 col-lg-1 control-label grey">email
+                    [#if (user.emailStatus??)&&(user.emailStatus=="ACTIVATED")]
+                    <span class='text-danger tips visible-xs-inline visible-sm-inline visible-md-inline' style="color: #15e1da;">Verified</span>
+                    [#else]
+                    <span class='text-danger tips visible-xs-inline visible-sm-inline visible-md-inline'>Not Verified</span>
+                    [/#if]
+                </label>
+                <div class="col-sm-12 col-md-12 col-lg-3 input-col no-padding-left-xs no-padding-right-xs">
+                    <input type="email" tabindex="5" class="form-control" id="email" name="email"
+                           placeholder="john@gmail.com" value="${(user.email)!}">
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-3  hidden-xs hidden-sm hidden-md">
+                    [#if (user.emailStatus??)&&(user.emailStatus=="ACTIVATED")]
+                    <span class='tips' style="color: #15e1da;">Verified</span>
+                    [#else]
+                    <span class='text-danger tips'>Not Verified</span>
+                    [/#if]
+                </div>
+            </div>
+            <div class="form-group change-email-form-group">
+                <div class="col-xs-12 col-sm-12  col-md-12 col-lg-offset-1 col-lg-2 change-email-btn-col">
+                    <button type="button" class="btn btn-default btn-custom save-email-btn">CHANGE EMAIL</button>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 text-center resend-email-btn-col">
+                    <a href="javascript:void(0);" class="email-verify">Resend Verification Email</a>
+                </div>
+            </div>
+            <hr>
+            <div class="number-list">
+                [#include "data/profile/profile_number_list.html"/]
+            </div>
+            <div class="form-group">
+                <label for="newMobile" class="col-sm-12 col-md-12 col-lg-2 control-label hidden-xs sr-only">new mobile</label>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-1 country-list-group">
+                    <div class="input-group">
+                        [@gnum.countrycode class="input-group-btn" contentClass="content-btn" buttonClass="toggle-btn"/]
+
+                        <!-- /.input-group -->
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 otp-input-group">
+                    <div class="input-group">
+                        <span class="input-group-gap hidden-xs hidden-sm hidden-md"></span>
+                        <input type="text" tabindex="6" class="form-control" id="newMobile" name="newMobile" placeholder="Mobile Number">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default btn-custom waitBtn btn-color-a" id="otpBtn" type="button">
+                                send otp
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group otp-group">
+                <label for="otp" class="col-sm-12 col-md-12 col-lg-2 control-label hidden-xs sr-only">otp</label>
+                <div class="input-group col-sm-12 col-md-12 col-lg-4 verify-otp-group">
+                    <input type="text" tabindex="7" id="otp" name="otp" class="form-control" placeholder="Enter OTP">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default btn-custom btn-color-a" id="verifyBtn" type="button">verify&amp;add</button>
+                    </span>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <label class="col-xs-6 col-sm-6 col-md-6 col-lg-2 control-label grey">callname</label>
+                <div class="col-xs-6  col-sm-6 col-md-6 col-lg-3">
+                    <p class="callname">${user.nickname!}</p>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--modal for change password-->
+    <div class="modal fade changePWD">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="modal-close-btn"></span></button>
+                    <h4 class="modal-title">Change Password</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="#" id="changePWD-form">
+                        <div class="form-group">
+                            <label for="oldPWD" class="sr-only">current password</label>
+                            <input type="password" class="form-control" id="oldPWD" name="password" placeholder="Enter Current Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="newPWD" class="sr-only">new password</label>
+                            <input type="password" class="form-control" id="newPWD" name="newPassword" placeholder="Enter New Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPWD" class="sr-only">confirm password</label>
+                            <input type="password" class="form-control" id="confirmPWD" name="confirmPassword" placeholder="Confirm New Password">
+                        </div>
+                        <div class="form-group text-center">
+                            <button class="btn btn-default btn-custom btn-color-a" id="changePWDBtn" type="submit">Enter New Password</button>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <!--end-->
+    <!--modal for change email-->
+    <div class="modal fade emailVerification">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="modal-close-btn"></span></button>
+                </div>
+                <div class="modal-body">
+                    <p class="content"></p>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <!--end-->
+</div>
+<script type="text/javascript" src="${res!}/resources/plugins/plupload/plupload.full.min.js"></script>
+<script type="text/javascript" src="${res!}/resources/js/profile.js"></script>
+[#include "common/common-js-validate.html"/]

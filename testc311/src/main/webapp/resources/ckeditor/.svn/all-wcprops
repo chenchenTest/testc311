@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/resources/ckeditor
+END
+ckeditor.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/resources/ckeditor/ckeditor.js
+END
+CHANGES.md
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/resources/ckeditor/CHANGES.md
+END
+LICENSE.md
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/resources/ckeditor/LICENSE.md
+END
+config.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/resources/ckeditor/config.js
+END
+styles.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/resources/ckeditor/styles.js
+END
+build-config.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/resources/ckeditor/build-config.js
+END
+README.md
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/resources/ckeditor/README.md
+END
+contents.css
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/resources/ckeditor/contents.css
+END

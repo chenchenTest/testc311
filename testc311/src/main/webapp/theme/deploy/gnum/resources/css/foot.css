@@ -1,0 +1,96 @@
+@charset "GBK";
+html {
+    font-size: 62.5%;}
+
+body {
+    font-family: "Lato-regular"; }
+
+a, img ,button,li{
+    -webkit-transition: all 0.3s;
+    /* Safari and Chrome */
+    -moz-transition: all 0.3s;
+    /* Firefox */
+    -ms-transition: all 0.3s;
+    /*ie�ں�*/
+    -o-transition: all 0.3s;
+    /* Opera */
+    transition: all 0.3s; }
+
+.ff {
+    background-color: #3f3f3f;
+    padding-top: 110px;
+    padding-bottom: 110px;
+}
+.ff .share{
+    width: 34px;
+    height: 34px;
+    margin-left: 5px;
+    display: inline-block;
+    background-repeat: no-repeat;
+}
+.ff  a:hover {
+    text-decoration: none; }
+.ff  .logo {
+    /* logo*/
+    display: block;
+    width: 55px;
+    height: 61px;
+    background-image: url("../images/index/footer_logo.png");
+    /*logo*/ }
+.ff  .logo:hover {
+    background-image: url("../images/index/footer_logo_select.png"); }
+.ff  .text1, footer .text2 {
+    text-align: right; }
+.ff  .text1 {
+    /* text1*/
+    margin-top: 4.5rem; }
+.ff  .text1 a {
+    font-size: 1.4rem;
+    color: #999999; }
+.ff  .text1 a:nth-child(1) {
+    margin-right: 3.8rem; }
+.ff  .text1 .about {
+    margin-right: 3.8rem; }
+.ff  .text1 .text1_2{
+    margin-top: 10px;
+}
+.ff  .text1 a:hover {
+    color: #14e9e3; }
+.ff  hr {
+    /*hr*/
+    border-top-color: #4b4b4b;
+
+}
+
+/*
+.ff  .facebook:hover {
+    background-image: url("../images/index/facebookhover.png"); }
+*/
+.ff  .text2 span {
+    /*text2*/
+    font-family: "Lato-Light";
+    font-size: 1.2rem;
+    color: #7d7d7d;
+    display: block;
+    line-height: 1.9rem; }
+@media screen and (max-width: 768px) {
+    .ff{
+        padding-bottom: 44px;
+        padding-top: 44px;
+    }
+    .ff  .text1, footer .text2 {
+        text-align: left; }
+    .ff .text1 a {
+        display: block;
+        font-size: 1.4rem; }
+    .ff  .text1 .text1_2 a{
+        display: inline-block;
+    }
+    .ff  .text1 a:nth-child(1) {
+        margin-bottom: 1rem; }
+    .ff  .text2 span {
+        font-size: 1.45rem; }
+    .ff  .text2 span b {
+        display: block; }
+    .ff  .text2 span:nth-child(2) {
+        margin-bottom: 2rem; } }

@@ -1,0 +1,18 @@
+[#if (file.children)?? && (file.children?size > 0)]
+<ul>
+	[#list file.children as file]
+    [#if !file.dir]
+		<li>
+			<span class="file" data-realpath="${file.filepath!}">${file.filename!}</span>
+		</li>
+     [#else]
+		<li>
+			<span class="folder" data-realpath="${file.filepath!}">${file.filename!}</span>
+			<ul>
+				[#include "template_file_iteration.html"/]
+			</ul>
+		</li>
+    [/#if]
+	[/#list]
+</ul>
+[/#if] 

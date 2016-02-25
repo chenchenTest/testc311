@@ -1,0 +1,71 @@
+[@EC.breadcrumbs/]
+<div id="page-content" class="clearfix">
+    <div class="page-header position-relative">
+        <h1>System Fields
+        [@ec_model id="${(form.modelId)!}";m]
+        [#if (m.nodeModel.id)??]
+        	[#assign modelId = "${(m.nodeModel.id)!}"/]
+        [#else]
+        	[#assign modelId = "${(form.modelId)!}"/]
+        [/#if]
+        [/@ec_model]
+        <button class="btn btn-small btn-primary pull-right" onclick="loadFile('${path}/management/content/model/fields?modelId=${(modelId)!}');" >
+            <i class="icon-reply"></i>Return Previous
+        </button>
+        </h1>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span12">
+		  <div class="widget-box">
+				<div class="widget-header widget-header-flat">
+			    	<div class="widget-toolbar">
+			        [@ec_privilege_check uri="${current_uri}/import"]
+			            <button class="btn btn-small btn-success" onclick="batchConfirm(dataTable.tableID,'${path}${AUTH_MENU.privilege.uri!}?modelId=${(form.modelId)!}','Please choose fields to be imported!','These fields would be import in model');" >
+			                <i class="icon-plus"></i>${AUTH_MENU.name}
+			            </button>
+			        [/@ec_privilege_check]
+			         </div>
+			     </div>
+			     <div class="widget-body">
+			         <div class="widget-main">
+			             <table data-modelId="${(form.modelId)!}" id="fieldsTable" class="table table-striped table-bordered table-hover">
+			                 <thead>
+			                     <tr>
+			                         <th class="center"><label>
+			                             <input type="checkbox" onchange="checkAll(this);"/>
+			                             <span class="lbl"></span></label></th>
+			                         <th>Field Name</th>
+			                         <th class="hidden-phone">Code</th>
+			                     </tr>
+			                 </thead>
+			
+			             </table>
+			         </div>
+			     </div>
+			</div>
+    </div>
+</div>
+</div>
+<script type="text/javascript">
+	$(function() {
+		dataTable.initTable({
+			"tableID":"#fieldsTable",
+			//对每列设置排序规则
+			//列的长度必须对应，如果表格有7列，必须写7个，否则会报错
+			"columns": [
+			            {
+			    		  "data":"id",
+			    		  "sortable": false
+			            },
+			            {
+			    		  "data":"fieldName"
+			            },
+			            {
+			    		  "data":"fieldCode"
+			            }
+	        ],
+	      "url": "${path}${current_uri}?modelId=${(form.modelId)!}" 
+		});
+	})
+</script>

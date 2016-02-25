@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <!-- Meta, title, CSS, favicons, etc. -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Bootstrap - 简洁、直观、强悍、移动设备优先的前端开发框架，让web开发更迅速、简单。">
+        <meta name="keywords" content="HTML, CSS, JS, JavaScript, framework, bootstrap, front-end, frontend, web development">
+        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+        <meta name="author" content="王赛 <wangsai@bootcss.com>">
+
+        <title> GRCaller Lib Beta V1 说明文档 </title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body data-spy="scroll" data-target="#navbar">
+        <!-- Docs page layout -->
+        <div class="bs-docs-header" id="content" tabindex="-1">
+            <div class="container">
+                <h1>GRCaller Lib Beta V1.1 说明文档</h1>
+                <p>
+                    作者：jiepeng
+                </p>
+                <p>
+                    文档编写时间：2015.04.29
+                </p>
+                <p class="text-danger">
+                    文档更新时间：2015.07.01
+                </p>
+                <p class="bg-danger" style="padding: 5px;">
+                    2015.07.01更新内容：<br/>
+                    <ul class="bg-danger">
+                        <li>
+                            serverConf:从init方法中移除，并且作为配置方法单独拿出来，在init方法执行前进行配置方可生效。详见<a href="#sc">GRCaller.serverConf(sc)方法</a>
+                        </li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+
+        <div class="container bs-docs-container">
+
+            <div class="row">
+                <div class="col-md-8" role="main">
+                    <div class="bs-docs-section">
+                        <h1 id="#lib-import" class="page-header">库的导入</h1>
+                        <p>
+                            GRCaller Lib提供了一组拨打网络电话的功能
+                        </p>
+                        <h1 id="#lib-import" class="page-header">进入demo页面</h1>
+                        <p>
+                            <a href="demo.html" target="_blank">点击进入demo</a>
+                        </p>
+
+                        <h2 id="import-js">导入JS库</h2>
+                        <p>
+                            将gnumCall根目录下的grcaller.js文件在页面中引入即可
+                        </p>
+                        <h1 id="sc" class="page-header">服务器配置</h1>
+                        <p>
+                            如有服务器环境改变，需修改此处配置方可生效
+                        </p>
+                        <h2 id="sc-method">GRCaller.serverConf(sc)方法</h2>
+                        <p>
+                            <strong class="text-danger">
+                            如有新的服务器环境配置，需要在init方法执行前配置
+                           </strong>
+                                
+                        </p>
+                        <h3 id="sc-use-method">使用方式</h3>
+                        <p>
+                            <pre class="text-left">
+$(function(){
+    GRCaller.serverConf({
+        webRTC : {
+            serverIP : "flash1.gnum.com",
+            serverPort : "35066"
+        },
+        flash : {
+            rtmpURL : "rtmp://203.117.19.4:1935/phone;rtmps://rtmps1.gnum.com:443/phone"
+        }
+    });
+})
+                        </pre>
+                        </p>
+                        <h3 id="sc-attr-desc">属性说明</h3>
+
+                        <ul>
+                            <li>
+                                <p>
+                                    webRTC：使用webRTC方式时此处配置生效
+                                    <h4>参数:</h4>
+                                    <ul>
+                                        <li>
+                                            serverIP:webRTC的服务器地址
+                                        </li>
+                                        <li>
+                                            serverPort:webRTC的服务器端口
+                                        </li>
+                                    </ul>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    flash：使用flash方式时此处配置生效
+                                    <h4>参数:</h4>
+                                    <ul>
+                                        <li>
+                                            rtmpURL:FLASH服务器地址
+                                        </li>
+                                    </ul>
+                                </p>
+                            </li>
+                        </ul>
+                        <h1 id="init" class="page-header">初始化</h1>
+                        <p>
+                            引入grcaller.js文件后，需要进行初始化调用
+                        </p>
+                        <h2 id="init-method">GRCaller.init()方法</h2>
+                        <p>
+                            <strong class="text-danger">
+                            必须使用init方法才能使用grcaller，当初始化完成后，handler会自动绑定拨号和挂断电话事件，开发时，若无特殊需求，可以无需关注如何拨号和挂断，只关注界面UI实现和消息展示
+                           </strong>
+                                
+                        </p>
+                        <h3 id="init-use-method">使用方式</h3>
+                        <p>
+                            <pre>
+$(function(){
+    GRCaller.init({
+        libBase : "lib",
+        handler : "#makecall",
+        dataAttr : "data-gnumcall", //元素属性
+        usernameAttr : "data-gnumUsername", //主叫用户名属性
+        passwordAttr : "data-gnumPassword", //密码属性
+        muteHandler:"#mute",
+        calltype:"auto",
+        preMakecallEvent : function(e) {
+        }, //事件执行前预处理
+        afterMakecallEvent : function(e) {
+            $(e).text("hang up").removeClass('btn-success').addClass('btn-danger');
+        },
+        preEndcallEvent : function(e) {
+        }, //事件执行前预处理
+        afterEndcallEvent : function(e) {
+            //GRCaller.timer.stop();
+            $(e).text("Make Call").removeClass('btn-danger').addClass('btn-success');
+        }
+    });
+})
+                        </pre>
+                        </p>
+                        <h3 id="init-attr-desc">属性说明</h3>
+
+                        <ul>
+                            <li>
+                                <p>
+                                    libBase：插件需要引用的库下面的lib，默认是"lib",需要修改为工程路径中的相对地址。例如："myproject/gnumCall/lib"
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    handler：处理拨打电话的选择器，一般是一个按钮或者连接。例如："#makecall"
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    muteHandler：静音选择器。一般是一个按钮或者连接。例如："#mute"
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    dataAttr：被叫属性,默认为"data-gnumcall",一般放在handler元素上，例如:data-gnumcall="jiepeng"
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    usernameAttr：主叫用户名属性,默认为"data-gnumUsername",一般放在handler元素上，例如:ata-data-g="jiepeng"
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    passwordAttr：主叫密码属性,为一段加密串,默认为"data-gnumPassword",一般放在handler元素上，例如:data-gnumPassword="clQFF-Bpok_fN9IzFq_4TQ6Th76dTm"
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    calltype：呼叫方法,默认为"auto",可选参数"flashCall"和"webRTCCall"。如果为auto,grcaller会首先尝试使用webRTC,如果浏览器不支持，则会使用flashCall进行呼叫。
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    preMakecallEvent:function(e){}：拨号前置事件。当点击拨号按钮，还未进行拨号时触发
+                                    <h4>参数:</h4>
+                                    <ul>
+                                        <li>
+                                            webRTC.serverIP:webRTC的服务器地址
+                                        </li>
+                                        <li>
+                                            webRTC.serverPort:webRTC的服务器端口
+                                        </li>
+                                        <li>
+                                            flash.rtmpURL:FLASH服务器地址
+                                        </li>
+                                    </ul>
+                                </p>
+                            </li>
+                            
+                            <li>
+                                <p>
+                                    serverConf:服务器地址配置
+                                    <h4>参数:</h4>
+                                    <ul>
+                                        <li>
+                                            e:触发当前通话的元素
+                                        </li>
+                                    </ul>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    afterMakecallEvent:function(e){}：拨号后置事件。当点击拨号按钮，已经进行拨号后触发
+                                    <h4>参数:</h4>
+                                    <ul>
+                                        <li>
+                                            e:触发当前通话的元素
+                                        </li>
+                                    </ul>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    preEndcallEvent:function(e){}：挂断前置事件。当点拨号按钮，未挂断时触发
+                                    <h4>参数:</h4>
+                                    <ul>
+                                        <li>
+                                            e:触发当前通话的元素
+                                        </li>
+                                    </ul>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    afterEndcallEvent:function(e){}：挂断后置事件。当点拨号按钮，已经挂断后触发
+                                    <h4>参数:</h4>
+                                    <ul>
+                                        <li>
+                                            e:触发当前通话的元素
+                                        </li>
+                                    </ul>
+                                </p>
+                            </li>
+                        </ul>
+                        <h2 id="agent-callback">GRCaller.userAgentCallbacks()方法</h2>
+                        <h3 id="agent-use-method">使用方式</h3>
+                        <p>
+                            <pre>
+GRCaller.userAgentCallbacks({
+    onInit: function() {
+    },
+    /**
+     * 接到电话回调函数
+     */
+    onInvite : function() {
+    },
+    /**
+     * 发短信回调函数
+     */
+    onMessage : function() {
+    },
+    /**
+     * 注册失败回调函数
+     */
+    onRegistrationFailed : function(cause) {
+
+    },
+    /**
+     * 注销回调函数
+     */
+    onUnregistered : function(cause) {
+
+    },
+    /**
+     * 注册回调函数
+     */
+    onRegistered : function() {
+
+    },
+    /**
+     * 断开连接回调函数
+     */
+    onDisconnected : function() {
+
+    },
+    /**
+     * 连接成功回调函数
+     */
+    onConnected : function() {
+    }
+});
+                        </pre>
+                        </p>
+                        <h3 id="agent-attr-desc">属性说明</h3>
+
+                        <ul>
+                            <li>
+                                <p>
+                                    onInit:function(){}：客户端代理初始化完成后回调函数
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <code>
+                                        onInvite:function(){}(目前功能未实现)：收到来电时回调函数
+                                    </code>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    onRegistrationFailed:function(){}：客户端代理注册失败回调函数
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    onUnregistered:function(){}：客户端代理注销回调函数
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    onRegistered:function(){}：客户端代理注册回调函数
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    onDisconnected:function(){}：客户端代理断开连接回调函数
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    onConnected:function(){}：客户端代理连接成功回调函数，常用来做立即拨打电话
+                                </p>
+                            </li>
+                        </ul>
+                        <h2 id="session-callback">GRCaller.sessionCallbacks()方法</h2>
+                        <h3 id="session-use-method">使用方式</h3>
+                        <p>
+                            <pre>
+GRCaller.sessionCallbacks({
+    onConnecting : function(e) {
+    },
+    onProgress : function(response,e) {
+    },
+    onAccepted : function(data,e) {
+    },
+    onCancel : function(e) {
+    },
+    onHangup : function(request,e) {
+    },
+    onRejected : function(response,cause, e) {
+    },
+    onFailed : function(response,cause, e) {
+    },
+    onRefer : function(request,e) {
+    },
+    onDtmf : function(request,dtmf, e) {
+    },
+    onMuted : function(data,e) {
+    },
+    onUnmuted : function(data,e) {
+    }
+});
+                        </pre>
+                        </p>
+                        <h3 id="session-attr-desc">属性说明</h3>
+
+                        <ul>
+                            <li>
+                                <p>
+                                    onConnecting:function(e){}：按下拨打按钮，进行连接时回调函数
+                                    <h4>参数:</h4>
+                                    <ul>
+                                        <li>
+                                            e:触发当前通话的元素
+                                        </li>
+                                    </ul>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    onProgress:function(response,e){}：连接成功，进行拨号时回调函数
+                                    <h4>参数:</h4>
+                                    <ul>
+                                        <li>
+                                            response:服务响应信息
+                                        </li>
+                                        <li>
+                                            e:触发当前通话的元素
+                                        </li>
+                                    </ul>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    onAccepted:function(data,e){}：对方接通电话回调函数
+                                    <h4>参数:</h4>
+                                    <ul>
+                                        <li>
+                                            data:接通电话接受到的数据
+                                        </li>
+                                        <li>
+                                            e:触发当前通话的元素
+                                        </li>
+                                    </ul>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    onCancel:function(e){}：电话未接通，客户端主动挂掉电话回调函数
+                                    <h4>参数:</h4>
+                                    <ul>
+                                        <li>
+                                            e:触发当前通话的元素
+                                        </li>
+                                    </ul>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    onHangup:function(request,e){}：接通电话后，电话挂断回调函数
+                                    <h4>参数:</h4>
+                                    <ul>
+                                        <li>
+                                            request:服务器端响应的请求参数
+                                        </li>
+                                        <li>
+                                            e:触发当前通话的元素
+                                        </li>
+                                    </ul>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    onRejected:function(response,cause, e){}：被叫拒绝接通回调函数
+                                    <h4>参数:</h4>
+                                    <ul>
+                                        <li>
+                                            response:服务器端响应的请求参数
+                                        </li>
+                                        <li>
+                                            cause:挂断原因
+                                        </li>
+                                        <li>
+                                            e:触发当前通话的元素
+                                        </li>
+                                    </ul>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    onFailed:function(response,cause, e){}：拨号失败回调函数
+                                    <h4>参数:</h4>
+                                    <ul>
+                                        <li>
+                                            response:服务器端响应的请求参数
+                                        </li>
+                                        <li>
+                                            cause:挂断原因
+                                        </li>
+                                        <li>
+                                            e:触发当前通话的元素
+                                        </li>
+                                    </ul>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <code>
+                                        onRefer:function(request,e){}(功能暂时未实现)：拨号失败回调函数
+                                        <h4>参数:</h4>
+                                        <ul>
+                                            <li>
+                                                request:服务器端请求参数
+                                            </li>
+                                            <li>
+                                                e:触发当前通话的元素
+                                            </li>
+                                        </ul>
+                                    </code>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <code>
+                                        onDtmf:function(request,dtmf, e){}(功能暂时未实现)：DTMF事件
+                                        <h4>参数:</h4>
+                                        <ul>
+                                            <li>
+                                                request:服务器端请求参数
+                                            </li>
+                                            <li>
+                                                dtmf:dtmf指令
+                                            </li>
+                                            <li>
+                                                e:触发当前通话的元素
+                                            </li>
+                                        </ul>
+                                    </code>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    onMuted:function(data,e){}：静音回调函数
+                                    <h4>参数:</h4>
+                                    <ul>
+                                        <li>
+                                            data:服务器端响应的数据
+                                        </li>
+                                        <li>
+                                            e:触发当前通话的元素
+                                        </li>
+                                    </ul>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    onUnmuted:function(data,e){}：取消静音回调函数
+                                    <h4>参数:</h4>
+                                    <ul>
+                                        <li>
+                                            data:服务器端响应的数据
+                                        </li>
+                                        <li>
+                                            e:触发当前通话的元素
+                                        </li>
+                                    </ul>
+                                </p>
+                            </li>
+                        </ul>
+                        <h2 id="makecall-title">GRCaller.makecall(callnumber, e)方法</h2>
+                        <p>当初始化完成后，才可使用，一般无需使用。当需要在初始化完成后，立即进行拨号可以使用</p>
+                        <h3 id="makecall-use-method">使用方式</h3>
+                        <p>
+                            <pre>
+                            GRCaller.makecall(callnumber, e);
+                        </pre>
+                        </p>
+                        <h3 id="makecall-params-desc">参数说明</h3>
+
+                        <ul>
+                            <li>
+                                <p>
+                                    callnumber：被叫号码或者callname
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    e：当前拨号按钮元素<code>一定要写对，否则不能正确处理拨号按钮事件</code>
+                                </p>
+                            </li>
+                        </ul>
+                        <h2 id="endcall-title">GRCaller.endcall(e)方法</h2>
+                        <p>当初始化完成后，才可使用，一般无需使用。当需要在初始化完成后，需要挂断电话可以使用</p>
+                        <h3 id="endcall-use-method">使用方式</h3>
+                        <p>
+                            <pre>
+                            GRCaller.endcall(e);
+                        </pre>
+                        </p>
+                        <h3 id="endcall-params-desc">参数说明</h3>
+
+                        <ul>
+                            <li>
+                                <p>
+                                    e：当前拨号按钮元素<code>一定要写对，否则不能正确处理拨号按钮事件</code>
+                                </p>
+                            </li>
+                        </ul>
+                        <h2 id="dtmf-title">GRCaller.dtmf(number)方法</h2>
+                        <p>当接通电话后，才可使用。发送dtmf指令给server，应用场景：一些语音菜单会用到</p>
+                        <h3 id="dtmf-use-method">使用方式</h3>
+                        <p>
+                            <pre>
+                            GRCaller.dtmf(number);
+                        </pre>
+                        </p>
+                        <h3 id="dtmf-params-desc">参数说明</h3>
+
+                        <ul>
+                            <li>
+                                <p>
+                                    numer：0～9数字
+                                </p>
+                            </li>
+                        </ul>
+                        <h2 id="debug-title">GRCaller.onDebug(msg,e)方法</h2>
+                        <p>可以直接使用，用来输出系统日志仅供调试使用</p>
+                        <h3 id="debug-use-method">使用方式</h3>
+                        <p>
+                            <pre>
+                            GRCaller.onDebug(msg,e);
+                        </pre>
+                        </p>
+                        <h3 id="debug-params-desc">参数说明</h3>
+
+                        <ul>
+                            <li>
+                                <p>
+                                    msg：需要打印的信息
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    e：默认输入到ID为log的元素里面，如果填写，会输出到此元素里面
+                                </p>
+                            </li>
+                        </ul>
+                        <h2 id="detect-title">GRCaller.detect对象</h2>
+                        <p>可以直接使用，主要一些检测功能</p>
+                        <h3 id="detect-use-method">使用方式及说明</h3>
+                        <ul>
+                            <li>
+                                <p>
+                                <b>返回浏览器版本，返回值：String</b>
+                                <pre>
+                                GRCaller.detect.browserVersion();
+                                </pre>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                <b>返回浏览器名称,返回值:String</b>
+                                <pre>
+                                GRCaller.detect.browserName();
+                                </pre>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                <b>返回浏览器是否支持webRTC,返回值：true/false</b>
+                                <pre>
+                                GRCaller.detect.isSupportWebRTC();
+                                </pre>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                <b>返回浏览器的flash版本,返回值：String</b>
+                                <pre>
+                                GRCaller.detect.flashVersion();
+                                </pre>
+                                </p>
+                            </li>
+                        </ul>
+                        <h2 id="timer-title">GRCaller.timer对象</h2>
+                        <p>需要电话接通后才可以使用，主要显示/取消计时器</p>
+                        <h3 id="timer-use-method">使用方式及说明</h3>
+                        <ul>
+                            <li>
+                                <p>
+                                <b>开始计时</b>
+                                <pre>
+                                GRCaller.timer.start(e);
+                                </pre>
+                                <b>参数</b>
+                                <ul>
+                                    <li>e:在指定的元素内部显示计时器</li>
+                                </ul>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                <b>停止计时</b>
+                                <pre>
+                                GRCaller.timer.stop();
+                                </pre>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4" role="complementary">
+                    <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm">
+                        <ul class="nav bs-docs-sidenav" id="navbar" role="tablist">
+                            <li>
+                                <a href="#lib-import">库的导入</a>
+                            </li>
+                            <li>
+                                <a href="#import-js">导入JS库</a>
+                            </li>
+                            <li>
+                                <a href="#init">初始化</a>
+                            </li>
+                            <li>
+                                <a href="#sc">GRCaller.serverConf(sc)方法<span class="label label-danger">Beta1.1</span></a>
+                                <ul>
+                                    <li>
+                                        <a href="#sc-use-method">使用方式</a>
+                                    </li>
+                                    <li>
+                                        <a href="#sc-attr-desc">属性说明</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#init-method">GRCaller.init()方法</a>
+                                <ul>
+                                    <li>
+                                        <a href="#init-use-method">使用方式</a>
+                                    </li>
+                                    <li>
+                                        <a href="#init-attr-desc">属性说明</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#agent-callback">GRCaller.userAgentCallbacks()方法</a>
+                                <ul>
+                                    <li>
+                                        <a href="#agent-use-method">使用方式</a>
+                                    </li>
+                                    <li>
+                                        <a href="#agent-attr-desc">属性说明</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#session-callback">GRCaller.sessionCallbacks()方法</a>
+                                <ul>
+                                    <li>
+                                        <a href="#session-use-method">使用方式</a>
+                                    </li>
+                                    <li>
+                                        <a href="#session-attr-desc">属性说明</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#makecall-title">GRCaller.makecall(callnumber, e)方法</a>
+                                <ul>
+                                    <li>
+                                        <a href="#makecall-use-method">使用方式</a>
+                                    </li>
+                                    <li>
+                                        <a href="#makecall-params-desc">参数说明</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#endcall-title">GRCaller.endcall(e)方法</a>
+                                <ul>
+                                    <li>
+                                        <a href="#endcall-use-method">使用方式</a>
+                                    </li>
+                                    <li>
+                                        <a href="#endcall-params-desc">参数说明</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#dtmf-title">GRCaller.dtmf(number)方法</a>
+                                <ul>
+                                    <li>
+                                        <a href="#dtmf-use-method">使用方式</a>
+                                    </li>
+                                    <li>
+                                        <a href="#dtmf-params-desc">参数说明</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#debug-title">GRCaller.onDebug(msg,e)方法</a>
+                                <ul>
+                                    <li>
+                                        <a href="#debug-use-method">使用方式</a>
+                                    </li>
+                                    <li>
+                                        <a href="#debug-params-desc">参数说明</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#detect-title">GRCaller.detect对象</a>
+                                <ul>
+                                    <li>
+                                        <a href="#detect-use-method">使用方式及说明</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#timer-title">GRCaller.timer对象</a>
+                                <ul>
+                                    <li>
+                                        <a href="#timer-use-method">使用方式及说明</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+
+        <script src="jquery-1.7.2.min.js"></script>
+        <script src="css/bootstrap.min.js"></script>
+    </body>
+</html>

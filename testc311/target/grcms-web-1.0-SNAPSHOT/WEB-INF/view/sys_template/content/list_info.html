@@ -1,0 +1,90 @@
+[@EC.breadcrumbs/]
+[@ec_node id="${(form.nodeId)!}";node]
+<div id="page-content" class="widget-box">
+	<div class="page-header position-relative">
+	       <h1>Info List
+	       <button class="btn btn-small btn-primary pull-right" onclick="loadFile('${path}/management/content/node/edit?id=${node.id!}','#EC-side-container');" >
+            <i class="icon-edit"></i>Edit Node
+        	</button>
+	       </h1>
+	</div>
+    <div class="widget-header widget-header-blue widget-header-flat wi1dget-header-large">
+        <h4 class="lighter">Info List</h4>
+        <div class="widget-toolbar">
+        	[#if node.hasContent]
+            [@ec_privilege_check uri="${current_uri}/add"]
+                <button class="btn btn-small btn-success" onclick="loadFile('${path}${AUTH_MENU.privilege.uri!}?nodeId=${node.id!}','#EC-side-container');" >
+                    <i class="icon-plus"></i>${AUTH_MENU.name}
+                </button>
+            [/@ec_privilege_check]
+            [@ec_privilege_check uri="${current_uri}/delete"]
+                <button class="btn btn-small btn-danger" onclick="batchConfirm(dataTable.tableID,'${path}${AUTH_MENU.privilege.uri!}',refreshTree)">
+                    <i class="icon-remove"></i>${AUTH_MENU.name}
+                </button>
+            [/@ec_privilege_check]
+                <button class="btn btn-small btn-info" onclick="dataTable.refresh();">
+                    <i class="icon-refresh"></i>Refresh
+                </button>
+            [/#if]
+        </div>
+    </div>
+    <div class="widget-body">
+        <div class="widget-main">
+        	[#if node.hasContent]
+            <table id="infoTable" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="center"><label>
+                            <input type="checkbox" onchange="checkAll(this);"/>
+                            <span class="lbl"></span></label></th>
+                        <th>Name</th>
+                        <th>Group</th>
+                        <th>URI</th>
+                        <th>Node Name</th>
+                        <th>Operation</th>
+                    </tr>
+                </thead>
+            </table>
+            [#else]
+            <p>Not open conten model or do not define content model!</p>
+            [/#if]
+        </div>
+    </div>
+</div>
+[/@ec_node]
+ <script type="text/javascript">
+$(function() {
+	dataTable.initTable({
+		"tableID":"#infoTable",
+		//对每列设置排序规则
+		//列的长度必须对应，如果表格有7列，必须写7个，否则会报错
+		"columns": [
+		            {
+		    		  "data":"id",
+		    		  "sortable": false
+		            },
+		            {
+		    		  "data":"name"
+		    		  ,"sortable": false
+		            },
+		            {
+		    		  "data":"group"
+		    		  ,"sortable": false
+		            },
+		            {
+		    		  "data":"uri"
+		    		  ,"sortable": false
+		            },
+		            {
+		    		  "data":"nodeName"
+		    		  ,"sortable": false
+		            },
+		            {
+		    		  "data":"links",
+		    		  "sortable": false
+		            }
+        ],
+      "url": "${path}${current_uri}?nodeId=${(form.nodeId)!}"
+	});
+})
+</script>

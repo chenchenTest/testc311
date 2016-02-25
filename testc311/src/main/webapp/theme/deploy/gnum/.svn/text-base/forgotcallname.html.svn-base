@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/forgotcallname.css">
+    <link rel="stylesheet" type="text/css" href="../css/head.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/foot.css"/>
+    <script type="text/javascript" src="../js/foot.js"></script>
+    <title>Forgot Callname</title>
+</head>
+<body>
+[#include "common/google-tag-manager.html" /]
+<!--head begin-->
+<div id="head"></div>
+<!--head end-->
+    <div class="container-fluid signup-area">
+        <div class="row">
+            <div class="col-md-8 col-lg-8 center-grid">
+            <span class="forgotcallnametitle">Forgot Callname</span>
+            <hr>
+            <div class="row">
+              <div class="col-md-6 col-lg-4 center-grid">
+                <form class="signup-form" action="#" method="post">
+                    <div class="form-group">
+                        <label for="email" class="sr-only">Email</label>
+                        <input type="text" class="form-control forgotemail" id="email" name="email" placeholder="Email">
+                    </div>
+                    
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default btn-custom btn-color-a signin-button">Send</button>
+                    </div>
+                </form>
+              </div>
+            </div>
+                <div class="col-md-12 col-lg-12 text-center">
+                 
+                </div>
+            </div>
+        </div>
+    </div>
+<!--foot begin-->
+<div class="foot"></div>
+<!--foot end-->
+    <script type="text/javascript" src="../plugins/jquery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../plugins/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+<script>
+    $.get("common/head.html",function(data){
+        $("#head").html(data);
+        var headHeight=$("#head").height();
+        var indexHeight=$(window).height();
+        var width=window.screen.width;
+        var c_Width=$(document.body)[0].clientWidth;
+        if(width<768&&c_Width<768){
+            $(".top").css({
+                height:(indexHeight-headHeight)+"px",
+                backgroundImage:"url(../images/index/banner_01.jpg)",
+                backgroundSize:"100% 100%"
+            })
+        }
+    })
+    $.get("common/foot.html",function(data){
+        $(".foot").html(data)
+    })
+</script>
+</body>
+
+</html>

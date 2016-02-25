@@ -1,0 +1,74 @@
+[@api_user 
+	order="${(form.order)!}"
+	sort="${(form.sort)!}"
+	queryType = "list"
+	filter="${form.filter!}"
+	view = "${form.view!}"
+	pagesize = "${form.rows!1}"
+	pageNum = "${form.page!1}"
+;list]
+{"total":${count!0},"rows":[
+[#if list?? && (list?size > 0)]
+[#list list as d]
+	[#if (d.policys)?? && (d.policys?size > 0)]
+		[#assign policy=""/]
+		[#list d.policys as p ]
+			[#if policy !=""]
+			[#assign policy="${policy}|${p.name}"/]
+			[#else]
+			[#assign policy="${p.name}"/]
+			[/#if]
+		[/#list]
+	[/#if]
+    {
+    "ids":"${d.id!}"
+    ,"id":"${d.id!}"
+    ,"userType":"${d.userType!}"
+    ,"APIKey":"${d.APIKey!}"
+    ,"secretKey":"${d.secretKey!}"
+    ,"providerId":"${d.providerId!}"
+    ,"policy":"${policy!}"
+    ,"links":[
+    	[@ec_privilege_check uri="/api/security/user/edit"]
+    	{
+	    	"title":"${AUTH_MENU.name}"
+	    	,"url":"${path}${AUTH_MENU.uri}?apiUserId=${d.id!}"
+	    	,"table":"#apiUserDataTable"
+	    	,"func":"openDialog"
+	    	,"cls":"EC-btn-edit"
+	    	,"width":"750"
+    	},
+    	[/@ec_privilege_check]
+    	[#if d.userType = "server"]
+    	[@ec_privilege_check uri="/api/security/user/setting"]
+    	{
+	    	"title":"${AUTH_MENU.name}"
+	    	,"url":"${path}${AUTH_MENU.uri}?apiUserId=${d.id!}"
+	    	,"table":"#apiUserDataTable"
+	    	,"func":"openDialog"
+	    	,"cls":"EC-btn-add"
+	    	,"width":"800"
+    	},
+    	[/@ec_privilege_check]
+    	[/#if]
+    	
+    	[@ec_privilege_check uri="/api/security/user/delete"]
+    	{
+	    	"title":"${AUTH_MENU.name}"
+	    	,"url":"${path}${AUTH_MENU.uri}?id=${d.id!}"
+	    	,"table":"#apiUserDataTable"
+	    	,"func":"remote"
+	    	,"cls":"EC-btn-remove"
+	    	,"content":"Do you want to delete this policy?If delete it can not be found forever!"
+    	},
+    	[/@ec_privilege_check]
+    	{}
+    	]
+    }
+    [#if d_index != (list?size - 1)]
+    ,
+    [/#if]
+[/#list]
+[/#if]
+]}
+[/@api_user]

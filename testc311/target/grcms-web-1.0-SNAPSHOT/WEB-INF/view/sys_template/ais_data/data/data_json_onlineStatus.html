@@ -1,0 +1,30 @@
+[@ec_onlineStatus
+	queryType = "list"
+	filter = "${form.filter!}"
+	pageNum = "${(form.page)!1}"  
+	pagesize = "${(form.rows)!}" 
+	order = "${form.order!'desc'}"
+	sort = "${form.sort!}"
+	search = "${searchValue!}"
+	pageable=1
+;list]
+{
+"recordsFiltered":${count!0} ,
+"recordsTotal":${count!0} ,
+"data":[
+[#if list?? && (list?size > 0)]
+[#list list as r]
+    {
+     "no":${r_index+1!}
+    ,"loginId":"${r.loginId!}"
+    ,"onlineStatus":"${r.onlineStatus}"
+    ,"lastUpdateLoginTime":"${r.lastUpdateLoginTime}",
+    "nothing":"<lable style='display:none'></lable>"
+    }
+    [#if r_index != (list?size - 1)]
+    ,
+    [/#if]
+[/#list]
+[/#if]
+]}
+[/@ec_onlineStatus]

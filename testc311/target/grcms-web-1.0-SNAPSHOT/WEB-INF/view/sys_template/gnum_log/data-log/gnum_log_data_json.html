@@ -1,0 +1,39 @@
+[@ec_gnum_log_detail 
+	queryType = "list"
+	order = "${gnumLogForm.order!'desc'}"
+	sort = "${gnumLogForm.sort!}"
+	filter = "${gnumLogForm.filter!}"
+	logId="${gnumLogForm.logId!}"  
+	callId="${(gnumLogForm.callId)!}" 
+	callee="${(gnumLogForm.callee)!}" 
+	remoteIP="${(gnumLogForm.remoteIP)!}" 
+	browser="${(gnumLogForm.browser)!}" 
+	callStartTime="${(gnumLogForm.callStartTime)!}"  
+	pageNum="${(gnumLogForm.page)!1}"  
+	pagesize="${(gnumLogForm.rows)!}"
+	;list]
+	{"total":${count},"rows":[
+	[#if list?? && (list?size > 0)]
+	[#list list as logContent]
+	    {"id":"${logContent.id!}"
+	    ,"aid":"${logContent.id!}"
+	    ,"status":"${logContent.status!}"
+	    ,"callId":"${(logContent.callId?trim)!}"
+	    ,"osName":"${(logContent.osName?trim)!}"
+	    ,"browser":"${(logContent.browser?trim)!}"
+	    ,"browserVersion":"${(logContent.browserVersion?trim)!}"
+	    ,"flashVersion":"${(logContent.flashVersion?trim)!}"
+	    ,"remoteIP":"${(logContent.remoteIP?trim)!}"
+	    ,"callee":"${(logContent.callee?trim)!}"
+	    ,"callStartTime":"${(logContent.callStartTime?trim)!}"
+	    ,"statusCode":"${(logContent.statusCode?trim)!}"
+	    ,"codeDesc":"[@EC.ec_gnum_log_status code='${(logContent.statusCode?trim)!}'/]"
+	    ,"success":"[@EC.ec_gnum_log code='${(logContent.statusCode?trim)!}'/]"
+	    }
+	    [#if logContent_index != (list?size - 1)]
+	    ,
+	    [/#if]
+	[/#list]
+	[/#if]
+	]}
+[/@ec_gnum_log_detail]

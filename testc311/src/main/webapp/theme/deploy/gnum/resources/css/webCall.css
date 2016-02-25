@@ -1,0 +1,610 @@
+/*public part begin*/
+*{
+    margin:0px;
+    padding:0px;
+}
+html{
+    font-size:62.5%;
+}
+body{
+    font-family: "Lato-Regular";
+    word-break: break-all;
+}
+ul{
+    list-style-type: none;
+}
+a,img{
+    -webkit-transition: all 0.3s;   /* Safari and Chrome */
+    -moz-transition: all 0.3s;     /* Firefox */
+    -ms-transition: all 0.3s;      /*ie内核*/
+    -o-transition: all 0.3s;     /* Opera */
+    transition: all 0.3s;
+}
+
+
+.center{
+    width:100%;
+    height:1085px;
+    background: url("../images/calling/bg_dashboard.jpg") center  no-repeat ;
+    background-size: cover;
+    position:relative;
+    padding-top: 310px;
+}
+
+.leaveNumber,.missCall,.pcSetting,.networkProblem{
+    margin-top:200px;
+    border-radius:8px;
+}
+.closeRow{
+    text-align: right;
+}
+.closeRow .closed,.keyboardCon .closeKeyboard{
+    opacity: 1;
+    margin:20px 20px 0 0 ;
+    cursor:pointer;
+}
+/*public part end*/
+
+/**----------------------分割线-------------------------**/
+
+/*head  begin*/
+.head{
+    font-family: "Lato-Regular";
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border: none;
+    margin-bottom: 0;
+    background-color: transparent;
+}
+.head .logo{
+    position: relative;
+    top: -2rem;
+    left:20px;
+}
+.head .navbar-collapse{
+    border: none;
+}
+.head .navbar-right li a{
+    font-size:1.6rem;
+    color:#fff;
+}
+/*mobile screen begin*/
+@media screen and (max-width: 768px){
+    .head{
+        height: auto;
+        padding-bottom: 0;
+    }
+    .head .logo{
+        width: 30px;
+        top: -0.8rem;
+    }
+    .navbar-nav{
+        margin-bottom: 0;
+    }
+    .head .navbar-right li{
+        background-color: #2FCBC7;
+        text-align: center;
+        height: 7rem;
+    }
+    .head .navbar-right li a{
+        color: #ffffff;
+        position: relative;
+        top: 1.5rem;
+    }
+    .head .navbar-right li:hover,.head .navbar-right li a:hover{
+        background-color: #18B7B3;
+        color: #ffffff;
+    }
+    .head .navbar-right .sign_up,.head .navbar-right .sign_in,.head .navbar-right .signed{
+        display: none;
+    }
+}
+/*mobile screen End*/
+
+/*web screen begin*/
+@media screen and (min-width: 768px){
+    .head .navbar-right{
+        margin-right: 22px;
+    }
+    .nav>li>a{
+        padding:10px 27px
+    }
+    .head .navbar-right li a:hover{
+        color: #00BDB6;
+    }
+    .head ul.navbar-right li.sign_up,.head ul.navbar-right li.sign_in{
+        font-family: "lato-bold";
+        font-size: 1.6rem;
+        width: 136px;
+        height:46px;
+        border: 1px solid #ffffff;
+        border-radius: 4px;
+    }
+    .head ul.navbar-right li.sign_up{
+        margin-left: 45px;
+        margin-right: 20px;
+    }
+    .head ul.navbar-right li.sign_up:hover,.head ul.navbar-right li.sign_in:hover{
+        background-color: #2dcbc7;
+        border-color: #2FCBC7;
+    }
+    .head ul.navbar-right li.sign_up a:hover,.head ul.navbar-right li.sign_in a:hover{
+        color: #ffffff;
+    }
+}
+/*head end*/
+
+
+
+/*readytocall begin*/
+.dialing{
+    position:relative;
+    min-height:25em;
+}
+
+/*readytocall end */
+
+/*dailing begin*/
+.headCon{
+    height:24.0625em;
+    width:24.0625em;
+    /*transform:scale(1);*/
+    border-radius: 100%;
+    /*background: radial-gradient(rgba(64,200,209, 0.02) 0%,  rgba(64,200,209, 0.2) 50%, rgba(64,200,209, 0.4) 75%, rgba(64,200,209, 0.9) 85%,rgba(64,200,209,1) 90%,rgba(64,200,209, 1) 100%);*/
+   /* position: absolute;
+    top:250px;
+    left:calc(50% - 12.03125em);*/
+}
+
+.headCon .headImg{
+    width:7.5em;
+    height:7.5em;
+    display: block;
+    position: relative;
+}
+.headCon p{
+    margin-top: 11px;
+}
+.headCon p span{
+    display:block;
+    color:#fff;
+}
+.headCon .callName{
+    font-family:"lato-light";
+    font-size:3.6rem;
+    text-align: center;
+
+}
+.headCon .callName+span{
+    font-family: "lato-regular";
+    font-size:1.6rem;
+    margin-top:9px;
+}
+.headCon em{
+    font-family: "lato-lightitalic";
+    font-size:2rem;
+    color:#00f2ff;
+    display: block;
+    width:100%;
+    text-align: center;
+    margin-top: 30px;
+}
+.headCon .divicer{
+    margin-top: 35px;
+}
+
+.portrait{
+    width:32.25em;
+    height:32.25em;
+    position: absolute;
+    top:-172px;
+    left: 50%;
+    margin-left: -16.125em;
+    border-radius: 100%;
+    -o-transition:all 3.5s;
+    -moz-transition:all 3.5s;
+    -webkit-transition:all 3.5s;
+    transition:all 3.5s;
+    -o-transform:scale(0.2);
+    -moz-transform: scale(0.2);
+    -webkit-transform:scale(0.2);
+    -ms-transform:scale(0.2);
+    transform:scale(0.2);
+}
+.halo{
+    -webkit-animation:scales 3.5s infinite;
+    -moz-animation: scales 3.5s infinite;
+    -o-animation: scales 3.5s infinite;
+    animation:scales 3.5s infinite;
+}
+
+
+.middle{
+    -webkit-animation:scales 3.5s 1.5s infinite ;
+    -moz-animation:scales 3.5s 1.5s infinite ;
+    -o-animation:scales 3.5s 1.5s infinite ;
+    animation:scales 3.5s 1.5s infinite ;
+}
+
+@-webkit-keyframes scales { /* Safari 和 Chrome */
+     0%{
+		opacity:1;
+	}
+	65%{
+		opacity:0.95;
+	}
+   	100%{
+        -webkit-transform:scale(1);
+		opacity:0.05;
+    }
+}
+@-moz-keyframes scales { /*Firefox*/
+    0%{
+		opacity:1;
+	}
+	65%{
+		opacity:0.95;
+	}
+   	100%{
+        transform:scale(1);
+		opacity:0.05;
+    }
+}
+
+@-o-keyframes scales{ /*opera*/
+    0%{
+		opacity:1;
+	}
+	65%{
+		opacity:0.95;
+
+	}
+   	100%{
+        -o-transform:scale(1);
+		opacity:0.05;
+    }
+}
+
+.button{
+    border-radius: 10px;
+    cursor: pointer;
+    height:65px;
+   /* position:relative;
+    top:280px;*/
+}
+/*.button>div{
+    position:relative;
+    left:calc(50% - 150px);
+}*/
+.button .sound{
+    width:25px;
+    height:60px;
+    border:none;
+    outline:none;
+    background: url("../images/calling/mute_def.png") center no-repeat;
+}
+.button .mute{
+    background: url("../images/calling/mute_rollover.png") center no-repeat;
+}
+.button .unmute{
+    background: url("../images/calling/mute_def.png") center no-repeat;
+}
+.button .call{
+    width:142px;
+    height:60px;
+    border:none;
+    outline:none;
+    border-radius: 35px;
+    margin:0 40px;
+    background:url("../images/calling/call_btn_ds.png") center no-repeat #fff;
+}
+.button .keypad{
+    width:28px;
+    height:60px;
+    border:none;
+    outline:none;
+    background: url("../images/calling/keypad_def.png")center no-repeat;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/*dailing end */
+
+
+
+/*leaveNumber begin*/
+.leaveNumber,.missCall{
+    padding:0px;
+    width:430px;
+    height:440px;
+    background: #0CBDB7;
+    margin-top:200px;
+    border-radius:8px;
+    display: none;
+}
+.leaveNumber-center,.missCall-center {
+    margin-top:60px;
+    width:320px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+}
+.leaveNumber-center h1,.missCall-center h1{
+    font-family: "lato-light";
+    font-size:3.7rem;
+    color:#fff;
+}
+.leaveNumber-center p,.missCall-center p{
+    margin:30px 0 53px;
+    font-family: "lato-regular";
+    font-size: 1.6rem;
+    color:#fff;
+    word-break: normal;
+}
+.leaveNumber-bottom,.missCall-bottom{
+    height:173px;
+    width:100%;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background: #fff;
+}
+.leaveNumber-bottom .bottomCon,.missCall-bottom .bottomCon{
+    position:relative;
+    top:64px;
+    padding:0 30px;
+}
+.bottomCon .content{
+    width:60px;
+    height:40px;
+    color:#fff;
+    font-family: "lato-light";
+    margin-right:2px;
+    padding-left:15px;
+    border:1px solid #ccc;
+    background: #8A8A8A;
+}
+.bottomCon .dropdown{
+    width:40px;
+    height:40px;
+    color:#fff;
+    background: #2DCBC7;
+    border-top-left-radius:5px;
+    border-bottom-left-radius:5px;
+    display:inline-block;
+    vertical-align:middle;
+    text-align:center;
+    cursor:pointer;
+    margin-right:62px;
+}
+.bottomCon .dropdown-menu{
+    width:100px;
+    min-width:100px;
+}
+.bottomCon input{
+    width:144px;
+    height:40px;
+    padding-left:20px;
+    margin-right:2px;
+}
+.bottomCon button{
+    width:114px;
+    height:40px;
+    border:none;
+    background: #14E9E3;
+    color:#fff;
+}
+.bottomCon select,.bottomCon input,.bottomCon button{
+    outline:none;
+}
+/*leaveNumber end*/
+
+
+/*pc setting begin*/
+.pcSetting{
+    padding:0;
+    width:430px;
+    height:550px;
+    text-align: center;
+    background:#0CBDB7;
+    display:none;
+    position:relative;
+}
+.pcSetting-center{
+    margin-top: 3px;
+}
+.pcSetting-center h1{
+    color:#fff;
+    font-family: "lato-light";
+    font-size:3.7rem;
+    margin-bottom:62px;
+}
+.pcSetting-center img{
+    display: block;
+    margin:0 auto;
+}
+.pcSetting-center ul{
+    display: inline-block;
+}
+.pcSetting-center .list {
+    text-align: left;
+    position:absolute;
+    bottom:50px;
+    font-size:1.4rem;
+}
+.list ul li{
+    font-family: "lato-regular";
+    font-size: 1.4rem;
+    display: block;
+    margin-top:20px;
+}
+.list .left{
+    color:#fff;
+}
+.list .left li{
+    margin-left:46px;
+    padding-left:28px;
+    background: url("../images/calling/checked_small.png") left no-repeat;
+}
+.list .left li:first-child{
+    background: none;
+}
+.list .right {
+    color:#034c44;
+}
+.list .right li{
+    padding-left:50px;
+}
+
+/*pc setting end */
+
+
+/*networkProblem-center begin*/
+.networkProblem{
+    display: none;
+    width:430px;
+    height:550px;
+    text-align: center;
+    background:#F25858;
+    position:relative;
+}
+.networkProblem .closeRow{
+    height:2.5em;
+}
+.networkProblem-center{
+    text-align: center;
+}
+.networkProblem-center h1{
+    color:#fff;
+    font-family: "lato-light";
+    font-size:3.7rem;
+    margin-bottom:35px;
+}
+.networkProblem-center img{
+    display:block;
+    margin:0 auto;
+}
+.networkProblem-center p{
+    width:100%;
+    position:absolute;
+    bottom:64px;
+    left:0;
+    margin:0 auto;
+    font-family: "lato-light";
+    font-size:1.5rem;
+    color:#fff;
+}
+/*networkProblem-center end*/
+
+
+/*shelter begin*/
+.shelter{
+    width:100%;
+    height:100%;
+    position:fixed;
+    left:0;
+    top:0;
+    background: rgba(0,0,0,0.3);
+    display:none;
+    z-index: 20;
+}
+.shelter .keyboardCon{
+    width:320px;
+    height:300px;
+    padding:0px;
+    position:absolute;
+    top:35%;
+    
+}
+
+.keyboardCon>.keyWord,.keyboardCon>.closeRow{
+    padding:0;
+    margin:0;
+    height:50px;
+    width:100%;
+    border:none;
+    outline:none;
+}
+.keyboardCon>.closeRow {
+    background:#fff;
+}
+.keyboardCon .closeKeyboard{
+    margin:10px 20px 0 0;
+}
+.keyboardCon>.keyWord{
+    margin-top:-3px;
+    padding-left:20px;
+    background: #383838;
+    color:#00FFF6;
+    font-family: "lato-light";
+    font-style:italic;
+    font-size:2.3rem;
+    line-height: 2.5;
+}
+.keyboardCon table{
+    background: #fff;
+}
+.keyboardCon tr{
+    height:50px;
+}
+.keyboardCon tr td{
+    margin:0px;
+    padding:0px;
+    width:106px;
+    font-family:"lato-light"
+    font-size:2.4rem;
+    text-align: center;
+    color:#717C81;
+}
+.keyboardCon td p{
+    margin:0px;
+    font-family: "lato-regular";
+    font-size:1rem;
+    color:#a8b5bb;
+}
+.keyboardCon tr:last-child tr{
+    height:30px;
+    padding-top:20px;
+}
+.keyboardCon button:hover,.keyboardCon td:hover,.keyboardCon td:hover button{
+    background:#00BDB6;
+    color:#fff;
+}
+.keyboardCon button{
+    width:100%;
+    height:100%;
+    border:none;
+    outline:none;
+    background: #fff;
+}
+/*shelter end*/
+
+
+/**help begin **/
+.help{
+    padding:0px;
+    position:absolute;
+    bottom:5%;
+}
+.help p{
+    color:#fff;
+    font-size:1.5rem;
+    text-align: center;
+    margin:0;
+
+}
+.help a{
+    cursor:pointer;
+    color:#00FFF3;
+    text-decoration: underline;
+    font-weight:bold;
+}
+.container .webcall-modal{
+    position: absolute;
+    margin-left: 10%;
+    width: 660px;
+    top: 0px;
+}
+/**help end **/

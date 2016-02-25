@@ -1,0 +1,207 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-3 col-lg-3">
+			<div class="logo">
+				<a href="${path}/"><img src="${res}/images/logo.png" class="img-responsive" alt="" /></a>
+			</div>
+		</div>
+		<div class="col-md-9 col-lg-9">
+			<div class="navbar text-right">
+				<a href="#" class="btn btn-info" data-toggle="modal" data-target="#registerModal">Sign Up</a>
+				<a href="${path}/room/" class="btn btn-primary"  >Sign In</a>
+				<!-- data-toggle="modal" data-target="#loginModal" -->
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 col-lg-12">
+			<div class="head-nav">
+					<span class="menu"> </span>
+					[#if current_uri == "/"]
+						[#assign homeOn='class="active"']
+					[#elseif current_uri == "/products"]
+						[#assign proOn='class="active"']
+					[#elseif current_uri == "/services"]
+						[#assign SerOn='class="active"']
+					[#elseif current_uri == "/contact"]
+						[#assign ConOn='class="active"']
+					[/#if]
+					
+					<ul>
+						<li ${homeOn!}><a href="${path}/">Home</a></li>
+						<li ${proOn!}><a href="${path}/products">Products</a></li>
+						<li ${SerOn!}><a href="${path}/services">Services</a></li>
+						<li ${ConOn!}><a href="${path}/contact">Contact</a></li>
+						<li><a href="${path}/management/authorization">Backend Login</a></li>
+						<div class="clearfix"></div>
+					</ul>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix"> </div>
+</div>
+
+	<div class="modal" id="registerModal" data-backdrop="static">
+		<div class="modal-dialog">
+			<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        	<h4 class="modal-title">Personal Information</h4>
+			</div>
+	        <form id="memberRegisterForm" action="${path}/member/register" method="post">
+		    <input type="hidden" name="strategy" value="LDAP"/>
+			<div class="modal-body">
+		        <div class="row">
+		        	<div class="col-md-6 col-lg-6"> 
+			          <div class="form-group">
+					    <label for="accountType">Account Type<span class="text-danger">*</span></label>
+					    <select name="accountType" class="form-control">
+					    	<option value="">Select Account Type</option>
+					    	<option value="PERSONAL">Personal</option>
+					    	<option value="BUSINESS">Business</option>
+					    </select>
+					  </div>
+		        	</div>
+		        </div>
+		        <div class="row">
+		        	<div class="col-md-6 col-lg-6">
+			          <div class="form-group">
+					    <label for="firstname">First Name <span class="text-danger">*</span></label>
+					    <input type="text" name="firstname" class="form-control" id="firstname" placeholder="First Name" value="jiepeng">
+					  </div>
+		        	</div>
+		        	<div class="col-md-6 col-lg-6">
+			          <div class="form-group">
+					    <label for="lastname">Last Name <span class="text-danger">*</span></label>
+					    <input type="text" name="lastname" class="form-control" id="lastname" placeholder="Last Name" value="deng">
+					  </div>
+		        	</div>
+		        </div>
+		        <div class="row">
+		        	<div class="col-md-6 col-lg-6">
+			          <div class="form-group">
+					    <label for="email">Email Address <span class="text-danger">*</span></label>
+					    <input type="text" name="email" class="form-control" id="email" placeholder="Email Address" value="jiepeng@globalroam.com">
+					  </div>
+		        	</div>
+		        	<div class="col-md-6 col-lg-6">
+			          <div class="form-group">
+					    <label for="loginId">Login ID <span class="text-danger">*</span></label>
+					    <input type="text" name="loginId" class="form-control" id="loginId" placeholder="Login Id" value="jiepeng">
+					  </div>
+		        	</div>
+		        </div>
+		        <div class="row">
+		        	<div class="col-md-6 col-lg-6">
+			          <div class="form-group">
+					    <label for="password">Password  <span class="text-danger">*</span></label>
+					    <input type="password" name="password" class="form-control" id="password" placeholder="Password" value="123456">
+					  </div>
+		        	</div>
+		        	<div class="col-md-6 col-lg-6">
+			          <div class="form-group">
+					    <label for="confirmPassword">Re-Type your password <span class="text-danger">*</span></label>
+					    <input type="password" name="confirmPassword" class="form-control" id="confirmPassword" placeholder="Re-Type your password" value="123456">
+					  </div>
+		        	</div>
+		        </div>
+		        <div class="row">
+		        	<div class="col-md-12 col-lg-12">
+			          <div class="form-group">
+					    <label for="referral">Referral</label>
+					    <input type="text" name="referral" class="form-control" id="referral" placeholder="referral">
+					  </div>
+		        	</div>
+		        </div>
+		        <div class="row">
+		        	<div class="col-md-12 col-lg-12">
+			          <div class="form-group">
+					   <textarea class="form-control text-left" rows="5">
+					   TERMS OF USE
+
+Please read the following carefully. The following are the terms of use for the API Portal.
+
+1.0 GENERAL
+
+1.1 The Terms of Use define the terms and conditions that you, and/or any person on your behalf agree to when you register to use the API Portal and/or APIs.
+
+1.2 By registering for an API Portal account, using the API Portal and/or accessing and/or using the Portal, you hereby agree to be bound by and to comply with the Terms of Use. If you do not agree with all of the Terms of Use, then you may not register for an API Portal Account, use the API Portal and/or access and/or use the Portal.
+
+1.3 The present Terms of Use may be modified at any time, and any modifications made will be effective immediately upon posting of the modified Terms of Use on the Portal. Accordingly, you should consult this document regularly to ensure that your activities conform to the most recent version of the Terms of Use. Your continued access to and/or use of your API Portal Account, the API Portal and/or the Portal shall be deemed to be your conclusive acceptance of the modified Terms of Use. ANY VIOLATION OF THE TERMS OF USE MAY RESULT IN THE SUSPENSION OR TERMINATION OF YOUR RIGHT TO ACCESS AND/OR USE YOUR API PORTAL ACCOUNT, THE API PORTAL AND/OR THE PORTAL.
+
+1.4 We reserve the right to limit, replace, delete or otherwise change, at any time, the features, structure or any other aspects of your API Portal Account, API Portal, the Portal, the Software, the APIs or the Portal Content (as defined below) upon notice to you If you do not accept any such change, your sole remedy is to terminate your access and/or use of your API Portal Account, the API Portal and/or the Portal within thirty (30) days of our notice of change, by providing us with advance notice of termination. If you fail to provide us with any such notice we may restrict your access to and/or use of the API Portal, the Portal and/or remove your API Portal Account from the API Portal or the Portal at any time after such thirty (30) day period.
+					   </textarea>
+					  </div>
+		        	</div>
+		        </div>
+		        <div class="row">
+		        	<div class="col-md-12 col-lg-12">
+		        		<div class="checkbox">
+						  <label>
+						    <input type="checkbox" value="" id="agree">
+						    <span class="text-info">I accept the disclaimer </span>
+						    <span class="text-danger">*</span>
+						  </label>
+						</div>
+		        	</div>
+		        </div>
+		    </div>
+		    <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+		        <input type="submit" class="btn btn-primary" value="Register Now" data-loading-text="Saving..."/>
+		    </div>
+        </form>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal" id="loginModal" data-backdrop="static">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        	<h4 class="modal-title">Login</h4>
+			</div>
+	        <form id="memberLoginForm" action="${path}/frontend/authorization" method="post">
+		     <input type="hidden" name="strategy" value="LDAP"/>
+			<div class="modal-body">
+		        <div class="row">
+		        	<div class="col-md-12 col-lg-12"> 
+			          <div class="form-group">
+					    <label for="loginId">Login Id<span class="text-danger">*</span></label>
+					    <input type="text" name="loginId" class="form-control" id="loginId" placeholder="Login Id">
+					  </div>
+		        	</div>
+		        </div>
+		        <div class="row">
+		        	<div class="col-md-12 col-lg-12">
+			          <div class="form-group">
+					    <label for="password">Password<span class="text-danger">*</span></label>
+					    <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+					  </div>
+		        	</div>
+		        </div>
+		        <div class="row">
+		        	<div class="col-md-12 col-lg-12">
+			          <div class="form-group">
+					    <label for="verifyCode">Verify Code<span class="text-danger">*</span></label>
+					    <div class="row">
+						    <div class="col-md-6 col-lg-6">
+							    <input type="text" name="verifyCode" class="form-control" id="verifyCode" placeholder="VerifyCode">
+						    </div>
+						    <div class="col-md-6 col-lg-6">
+							    <a href="javascript:void(0);" onclick="verifycode(this,'${path}/verifycode');">Verify Code</a>
+						    </div>
+					    </div>
+					  </div>
+		        	</div>
+		    </div>
+		    <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+		        <input type="submit" class="btn btn-primary" value="Login" data-loading-text="Login..."/>
+		    </div>
+	    </div>
+        </form>
+			</div>
+		</div>
+	</div>

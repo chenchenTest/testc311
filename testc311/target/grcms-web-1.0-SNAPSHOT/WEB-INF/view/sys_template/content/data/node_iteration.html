@@ -1,0 +1,30 @@
+[#if (node.children)?? && (node.children?size > 0)]
+<ul>
+	[#list node.children as node]
+    [#if (node.children)?? && (node.children?size > 0)]
+		<li>
+			<div class="EC-side-tree-menu-wrap">
+				<a class="folder content-link" data-id="${node.id!}" data-url="${path}/management/content/info?nodeId=${node.id!}" href="javascript:void(0);">${node.name!}</a>
+				<span class="EC-side-tree-menu">
+					<a href="javascript:void(0);" data-url="${path}/management/content/node/edit?id=${node.id!}" class="EC-side-tree-menu-btn edit-node">[修改]</a>
+					<a href="javascript:void(0);" class="EC-side-tree-menu-btn move-pre"><i class="icon-arrow-up"></i></a>
+					<a href="javascript:void(0);" class="EC-side-tree-menu-btn move-next"><i class="icon-arrow-down"></i></a>
+				</span>
+			</div>
+			[#include "node_iteration.html"/]
+		</li>
+	[#else]
+		<li>
+			<div class="EC-side-tree-menu-wrap">
+				<a class="folder content-link" data-id="${node.id!}" data-url="${path}/management/content/info?nodeId=${node.id!}" href="javascript:void(0);">${node.name!}</a>
+				<span class="EC-side-tree-menu">
+					<a href="javascript:void(0);" data-url="${path}/management/content/node/edit?id=${node.id!}" class="EC-side-tree-menu-btn edit-node">[修改]</a>
+					<a href="javascript:void(0);" class="EC-side-tree-menu-btn move-pre"><i class="icon-arrow-up"></i></a>
+					<a href="javascript:void(0);" class="EC-side-tree-menu-btn move-next"><i class="icon-arrow-down"></i></a>
+				</span>
+			</div>
+		</li>
+    [/#if]
+	[/#list]
+</ul>
+[/#if] 

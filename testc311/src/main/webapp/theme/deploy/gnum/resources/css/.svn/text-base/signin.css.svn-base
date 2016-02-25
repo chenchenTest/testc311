@@ -1,0 +1,179 @@
+/* .signin-title {
+	font-family : lato light italic;
+	font-size : 50px;
+	color : #3e3e3e;
+}
+
+.signin-callname {
+	font-family : lato regular;
+	font-size : 18px;
+	color : #c8c8c8;
+}
+
+.signin-password {
+	font-family : lato regular;
+	font-size : 18px;
+	color : #c8c8c8;
+}
+
+.text-center>p {
+	font-family : lato regular;
+	font-size : 16px;
+	color : #00a593;
+}
+
+.signin-button {
+	font-family : lato regular;
+	font-size : 22px;
+	color : #ffffff;
+}
+
+.center-grid {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.signup-area {
+    background: #F3F3F3;
+    padding-bottom: 16em;
+}
+
+.signup-area hr {
+    border-top: 1px solid #D9D9D9;
+}
+
+
+
+
+.signin-form {
+    padding-top: 3em;
+}
+
+.signin-form .form-control {
+    height: 4em;
+}
+
+.signin-form .btn {
+    width: 100%;
+    background-color: #2DCBC7;
+    
+    
+    text-transform: capitalize;
+} */
+
+.signin-area{
+	height: 667px;
+}
+
+.signin-form .form-group{
+	position: relative;
+}
+
+.signin-area .forgetC{
+	display: inline;
+	font-size: 16px;
+	color: #00a593;
+}
+
+.signin-area .forgetC a{
+	text-decoration: underline;
+}
+
+.signin-area .forgetP{
+	display: inline;
+	font-size: 16px;
+	color: #00a593;
+}
+
+.signin-area .forgetP a{
+	text-decoration: underline;
+}
+
+.signin-area .title{
+	color:#3e3e3e;
+	font-size: 52px;
+	font-family: "lato-light";
+	font-weight: lighter;
+}
+
+.signin-area h2{
+	margin-top: 158px;
+	margin-bottom: 20px;
+}
+
+.signin-area .callnameInput{
+	margin-top: 52px;
+	margin-bottom: 6px;
+	color:#c8c8c8;
+	font-size: 18px;
+}
+
+.signin-area .pwdInput{
+	margin-bottom: 20px;
+	color:#c8c8c8;
+	font-size: 18px;
+}
+
+.signin-area #username{
+	height: 60px;
+}
+
+.signin-area #password{
+	height: 60px;
+}
+
+.signin-area .btn-login{
+	height: 68px;
+	font-size: 22px;
+	color:#ffffff;
+}
+
+.signin-area #errorBox{
+	text-align: center;
+	color: #e45858;
+	font-size: 14px;
+	margin-top: 32px;
+}
+
+@media screen and  (max-width: 768px){
+    .signin-area .title{
+	color:#3e3e3e;
+	font-size: 36px;
+	font-family: "lato-light";
+	font-weight: lighter;
+	margin-top: 85px;
+	}
+	
+	.signin-area .callnameInput{
+	margin-top: 10px;
+	margin-bottom: 6px;
+	color:#c8c8c8;
+	font-size: 18px;
+	}
+	
+	.signin-area .forgetC{
+	display: inline;
+	font-size: 16px;
+	color: #00a593;
+	padding-left: 10px;
+	padding-right: 6px;
+	}
+	
+	.signin-area .forgetP{
+	display: inline;
+	font-size: 16px;
+	color: #00a593;
+	padding-left: 15px;
+	padding-right: 12px;
+	}
+	
+	.signin-area {
+		padding-bottom: 60px;
+	}
+	
+	.signin-area #errorBox{
+		margin-top: 32px;
+		margin-bottom: 0px;
+	}
+}

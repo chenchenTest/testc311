@@ -1,0 +1,68 @@
+    <div class="modal" tabindex="-1" role="dialog" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title"><span class="label label-info  arrowed-right"><i class="icon-user"></i></span>Add Department</h4>
+                </div>
+                <form class="form-horizontal" action="${path}/management/department/add" method="post" id="addDepartment" >
+                <div class="modal-body">
+                        <div class="control-group">
+                            <label class="control-label" for="parentId">Parent Department:</label>
+                            <div class="controls">
+                            <select id="parentId" name="parentId" data-placeholder="Choose a department...">
+                            <option value="">--Choose a department--</option>
+                            [@ec_department queryType="tree";list]
+                        		[@EC.ec_select_tree nodes=list selectId=0/]
+              				[/@ec_department] 
+                            </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="name">Department Name:</label>
+                            <div class="controls">
+                                <input type="text"  name="name" id="name" placeholder="">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="parentId">Top Role:</label>
+                            <div class="controls">
+                            <select id="topRoleId" name="topRoleId" data-placeholder="Choose a top role...">
+                            [#include "data/data_html_department_role_list.html"/]
+                            </select>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-small" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary btn-small" data-loading-text="Saving..."><i class="icon-ok"></i>Save</button>
+                </div>
+                </form>
+            </div>
+        </div>
+<script type="text/javascript">
+	$(function(){
+		$(".chzn-select").chosen();
+		formValidtor.modalValid({
+			handler:"#addDepartment",
+			rules : {
+        		name : {
+        			required : true
+        		},
+        		topRoleId:{
+        			required : true
+        		}
+        	}
+		})
+		
+		var rolePath = "${path}/management/department?func=findTopRole";
+		$("#parentId").change(function(){
+			var params = rolePath + "&departmentId=" + $(this).val(); 
+			$("#topRoleId").load(rolePath,function(){
+			});
+		})
+	}); 
+</script>
+</div>

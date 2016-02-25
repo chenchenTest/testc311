@@ -1,0 +1,153 @@
+[#global path ="${(rc.contextPath)!}"/][#--define application context as a global variable--]
+[#-- 后台获取国家码 --]
+[#macro countrycode class="" style="profile" contentClass="" buttonClass="" ]
+        [@gnum_support_countries;list]
+        	[#if list?? && (list?size > 0)]
+        		[#if style=="signup"]
+					<div class="dropdown ${class}">
+						<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+						    <span class="content" data-content="+${(list?first).countryCode!}"> +${(list?first).countryCode!}</span>
+						    <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+							[#list list as country]
+							<li role="presentation"><a role="menuitem" tabindex="-${country_index+1}" href="javascript:void(0);" data-content="+${country.countryCode!}">+${country.countryCode!}&nbsp;${country.countryName!}</a></li>
+							[/#list]
+						</ul>
+					</div>
+			   [#elseif style="profile"]
+					<div class="dropdown ${class}">
+						<button type="button" class="btn btn-default content ${contentClass!}" data-content="+${(list?first).countryCode!}">+${(list?first).countryCode!}</button>
+						<button type="button" class="btn btn-default dropdown-toggle dropdown ${buttonClass!}" data-toggle="dropdown" aria-expanded="false">
+						    <span class="caret"></span>
+						    <span class="sr-only">Toggle Dropdown</span>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							[#list list as country]
+							<li role="presentation"><a role="menuitem" tabindex="-${country_index+1}" href="javascript:void(0);" data-content="+${country.countryCode!}">+${country.countryCode!}&nbsp;${country.countryName!}</a></li>
+							[/#list]
+						</ul>
+					</div>
+          		[#elseif style="sidebar"]
+					<div class="dropdown ${class}">
+					   <button type="button" class="btn btn-default dropdown-toggle content" data-toggle="dropdown" aria-expanded="false" data-content="+${(list?first).countryCode!}">+${(list?first).countryCode!}<span class="caret"></span></button>
+					   <ul class="dropdown-menu" role="menu">
+					       [#list list as country]
+							<li role="presentation"><a role="menuitem" tabindex="-${country_index+1}" href="javascript:void(0);" data-content="+${country.countryCode!}">+${country.countryCode!}</a></li>
+						   [/#list]
+					   </ul>
+					</div>
+				[/#if]
+			[/#if]
+		[/@gnum_support_countries]
+[/#macro]
+
+[#--分页宏命令--]
+
+
+[#--分页宏命令--]
+[#macro gnum_page_pannel pagesize="10" pageNum=1 start=1 end=1 pageCount=1 totalCounts=1 url="#" param="pageNum"]
+[#if (totalCounts?number > 0)]
+    <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" align="center">
+                <nav>
+                    <ul class="pagination">
+				[#if (pageNum?number > 1)]
+					 <li><a href="javascript:refreshData('${url}?pagesize=${pagesize}&${param}=${pageNum?number - 1}&groupNumber=${groupNumber}&overAllValue=${overAll}&incomingValue=${incoming}')" style="cursor: pointer;" aria-label="Previous"><img src="${res!}/resources/images/contacts/arrow.png"></a></li>
+				[#else]
+					<li><a href="#" aria-label="Previous"><img src="${res!}/resources/images/contacts/arrow.png"></a></li>
+				[/#if]
+				[#list (start?number)..(end?number) as num]
+				[#if (pageNum?number == num)]
+					 <li><a href="#" class="number-active">${num}</a></li>
+				[#else]
+					 <li><a  href="javascript:refreshData('${url}?pagesize=${pagesize}&${param}=${num}&groupNumber=${groupNumber}')" class="number">${num}</a></li>
+				[/#if]
+				[/#list]
+				[#if (pageNum?number < pageCount?number)]
+					  <li><a  aria-label="Next" href="javascript:refreshData('${url}?pagesize=${pagesize}&${param}=${pageNum?number + 1}&groupNumber=${groupNumber}&overAllValue=${overAll}&incomingValue=${incoming}')"><img src="${res!}/resources/images/contacts/arrow_right.png"></a></li>
+				[#else]
+				  <li><a aria-label="Next" href="#"><img src="${res!}/resources/images/contacts/arrow_right.png"></a></li>
+				[/#if]
+                    </ul>
+                </nav>
+        </div>
+ [/#if]
+[/#macro]
+
+[#--分页宏命令(calllog)--]
+[#macro gnum_page_pannel_calllog pagesize="10"  searchValue="" incoming="" overAll="" pageNum=1 start=1 end=1 pageCount=1 totalCounts=1 url="#" param="pageNum" searchStatus=""]
+[#if (totalCounts?number > 0)]
+    <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 calllog-page" align="center">
+                <nav>
+                    <ul class="pagination">					
+				[#if (pageNum?number > 1)]
+					 <li><a href="javascript:refreshData('${url}?pagesize=${pagesize}&${param}=${pageNum?number - 1}&groupNumber=${groupNumber}&searchValue=${searchValue!''}&overAllValue=${overAll}&incomingValue=${incoming}&searchStatus=${searchStatus}')" style="cursor: pointer;" aria-label="Previous"><img src="${res!}/resources/images/contacts/arrow.png"></a></li>
+				[#else]
+					<li><a href="#" aria-label="Previous"><img src="${res!}/resources/images/contacts/arrow.png"></a></li>
+				[/#if]
+				
+				[#if pageCount?number > 5]
+							[#if (pageNum?number == 1)]
+						 	<li><a href="#" class="number-active">1</a></li>
+						 	<li><a  href="javascript:refreshData('${url}?pagesize=${pagesize}&${param}=2&groupNumber=${groupNumber}&searchValue=${searchValue!}&overAllValue=${overAll}&incomingValue=${incoming}&searchStatus=${searchStatus}')" class="number">2</a></li>
+							<li><a  href="javascript:refreshData('${url}?pagesize=${pagesize}&${param}=3&groupNumber=${groupNumber}&searchValue=${searchValue!}&overAllValue=${overAll}&incomingValue=${incoming}&searchStatus=${searchStatus}')" class="number">3</a></li>
+							<li><a  href="javascript:refreshData('${url}?pagesize=${pagesize}&${param}=4&groupNumber=${groupNumber}&searchValue=${searchValue!}&overAllValue=${overAll}&incomingValue=${incoming}&searchStatus=${searchStatus}')" class="number">4</a></li>
+							<li><a  href="javascript:refreshData('${url}?pagesize=${pagesize}&${param}=5&groupNumber=${groupNumber}&searchValue=${searchValue!}&overAllValue=${overAll}&incomingValue=${incoming}&searchStatus=${searchStatus}')" class="number">5</a></li>
+							[#elseif (pageNum?number == 2)]
+							<li><a  href="javascript:refreshData('${url}?pagesize=${pagesize}&${param}=1&groupNumber=${groupNumber}&searchValue=${searchValue!}&overAllValue=${overAll}&incomingValue=${incoming}&searchStatus=${searchStatus}')" class="number">1</a></li>
+							<li><a  href="#" class="number-active">2</a></li>
+							<li><a  href="javascript:refreshData('${url}?pagesize=${pagesize}&${param}=3&groupNumber=${groupNumber}&searchValue=${searchValue!}&overAllValue=${overAll}&incomingValue=${incoming}&searchStatus=${searchStatus}')" class="number">3</a></li>
+							<li><a  href="javascript:refreshData('${url}?pagesize=${pagesize}&${param}=4&groupNumber=${groupNumber}&searchValue=${searchValue!}&overAllValue=${overAll}&incomingValue=${incoming}&searchStatus=${searchStatus}')" class="number">4</a></li>
+							<li><a  href="javascript:refreshData('${url}?pagesize=${pagesize}&${param}=5&groupNumber=${groupNumber}&searchValue=${searchValue!}&overAllValue=${overAll}&incomingValue=${incoming}&searchStatus=${searchStatus}')" class="number">5</a></li>
+							[#elseif (pageNum?number == ((end?number)-1))]
+							<li><a  href="javascript:refreshData('${url}?pagesize=${pagesize}&${param}=${end?number-4}&groupNumber=${groupNumber}&searchValue=${searchValue!}&overAllValue=${overAll}&incomingValue=${incoming}&searchStatus=${searchStatus}')" class="number">${end?number-4}</a></li>
+							<li><a  href="javascript:refreshData('${url}?pagesize=${pagesize}&${param}=${end?number-3}&groupNumber=${groupNumber}&searchValue=${searchValue!}&overAllValue=${overAll}&incomingValue=${incoming}&searchStatus=${searchStatus}')" class="number">${end?number-3}</a></li>
+							<li><a  href="javascript:refreshData('${url}?pagesize=${pagesize}&${param}=${end?number-2}&groupNumber=${groupNumber}&searchValue=${searchValue!}&overAllValue=${overAll}&incomingValue=${incoming}&searchStatus=${searchStatus}')" class="number">${end?number-2}</a></li>
+							<li><a  href="#" class="number-active">${end?number-1}</a></li>
+							<li><a  href="javascript:refreshData('${url}?pagesize=${pagesize}&${param}=${end?number}&groupNumber=${groupNumber}&searchValue=${searchValue!}&overAllValue=${overAll}&incomingValue=${incoming}&searchStatus=${searchStatus}')" class="number">${end}</a></li>
+							[#elseif (pageNum?number == end?number)]
+							<li><a  href="javascript:refreshData('${url}?pagesize=${pagesize}&${param}=${end?number-4}&groupNumber=${groupNumber}&searchValue=${searchValue!}&overAllValue=${overAll}&incomingValue=${incoming}&searchStatus=${searchStatus}')" class="number">${end?number-4}</a></li>
+							<li><a  href="javascript:refreshData('${url}?pagesize=${pagesize}&${param}=${end?number-3}&groupNumber=${groupNumber}&searchValue=${searchValue!}&overAllValue=${overAll}&incomingValue=${incoming}&searchStatus=${searchStatus}')" class="number">${end?number-3}</a></li>
+							<li><a  href="javascript:refreshData('${url}?pagesize=${pagesize}&${param}=${end?number-2}&groupNumber=${groupNumber}&searchValue=${searchValue!}&overAllValue=${overAll}&incomingValue=${incoming}&searchStatus=${searchStatus}')" class="number">${end?number-2}</a></li>
+							<li><a  href="javascript:refreshData('${url}?pagesize=${pagesize}&${param}=${end?number-1}&groupNumber=${groupNumber}&searchValue=${searchValue!}&overAllValue=${overAll}&incomingValue=${incoming}&searchStatus=${searchStatus}')" class="number">${end?number-1}</a></li>
+							<li><a  href="#" class="number-active">${end}</a></li>
+							[#else]
+							<li><a  href="javascript:refreshData('${url}?pagesize=${pagesize}&${param}=${pageNum?number-2}&groupNumber=${groupNumber}&searchValue=${searchValue!}&overAllValue=${overAll}&incomingValue=${incoming}&searchStatus=${searchStatus}')" class="number">${pageNum?number-2}</a></li>
+							<li><a  href="javascript:refreshData('${url}?pagesize=${pagesize}&${param}=${pageNum?number-1}&groupNumber=${groupNumber}&searchValue=${searchValue!}&overAllValue=${overAll}&incomingValue=${incoming}&searchStatus=${searchStatus}')" class="number">${pageNum?number-1}</a></li>
+							<li><a  href="#" class="number-active">${pageNum?number}</a></li>
+							<li><a  href="javascript:refreshData('${url}?pagesize=${pagesize}&${param}=${pageNum?number+1}&groupNumber=${groupNumber}&searchValue=${searchValue!''}&overAllValue=${overAll}&incomingValue=${incoming}&searchStatus=${searchStatus}')" class="number">${pageNum?number+1}</a></li>
+							<li><a  href="javascript:refreshData('${url}?pagesize=${pagesize}&${param}=${pageNum?number+2}&groupNumber=${groupNumber}&searchValue=${searchValue!''}&overAllValue=${overAll}&incomingValue=${incoming}&searchStatus=${searchStatus}')" class="number">${pageNum?number+2}</a></li>
+							[/#if]
+							
+				[#else]
+						[#list (start?number)..(end?number) as num]
+						[#if (pageNum?number == num)]
+						 <li><a href="#" class="number-active">${num}</a></li>
+						[#else]
+						 <li><a  href="javascript:refreshData('${url}?pagesize=${pagesize}&${param}=${num}&groupNumber=${groupNumber}&searchValue=${searchValue!}&overAllValue=${overAll}&incomingValue=${incoming}&searchStatus=${searchStatus}')" class="number">${num}</a></li>
+						[/#if]  
+						[/#list]
+					 
+				[/#if]  
+				
+				
+				
+				
+				[#if (pageNum?number < pageCount?number)]
+					  <li><a  aria-label="Next" href="javascript:refreshData('${url}?pagesize=${pagesize}&${param}=${pageNum?number + 1}&groupNumber=${groupNumber}&searchValue=${searchValue!''}&overAllValue=${overAll}&incomingValue=${incoming}&searchStatus=${searchStatus}')"><img src="${res!}/resources/images/contacts/arrow_right.png"></a></li>
+				[#else]
+				  <li><a aria-label="Next" href="#"><img src="${res!}/resources/images/contacts/arrow_right.png"></a></li>
+				[/#if]					
+                    </ul>
+                </nav>
+        </div>
+ [/#if]
+[/#macro]
+
+[#macro avatar alt="" class="" style="" ]
+   	[#assign avatar="${res!}"+"/resources/images/default_avatar.png"/]
+    [#if user.avatar?? && user.avatar!=""]
+    	[#assign avatar="${user.avatar}"/]
+    [/#if]
+    <img src="${avatar!}" alt="${alt!}" class="${class!}" style="${style!}">
+[/#macro]

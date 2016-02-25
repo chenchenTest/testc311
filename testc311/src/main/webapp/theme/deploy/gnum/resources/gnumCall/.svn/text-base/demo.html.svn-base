@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-4">
+        <img src="theme/modalbox-call/profile_default_avatar.png" class="avatar img-circle"/>
+        <h4 class="callname">jiepeng</h4>
+    </div>
+    <div class="col-md-8">
+        <p class="callback-msg"></p>
+        <p>
+            <button class="btn btn btn-info btn-block" id="mute">
+                <span class="glyphicon glyphicon-volume-off" aria-hidden="true" ></span>Mute
+            </button>
+        </p>
+        <p>
+            <button class="btn btn btn-success btn-block" id="makecall" data-gnumcall="jiepeng">
+                Make Call
+            </button>
+        </p>
+    </div>
+</div>
+<script type="text/javascript">
+	$(function() {
+		GRCaller.serverConf({
+			webRTC : {
+				serverIP : "flash1.gnum.com",
+				serverPort : "5066"
+			},
+			flash : {
+				rtmpURL : "rtmp://203.117.19.4:1935/phone;rtmps://rtmps1.gnum.com:443/phone"
+			}
+		});	})
+</script>
+<script type="text/javascript" src="theme/modalbox-call/modalbox-call-pro.js"></script>

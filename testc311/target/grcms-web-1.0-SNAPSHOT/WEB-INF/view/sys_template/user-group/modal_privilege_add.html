@@ -1,0 +1,59 @@
+    <div class="modal" tabindex="-1" role="dialog" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title"><span class="label label-info  arrowed-right"><i class="icon-user"></i></span>Add Privilege</h4>
+                </div>
+                <form class="form-horizontal" action="${path}/management/privilege/add" method="post" id="addPrivilege" >
+                <div class="modal-body">
+                        <div class="control-group">
+                            <label class="control-label" for="name">Privilege Name:</label>
+                            <div class="controls">
+                                <input type="text"  name="name" id="name" placeholder="">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="uri">URI:</label>
+                            <div class="controls">
+                                <input type="text"  name="uri" id="uri" placeholder="">
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-small" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary btn-small" data-loading-text="Saving..."><i class="icon-ok"></i>Save</button>
+                </div>
+                    </form>
+            </div>
+        </div>
+<script type="text/javascript">
+	$(function(){
+		formValidtor.modalValid({
+			handler:"#addPrivilege",
+			rules : {
+        		name :{
+        			required : true
+        			,remote : "${path}/management/privilege?func=exist"
+        		},
+        		url : {
+        			required : true,
+        			remote : "${path}/management/privilege?func=exist"
+        		}
+        	}
+        	,messages : {
+        		name : {
+        			required : "Privilege Name can not be empty",
+        			remote:"The privilege name has been used,please change another one."
+        		},
+        		url : {
+        			required : "URI can not be empty",
+        			remote : "URI has beed used,please change another one."
+        		}
+        	}
+		})
+	}); 
+</script>
+    </div>

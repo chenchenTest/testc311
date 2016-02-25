@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	[#include "common/common-meta.html" ]
+    <title>opt verify</title>
+    [#include "common/common-css.html" ]
+</head>
+
+<body>
+[#include "common/google-tag-manager.html" /]
+<!--head begin-->
+    <div class="head">
+    	[#include "common/head.html" ]
+    </div>
+<!--head end-->
+    <div class="container-fluid forget-password-area">
+        <div class="row">
+            <div class="col-md-8 col-lg-8 center-grid">
+                <h2>Input OTP</h2>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6 col-lg-4 center-grid">
+                        <form class="forget-password-form otp-form" action="#" method="post">
+                            <div class="form-group">
+                                <label for="otpinput" class="sr-only">otp</label>
+                                <input type="text" class="form-control" id="otpinput" name="otp" placeholder="OTP Code" autofocus>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-default btn-a btn-custom btn-color-a">Verify</button>
+                            </div>
+                            <div class="form-group">
+                                <p class="form-control-static form-tips">A SMS OTP will be sent to the above number for verification.</p>
+                            </div>
+                            <div class="form-group text-right">
+                                <a href="javascript:void(0);" class="link-underline waitBtn">Resent OTP</a>
+                            </div>
+                        </form>
+                        <ul id="errorBox"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--foot begin-->
+  <div class="foot" style="position: relative">
+    	[#include "/common/foot.html" ]
+    </div>
+<!--foot end-->
+	[#include "common/common-js.html" ]
+	[#include "common/common-js-validate.html" ]
+    <script type="text/javascript">
+	$(function(){
+	    $(".waitBtn").waitButton({preAction:function(){
+	    	var mobile = stringUtils.getParam("phoneNumber");
+			var countryCode = stringUtils.getParam("countryCode");
+	    	sendOTP(mobile,countryCode);
+	    }});
+	});
+    </script>
+</body>
+
+</html>

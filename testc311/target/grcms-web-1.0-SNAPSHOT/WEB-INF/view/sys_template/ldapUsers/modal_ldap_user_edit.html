@@ -1,0 +1,129 @@
+   [@ec_ldapuser name="${form.name!}";ldapuser]
+   <div class="modal fade " tabindex="-1" role="dialog" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title"><span class="label label-info  arrowed-right"><i class="icon-user"></i></span>编辑LDAP用户</h4>
+                </div>
+                <form class="form-horizontal" action="${path}/management/ldapuser/edit" method="post" id="editLdapUser" >
+                <input type="hidden" name="uid" value="${ldapuser.name!}"/>
+                <div class="modal-body">
+                        <div class="control-group">
+                            <label class="control-label" for="name">用户名:</label>
+                            <div class="controls">
+                                <input type="text" name="name" id="name" placeholder="" value="${ldapuser.name!}" readonly="readonly"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="realname">Realname:</label>
+                            <div class="controls">
+                                <input type="text" name="realname" id="realname" placeholder="" value="${ldapuser.realname!}"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="Firtname">Firstname:</label>
+                            <div class="controls">
+                                <input type="text"  name="firstName" id="Firtname" placeholder="" value="${ldapuser.firstName!}">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="Lastname">Lastname:</label>
+                            <div class="controls">
+                                <input type="text"  name="lastName" id="Lastname" placeholder="" value="${ldapuser.lastName!}">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="email">电子邮件:</label>
+                            <div class="controls">
+                                <input type="email" name="email" id="email" placeholder="email例如:xxx@126.com" value="${ldapuser.email!}">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="mobile">Mobile:</label>
+                            <div class="controls">
+                                <input type="text" name="mobile" id="mobile" placeholder="mobile" value="${ldapuser.mobile!}">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="group">Group:</label>
+                            <div class="controls">
+                            [#if ldapuser.group == "admin"]
+                            	[#assign adminSelectForGroup = 'selected="selected"']
+                            [#elseif ldapuser.group == "organizationAdmin"]
+                            	[#assign orgSelectForGroup = 'selected="selected"']
+                            [#elseif ldapuser.group == "registeredUser"]
+                            	[#assign regSelectForGroup = 'selected="selected"']
+                            [/#if]
+                            	<select name="group">
+                            		<option value="admin" ${adminSelectForGroup!}>admin</option>
+                            		<option value="organizationAdmin" ${orgSelectForGroup!}>organizationAdmin</option>
+                            		<option value="registeredUser" ${regSelectForGroup!}>registeredUser</option>
+                            	</select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="memberOf">MemberOf:</label>
+                            <div class="controls">
+                            [#if ldapuser.memberOf == "admin"]
+                            	[#assign adminSelectForMemberOf = 'selected="selected"']
+                            [#elseif ldapuser.memberOf == "organizationAdmin"]
+                            	[#assign orgSelectForMemberOf = 'selected="selected"']
+                            [#elseif ldapuser.memberOf == "registeredUser"]
+                            	[#assign regSelectForMemberOf = 'selected="selected"']
+                            [/#if]
+                            	<select name="memberOf">
+                            		<option value="admin" ${adminSelectForMemberOf!}>admin</option>
+                            		<option value="organizationAdmin" ${orgSelectForMemberOf!}>organizationAdmin</option>
+                            		<option value="registeredUser" ${regSelectForMemberOf!}>registeredUser</option>
+                            	</select>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-primary" data-loading-text="正在保存..."><i class="icon-ok"></i>保存</button>
+                </div>
+                    </form>
+            </div>
+        </div>
+<script type="text/javascript">
+	$(function(){
+		formValidtor.modalValid({
+			handler:"#editLdapUser",
+			rules : {
+        		name : {
+        			required : true
+        		},
+        		realname : {
+        			required : true
+        		},
+        		firstName : {
+        			required : true
+        		},
+        		lastName : {
+        			required : true
+        		},
+        		group : {
+        			required : true
+        		},
+        		mobile : {
+        			required : true
+        		},
+        		email : {
+        			required : true,
+        			email:true
+        		}
+        	}
+        	,messages : {
+        		name : {
+        			remote:"该用户已被占用"
+        		}
+        	}
+		})
+	}); 
+</script>
+    </div>
+[/@ec_ldapuser] 

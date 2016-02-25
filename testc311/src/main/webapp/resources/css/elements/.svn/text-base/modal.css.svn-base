@@ -1,0 +1,33 @@
+/**
+ * 图片对话框样式
+ */
+.feature-dialog{
+	min-width:600px;
+}
+
+ul.display-featrue-pics{
+	display:block;
+	margin:20px auto;
+}
+ul.display-featrue-pics li{
+	display:block;
+	width:152px;
+	height:150px;
+	float:left;
+	overflow:hidden;
+}
+a.feature-link{
+    display: block;
+	margin:5px;
+    width: 130px;
+    padding: 1px;
+}
+a.feature-link:hover,a.feature-link-select{
+	margin:0px;
+	border: 5px solid #1E8CBE;
+}
+a.feature-link img{
+	display:block;
+	width:130px;
+	height:110px;
+}

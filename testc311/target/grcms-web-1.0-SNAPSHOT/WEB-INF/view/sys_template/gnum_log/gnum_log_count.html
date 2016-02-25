@@ -1,0 +1,196 @@
+<script type="text/javascript" src="${path}/resources/js/highcharts-4.0.1/highcharts.js"></script>
+<script type="text/javascript" src="${path}/resources/js/highcharts-4.0.1/no-data-to-display.js"></script>
+<script type="text/javascript">
+    $(function(){
+    	$.post("${path}/gnum/log/count",function(reData){
+    		if(!reData){return;}
+    		var data=$.parseJSON(reData);
+    		countByAnonymous(data.byAnonymous);
+	    	countByBrowser(data.byBrowser);
+	    	countByOS(data.byOSName);
+	    	countByFlashVersion(data.byFlashVersion);
+	    	countByStatusCode(data.byStatusCode);
+    	});
+    });
+    
+    /**
+     *  统计数据的方法 
+     */
+    function countByAnonymous(showData){
+    	//  将数据结果用中文表示
+    	for(var i in showData){
+    		switch(showData[i][0]){
+    		case 'anno':
+    			showData[i][0]="匿名用户";
+    			break;
+    		case 'login':
+    			showData[i][0]="登陆用户";
+    			break;
+    		}
+    	}
+    	pieChart('#countByAnonymous','用户统计',showData);
+    }
+    function countByStatusCode(showData){
+    	columnChart('#countByStatusCode','状态统计',statuCodeToMsg(showData));
+    }
+    /**
+     * 状态码转换状态信息 
+     */  
+    function statuCodeToMsg(data){
+    	var status={
+        		'1':'a',	
+        		'2':'b',	
+        		'3':'c',	
+        		'4':'d',	
+        		'5':'e',	
+        		'6':'f'	
+        	};
+       	var columns=[];
+       	var values=[];
+       	for (var i in data){
+       		columns.push(status[data[i][0]]?status[data[i][0]]:data[i][0]);
+       		values.push(data[i][1]);
+       	}
+       	return {
+      			columns:columns,
+      			values:values
+       	};
+    }
+    function countByBrowser(showData){
+    	pieChart('#countByBrowser','浏览器统计',showData,browserClick);
+    }
+    function countByOS(showData){
+    	pieChart('#countByOS','操作系统统计',showData);
+    }
+    function countByFlashVersion(showData){
+    	pieChart('#countByFlashVersion','Flash版本统计',showData);
+    }
+    function countWithBrowser(browser){
+    	$.post("${path}/gnum/log/count/countWithBrowser",{'browserName':browser},
+    		function(reData){
+    			pieChart('#countWithBrowser',browser+'版本统计',$.parseJSON(reData));
+    	});
+    }
+    /**
+     *  根据点击的浏览器统计版本
+     */
+    function browserClick(e){
+    	countWithBrowser(e.point.name);
+    }
+    
+    /**
+     * 统计数据的展现(饼图)
+     * selector 放置图表的div id   title ： 饼图的标题   data：要展现的数据  (必填)
+     * clickFunc：图表的单机方法   （可不填 ）
+     */
+    function pieChart(selector,title,data,clickFunc){
+    	 $(selector).highcharts({
+	            chart: {
+	                plotBackgroundColor: null,
+	                plotBorderWidth: null,
+	                height:300,
+	                width:450,
+	                plotShadow: false
+	            },
+	            title: {
+	            	y:30,
+	                text: title
+	            },
+	            tooltip: {
+	        	    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+	            },
+	            plotOptions: {
+	                pie: {
+	                    allowPointSelect: true,
+	                    cursor: 'pointer',
+	                    dataLabels: {
+	                        enabled: false
+	                    },
+	                    showInLegend: true,
+	                    events: {
+	                        click: clickFunc
+	                   	}
+	                }
+	            },
+	            series: [{
+	                type: 'pie',
+	                name: '比例',
+	                data: data
+	            }]
+	        });
+    }
+    /**
+     * 统计数据的展现(3D柱状图)
+     * selector 放置图表的div id   title ： 饼图的标题   data：要展现的数据  (必填)
+     *  data:{columns:显示的列,values:列值}
+     */
+    function columnChart(selector,title,data){
+    	$(selector).highcharts({
+   		 	chart: {
+   	            type: 'column',
+   	            margin: [ 50, 50, 100, 80]
+   	        },
+	        title: {
+	        	y:30,
+	            text: title
+	        },
+	        subtitle: {
+	            text: ''
+	        },
+	        plotOptions: {
+	            column: {
+	                depth: 25
+	            }
+	        },
+	        xAxis: {
+	            categories: data.columns,
+	            labels: {
+	                rotation: -45,
+	                align: 'right',
+	                style: {
+	                    fontSize: '12px'
+	                }
+	            }
+	        },
+	        yAxis: {
+	            min: 0,
+	            max: 100,
+	            title: {
+	                text: '各通话状态的百分比（%）'
+	            }
+	        },
+	        tooltip: {
+	            pointFormat: '比例：{point.y:.1f}%</b>',
+	        },
+	        series: [{
+	            name: '通话状态',
+	            data: data.values,
+	            dataLabels: {
+	                enabled: true,
+	                rotation: -90,
+	                color: 'black',
+	                align: 'right',
+	                x: 4,
+	                y: -40,
+	                style: {
+	                    fontSize: '13px',
+	                    textShadow: '0 0 0px black'
+	                }
+	            }
+	        }]
+	    });
+    }
+</script>
+	<table>
+		<tr>
+			<td><div id="countByAnonymous" ></div></td>
+			<td><div id="countByOS" ></div></td>
+			<td><div id="countByFlashVersion" ></div></td>
+		</tr>
+		<tr>
+			<td><div id="countByStatusCode" ></div></td>
+			<td><div id="countByBrowser" ></div></td>
+			<td><div id="countWithBrowser" ></div></td>
+		</tr>
+	</table>
+	

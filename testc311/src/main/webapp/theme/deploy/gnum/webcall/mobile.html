@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>update page</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+    <title>Gnum 主页面</title>
+    [#include '../common/common-css.html'/]
+    [#include '../common/common-js.html'/]
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/css/update.css"/>
+    <script type="text/javascript">
+        $(function () {
+            var agent = navigator.userAgent;
+            if (agent.indexOf("Android") > 0) {
+                $("#android").click(function (e) {
+                    e.preventDefault();
+                    callAndroidApp();
+                });
+            } else if (agent.indexOf("iPhone") > 0) {
+                    callIOSApp();
+            }
+
+        });
+
+        function callAndroidApp() {
+            var agent = navigator.userAgent;
+            var isChorme = (agent.indexOf("Chrome") != -1);
+            var chromeVersion = getChromeVersion(agent);
+
+            //如果是chrome并且版本高于25，则使用intent方式
+            if (agent != null && isChorme && chromeVersion > 25) {
+                location.href = 'intent://${sipHost!}/call?code=${code!}&uname=${callName!callNumber!}&host=${sipHost!}&userId=${userId!}#Intent;scheme=gnum;package=com.globalroam.android.gnum;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails?id=com.globalroam.android.gnum&hl=en;end';
+            } else {
+//                    //设定计时器
+                var timer = 0;
+                setInterval(function () {
+                    timer = timer + 1;
+                }, 100);
+                $(".iframe").empty().append('<iframe style="border:none; width:1px; height:1px;" src="gnum://${sipHost!}/call?code=${code!}&uname=${callName!callNumber!}&host=${sipHost!}&userId=${userId!}"></iframe>');
+                setTimeout(function () {
+                    //如果计时器的值超过该阈值,则说明调用app失败
+                    if (timer >= 5) {
+                        location.href = 'https://play.google.com/store/apps/details?id=com.globalroam.android.gnum&hl=en';
+                    }
+                }, 1000);
+            }
+        }
+
+        function callIOSApp() {
+            $(".iframe").append('<iframe style="border:none; width:1px; height:1px;" src="gnum://${sipHost!}/call?code=${code!}&uname=${callName!callNumber!}&host=${sipHost!}&userId=${userId!}"></iframe>');
+        }
+        function getChromeVersion(agent) {
+            var agentArray = agent.split(" ");
+            for (var i = 0; i < agentArray.length; i++) {
+                if (agentArray[i].indexOf("Chrome") != -1) {
+                    var targetArray = agentArray[i].split("/");
+                    var version = targetArray[targetArray.length - 1];
+                    var versionArray = version.split("\.");
+                    var versionNum = versionArray[0];
+                    return versionNum;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+[#include "../common/google-tag-manager.html" /]
+<!--头部 head-->
+<div id="head">
+    [#include '../common/head.html'/]
+</div>
+
+<!--content-->
+<div class="container-fluid update">
+    <div class="row">
+        <div class="col-xs-12">
+            <h3>CONNECTING THE WORLD TO YOU</h3>
+
+            <p>To make FREE calls to GNum users on your mobile, please make a one time download of our app.</p>
+
+            <p>Once the app is downloaded,it will call automatically the next time you tap on a GNum's URL or call
+                button</p>
+            <a id="ios" href="https://itunes.apple.com/en/app/gnum/id571207657?mt=8"><img
+                    src="${res!}/resources/images/update/astore.png" alt=""/></a>
+            <a href="#" id="android"><img src="${res!}/resources/images/update/gplay.png" alt=""/></a>
+        </div>
+        <div class="iframe"></div>
+    </div>
+</div>
+
+<!--尾部 foot-->
+<div class="foot">
+    [#include '../common/foot.html'/]
+</div>
+</body>
+</html>

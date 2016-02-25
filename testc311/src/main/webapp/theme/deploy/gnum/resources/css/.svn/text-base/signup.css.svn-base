@@ -1,0 +1,78 @@
+.signup-area {
+    margin-top: 50px;
+}
+
+@media screen and (min-width: 992px) {
+    .signup-area {
+        margin-top: 110px;
+    }
+}
+.signup-form {
+    padding-top: 3em;
+}
+
+.signup-form .form-group {
+    position: relative;
+}
+
+.signup-area .form-tips {
+    font-size: 1.071428571428571em;
+    color: #333333;
+}
+
+.signup-form .input-group-btn .content,
+.signup-form .input-group-btn .dropdown,
+.signup-form .input-group-btn .btn-custom {
+    border: none;
+    height: 2.928571428571429em;
+    color: #2DCBC7;
+    font-family: 'Lato-Regular';
+    font-size: 20px;
+    font-size: 2rem;
+}
+.signup-form .content {
+    min-width: 60px;
+}
+
+.signup-form .col-xs-12.col-md-6, .signup-form .col-sm-6.col-md-6 {
+    margin-bottom: 15px;
+}
+
+.input-group-btn .caret {
+    color: #757575;
+}
+
+.input-group-addon {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+}
+
+.otp-btn {
+    height: 4.2em;
+    font-size: 1em;
+    width:auto;
+    padding: 6px 15px;
+}
+.waitBtn[disabled],.waitBtn[disabled]:hover{
+    background-color: #2DCBC7;
+}
+.signup-btn {
+    height: 70px;
+}
+
+.signup-form-group {
+    margin-bottom: 24px;
+}
+.signup-form label{
+    color: #c8c8c8;
+    font-family: 'Lato-Regular';
+    font-size: 18px;
+    font-weight: normal;
+}
+.signup-form label span {
+    color: #0CBDB7;
+}
+.pc-signup-form label[for="pc-newMobile"] {
+    visibility: hidden;
+}

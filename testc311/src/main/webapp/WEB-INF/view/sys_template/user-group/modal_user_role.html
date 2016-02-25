@@ -1,0 +1,132 @@
+[@ec_user id=form.id;u]
+[#assign department= (u.department)!]
+<div class="modal " tabindex="-1" role="dialog" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title"><span class="label label-info  arrowed-right"><i class="icon-user"></i></span>Assign Role<small><i class="icon-double-angle-right"></i>Assigning role for [${u.name!}] </small></h4>
+                </div>
+                <form class="form-horizontal" action="${path}/management/user/role" method="post" id="assignRole" >
+                <input type="hidden" name="id" value="${form.id!}"/>
+                <div class="modal-body">
+	                <div class="control-group">
+	                    <label class="control-label" for="departmentId">Department:</label>
+	                    <div class="controls">
+	                        <select name="departmentId" id="departmentId" placeholder="">
+	                   	 	<option value="">---Choose a department---</option>
+	                [@ec_department queryType="tree";list]
+	                   	[@EC.ec_select_tree nodes=list selectId=(u.department.id)!0/]
+	         			[/@ec_department]        
+	                   </select>
+	                    </div>
+	                </div>
+                
+                      <div class="control-group">
+                          <label class="control-label" >Role:</label>
+                          <div class="controls">
+                          	<select name="roleId" id="roleId" multiple="multiple" placeholder ="Choose a role">
+                        	 	[#include "data/data_html_user_role_list.html"/]
+                          	</select>
+                          </div>
+                      </div>
+                      <div class="control-group" id="parents">
+                      [#include "data/data_html_user_parent.html"/]
+                      </div>
+                      <div id="loig"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-small" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary btn-small" data-loading-text="Saving..."><i class="icon-ok"></i>Save</button>
+                </div>
+            </form>
+            </div>
+        </div>
+<script type="text/javascript">
+	$(document).ready(function() {
+		formValidtor.modalValid({
+			handler:"#assignRole"
+		})
+		
+		//职务多选事件
+		var $roleId = $("#roleId");
+		
+		//初始化多选框
+		initSelected($roleId);
+		
+		
+		//绑定已经定事件
+		$roleId.on("select2:select", function (e) {
+			initSelected($roleId);
+		});
+		
+		//绑定取消选择事件
+		$roleId.on("select2:unselect", function (e) {
+			var $options = $roleId.find("option");
+			var $selectOptions = $roleId.find("option:selected");
+			if($selectOptions.length == 0) {
+				$options.prop("disabled", false);
+			}
+			$roleId.select2();
+		});
+		
+		//部门选项
+		$("#departmentId").change(function(){
+			var params = "departmentId=" + $(this).val();
+			$("#roleId").load("${path}/management/user/role?func=findDepartmentTopRole", params);
+			$("#parents").empty();
+			$roleId.val(null).trigger("change");;
+		})
+		
+		//选择框改变事件
+		$roleId.change(function(){
+			if($(this).val()) {
+				var params = "roleId=" + $(this).val() + "&departmentId=" + $("#departmentId").val();
+				$("#parents").load("${path}/management/user/role?func=findSupUser", params);
+			}
+		})
+		
+		function parseData (evt) {
+		     var args = "{}";
+			  if (evt) {
+			      args = JSON.stringify(evt.params, function (key, value) {
+			      if (value && value.nodeName) return "[DOM node]";
+			      if (value instanceof $.Event) return "[$.Event]";
+			      return value;
+			    });
+			  }
+			  return args;
+		}
+		
+		//初始化已选择事件
+		function initSelected($roleId) {
+			var $initOptions = $roleId.find("option");
+			var $initSelectOptions = $roleId.find("option:selected");
+			if($initSelectOptions.length > 0){
+				$initSelectOptions.each(function(i){
+					var $that = $(this);
+					if($that.data("coexist") == false) {
+						$initOptions.each(function(j){
+							if($(this).val() != $that.val()) {
+								$(this).prop("disabled", true);
+								
+							}
+						})
+					}else{
+						$initOptions.each(function(j){
+							if($(this).data("coexist") == false) {
+								$(this).prop("disabled", true);
+							}
+						})
+					}
+				})
+			}
+			
+			$roleId.select2();
+		}
+	}); 
+</script>
+        </div>
+[/@ec_user]

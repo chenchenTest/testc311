@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context-3.0.xsd
+ http://www.springframework.org/schema/mvc
+ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+ http://www.springframework.org/schema/util
+ http://www.springframework.org/schema/util/spring-util-2.0.xsd ">
+
+	<!-- 定位静态文件视图 -->
+	<!-- Forwards requests to the "/" resource to the "welcome" view -->
+	<!-- <mvc:view-controller path="/" view-name="/WEB-INF/view/sys_template/login" /> -->
+	<mvc:view-controller path="/404" view-name="/WEB-INF/view/sys_template/404" />
+	<mvc:view-controller path="/500" view-name="/WEB-INF/view/sys_template/500" />
+	<mvc:view-controller path="/nopermisson" view-name="/WEB-INF/view/sys_template/no_privilege" />
+
+
+	<!-- 处理静态文件js,css,html,jpg,gif... -->
+	<mvc:resources location="/resources/" mapping="/resources/**" />
+	<mvc:resources location="/icons/" mapping="/icons/**" />
+	<mvc:resources location="/ckfinder/" mapping="/ckfinder/**" />
+	<mvc:resources location="/uploadFiles/" mapping="/uploadFiles/**" />
+	<mvc:resources location="/theme/deploy/" mapping="/theme/deploy/**" />
+	<mvc:default-servlet-handler/>
+</beans>

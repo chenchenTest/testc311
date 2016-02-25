@@ -1,0 +1,208 @@
+@charset "UTF-8";
+@import url(fonts.css);
+
+/*price page*/
+.price{
+    margin-top: 50px;
+    background-color: #F3F3F3;
+}
+.price h3{
+    text-align: center;
+    color: #505050;
+    font-family: "Lato-Light";
+    font-size: 40px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 84px;
+    margin-bottom: 90px;
+}
+/*content*/
+
+.price .select .free .selected{
+    background-color: #14E9E3;
+    text-align: center;
+}
+.price  .selected{
+    width: 280px;
+}
+.price .select .selected{
+    height: 536px;
+}
+.price .select .pro .selected,.price .select .business .selected{
+    background-color: #ffffff;
+    text-align: center;
+}
+.price .select h4{
+    color: #454545;
+    font-family: "Lato-Regular";
+    font-size: 24px;
+    padding-top: 46px;
+    padding-bottom: 40px;
+}
+.price .select h5{
+    color: #ffffff;
+    font-family: "Lato-Light";
+    font-size: 60px;
+    margin-bottom: 0;
+    margin-top: 0px;
+}
+.price .select span{
+    font-size: 20px;
+    font-family: "Lato-Regular";
+    color: #d5d5d5;
+}
+.price .select .free span{
+    color: #0a6260;
+}
+.price .select .pro .selected h5,.price .select .business .selected h5,.price .select .pro .selected h4,.price .select .business .selected h4{
+    color: #d5d5d5;
+}
+.price .select p{
+    min-height: 120px;
+    font-size: 17px;
+    font-family: "Lato-Regular";
+    color: #d5d5d5;
+    margin-top: 66px;
+    margin-bottom: 0px;
+    padding-left: 16%;
+    padding-right: 16%;
+    height: 186px;
+}
+.price .select .free p{
+    color: #0a8481;
+}
+.price .select button{
+    width: 220px;
+    font-size: 16px;
+    font-family: "Lato-Bold";
+    color: #313131;
+    background-color: #d5d5d5;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.price .select .free button{
+    background-color: #ffffff;
+    color: #269b98;
+}
+.price .select .free button:hover{
+    background-color: #ffffff;
+    color: #15e1da;
+    opacity: 0.8;
+}
+/*feature*/
+.price .features table tr th{
+    width: 201px;
+    text-align: center;
+    height: 70px;
+    vertical-align: middle;
+    border-top: 0;
+    font-size: 20px;
+    font-family: "Lato-Regular";
+    color: #ffffff;
+    background-color: #e4e4e4;
+    border-right: 2px solid #ffffff;
+}
+.price .features table tr td{
+    height: 60px;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 16px;
+    font-family: "Lato-Regular";
+    color: #000000;
+}
+.price .features table tr th:nth-child(1){
+    width: 305px;
+    background-color: #F3F3F3;
+}
+.price .features table tr th:nth-child(2){
+    background-color: #2DCBC7;
+}
+.price .features table tr td{
+    background-color: #ffffff;
+}
+.price .features table tr .free,.price .features table tr .undefined{
+    color: #2DCBC7;
+}
+.price .features table tr td img.pull-right{
+    cursor: pointer;
+    margin-right: 20px;
+}
+.price .features p{
+    font-family: "Lato-Bold";
+    color: #bdbdbd;
+    font-size: 12px;
+}
+.price .features table tr td:nth-child(1){
+    background-color: #F3F3F3;
+    font-size: 14px;
+    font-family: "Lato-Regular";
+    color: #606060;
+
+}
+
+/*mobile screen*/
+@media screen and (max-width: 768px){
+    .price{
+        padding-top: 0px;
+        padding-bottom: 0px;
+        margin-top: 80px;
+
+    }
+    .price .content{
+        margin-bottom: 100px;
+    }
+    .price h3{
+        font-size: 30px;
+    }
+    .price .free,.price .pro{
+        margin-bottom: 40px;
+    }
+    .box{
+        margin-top: 40px;
+    }
+    .mobile{
+        height: 62px;
+        border-bottom: 2px solid #EBEBEB;
+        line-height: 62px;
+    }
+    .mobile .pull-left{
+        color: #606060 !important;
+        font-size: 12px !important;
+    }
+    .mobile img{
+        cursor: pointer;
+        margin-top: 20px;
+    }
+
+}
+
+
+/*pc screen*/
+@media screen and (min-width: 768px){
+    .price{
+        padding-top: 3%;
+        padding-bottom: 80px;
+    }
+    .price .content{
+        margin-bottom: 160px;
+    }
+}
+
+.addP{
+    position: fixed;
+    border: 4px solid #717171;
+    display: none;
+    width: 276px;
+    padding: 20px;
+    font-size: 16px;
+    font-family: "Lato-Regular";
+    color: #676767;
+    background-color: #ffffff;
+}
+
+
+@media screen and (min-width: 1200px){
+    .price .select,.price #table{
+        width: 960px;
+    }
+}

@@ -1,0 +1,96 @@
+[@EC.breadcrumbs/]
+[@ec_website id=0;website]
+<div id="page-content" class="clearfix">
+    <div class="page-header position-relative">
+        <h1>System Settins <small>*Required</small></h1>
+    </div><!--/page-header-->
+    <div class="row-fluid">
+        <!-- PAGE CONTENT BEGINS HERE -->
+        <form class="form-horizontal" action="${path!}/management/settings/website" method="post" id="userProfileForm">
+            <div class="control-group">
+                <label class="control-label" for="sitename">System Name:</label>
+                <div class="controls">
+                    <input type="text" placeholder="" id="sitename" name="sitename" value="${website.sitename!}">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="domain">Domain:</label>
+                <div class="controls">
+                    <input type="text" id="domain" placeholder="" name="domain" value="${website.domain!}">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="keywords">Keywords:</label>
+                <div class="controls">
+                    <input type="text" id="keywords" placeholder="" name="keywords" value="${website.keywords!}">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="describe">Description:</label>
+                <div class="controls">
+                    <input type="text" id="describe" placeholder="" name="describe" value="${website.describe!}">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="root">Root:</label>
+                <div class="controls">
+                    <input type="text" id="root" placeholder="" name="root" value="${website.root!}">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="pagesizeList">Pagesize:</label>
+                <div class="controls">
+                    <input type="text" id="pagesizeList" placeholder="" name="pagesizeList" value="${website.pagesizeList!'[10,50,100]'}">
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button class="btn" type="reset">
+                    <i class="icon-undo"></i> Reset
+                </button>
+                &nbsp; &nbsp; &nbsp;
+                <button class="btn btn-success" type="submit" data-loading-text="Saving...">
+                    <i class="icon-ok"></i> Save
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+[/@ec_website]
+<script type="text/javascript">
+    $(document).ready(function() {
+        formValidtor.valid({
+			handler:"#userProfileForm",
+			rules : {
+				sitename : {
+        			required : true
+        		},
+        		domain : {
+        			required : true
+        		},
+        		keywords : {
+        			required : true
+        		},
+        		describe : {
+        			required : true
+        		},
+        		root : {
+        			required : true
+        		},
+        		pagesizeList : {
+        			required : true
+        		}
+        	},
+        	callbackFunc:function(data){
+        		if(data.code == "1000") {
+        			var res = data.response;
+        			global_pageList = res.pagesizeList.split(",");
+         			$.extend( $.fn.dataTable.defaults, {
+       		            "lengthMenu": global_pageList,
+       		            "pageLength": global_pageList[0]
+        			} );
+        		}
+        	}
+		})
+    }); 
+</script>

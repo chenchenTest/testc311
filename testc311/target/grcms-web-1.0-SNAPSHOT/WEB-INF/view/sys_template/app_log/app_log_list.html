@@ -1,0 +1,130 @@
+<script type="text/javascript">
+    $(function(){
+        //进行表单验证
+        var $form = $('#searchForm');
+       	var $datagrid=$('#appLogDataTable');
+        var url = $form.attr("action");    // // var params = $form.serialize();
+        var $btn = $form.find("a.btn").eq(0);
+        $form.form({
+          url:url,
+            onSubmit: function(){
+            //进行表单验证
+                if(isFormEmpty($form)) {
+                    $.messager.alert("警告","请输入查询内容!","warning");
+                    return false
+                }
+                var isValid = $form.form('validate');       
+                if(isValid){
+                    disableBtn($btn);
+                    $datagrid.datagrid("getPager").pagination('select',1)
+                }
+                return isValid; // 返回false,将阻止表单提交
+            },
+          success:function(data){
+              enableBtn($btn);
+              $datagrid.datagrid('loadData',$.parseJSON(data));
+          }
+       });
+        $('#delapplog').unbind('click').bind('click',function(){
+	        var rows = $datagrid.datagrid("getSelections");
+        	delDialog('#appLogDataTable','${path!}/applog/delete','id',function(){
+        	});
+        });
+		$datagrid.datagrid({
+			onLoadSuccess:function(data){
+	        	if(data.total == 0){
+	        		$('#appLogDataTable').datagrid('appendRow',{
+	        			aid: '没有记录'
+	        		});
+	        		$('#appLogDataTable').datagrid('mergeCells',{
+	        			index: 0,
+	        			field: 'aid',
+	        			colspan:5
+	        		});
+	        	}
+				$datagrid.datagrid("getPager").pagination({
+		    	   onSelectPage:function(pageNumber, pageSize){
+		    		    if(isFormEmpty($form)){
+		    		    	$.post(url,{page:pageNumber,
+		    		    		rows:pageSize
+							},function(data){
+				    		   $datagrid.datagrid("loadData",$.parseJSON(data));
+					    	})
+					    	return;
+		    		    }
+						var queryData=$form.serializeArray();
+						var params={};
+						for(var i in queryData){
+							params[queryData[i]['name']]=queryData[i]['value'];
+						}
+						$.post(url,{appName:params['appName'],
+				    			    time:params['time'],
+				    			    page:pageNumber,
+			    		    		rows:pageSize
+						},function(data){
+			    		   $datagrid.datagrid("loadData",$.parseJSON(data));
+				    	})
+		    		}
+		       });
+			}
+		});
+    });
+    function idSorter(a,b){
+    	return a-b>0?1:-1;
+    };
+    function zhSorter(a,b){
+    	return a.localeCompare(b);
+    };
+    function timeSorter(a,b){
+    	return new Date(a).getTime()-new Date(b).getTime()>0?1:-1;
+    };
+</script>
+<!-- 工具栏 -->
+<div class="EC-right-content">
+    
+    <div class="easyui-panel" title="查询信息" style="margin-bottom: 20px;">
+        <div class="EC-search-pannel EC-fieldset">
+        <form id="searchForm" method="post" action="${path}/applog/list">
+                <label>应用名称:</label><input type="text" name="appName" class="EC-form-input"/>
+                <label>时间:</label><input class="easyui-datebox" name="time"     
+       						data-options="required:false">
+                <a href="javascript:void(0);" onclick="submitReq(this);" class="btn easyui-linkbutton" iconCls="icon-search">搜索</a>
+        </form>
+        </div>
+    </div>
+    
+    <div id="dataWrap">
+        <div id="appLogToolBar" class="datagrid-toolbar" style="padding: 5px;">
+            <table cellspacing="0" cellpadding="0">
+                <tr>
+		            <td><a href="javascript:void(0);" id="delapplog" onclick="" class="easyui-linkbutton" data-options="iconCls:'icon-user-remove',plain:true">删除</a></td>
+                    <td><div class="datagrid-btn-separator"></div></td>
+                    <td><a href="javascript:void(0);" onclick="refreshData('#appLogDataTable','${path}/applog/list');" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true">刷新</a></td>
+                </tr>
+            </table>
+        </div>
+        <table id="appLogDataTable" title="日志列表" class="easyui-datagrid"
+        data-options="
+        	remoteSort: false,
+       		url:'${path}/applog/list',
+			method:'post'
+	        ,iconCls:'icon-log'
+	        ,fitColumns:true
+	        ,toolbar:'#appLogToolBar'
+	        ,pagination:true
+	        ,pageSize:20
+	        ">
+            <thead>
+                <tr>
+                    <th data-options="field:'id',checkbox:true">ID</th>
+                    <th data-options="field:'aid',width:100,align:'center',sortable:true,sorter:idSorter">ID</th>
+                    <th data-options="field:'appName',width:100,align:'center',sortable:true,sorter:zhSorter">应用名称</th>
+                    <th data-options="field:'appVersion',width:100,align:'center'">应用版本</th>
+                    <th data-options="field:'time',width:100,align:'center',sortable:true,sorter:timeSorter">时间</th>
+                    <th data-options="field:'type',width:100,align:'center'">类型</th>
+                </tr>
+            </thead>
+            
+        </table>
+    </div>
+</div>

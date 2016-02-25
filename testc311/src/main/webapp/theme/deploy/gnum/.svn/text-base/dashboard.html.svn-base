@@ -1,0 +1,40 @@
+[@gnum_callLogOverview type="${type!3}"]
+<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-container">
+    <div class="dashboard_content">
+        <h4>Coming soon in more <strong>feature</strong></h4>
+    </div>
+    <div class="feature_content">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 track_content">
+            <div class="img_track"><img src="${res!}/resources/images/dashboard/dash_story.png" alt="dash_story"/></div>
+            <p>Track the caller's geographical location</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 track_content">
+            <img src="${res!}/resources/images/dashboard/dashstory2.png" alt="dash_story"/>
+            <p>Get to know which websites the caller is calling from</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 track_content">
+            <img src="${res!}/resources/images/dashboard/dash_story3.png" alt="dash_story"/>
+            <p>Customise your call button with you profile photo or company's logo</p>
+        </div>
+        <div class="feature_button col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <button>Find out more on pricing</button>
+        </div>
+    </div>
+</div>
+
+[/@gnum_callLogOverview]
+<script type="text/javascript">
+    function loadProfile(val){
+        menu.profile($(".profile a"),val);
+    }
+
+    $(".logs-btn").click(function(){
+        menu.callLogs($(".call-logs a"));
+    });
+    $(function() {
+        //Find out more on pricing按钮跳转套price界面
+       $(".feature_button > button").click(function() {
+           location.href = $path+"/price/";
+       });
+    });
+</script>

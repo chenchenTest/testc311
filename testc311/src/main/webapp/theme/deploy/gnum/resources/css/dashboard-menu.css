@@ -1,0 +1,187 @@
+/**
+ * Created by zhangjian on 2015/5/19.
+ */
+html,body{height:100%; margin:0px;}
+
+.main,.main .dashboard-left-menu{
+height: 110%;
+}
+.container ,.container .dashboard-left-menu{
+margin-left: 0px;
+margin-right: 0px;
+padding: 0px;
+}
+.dashboard-left-menu{
+background-color:  #40444F;
+padding: 0px;
+margin: 0px;
+}
+.dashboard-left-menu a{
+    -webkit-transition: initial;
+}
+.main .menu-container{
+height: 100%;
+padding: 0px;
+margin: 0px;
+}
+.dashboard-left-menu .nav li{
+margin: 0px;
+padding: 0px;
+position: relative;
+}
+.dashboard-left-menu .nav .arrow a,.dashboard-left-menu .nav .arrow a:hover{
+    height: 50px;
+    background-color: #2F333f;
+}
+.dashboard-left-menu .nav > li >a{
+background-color: #40444F;
+color: #ffffff;
+border-radius: 0px;
+text-align: left;
+padding-right: 0px;
+height: 42px;
+padding-top: 10px;
+font-size: 14px;
+}
+.dashboard-left-menu .nav > li >a,.dashboard-left-menu .nav .active >a,.dashboard-left-menu .nav > li >a:hover,.dashboard-left-menu .nav > li > a:focus,.dashboard-left-menu .nav > li > a:active{
+background-position: 20px 11px;
+background-repeat: no-repeat;
+}
+.open .dashboard-left-menu  ul > li >a,.open .dashboard-left-menu  .active >a,.open .dashboard-left-menu  ul> li >a:hover,.open .dashboard-left-menu  ul> li > a:focus,.open .dashboard-left-menu ul > li > a:active{
+    background-position: 20px 11px;
+    padding-top: 12px;
+}
+.dashboard-left-menu .nav .active >a{
+background-color: #2b2b2b;
+color: #ffffff;
+border-radius: 0px;
+text-align: left;
+}
+.dashboard-left-menu .nav > li >a > .menu-text{
+     margin-left: 32%;
+    font-size: 14px;
+}
+.dashboard-left-menu .nav > li >a > .icon{
+color: #2dcbc7;
+margin-left: 3%;
+}
+.dashboard-left-menu .nav > li >a:hover,.dashboard-left-menu .nav > li > a:focus,.dashboard-left-menu .nav > li > a:active,.dashboard-left-menu .nav .active{
+    background-color: #4A4F5C;
+    box-shadow:none;
+    color: #ffffff;
+}
+.open .dashboard-left-menu  .arrow > a{
+    background-image: url("../images/dashboard/arrow.png");
+}
+.open .dashboard-left-menu  .arrow > a:hover{
+    background-image: url("../images/dashboard/arrow_over.png");
+}
+.dashboard-left-menu .nav .arrow .menu-text,.dashboard-left-menu .nav .menu-text{
+    display: none;
+}
+.open .dashboard-left-menu .arrow .menu-text,.open .dashboard-left-menu  .menu-text{
+    display:inline;
+}
+.dashboard-left-menu  .arrow > a,.dashboard-left-menu  .arrow > a:hover{
+    background-image: url("../images/dashboard/arrow_right.png");
+}
+.dashboard-left-menu .nav .arrow > a,.dashboard-left-menu .nav .arrow > a:hover{
+    background-position: 50% 50%;
+}
+.dashboard-left-menu .nav li > a,.dashboard-left-menu .nav li > a > span{
+    transition: none;
+}
+.open .dashboard-left-menu  .arrow > a,.open .dashboard-left-menu  .arrow > a:hover{
+    background-position: 20px 11px;
+}
+
+.dashboard-left-menu .dashboard>a{
+background-image: url("../images/dashboard/dash_small.png");
+
+}
+.dashboard-left-menu .dashboard>a:hover{
+    background-image: url("../images/dashboard/dash_small_over.png");
+}
+.dashboard-left-menu .dashboard .active{
+    background-image: url("../images/dashboard/dash_small_select.png");
+
+}
+.dashboard-left-menu .profile>a{
+    background-image: url("../images/dashboard/profile_small.png");
+}
+.dashboard-left-menu .profile>a:hover{
+    background-image: url("../images/dashboard/profile_small_over.png");
+}
+.dashboard-left-menu .profile .active{
+    background-image: url("../images/dashboard/profile_small_select.png");
+}
+.dashboard-left-menu .contacts>a{
+    background-image: url("../images/dashboard/contact.png");
+}
+.dashboard-left-menu .contacts a:hover,.dashboard-left-menu .contacts .active{
+    background-image: url("../images/dashboard/contact_select.png");
+}
+.dashboard-left-menu .call-logs a{
+    background-image: url("../images/dashboard/log.png");
+}
+.dashboard-left-menu .call-logs a:hover{
+    background-image: url("../images/dashboard/log_over.png");
+}
+.dashboard-left-menu .call-logs .active{
+    background-image: url("../images/dashboard/log_select.png");
+}
+
+.dashboard-left-menu .nav > a{
+    margin-right: 0px;
+    padding-right: 0px;
+}
+.dashboard-left-menu .nav .triangle {
+    position: absolute;
+    right: -5px;
+    top: 14px;
+    display: none;
+}
+.dashboard-left-menu .nav .active .triangle {
+    display: inline;
+}
+.open .main{
+    width: 160px;
+    position: fixed;
+    z-index: 9;
+}
+.open .main-right{
+    width: 100%;
+}
+.main{
+    width: 60px;
+    position: fixed;
+    z-index: 1000;
+}
+.mobile-right-head-image{
+    display: none;
+}
+.mobile-menu{
+    display: none;
+    position: absolute;
+    top: 40px;
+    z-index: 1000;
+    width: 100%;
+}
+@media screen and (max-width:768px){
+    .main{
+        display: none;
+    }
+    #main{
+       width: 100%;
+    }
+    .mobile-right-head-image{
+        display: inline-block;
+        float: right;
+    }
+    .main-right {
+        width: 100%;
+    }
+    .open .main-right{
+        width: 100%;
+    }
+}

@@ -1,0 +1,67 @@
+html{
+    font-size: 62.5%;
+}
+body{
+    font-family: "lato-Regular";
+}
+/*content begin 内容*/
+.privacy{
+    background-color: #F3F3F3;
+    margin-top: 110px;
+    padding-bottom: 100px;
+}
+a{
+    -webkit-transition: all 0.3s;   /* Safari and Chrome */
+    -moz-transition: all 0.3s;     /* Firefox */
+    -ms-transition: all 0.3s;      /*ie内核*/
+    -o-transition: all 0.3s;     /* Opera */
+    transition: all 0.3s;
+}
+.privacy h3{
+    font-family: "Lato-Italic";
+    font-size: 5rem;
+    color: #313131;
+}
+.privacy .sub span{
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+    width: auto;
+    height: auto;
+    background-color: #ffffff;
+    padding: 2% 2%;
+    color: #00A593;
+    font-size: 1.8rem;
+}
+.privacy .sub .sub1{
+    /*margin-left: 2%;*/
+    margin-right: 5%;
+    color: #CCCCCC;
+}
+.privacy .sub .sub1 a{
+    color: #CCCCCC;
+}
+.privacy .sub .sub1 a:hover{
+    color: #00A593;
+}
+.privacy .text h5{
+    margin: 3% 0;
+    color: #333333;
+    font-size: 2rem;
+}
+.privacy .text p{
+    font-size: 1.5rem;
+    color: #333333;
+    margin-top: 25px;
+}
+/*mobile screen begin*/
+@media screen and  (max-width: 768px){
+    .privacy h3{
+        font-size: 30px;
+    }
+    .privacy .sub span{
+        font-size: 14px;
+    }
+}
+/*mobile screen end*/
+/*content begin 内容*/

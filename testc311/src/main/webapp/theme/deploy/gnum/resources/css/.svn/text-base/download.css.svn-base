@@ -1,0 +1,70 @@
+html{
+    font-size: 62.5%;
+    font-family: "arial";
+}
+body{
+    font-family: "Lato-Regular";
+    word-break: break-all;
+}
+a,img,button{
+    -webkit-transition: all 0.3s;   /* Safari and Chrome */
+    -moz-transition: all 0.3s;     /* Firefox */
+    -ms-transition: all 0.3s;      /*ie内核*/
+    -o-transition: all 0.3s;     /* Opera */
+    transition: all 0.3s;
+}
+.download{
+    background-color: #F3F3F3;
+
+}
+/*top begin 顶部*/
+.download .top{
+    color: #ffffff;
+    height: 540px;
+    padding: 5% 0;
+    background-image: url("../images/download/downlaod_banner.png");
+}
+.download .top h3{
+    font-size: 11rem;
+    font-family: "lato-thin";
+    color: #ffffff;
+}
+/*top end 顶部*/
+
+/*content begin 内容*/
+.download .content{
+    padding: 4% 0;
+}
+.download .content p{
+    font-family: "Lato-Light";
+    font-size: 5.1rem;
+    color: #3e3e3e;
+}
+.download .content .box span{
+    color: #CCCCCC;
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+    width: auto;
+    height: auto;
+    background-color: #ffffff;
+    padding: 2% 2%;
+    cursor: pointer;
+    font-size: 2rem;
+}
+.download .content .box .box1{
+    margin-left: 2%;
+    margin-right: 5%;
+}
+.download .content .box span:hover{
+    color: #787878;
+}
+
+.download .content hr{
+    border-top: 3px solid #00BDB6;
+    width: 5%;
+    margin-left: 0;
+    margin-top: 8%;
+    margin-bottom: 8%;
+}
+/*content end 内容*/

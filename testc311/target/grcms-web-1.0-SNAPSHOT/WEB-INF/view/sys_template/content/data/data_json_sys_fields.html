@@ -1,0 +1,21 @@
+[@ec_field
+	queryType = "list"
+	sys = 1
+	modelId = "${(form.modelId)!}"
+;list]
+{
+"data":[
+[#if list?? && (list?size > 0)]
+[#list list as f]
+    {
+    "id":"<label><input type='checkbox' name='id' value='${f.id!}'/><span class='lbl'></span></label>"
+    ,"fieldName":"${f.fieldName!}"
+    ,"fieldCode":"${f.fieldCode!}"
+    }
+    [#if f_index != (list?size - 1)]
+    ,
+    [/#if]
+[/#list]
+[/#if]
+]}
+[/@ec_field]

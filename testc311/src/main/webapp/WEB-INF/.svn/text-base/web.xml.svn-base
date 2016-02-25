@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp"
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	<display-name>grcms</display-name>
+	<distributable />
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:conf/core-config.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+	<listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener
+		</listener-class>
+	</listener>
+	<listener>
+		<listener-class>org.springframework.web.util.IntrospectorCleanupListener
+		</listener-class>
+	</listener>
+	<filter>
+		<filter-name>OpenEntityManagerInViewFilter</filter-name>
+		<filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>OpenEntityManagerInViewFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>com.grcms.core.filter.SpringCharactorFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<servlet>
+		<display-name>spring dispacher Servlet</display-name>
+		<servlet-name>dispatcherServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>
+				classpath:conf/mvc/spring-mvc.xml
+			</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dispatcherServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	<listener>
+		<listener-class>com.grcms.core.listener.StartUpListener
+		</listener-class>
+	</listener>
+	<listener>
+		<listener-class>com.grcms.core.listener.MenuListener
+		</listener-class>
+	</listener>
+	<listener>
+		<listener-class>com.grcms.core.listener.DirectiveListener
+		</listener-class>
+	</listener>
+	<!--<filter>
+		<filter-name>MyHiddenHttpMethodFilter</filter-name>
+		<filter-class>com.grcms.core.filter.MyHiddenHttpMethodFilter
+		</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>MyHiddenHttpMethodFilter</filter-name>
+		<servlet-name>dispatcherServlet</servlet-name>
+	</filter-mapping>-->
+	<session-config>
+		<session-timeout>20</session-timeout>
+	</session-config>
+	
+	<!-- 以下为ckfinder配置 开始 -->
+	<!--<servlet>-->
+		<!--<servlet-name>ConnectorServlet</servlet-name>-->
+		<!--<servlet-class>com.ckfinder.connector.ConnectorServlet</servlet-class>-->
+		<!--<init-param>-->
+			<!--<param-name>XMLConfig</param-name>-->
+			<!--<param-value>/WEB-INF/config.xml</param-value>-->
+		<!--</init-param>-->
+		<!--<init-param>-->
+			<!--<param-name>debug</param-name>-->
+			<!--<param-value>false</param-value>-->
+		<!--</init-param>-->
+		<!--<load-on-startup>1</load-on-startup>-->
+	<!--</servlet>-->
+	<!--<servlet-mapping>-->
+		<!--<servlet-name>ConnectorServlet</servlet-name>-->
+		<!--<url-pattern>  -->
+			<!--/ckfinder/core/connector/java/connector.java  -->
+		<!--</url-pattern>-->
+	<!--</servlet-mapping>-->
+	<!--<filter>-->
+		<!--<filter-name>FileUploadFilter</filter-name>-->
+		<!--<filter-class>com.ckfinder.connector.FileUploadFilter</filter-class>-->
+		<!--<init-param>-->
+			<!--<param-name>sessionCookieName</param-name>-->
+			<!--<param-value>JSESSIONID</param-value>-->
+		<!--</init-param>-->
+		<!--<init-param>-->
+			<!--<param-name>sessionParameterName</param-name>-->
+			<!--<param-value>jsessionid</param-value>-->
+		<!--</init-param>-->
+	<!--</filter>-->
+	<!--<filter-mapping>-->
+		<!--<filter-name>FileUploadFilter</filter-name>-->
+		<!--<url-pattern>  -->
+			<!--/ckfinder/core/connector/java/connector.java  -->
+       <!--</url-pattern>-->
+	<!--</filter-mapping>-->
+	<!-- 以上为ckfinder配置 结束 -->
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/500</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/404</location>
+	</error-page>
+</web-app>

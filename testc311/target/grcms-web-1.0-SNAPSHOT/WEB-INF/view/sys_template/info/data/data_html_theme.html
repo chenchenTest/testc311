@@ -1,0 +1,25 @@
+<div class="EC-search-pannel EC-fieldset">
+	<ul>
+	[@ec_theme queryType="list" pageable=0;list]
+	[#if list?? && (list?size > 0)]
+	[#list list as theme]
+		<li class="EC-menu-wrap">
+			<a href="javascript:void(0);" class="EC-menu EC-icon-EC-receive" 
+				onclick="operator.openDialog({url:'${path}/management/info/theme?id=${theme.id}',title:'主题信息',width:290});">
+				<span class="EC-menu-img">
+					[#if theme.enable]
+					<img src="${path}/icons/folder-horizontal-enable.png"/>
+					[#else]
+					<img src="${path}/icons/folder-horizontal.png"/>
+					[/#if]
+				</span>
+				<span class="EC-menu-text">${theme.name!}</span>
+			</a>
+		</li>
+	[/#list]
+	[#else]
+		<div style="text-align: center;">没有主题!</div>
+	[/#if]
+   	[/@ec_theme]
+	</ul>
+</div>

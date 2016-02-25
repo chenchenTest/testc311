@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/macro
+END
+macros.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/macro/macros.ftl
+END
+spring.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/macro/spring.ftl
+END
+basic.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/macro/basic.ftl
+END

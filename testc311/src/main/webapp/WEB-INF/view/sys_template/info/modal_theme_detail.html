@@ -1,0 +1,43 @@
+[@ec_theme id=form.id;theme]
+<div class="EC-modal-content" id="themeDetail">
+    <div class="EC-form-layout">
+	    <table class="EC-form-table">
+	    	<tbody>
+	        	<tr>
+	            	<td>主题名称:</td>
+	                <td width="29%;">${theme.name!}</td>
+	            </tr>
+	            <tr>
+	           	    <td>启用:</td>
+	                <td>${theme.enable?string("是","否")}</td>
+	            </tr>
+	            [#if !(theme.enable)]
+	            <tr>
+	                <td colspan="2" style="text-align: center;">
+	                	<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" 
+	                		onclick="operator.remote({
+	                			confirm:false
+	                			,url:'${path}/management/info/theme/enable?id=${theme.id}'
+	                			,callback:function(data){
+	                				refreshList();
+	                				operator.closeDialog();
+	                			}
+	                			})">启用</a>
+						<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove'"
+							onclick="operator.remote({
+								url:'${path}/management/info/theme/delete?id=${theme.id}'
+								,content:'您确定要删除该主题，一旦删除将不可恢复!'
+								,callback:function(data){
+		                			refreshList();
+		                			operator.closeDialog();
+		                		}
+							})">删除</a>
+	                </td>
+	            </tr>
+	           	[/#if]
+	       </tbody>
+	    </table>
+		
+    </div>
+</div>
+[/@ec_theme]

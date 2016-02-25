@@ -1,0 +1,114 @@
+
+<privilege-config>
+	<privilege>
+		<name>Menu Management</name>
+		<url>/management/menu</url>
+	</privilege>
+	<privilege>
+		<name>Create Menu</name>
+		<url>/management/menu/add</url>
+	</privilege>
+	<privilege>
+		<name>Edit Menu</name>
+		<url>/management/menu/edit</url>
+	</privilege>
+	<privilege>
+		<name>Delete Menu</name>
+		<url>/management/menu/delete</url>
+	</privilege>
+	<privilege>
+		<name>Operator</name>
+		<url>/management/usergroup</url>
+	</privilege>
+	<privilege>
+		<name>Operator Management</name>
+		<url>/management/user</url>
+	</privilege>
+	<privilege>
+		<name>Create Operator</name>
+		<url>/management/user/add</url>
+	</privilege>
+	<privilege>
+		<name>View Operator</name>
+		<url>/management/user/show</url>
+	</privilege>
+	<privilege>
+		<name>Edit Operator</name>
+		<url>/management/user/edit</url>
+	</privilege>
+	<privilege>
+		<name>Delete Operator</name>
+		<url>/management/user/delete</url>
+	</privilege>
+	<privilege>
+		<name>Dispatch Role</name>
+		<url>/management/user/role</url>
+	</privilege>
+	<privilege>
+		<name>Reset Password</name>
+		<url>/management/user/password</url>
+	</privilege>
+	<privilege>
+		<name>Department Management</name>
+		<url>/management/department</url>
+	</privilege>
+	<privilege>
+		<name>Create Department</name>
+		<url>/management/department/add</url>
+		<icon></icon>
+	</privilege>
+	<privilege>
+		<name>Edit Department</name>
+		<url>/management/department/edit</url>
+		<icon></icon>
+	</privilege>
+	<privilege>
+		<name>Delete Department</name>
+		<url>/management/department/delete</url>
+		<icon></icon>
+	</privilege>
+	<privilege>
+		<name>Role Management</name>
+		<url>/management/role</url>
+	</privilege>
+	<privilege>
+		<name>Create Role</name>
+		<url>/management/role/add</url>
+	</privilege>
+	<privilege>
+		<name>Edie Role</name>
+		<url>/management/role/edit</url>
+	</privilege>
+	<privilege>
+		<name>Delete Role</name>
+		<url>/management/role/delete</url>
+	</privilege>
+	<privilege>
+		<name>Privilege Management</name>
+		<url>/management/privilege</url>
+	</privilege>
+	<privilege>
+		<name>Create Privilege</name>
+		<url>/management/privilege/add</url>
+	</privilege>
+	<privilege>
+		<name>Edit Privilege</name>
+		<url>/management/privilege/edit</url>
+	</privilege>
+	<privilege>
+		<name>Delete Privilege</name>
+		<url>/management/privilege/delete</url>
+	</privilege>
+	<privilege>
+		<name>Upload Icon</name>
+		<url>/management/privilege/upload</url>
+	</privilege>
+	<privilege>
+		<name>Option</name>
+		<url>/management/settings</url>
+	</privilege>
+	<privilege>
+		<name>Setting</name>
+		<url>/management/settings/website</url>
+	</privilege>
+</privilege-config>

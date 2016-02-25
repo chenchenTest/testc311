@@ -1,0 +1,221 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+[#include "inc_res.html"/]
+ <link rel="stylesheet" href="${res}/css/swipebox.css">
+ <!------ Light Box ------>
+    <script src="${res}/js/jquery.swipebox.min.js"></script> 
+    <script type="text/javascript">
+		jQuery(function($) {
+			$(".swipebox").swipebox();
+		});
+	</script>
+    <!------ Eng Light Box ------>
+</head>
+<body>
+<!-- header -->
+	<div class="banner1">
+		<div class="header">
+			[#include "inc_menu.html"/]	 
+		</div>
+		<div class="container">	
+			<h2>Services</h2>
+		</div>
+	</div>
+<!-- header -->	
+<!-- service -->
+<div class="service-section">
+	<div class="container">
+	<h2>Our Services</h2>
+		<!-- portfolio-section -->
+	 <div class="portfolio"  id="portfolio">
+				<div id="portfoliolist">
+					<div class="portfolio card mix_all  wow bounceIn" data-wow-delay="0.4s" data-cat="card" style="display: inline-block; opacity: 1;">
+						<div class="portfolio-wrapper grid_box">		
+							<a href="${res}/images/bc2.jpg" class="swipebox"  title="Image Title"> <img src="${res}/images/bc2.jpg" class="img-responsive" alt=""><span class="zoom-icon"></span> </a>
+							<h3>Service Tittle</h3>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
+							<a class="read" href="#">Read More</a>
+		                </div>
+					</div>				
+					<div class="portfolio app mix_all  wow bounceIn" data-wow-delay="0.4s" data-cat="app" style="display: inline-block; opacity: 1;">
+						<div class="portfolio-wrapper grid_box">		
+							 <a href="${res}/images/food.jpg" class="swipebox"  title="Image Title"> <img src="${res}/images/food.jpg" class="img-responsive" alt=""><span class="zoom-icon"></span> </a>
+							 <h3>Service Tittle</h3>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
+							<a class="read" href="#">Read More</a>
+		                </div>
+					</div>					
+					
+					<div class="portfolio app mix_all  wow bounceIn" data-wow-delay="0.4s" data-cat="app" style="display: inline-block; opacity: 1;">
+						<div class="portfolio-wrapper grid_box">		
+							 <a href="${res}/images/pho.jpg" class="swipebox"  title="Image Title"> <img src="${res}/images/pho.jpg" class="img-responsive" alt=""><span class="zoom-icon"></span> </a>
+							 <h3>Service Tittle</h3>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
+							<a class="read" href="#">Read More</a>
+		                </div>
+					</div>	
+					<div class="portfolio app mix_all  wow bounceIn" data-wow-delay="0.4s" data-cat="app" style="display: inline-block; opacity: 1;">
+						<div class="portfolio-wrapper grid_box">		
+							 <a href="${res}/images/brand.jpg" class="swipebox"  title="Image Title"> <img src="${res}/images/brand.jpg" class="img-responsive" alt=""><span class="zoom-icon"></span> </a>
+							 <h3>Service Tittle</h3>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
+							<a class="read" href="#">Read More</a>
+		                </div>
+					</div>							
+					<div class="clearfix"></div>					
+				</div>
+					<div class="clearfix"></div>
+    </div>
+	<div class="portfolio"  id="portfolio">
+				<div id="portfoliolist">
+					<div class="portfolio card mix_all  wow bounceIn" data-wow-delay="0.4s" data-cat="card" style="display: inline-block; opacity: 1;">
+						<div class="portfolio-wrapper grid_box">		
+							<a href="${res}/images/sign.jpg" class="swipebox"  title="Image Title"> <img src="${res}/images/sign.jpg" class="img-responsive" alt=""><span class="zoom-icon"></span> </a>
+							<h3>Service Tittle</h3>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
+							<a class="read" href="#">Read More</a>
+		                </div>
+					</div>				
+					<div class="portfolio app mix_all  wow bounceIn" data-wow-delay="0.4s" data-cat="app" style="display: inline-block; opacity: 1;">
+						<div class="portfolio-wrapper grid_box">		
+							 <a href="${res}/images/pp.jpg" class="swipebox"  title="Image Title"> <img src="${res}/images/pp.jpg" class="img-responsive" alt=""><span class="zoom-icon"></span> </a>
+							 <h3>Service Tittle</h3>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
+							<a class="read" href="#">Read More</a>
+		                </div>
+					</div>					
+					
+					<div class="portfolio app mix_all  wow bounceIn" data-wow-delay="0.4s" data-cat="app" style="display: inline-block; opacity: 1;">
+						<div class="portfolio-wrapper grid_box">		
+							 <a href="${res}/images/bcard.jpg" class="swipebox"  title="Image Title"> <img src="${res}/images/bcard.jpg" class="img-responsive" alt=""><span class="zoom-icon"></span> </a>
+							 <h3>Service Tittle</h3>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
+							<a class="read" href="#">Read More</a>
+		                </div>
+					</div>	
+					<div class="portfolio app mix_all  wow bounceIn" data-wow-delay="0.4s" data-cat="app" style="display: inline-block; opacity: 1;">
+						<div class="portfolio-wrapper grid_box">		
+							 <a href="${res}/images/diamond.jpg" class="swipebox"  title="Image Title"> <img src="${res}/images/diamond.jpg" class="img-responsive" alt=""><span class="zoom-icon"></span> </a>
+							 <h3>Service Tittle</h3>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
+							<a class="read" href="#">Read More</a>
+		                </div>
+					</div>							
+					<div class="clearfix"></div>					
+				</div>
+					<div class="clearfix"></div>
+    </div>
+	<div class="portfolio"  id="portfolio">
+				<div id="portfoliolist">
+					<div class="portfolio card mix_all  wow bounceIn" data-wow-delay="0.4s" data-cat="card" style="display: inline-block; opacity: 1;">
+						<div class="portfolio-wrapper grid_box">		
+							<a href="${res}/images/bc2.jpg" class="swipebox"  title="Image Title"> <img src="${res}/images/bc2.jpg" class="img-responsive" alt=""><span class="zoom-icon"></span> </a>
+							<h3>Service Tittle</h3>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
+							<a class="read" href="#">Read More</a>
+		                </div>
+					</div>				
+					<div class="portfolio app mix_all  wow bounceIn" data-wow-delay="0.4s" data-cat="app" style="display: inline-block; opacity: 1;">
+						<div class="portfolio-wrapper grid_box">		
+							 <a href="${res}/images/food.jpg" class="swipebox"  title="Image Title"> <img src="${res}/images/food.jpg" class="img-responsive" alt=""><span class="zoom-icon"></span> </a>
+							 <h3>Service Tittle</h3>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
+							<a class="read" href="#">Read More</a>
+		                </div>
+					</div>					
+					
+					<div class="portfolio app mix_all  wow bounceIn" data-wow-delay="0.4s" data-cat="app" style="display: inline-block; opacity: 1;">
+						<div class="portfolio-wrapper grid_box">		
+							 <a href="${res}/images/pho.jpg" class="swipebox"  title="Image Title"> <img src="${res}/images/pho.jpg" class="img-responsive" alt=""><span class="zoom-icon"></span> </a>
+							 <h3>Service Tittle</h3>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
+							<a class="read" href="#">Read More</a>
+		                </div>
+					</div>	
+					<div class="portfolio app mix_all  wow bounceIn" data-wow-delay="0.4s" data-cat="app" style="display: inline-block; opacity: 1;">
+						<div class="portfolio-wrapper grid_box">		
+							 <a href="${res}/images/brand.jpg" class="swipebox"  title="Image Title"> <img src="${res}/images/brand.jpg" class="img-responsive" alt=""><span class="zoom-icon"></span> </a>
+							 <h3>Service Tittle</h3>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
+							<a class="read" href="#">Read More</a>
+		                </div>
+					</div>							
+					<div class="clearfix"></div>					
+				</div>
+					<div class="clearfix"></div>
+    </div>
+	
+	  <!-- Script for gallery Here -->
+				<script type="text/javascript" src="${res}/js/jquery.mixitup.min.js"></script>
+					<script type="text/javascript">
+					$(function () {
+						
+						var filterList = {
+						
+							init: function () {
+							
+								// MixItUp plugin
+								// http://mixitup.io
+								$('#portfoliolist').mixitup({
+									targetSelector: '.portfolio',
+									filterSelector: '.filter',
+									effects: ['fade'],
+									easing: 'snap',
+									// call the hover effect
+									onMixEnd: filterList.hoverEffect()
+								});				
+							
+							},
+							
+							hoverEffect: function () {
+							
+								// Simple parallax effect
+								$('#portfoliolist .portfolio').hover(
+									function () {
+										$(this).find('.label').stop().animate({bottom: 0}, 200, 'easeOutQuad');
+										$(this).find('img').stop().animate({top: -30}, 500, 'easeOutQuad');				
+									},
+									function () {
+										$(this).find('.label').stop().animate({bottom: -40}, 200, 'easeInQuad');
+										$(this).find('img').stop().animate({top: 0}, 300, 'easeOutQuad');								
+									}		
+								);				
+							
+							}
+				
+						};
+						
+						// Run the show!
+						filterList.init();
+						
+						
+					});	
+					</script>
+<!-- portfolio-section  -->
+		
+		</div>
+</div>
+<!-- service -->
+<!-- footer -->
+	<div class="footer">
+		<div class="container">
+			<p>Template by <a href="http://w3layouts.com" target="_blank"> w3layouts</a></p>
+		</div>	
+	</div>
+	[#include "inc_js.html"/]
+<!-- footer -->
+</body>
+</html>

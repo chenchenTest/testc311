@@ -1,0 +1,78 @@
+.contacts-table-container .contacts-table .delete-btn{
+    background-image: url("../images/contacts/eraise.png");width: 55px;
+    background-position: 0px 13px;
+    margin-top: 10px;
+}
+.contacts-table-container .contacts-table .delete-btn:hover{
+    background-image: url("../images/contacts/eraise-s.png");width: 55px;
+}
+.contacts-table-container .contacts-table .call-btn{
+    background-image: url("../images/contacts/call_btbt.png");
+    width: 99px;
+}
+.contacts-table-container .contacts-table .delete-btn,.contacts-table-container .contacts-table .call-btn{
+    height: 50px;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+.contacts-table-container .contacts-table .table-col-1{
+    text-align: left;
+}.contacts-table-container .contacts-table .table-col-2{
+    text-align: right;
+}
+.contacts-table-container .contacts-search-area .contacts-search-area-1 ul>li{
+    float: left;
+    list-style: none;
+    margin-left: 3px;
+    color: #9c9c9c;
+    font-weight: bold;
+    cursor: pointer;
+}
+.contacts-table-container .contacts-search-area .contacts-search-area-1 ul{
+    margin-left: 0px;
+    padding-left: 0px;
+    margin-top: 10px;
+}
+.contacts-table-container .contacts-search-area .contacts-search-area-1 ul .all{
+    color: #2DCBC7;
+    margin-right: 2px;
+}
+.contacts-table-container .contacts-search-area .contacts-search-area-2 ul .all{
+    color: #2DCBC7;
+    margin-right: 2px;
+}
+.contacts-table-container .contacts-search-area,.contacts-table-container .contacts-search-area .contacts-search-area-1 {
+    padding-top: 3px;
+}
+.contacts-table-container .contacts-search-area .contacts-search-area-2 .input-group input,.contacts-table-container .contacts-search-area .contacts-search-area-2 .input-group button{
+      height: 54px;
+	  border: none;
+	  border-radius: 0;
+}
+.contacts-table-container .contacts-search-area .contacts-search-area-2 .input-group input{
+	  width: 240px;
+	  float: right;
+}
+.contacts-table-container .contacts-search-area .contacts-search-area-2 .input-group button{
+	width:90px;
+    background-color: #2DCBC7;
+    color: #fff;
+    font-weight: bold;
+}
+.contacts-table-container .contacts-search-area{
+     margin-top: 20px;
+     margin-bottom: 20px;
+}
+.contacts-table-container .contacts-table tr td{
+    background-color: #efefef;
+    border-bottom: 1px solid #ddd;
+}
+.contacts-table-container .contacts-table a{
+    cursor: pointer;
+}
+.contacts-table-container .contact-table-list{
+    padding-left: 15px;
+	background-color: #efefef;
+	padding-right: 15px;
+}
+

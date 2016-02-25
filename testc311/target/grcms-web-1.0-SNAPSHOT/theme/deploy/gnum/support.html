@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+	[#include "common/common-meta.html" ]
+    <title>GNUM support</title>
+   	[#include "common/common-css.html" ]
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/css/support.css"/>
+    <style type="text/css">
+	.highlight{background:green;font-weight:bold;color:white;}
+	</style>
+</head>
+<body>
+[#include "common/google-tag-manager.html" /]
+    <!--head begin-->
+    <div class="head">
+    	[#include "common/head.html" ]
+    </div>
+    <!--head end-->
+
+    <!--content begin 主页面主要内容-->
+    <div class="container-fluid support">
+        <!--top begin顶部-->
+        <div class="row topImg"><img src="${res!}/resources/images/support/bg.png" alt="" class="img-responsive"/></div>
+        <div class="row top">
+            <div class="col-lg-3 col-md-3 col-sm-1 col-xs-0"></div>
+            <!--内容-->
+            <div class="col-lg-6 col-md-6 col-sm-10 col-xs-12">
+                <h3>SUPPORT.</h3>
+                <form role="form">
+                    <div class="input-group topSearch">
+                        <input type="text" class="form-control input-lg" id="searchInput" placeholder="Typing">
+                       <span class="input-group-btn">
+                      <button class="btn btn-lg inBtn" type="button" onclick="support.allSearch()"><img src="${res!}/resources/images/support/search.png" alt=""/></button>
+                      </span>
+                    </div>
+                </form>
+            </div>
+            <!--内容-->
+            <div class="col-lg-3 col-md-3 col-sm-1 col-xs-0"></div>
+        </div>
+        <!--top end顶部-->
+
+        <!--content begin 内容-->
+        <div class="row content">
+            <div class="col-lg-3 col-md-3 col-sm-1 col-xs-0"></div>
+            <!--内容-->
+            <div class="col-lg-6 col-md-6 col-sm-10 col-xs-12">
+                <!--FQA begin 内容-->
+                <div class="fqa">
+                    <h4>FAQ</h4>
+                    <div class="info">
+                        We have attempted to capture some questions about gnum services and respond to them in the following FAQ.
+                        If you can not find answer from FAQ, please send us a message. Our support team will reply to you as soon as
+                        possible.
+                    </div>
+
+                    <div class="box">
+                        <span class="box1">General Enquiry</span>
+                        <span class="box2">Usage Enquiry</span>
+                    </div>
+					<div id="searchContent">
+                    <div class="searchInfo">
+                        <p>What’s GNum?</p>
+                        <div class="info">
+                            GNum stands for Global Number. We convert your phone number into a URL so your contacts can reach you just by clicking on your URL or entering your call name (gnum.com/Call_Name) on our app. It can be your individual unique global ID, or a global toll-free solution for your business.
+                        </div>
+                    </div>
+                    
+                    <div class="searchInfo">
+                        <p>Why do I have to provide a mobile number and how do I update it?</p>
+                        <div class="info">
+                            Your phone number will be linked to your GNum URL hence you need to provide your phone number when you register in order for your caller to reach you successfully. You will not be able to change your phone number if you are a free account user. You can upgrade to a paid account with more features (coming soon), or you could sign up to a new GNum account.
+                        </div>
+                    </div>
+                    
+                    <div class="searchInfo">
+                        <p>Should I allow GNum to access my microphone?</p>
+                        <div class="info">
+                            Yes, please allow access by clicking “allow” on the pop up when you are making a GNum call. It needs to be activated for the call
+                        </div>
+                    </div>
+                    
+                    <div class="searchInfo">
+                        <p>How do I change my profile details?</p>
+                        <div class="info">
+                            To update your profile details, simply log in and edit your relevant profile details and save changes.
+                        </div>
+                    </div>
+                    
+                    <div class="searchInfo">
+                        <p>Can I call an emergency number with GNum?</p>
+                        <div class="info">
+                            GNum does not allow you to make emergency calls. You must make alternative communication arrangements to ensure you can make emergency calls when the need arises.
+                        </div>
+                    </div>
+                    
+                    <div class="searchInfo">
+                        <p>How much is GNum service?</p>
+                        <div class="info">
+                            Unlike conventional expensive toll-free lines, GNum service starts from free. You could upgrade just by paying a minimal fee for more minutes and features! (Coming soon)
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+
+                    <!-- <div class="searchInfo NO">
+                        <p>Lorem ipsum dolor sit amet?</p>
+                    </div> -->
+                    </div>
+                    
+                    <div id="searchContentUsage" style="display:none;">
+                    <div class="searchInfo">
+                        <p>Can GNum support international calls?</p>
+                        <div class="info">
+                            Currently we only allow calls to Singapore whether it is a call from oversea or a local-to-local call. But we are working hard to expand to and soon you will be able to call other countries. Stay tuned!
+                        </div>
+                    </div>
+                    
+                    <div class="searchInfo">
+                        <p>How do I use GNum?</p>
+                        <div class="info">
+                            Create your own GNum URL by signing up for a free account (paid account coming soon). You can post your GNum URL everywhere, or hyperlinked it from the call button (which you can find on your dashboard). Your contacts will be able to reach you just by clicking or tapping on your URL or call button!
+
+							If you would like to call GNum registered users, all you need to do is type in their URL on the web browser or type in their call name on the mobile app and you will be connected.
+
+                        </div>
+                    </div>
+                    
+                    <div class="searchInfo">
+                        <p>Why do I need to install Adobe Flash?</p>
+                        <div class="info">
+                            Adobe Flash (formerly Macromedia Flash and Shockwave Flash) is a multimedia and software platform used for creating vector graphics, animation, games and rich Internet applications (RIAs) that can be viewed, played and executed in Adobe Flash Player.  While our team is currently working hard to be fully integrated with WebRTC, there is still a need to install Adobe Flash for now for GNum calls to work.
+                        </div>
+                    </div>
+                    
+                    </div>
+                </div>
+                <!--FQA end 内容-->
+
+                <!--form begin 表单内容-->
+                <form role="form" id="support-email-form" action="${res!}/emailsupport/newEmail/" method="post">
+                    <h3>SUPPORT</h3>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 form-group">
+                            <select name="category" id="" class="form-control">
+                                <option value="default category">*Select Categories</option>
+                                <option value="Technical">Technical</option>
+                                <option value="Business">Business</option>
+                                <option value="Technical">General</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 form-group">
+                            <label class="sr-only" for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="*Name">
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 form-group">
+                            <label class="sr-only" for="eamil">Email address</label>
+                            <input type="email" class="form-control" id="eamil" name="email" placeholder="*Email Address">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="textSubject" class="sr-only">Email address</label>
+                        <input type="text" class="form-control" id="textSubject" name="subject" placeholder="*Subject">
+                    </div>
+                    <div class="form-group">
+                        <label for="textMessage" class="sr-only">Email address</label>
+                        <textarea class="form-control" id="textMessage" name="content" placeholder="*Message" rows="10"></textarea>
+                    </div>
+                    <div class="row check">
+                        <div class="col-lg-4 col-md-4 col-sm-4 form-group checkbox"></div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 form-group"></div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 form-group send">
+                            <button type="submit" class="form-control btn btn-default">SEND</button>
+                        </div>
+                    </div>
+                        <ul id="errorBox"></ul>
+
+                </form>
+                <!--form end 表单内容-->
+
+
+            </div>
+            <!--内容-->
+            <div class="col-lg-3 col-md-3 col-sm-1 col-xs-0"></div>
+        </div>
+        <!--content end 内容-->
+
+    </div>
+    <!--content end 主页面主要内容-->
+
+    <!--foot begin-->
+    <div class="foot" style="position: relative">
+    	[#include "common/foot.html" ]
+    </div>
+    <!--foot end-->
+     [#include "common/common-js.html" ]
+	<script type="text/javascript" src="${res!}/resources/js/support.js"></script>
+    [#include "common/common-js-validate.html"/]
+</body>
+</html>

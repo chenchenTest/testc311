@@ -1,0 +1,92 @@
+ [#include "macro/macros.html"/]
+<div class="row">
+<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 contacts-table-container">
+    <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 contacts-search-area">
+        <div class="col-sm-12 col-xs-12 col-md-8 col-lg-8 contacts-search-area-1">
+            <ul class="letter-code">
+                <li  class="all">ALL</li>
+                <li>A</li>
+                <li>B</li>
+                <li>C</li>
+                <li>D</li>
+                <li>E</li>
+                <li>F</li>
+                <li>G</li>
+                <li>H</li>
+                <li>I</li>
+                <li>J</li>
+                <li>K</li>
+                <li>L</li>
+                <li>M</li>
+                <li>N</li>
+                <li>O</li>
+                <li>P</li>
+                <li>Q</li>
+                <li>R</li>
+                <li>S</li>
+                <li>T</li>
+                <li>U</li>
+                <li>V</li>
+                <li>W</li>
+                <li>X</li>
+                <li>Y</li>
+                <li>Z</li>
+            </ul>
+        </div>
+        <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4 contacts-search-area-2">
+            <div class="row">
+                <div class="ol-sm-12 col-xs-12 col-md-12 col-lg-12">
+                    <form id="data-refresh-form">
+                    <div class="input-group">
+                        	<input type="text" class="form-control" placeholder="Search for..."   name="searchKey" value="${searchKey!''}" id="searchKey">
+                        	<input type="hidden"  name="pagesize" value="${pagesize!}" id="pagesize">
+                        	<input type="hidden"  name="pageNum" value="${pageNum!}" id="pageNum">
+                        	<input type="hidden"  name="groupNumber" value="${groupNumber!}">
+                        	<input type="hidden"  name="word" value="${word!}" id="word">
+	                          <span class="input-group-btn">
+	                            <button class="btn btn-default" type="button" onclick="refreshTable(this);" id="search-btn">Search</button>
+	                          </span>
+                    </div><!-- /input-group -->
+					</form>
+                </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->
+        </div>
+    </div>
+[#-- 联系人列表 --]
+<div id="table-list-container">
+	[#include 'data/contacts/contacts_list.html']
+</div>	
+[#-- 联系人列表 end--]
+</div>
+</div>
+<script>
+$(function(){
+	$(".letter-code li").click(function(){
+		var searchKey = $(this).text();
+		menu.loadWait();
+		var $obj = $(this);
+		$("#searchKey").val("");
+		var pageSize =  $("#pagesize").val();
+		$.get("${res!}/contacts/wordSearch/?pageSize=" + pageSize + "&word=" + searchKey,function(data){
+			var obj = eval("(" + data +")");
+			if(obj.status){
+				$obj.addClass("all").siblings().removeClass("all");
+			  $("#pageNum").val(obj.pageNum);
+			  $("#word").val(searchKey);
+	  		  refreshData("${res!}/contacts/data/",$("#search-btn"));
+			}
+			 menu.hideWait();
+		});
+		
+	});
+})
+
+
+function refreshTable(obj){
+	$("#pageNum").val("1");
+	menu.loadWait();
+	refreshData('${res!}/contacts/data/',obj);
+	menu.hideWait();
+}
+</script>
+<script src="${res!}/resources/js/contacts.js" type="text/javascript"></script>

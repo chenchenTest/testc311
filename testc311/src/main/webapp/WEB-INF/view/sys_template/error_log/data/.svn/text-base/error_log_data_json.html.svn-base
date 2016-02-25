@@ -1,0 +1,39 @@
+[@ec_error_log 	
+	queryType = "list"
+	order = "${form.order!'desc'}"
+	sort = "${form.sort!}"
+	filter = "${form.filter!}"
+	fileName="${(form.fileName)!}" 
+	path="${(form.path)!}" 
+	fileSize="${(form.fileSize)!}" 
+	lastModified="${(form.lastModified)!}" 
+	pageNum="${(form.page)!1}"  
+	pagesize="${(form.rows)!}"
+	;list]
+{"total":${count},"rows":[
+[#if list?? && (list?size > 0)]
+[#list list as log]
+    {"id":"${log.id!}"
+    ,"fileName":"${log.fileName!}"
+    ,"path":"${log.path!}"
+    ,"fileSize":"${log.fileSize!}"
+    ,"lastModified":"${log.lastModified!}"
+     ,"links":[
+    	[@ec_privilege_check uri="/errorlog/download"]
+    	{
+	    	"title":"${AUTH_MENU.name!}"
+	    	,"path":"${path}${AUTH_MENU.uri!}?path=${log.path!}"
+	    	,"table":"#errorlogTable"
+	    	,"func":"download"
+	    	,"cls":"EC-btn-edit"
+    	}
+    	[/@ec_privilege_check]
+    	]
+    }
+    [#if log_index != (list?size - 1)]
+    ,
+    [/#if]
+[/#list]
+[/#if]
+]}
+[/@ec_error_log]

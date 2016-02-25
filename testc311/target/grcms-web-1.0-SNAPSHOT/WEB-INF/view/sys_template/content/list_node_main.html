@@ -1,0 +1,27 @@
+<div class="clearfix" style="background-color: transparent;">
+    <div class="row-fluid">
+	    <div id="node-sidebar" class="EC-side-bar">
+	    	<div class="EC-side-menu-bar">
+			     <button class="btn btn-mini btn-warning" onclick="refreshTree();">
+			           <i class="icon-refresh"></i>Refresh
+			     </button>
+			     [@ec_privilege_check uri="${current_uri}/add"]
+			     <button class="btn btn-mini btn-success" onclick="loadFile('${path}${AUTH_MENU.privilege.uri!}','#EC-side-container');">
+			           <i class="icon-plus"></i>Add Node
+			     </button>
+			     [/@ec_privilege_check]
+			</div>
+			<div class="EC-side-tree" id="sideTree">
+				[#include "side_node_tree.html"/]
+			</div>
+	    </div>
+		<div class="EC-side-container" id="EC-side-container">
+			[#include "node_cotainer.html"/]
+		</div>
+    </div>
+</div>
+ <script type="text/javascript">
+ function refreshTree() {
+	 loadFile(path+'/management/content/node?func=refreshTree','#sideTree');
+ }
+ </script>

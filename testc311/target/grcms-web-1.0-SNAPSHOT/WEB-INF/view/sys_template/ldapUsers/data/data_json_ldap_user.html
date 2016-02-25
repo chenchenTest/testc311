@@ -1,0 +1,57 @@
+[@ec_ldapuser 
+	queryType = "list"
+	filter = "${form.filter!}"
+	pageNum = "${(form.page)!1}"  
+	pagesize = "${(form.rows)!}" 
+	order = "${form.order!'desc'}"
+	sort = "${form.sort!}"
+	pageable=0
+;list]
+{
+"data":[
+[#if list?? && (list?size > 0)]
+[#list list as u]
+	[#assign rolename=""/]
+	[#if (u.roles)?? && (u.roles?size > 0)]
+		[#list u.roles as role]
+			[#assign rolename="${rolename!} ${(role.name)!}"/]
+		[/#list]
+	[#else]
+		[#assign rolename="-"/]
+	[/#if]
+    {
+    "id":"<label><input type='checkbox' name='id' value='${u.id!}'/><span class='lbl'></span></label>"
+    ,"ids":"${u.id!}"
+    ,"name":"${u.name!}"
+    ,"realname":"${u.realname!}"
+    ,"email":"${u.email!}"
+    ,"role":"${rolename!}"
+    ,"links":[
+    	[@ec_privilege_check uri="/management/ldapuser/edit"]
+    	{
+	    	"title":"${AUTH_MENU.name!}"
+	    	,"onclick":"appendFile('${path}${AUTH_MENU.uri!}?name=${u.name!}')"
+	    	,"icon":"icon-edit"
+	    	,"clz":"btn-info"
+    	},
+    	[/@ec_privilege_check]
+    	
+    	[@ec_privilege_check uri="/management/ldapuser/delete"]
+    	{
+	    	"title":"${AUTH_MENU.name!}"
+	    	,"onclick":"delItem('${path}${AUTH_MENU.uri!}?ids=${u.id!}')"
+	    	,"icon":"icon-trash"
+	    	,"clz":"btn-danger"
+    	},
+    	[/@ec_privilege_check]
+    	
+    	{}
+    	]
+    }
+    [#if u_index != (list?size - 1)]
+    ,
+    [/#if]
+[/#list]
+[/#if]
+]}
+[/@ec_ldapuser]

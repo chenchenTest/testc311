@@ -1,0 +1,15 @@
+#fileupload-gallery {
+     border: 1px solid #CCCCCC;
+     margin-top: 20px;
+     min-height: 100px;
+    display: none;
+ }
+
+#fileupload-gallery img {
+    height: 150px;
+    width: 150px;
+}
+#fileupload-gallery a.btn.btn-small.btn-primary {
+    margin-left: 40px;
+    margin-top: 100px;
+}

@@ -1,0 +1,35 @@
+/*分页面板*/
+.EC-page-pannel{
+    position:relative;
+    width: 95%;
+    height: 40px;
+    margin: 10px auto;
+    border-bottom: 1px dotted #ccc;
+}
+.EC-page-info{
+    position: absolute;
+    bottom:10px;
+}
+.EC-page-list{
+    position: absolute;
+    right: 20px;
+    bottom:10px;
+}
+.EC-page-list li{
+    float:left;
+    width: 30px;
+    height: 30px;
+    line-height:30px;
+    margin:0px 2px;
+}
+.EC-page-list li a{
+    display: block;
+    text-align: center;
+    color: #5EAEE3;
+    border: 1px solid #DEE7EC;
+}
+.EC-page-list li a.EC-page-on{
+    background-color: #5EAEE3;
+    border: 1px solid #5EAEE3;
+    color: #fff;
+}

@@ -1,0 +1,95 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		//进行表单验证
+		var $form = $('#gnnumUserAddForm');		var url = $form.attr("action");
+        var $btn = $form.find("a.btn").eq(0);
+        
+        $form.validate({
+        	rules : {
+        		callname : {
+        			remote : "${path}/gnum/user/add?func=exist"
+        		},
+        		mobileNumber : {
+        			remote : "${path}/gnum/user/add?func=exist"
+        		}
+        	}
+        	,messages : {
+        		callname : {
+        			remote:"Callname exist"
+        		},
+        		mobileNumber : {
+        			remote:"MobileNumber exist",
+        			isTel:"Please input a phone number."
+        		}
+        	}
+        	,submitHandler: function(form){
+        		disableBtn($btn);
+        		var $form = $(form);
+            	var url = $form.attr("action");
+            	var method = $form.attr("method");
+            	var nvp = $form.serialize();
+            	$.ajax({
+    				url:url,
+    				type:method,
+    				data:nvp,
+    				success:function(data){
+		        		enableBtn($btn);
+		         	   if(data){
+		 			      $.messager.confirm('添加成功', "添加成功是否继续添加？<p><center>继续请点[确定]，否则点[取消]</center></p>", function(r){
+		 			    	  if(r){
+		 			    		  $form.form("clear");
+		 			    	  }else{
+		 			    		  operator.closeDialog();
+		 			    	  }
+		 			      });
+		         	   }else{
+		 			      $.messager.alert('添加失败', "添加失败", 'error');
+		         	   }
+    				}
+    			});
+			}
+        });
+	}); 
+</script>
+<!-- 内容区 开始 -->
+<div class="EC-modal-content">
+    <h2 class="EC-title-1"><span class="EC-form-tips">* 表示必填项</span></h2>
+    <div class="EC-form-layout">
+        <form action="${path}/gnum/user/add" method="post" id="gnnumUserAddForm">
+            <table class="EC-form-table">
+                <tbody>
+                    <tr>
+                        <td style="width: 30%;"><span class="EC-form-tips">*</span>Call Name:</td>
+                        <td>
+                        <input type="text" name="callname" value="" class="EC-form-input required" placeholder="Call Name"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="EC-form-tips">*</span>Mobile Number:</td>
+                        <td>
+                        <input type="text" name="mobileNumber" value="" class="EC-form-input required isTel" placeholder="Mobile Number"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td>123456</td>
+                    </tr>
+                    <tr>
+                        <td><span class="EC-form-tips">*</span>Plan:</td>
+                        <td>
+                        <select name="rateId" class="EC-form-select required">
+                        	<option value="gr_proa">PLAN A</option>
+                        </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><a href="javascript:void(0);" onclick="submitReq(this);" class="btn easyui-linkbutton" iconCls="icon-ok">确定</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+
+    </div>
+</div>
+<!-- 内容区 结束 -->

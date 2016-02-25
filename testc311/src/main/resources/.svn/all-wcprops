@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/resources
+END
+oracle_hibernate.properties
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/resources/oracle_hibernate.properties
+END
+c3p0.properties
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/resources/c3p0.properties
+END
+gnum.properties
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/resources/gnum.properties
+END
+oracle_jdbc.properties
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/resources/oracle_jdbc.properties
+END
+jdbc.properties
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/resources/jdbc.properties
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/resources/log4j.properties
+END
+httpClientPath.properties
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/resources/httpClientPath.properties
+END
+oracle_jdbc_api.properties
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/resources/oracle_jdbc_api.properties
+END
+grcms-privilege.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/resources/grcms-privilege.xml
+END
+hibernate.properties
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/resources/hibernate.properties
+END

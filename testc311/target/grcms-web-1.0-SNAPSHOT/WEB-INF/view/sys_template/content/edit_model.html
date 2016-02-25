@@ -1,0 +1,162 @@
+[@EC.breadcrumbs/]
+
+<div id="page-content" class="clearfix">
+    <div class="page-header position-relative">
+        <h1>Edit Model
+        <button class="btn btn-small btn-primary pull-right" onclick="loadFile('${path}/management/content/model');" >
+            <i class="icon-reply"></i>Return Previous
+        </button>
+        </h1>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span12">
+		  [@ec_model id="${form.id[0]!}";model]
+	        <div class="tabbable">
+	            <ul class="nav nav-tabs" id="modelTab">
+	              <li class="active"><a data-toggle="tab" href="#nodeModel" id="nodeModelTab">Node Model</a></li>
+	              [#if !model.openContent]
+	              [#assign hidden = 'class="hidden"'/]
+	              [/#if]
+	              <li ${hidden!}><a data-toggle="tab" href="#contentModel" id="contentModelTab">Content Model</a></li>
+	            </ul>
+	            <div class="tab-content">
+				  <div id="nodeModel" class="tab-pane in active">
+				  <div id="modelTips" style="display: none;">
+					  	<p>You have opened Content Model，do you want to add Content Model?</p>
+					  	<div class="form-actions">
+			                <button class="btn btn-small" type="button" id="cancelAdd">
+			                    <i class="icon-undo"></i> No
+			                </button>
+			                &nbsp; &nbsp; &nbsp;
+			                <button class="btn btn-small btn-success" type="button" id="continueAdd">
+			                    <i class="icon-ok"></i> Yes
+			                </button>
+			            </div>
+				  	</div>
+					<form class="form-horizontal " action="${path!}/management/content/model/edit" method="post" id="nodeModelForm">
+	                    <input type="hidden" name="id" value="${model.id!}" id="nodeModelId"/>
+	                    <input type="hidden" name="modelType" value="${model.modelType!}" />
+	                    <div class="row-fluid">
+		                	<div class="span6">
+					            <div class="control-group">
+					                <label class="control-label" for="modelName">Model Name:</label>
+					                <div class="controls">
+					                    <input type="text" placeholder="" id="modelName" name="modelName" value="${model.modelName!}">
+					                </div>
+					            </div>
+		                	</div>
+		                	<div class="span6">
+					            <div class="control-group">
+					                <label class="control-label" for="code">Code:</label>
+					                <div class="controls">
+					                    <input type="text" id="code" placeholder="" name="code" value="${model.code!}">
+					                </div>
+					            </div>
+		                	</div>
+		                </div>
+	                    <div class="row-fluid">
+		                	<div class="span6">
+					            <div class="control-group">
+					                <label class="control-label" for="templateFile">Template File:</label>
+					                <div class="controls">
+					                    <input type="text" id="templateFile" placeholder="" name="templateFile" value="${model.template!}" readonly="readonly">
+					                    <a class="btn btn-mini" href="javascript:modal.open({url:'${path}/management/content/template?target=templateFile'})">Choose</a>
+					                </div>
+					            </div>
+		                	</div>
+		                	<div class="span6">
+					            <div class="control-group">
+					                <label class="control-label" for="openContent">Open Content Model:</label>
+					                <div class="controls">
+					                	[#if model.openContent]
+					                	[#assign checked='checked="checked"'/]
+					                	[/#if]
+					                    <input name="openContent" class="ace-switch ace-switch-6" ${checked!}  type="checkbox" value="true"/><span class="lbl"></span>
+					                </div>
+					            </div>
+		                	</div>
+		                </div>
+	                    <div class="row-fluid">
+		                	<div class="span6">
+					            <div class="control-group">
+					                <label class="control-label" for="openStatic">Staticize:</label>
+					                <div class="controls">
+					                	[#if model.openStatic]
+					                	[#assign staticChecked='checked="checked"'/]
+					                	[/#if]
+					                    <input name="openStatic" class="ace-switch ace-switch-6" ${staticChecked!}  type="checkbox" value="true"/><span class="lbl"></span>
+					                </div>
+					            </div>
+		                	</div>
+		                </div>
+			
+			            <div class="form-actions">
+			                <button class="btn btn-small" type="reset">
+			                    <i class="icon-undo"></i> Reset
+			                </button>
+			                &nbsp; &nbsp; &nbsp;
+			                <button class="btn btn-small btn-success" type="submit" data-loading-text="Saving...">
+			                    <i class="icon-ok"></i> Save
+			                </button>
+			            </div>
+			        </form>
+				  </div>
+				  <div id="contentModel" class="tab-pane"></div>
+	            </div>
+			</div>
+	        [/@ec_model]
+        </div>
+        <!-- PAGE CONTENT ENDS HERE -->
+    </div>
+</div>
+
+<script type="text/javascript">
+	$(function() {
+		var $contentModelTab = $('#contentModelTab');
+		var $nodeModelTab = $('#nodeModelTab');
+		var $contentWrap = $contentModelTab.parent("li");
+		var $nodeWrap = $nodeModelTab.parent("li");
+		var link = path + "/management/content/model/edit?func=editContentModel&id=" + $("#nodeModelId").val();
+		formValidtor.valid({
+			handler:"#nodeModelForm",
+			rules : {
+				modelName : {
+        			required : true
+        		},
+        		code : {
+        			required : true
+        		},
+        		templateFile : {
+        			required:true
+        		}
+        	},
+        	callbackFunc:function(data){
+        		if(data.code == "1000") {
+        			if(data.response.openContent && $contentWrap.attr("class") == "hidden") {
+        				$("#modelTips").show();
+        				$("#nodeModelForm").hide();
+        				$("#cancelAdd").on("click",function(){
+        					loadFile('${path}/management/content/model');
+        				})
+        				$("#continueAdd").on("click",function(){
+        				 	$contentWrap.removeClass("hidden");
+        				 	$nodeWrap.hide();
+        				 	$contentModelTab.tab("show");
+        				})
+        				
+        			}else{
+        				loadFile('${path}/management/content/model');
+        			}
+        		}
+        		
+        		
+        	}
+		})
+		
+		$contentModelTab.on('shown.bs.tab', function (e) {
+			//alert(link)
+				loadFile(link,"#contentModel");
+		})
+	})
+</script>

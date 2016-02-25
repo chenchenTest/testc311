@@ -1,0 +1,129 @@
+<script type="text/javascript" src="${path}/resources/js/api-security.js" ></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		//进行表单验证
+		var $form = $('#apiuserForm');		var url = $form.attr("action");
+        var $btn = $form.find("a.btn").eq(0);
+        
+        $form.validate({
+        	submitHandler: function(form){
+        		disableBtn($btn);
+        		var $form = $(form);
+            	var url = $form.attr("action");
+            	var method = $form.attr("method");
+            	var nvp = $form.serialize();
+            	$.ajax({
+    				url:url,
+    				type:method,
+    				data:nvp,
+    				success:function(data){
+    					enableBtn($btn);
+ 		        	   if(data){
+ 		        		   operator.closeDialog();
+ 					      $.messager.alert('Update Success', "Update Success","info");
+ 		        	   }else{
+ 					      $.messager.alert('Update Failed', "Update Failed", 'error');
+ 		        	   }
+    				}
+    			});
+			}
+	}); 
+}); 
+</script>
+<!-- 内容区 开始 -->
+<div class="EC-modal-content">
+    <h2 class="EC-title-1"><span class="EC-form-tips">* is required</span></h2>
+    <div class="EC-form-layout">
+    [@api_user id=form.apiUserId;apiuser]
+        <form action="${path}/api/security/user/setting" method="post" id="apiuserForm">
+        <input type="hidden" name="apiUserId" value="${apiuser.id}">
+            <table class="EC-form-table">
+                <tbody>
+                    <tr>
+                        <td style="width: 20%;">User Type:</td>
+                        <td>${apiuser.userType!}</td>
+                    </tr>
+                    <tr>
+                        <td>API KEY:</td>
+                        <td>${apiuser.APIKey!}</td>
+                    </tr>
+                    <tr>
+                        <td>Secret KEY:</td>
+                        <td>${apiuser.secretKey!}</td>
+                    </tr>
+                    <tr>
+                        <td><b>POLICY</b></td>
+                        <td><b>Policy Detail</b></td>
+                    </tr>
+                    [#list apiuser.policys as p]
+                    <tr style="background-color: #ECF3FF;">
+                        <td>
+                        	<input type="hidden" name="policyNVP" value="${p.name!};${p.id}"/>
+                        	<p>
+	                        	${p.name!}
+                        	</p>
+                        	[@api_user_policy policyId="${p.id}" apiUserId="${apiuser.id}";up]
+                        	[#if up.switchStatus?? && (up.switchStatus == "Y")]
+                        		[#assign onSwitch='checked="checked"'/]
+	                    		[#assign offSwitch=''/]
+	                    		[#assign displayCSS=''/]
+                        	[#else]
+                        		[#assign onSwitch=''/]
+	                    		[#assign offSwitch='checked="checked"'/]
+	                    		[#assign displayCSS='display:none;'/]
+                        	[/#if]
+                        	<input type="radio" onchange="APIFunc.togglePolicyBox(this,'#wrap_${p.id}');"  name="${p.name}_switch" value="Y" id="${p.name}_on" ${onSwitch!}><label for="${p.name}_on">ON</label>
+                    		<input type="radio" onchange="APIFunc.togglePolicyBox(this,'#wrap_${p.id}');" name="${p.name}_switch" value="N" id="${p.name}_off" ${offSwitch!}><label for="${p.name}_off">OFF</label>
+                    		[/@api_user_policy]
+                        </td>
+                        <td>
+                       	 <div id="wrap_${p.id}" style="${displayCSS!}">
+                        	<div><a href="javascript:void(0);" onclick="APIFunc.createPolicyBox(this,'${p.name}')" class="easyui-linkbutton" icon="icon-add">Add <b>${p.name!}</b> Detail</a></div>
+                        	<!-- <p>
+								<input readonly="readonly" type="text" name="123" value="123" ${valueEnable!}/> 
+								<input onchange="APIFunc.togglePolicyBox(this);" type="radio" name="123" value="ON" id="123"${valueCheck!}><label for="123">ON</label>
+								<input onchange="APIFunc.togglePolicyBox(this);" type="radio" name="123" value="OFF" id="123"${valueCheck!}><label for="123">OFF</label>
+								<a onclick="APIFunc.removePolicyBox(this);" href="javascript:void(0);"  class="easyui-linkbutton" icon="icon-remove"></a>
+							</p> -->
+						[#if apiuser.policyDetails?? && (apiuser.policyDetails?size > 0)]
+	                    [#if p.name == "IP_LIMIT_CHECK"]
+	                    	[#assign policyTitle="IP Address:"/]
+	                    [/#if]
+	                    [#list apiuser.policyDetails as detail]
+	                    [#if detail.policy.name == p.name]
+                    	<p>
+                    		[#if detail.status == "Y"]
+	                    		[#assign valueEnable=''/]
+	                    		[#assign enableCSS=''/]
+	                    		[#assign onCheck='checked="checked"'/]
+	                    		[#assign offCheck=''/]
+                    		[#else]
+	                    		[#assign valueEnable='readonly="readonly"'/]
+	                    		[#assign enableCSS='EC-form-disable'/]
+	                    		[#assign onCheck=''/]
+	                    		[#assign offCheck='checked="checked"'/]
+                    		[/#if]
+                    		<input type="text" class="required isIP EC-form-input ${enableCSS!}"  name="${p.name}_policyValue_${detail.id}_s" value="${detail.policyValue!}" ${valueEnable!}/>
+                    		<input type="radio" onchange="APIFunc.togglePolicyBox(this);"  name="${p.name}_status_${detail.id}_s" value="Y" id="${p.name}_on_${detail.id}_s" ${onCheck!}><label for="${p.name}_on_${detail.id}_s">ON</label>
+                    		<input type="radio" onchange="APIFunc.togglePolicyBox(this);" name="${p.name}_status_${detail.id}_s" value="N" id="${p.name}_off_${detail.id}_s" ${offCheck!}><label for="${p.name}_off_${detail.id}_s">OFF</label>
+                    		<a onclick="APIFunc.removePolicyBox(this);" href="javascript:void(0);" class="EC-btn-remove" style="margin-left:20px;">DELETE</a>
+                    	</p>
+                    	[/#if]
+	                    [/#list]
+	                [/#if]
+	                </div>
+                        </td>
+                    </tr>
+                   
+                    [/#list]
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><a href="javascript:void(0);" onclick="submitReq(this);" class="btn easyui-linkbutton" iconCls="icon-ok">Confirm</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+[/@api_user]
+    </div>
+</div>
+<!-- 内容区 结束 -->

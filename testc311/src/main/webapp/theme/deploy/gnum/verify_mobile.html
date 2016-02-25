@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	[#include "common/common-meta.html" ]
+    <title>verify mobile</title>
+	[#include "common/common-css.html" ]
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/css/verify_mobile.css">
+</head>
+
+<body>
+[#include "common/google-tag-manager.html" /]
+<!--head begin-->
+    <div class="head">
+    	[#include "common/head.html" ]
+    </div>
+<!--head end-->
+    <div class="container-fluid signup-area">
+        <div class="row">
+            <div class="col-md-8 col-lg-8 center-grid">
+                <h2>Verify Mobile</h2>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6 col-lg-4 center-grid">
+                        <form class="mobile-form" action="#" method="post">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                    	[@gnum.countrycode class="country-list" style="signup"/]
+                                    </div>
+                                    <div class="col-md-8">
+                                        <label for="mobile" class="sr-only">mobile</label>
+                                        <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="Mobile" autofocus>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-default btn-a btn-custom btn-color-a">Verify Mobile</button>
+                            </div>
+                            <ul id="errorBox"></ul>
+                            <div class="form-group">
+                                <p class="form-control-static form-tips">A SMS OTP will be sent to the above number for verification.</p>
+                            </div>
+                        </form>
+                        <p class="text-justify information">Dear international friends, GNum is currently available in the country listed above. Our
+team is working constantly to build capacity and meet your needs. We will be rolling out in
+your regions soon so keep your eyes peeled! In the meantime, do follow us on Facebook for
+our latest news and updates! Thank you for your continued patience during this period.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--foot begin-->
+  <div class="foot" style="position: relative">
+    	[#include "/common/foot.html" ]
+    </div>
+<!--foot end-->
+	[#include "common/common-js.html" ]
+	[#include "common/common-js-validate.html" ]
+    <script type="text/javascript" src="${res!}/resources/js/verify_mobile.js"></script>
+</body>
+
+</html>

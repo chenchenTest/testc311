@@ -1,0 +1,47 @@
+[@ec_role 
+	queryType = "list"
+	filter = "${form.filter!}"
+	pageNum = "${(form.page)!1}"  
+	pagesize = "${(form.rows)!}" 
+	order = "${form.order!'desc'}"
+	sort = "${form.sort!}"
+	pageable=1
+;list]
+{
+"recordsFiltered":${count!0} ,
+"recordsTotal":${count!0} ,
+"data":[
+[#if list?? && (list?size > 0)]
+[#list list as r]
+    {
+    "id":"<label><input type='checkbox' name='ids' value='${r.id!}'/><span class='lbl'></span></label>"
+    ,"no":${r_index+1!}
+    ,"name":"${r.name!}"
+    ,"links":[
+    	[@ec_privilege_check uri="/management/role/edit"]
+    	{
+	    	"title":"修改角色"
+	    	,"onclick":"modal.open({url:'${path}${AUTH_MENU.privilege.uri!}?id=${r.id!}'});"
+	    	,"icon":"icon-edit"
+	    	,"clz":"btn-info"
+    	},
+    	[/@ec_privilege_check]
+    	
+    	[@ec_privilege_check uri="/management/role/delete"]
+    	{
+	    	"title":"${AUTH_MENU.name!}"
+	    	,"onclick":"confirm('${path}${AUTH_MENU.privilege.uri!}?ids=${r.id!}')"
+	    	,"icon":"icon-trash"
+	    	,"clz":"btn-danger"
+    	},
+    	[/@ec_privilege_check]
+    	{}
+    	]
+    }
+    [#if r_index != (list?size - 1)]
+    ,
+    [/#if]
+[/#list]
+[/#if]
+]}
+[/@ec_role]

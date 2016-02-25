@@ -1,0 +1,62 @@
+<script type="text/javascript">
+    $(function(){
+        operator.dataTable({
+       	 	table:"#developerDataTable"
+	       	,url:'${path}${current_uri}'
+            ,toolbar: "#developerToolbar"
+        });
+        
+    })
+    
+</script>
+<!-- 工具栏 -->
+<div class="EC-right-content">
+	<h2 class="EC-title-1">
+		Location:<i class="icon-user EC-icon-layout"></i>[@EC.location /]
+	</h2>
+	<div id="developerToolbar" class="EC-toolbar">
+		[@ec_privilege_check uri="${current_uri}/add"]
+		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="operator.openDialog({
+			table:'#developerDataTable',
+			title:'${AUTH_MENU.name}',
+			url:'${path}${AUTH_MENU.uri}',
+			icon:'icon-add',
+			width:750
+		});
+		">${AUTH_MENU.name}</a>
+		[/@ec_privilege_check]
+		
+		[@ec_privilege_check uri="${current_uri}/delete"]
+		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" onclick="
+		operator.remote({
+			table:'#developerDataTable'
+			,url:'${path}${AUTH_MENU.uri}'
+			,key:'id'
+			,checkboxValid:true
+    		,confirm:true
+    		,title:'${AUTH_MENU.name}'
+    		,content:'您确定要执行删除操作?一旦删除将不可恢复'
+		})
+		">${AUTH_MENU.name}</a>
+		[/@ec_privilege_check]
+		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-reload'" onclick="
+			operator.refresh({
+	    			table:'#developerDataTable'
+	    		});
+		">Reload</a>
+	</div>
+	<table id="developerDataTable" title="API USER List ">
+		<thead>
+			<tr>
+				<th data-options="field:'ids',checkbox:true">ID</th>
+				<th data-options="field:'developerId',align:'center',width:5,sortable:true,styler:tdPadding">ID</th>
+				<th data-options="field:'loginName',width:10,align:'center',sortable:true">Login Name</th>
+				<th data-options="field:'name',width:20,align:'center',sortable:true">Name</th>
+				<th data-options="field:'companyName',width:5,align:'center',sortable:true">Company Name</th>
+				<th data-options="field:'workMail',width:20,align:'center',sortable:true">workMail</th>
+				<th data-options="field:'phoneNumber',width:25,align:'center'">Phone Number</th>
+				<th data-options="field:'operation',align:'center',formatter:operator.links">Operations</th>
+			</tr>
+		</thead>
+	</table>
+</div>

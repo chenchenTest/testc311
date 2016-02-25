@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+	[#include "common/common-meta.html" ]
+    <title>GNum About</title>
+   	[#include "common/common-css.html" ]
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/css/about.css"/>
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/css/swiper.min.css"/>
+    <script type="text/javascript" src="${res!}/resources/js/swiper.min.js"></script>
+    <!--&lt;!&ndash;map begin&ndash;&gt;-->
+    <!--&lt;!&ndash; css &ndash;&gt;-->
+    <!--&lt;!&ndash;<link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,700,400italic' rel='stylesheet' type='text/css'>-->
+    <!--<link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>&ndash;&gt;-->
+    <!--<style>-->
+        <!--#map {-->
+            <!--width: 100%;-->
+            <!--height: 470px;-->
+            <!--display: inline-grid;-->
+            <!--background-color: lightblue;-->
+        <!--}-->
+    <!--</style>-->
+    <!--&lt;!&ndash;<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700' rel='stylesheet' type='text/css'>&ndash;&gt;-->
+    <!--&lt;!&ndash;<link href='http://fonts.googleapis.com/css?family=Reenie+Beanie' rel='stylesheet' type='text/css'>&ndash;&gt;-->
+    <!--&lt;!&ndash;<link href='http://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise' rel='stylesheet' type='text/css'>&ndash;&gt;-->
+	<!-- -->
+    <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC8iEqISY6ljDS_8DDPcpD2UmTxceoyTk"></script>-->
+	<!--&lt;!&ndash; <script type="text/javascript" src="${res!}/resources/js/hammer.min.js"></script> &ndash;&gt;-->
+    <!--<script type="text/javascript">-->
+        <!--// When the window has finished loading create our google map below-->
+        <!--google.maps.event.addDomListener(window, 'load', init);-->
+
+        <!--function init() {-->
+            <!--// Basic options for a simple Google Map-->
+            <!--// For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions-->
+            <!--var mapOptions = {-->
+                <!--// How zoomed in you want the map to start at (always required)-->
+                <!--zoom: 16,-->
+                <!--scrollwheel: false,-->
+                <!--draggable: false,-->
+                <!--// The latitude and longitude to center the map (always required)-->
+                <!--center: new google.maps.LatLng(1.327264,103.897655),-->
+
+                <!--// How you would like to style the map.-->
+                <!--// This is where you would paste any style found on Snazzy Maps.-->
+                <!--styles: [{"featureType":"landscape","stylers":[{"saturation":-100},{"lightness":65},{"visibility":"on"}]},{"featureType":"poi","stylers":[{"saturation":-100},{"lightness":51},{"visibility":"simplified"}]},{"featureType":"road.highway","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"road.arterial","stylers":[{"saturation":-100},{"lightness":30},{"visibility":"on"}]},{"featureType":"road.local","stylers":[{"saturation":-100},{"lightness":40},{"visibility":"on"}]},{"featureType":"transit","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"administrative.province","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":-25},{"saturation":-100}]},{"featureType":"water","elementType":"geometry","stylers":[{"hue":"#ffff00"},{"lightness":-25},{"saturation":-97}]}]-->
+            <!--};-->
+
+            <!--// Get the HTML DOM element that will contain your map-->
+            <!--// We are using a div with id="map" seen below in the <body>-->
+            <!--var mapElement = document.getElementById('map');-->
+
+            <!--// Create the Google Map using our element and options defined above-->
+            <!--var map = new google.maps.Map(mapElement, mapOptions);-->
+
+            <!--var image = '${res!}/resources/images/about/marker.png';-->
+            <!--var myLatLng = new google.maps.LatLng(1.327264,103.897655);-->
+            <!--var beachMarker = new google.maps.Marker({-->
+                <!--position: myLatLng,-->
+                <!--map: map,-->
+                <!--icon: image-->
+            <!--});-->
+
+
+            <!--// Let's also add a marker while we're at it-->
+            <!--var marker = new google.maps.Marker({-->
+                <!--position: new google.maps.LatLng(40.6700, -73.9400),-->
+                <!--map: map,-->
+                <!--title: 'gnum'-->
+            <!--});-->
+        <!--}-->
+
+
+    <!--</script>-->
+    <!--&lt;!&ndash;map end&ndash;&gt;-->
+</head>
+<body>
+    [#include "common/google-tag-manager.html" /]
+    <!--head begin-->
+    <div class="head">
+    	[#include "common/head.html" ]
+    </div>
+    <!--head end-->
+
+    <!--content begin 主页面主要内容-->
+        <div class="container-fluid about">
+            <!--top begin顶部-->
+            <div class="row top">
+                <h3>ABOUT US</h3>
+                <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-0 col-xs-offset-0 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                    <h4 class="gnum">At GNum, we connect the world to you. Receive calls from anywhere through your unique URL. We aim to become a <span>global directory service</span>, improving everyone's sense of <span>freedom.</span> </h4>
+                </div>
+            </div>
+            <!--top end顶部-->
+
+
+            <!--content begin 内容-->
+            <div class="row content">
+                    <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0"></div>
+                    <!--内容-->
+                    <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
+                        <div class="row introduce hidden-xs">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 people">
+                                <div class="icImg" align="center"><img src="${res!}/resources/images/about/Alex_pic.png" alt="" class="img-responsive"/></div>
+                                <h4><span>Alexandre Yokoyama</span>CEO</h4>
+                                <p>Alex is a Brazilian-Japanese passionate about technology that can improve people lives. He is is a farmer by nature and hunter by dedication, with solid experience in collaboration software and media sales. With GNum since Sep/2014, he is committed to grow the business and go global.</p>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 people hidden-xs">
+                                <div class="icImg" align="center"><img src="${res!}/resources/images/about/zhiyong_pic.png" alt="" class="img-responsive"/></div>
+                                <h4><span>Zhiyong Han</span>CTO</h4>
+                                <p>Zhiyong has over 7 years engineering experience in telecom software product development, and over 5 years experience in project management and engineers management. His areas of expertise include telecom, mobile app development, VoIP, mobile VAS product development and deployment. Also a master in managing cross-cultural teams.
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 people hidden-xs">
+                                <div class="icImg" align="center"><img src="${res!}/resources/images/about/Kai_pic.png" alt="" class="img-responsive"/></div>
+                                <h4><span>Kai Choong Cheong</span>Regional Director</h4>
+                                <p>KC is a veteran with over 20  years of sales management experience in the APAC telecom market industry. He held top management positions in major vendors and startups, successfully helping the organisations in developing sales opportunities and lasting business relationships with carriers, partners and system integrators.</div>
+                        </div>
+
+                        <!--中间-手机版-内容轮播-->
+                        <div class="swiper-container visible-xs">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="icImg" align="center"><img src="${res!}/resources/images/about/Alex_pic.png" alt="" class="img-responsive"/></div>
+                                    <h4><span>Alexandre Yokoyama</span>CEO</h4>
+                                    <p>Alex is a Brazilian-Japanese passionate about technology that can improve people lives. He is is a farmer by nature and hunter by dedication, with solid experience in collaboration software and media sales. With GNum since Sep/2014, he is committed to grow the business and go global.</p>
+
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="icImg" align="center"><img src="${res!}/resources/images/about/zhiyong_pic.png" alt="" class="img-responsive"/></div>
+                                    <h4><span>Zhiyong Han</span>CTO</h4>
+                                    <p>Zhiyong has over 7 years engineering experience in telecom software product development, and over 5 years experience in project management and engineers management. His areas of expertise include telecom, mobile app development, VoIP, mobile VAS product development and deployment. Also a master in managing cross-cultural teams.</p>
+
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="icImg" align="center"><img src="${res!}/resources/images/about/Kai_pic.png" alt="" class="img-responsive"/></div>
+                                    <h4><span>Kai Choong Cheong</span>Regional Director</h4>
+                                    <p>KC is a veteran with over 20  years of sales management experience in the APAC telecom market industry. He held top management positions in major vendors and startups, successfully helping the organisations in developing sales opportunities and lasting business relationships with carriers, partners and system integrators.</p>
+
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+        <!--<div id="carousel-example-generic" class="carousel slide index visible-xs" data-ride="carousel">-->
+            <!--&lt;!&ndash;控制按钮&ndash;&gt;-->
+            <!--<ol class="carousel-indicators buttons">-->
+                <!--<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>-->
+                <!--<li data-target="#carousel-example-generic" data-slide-to="1"></li>-->
+                <!--<li data-target="#carousel-example-generic" data-slide-to="2"></li>-->
+            <!--</ol>-->
+            <!--&lt;!&ndash;内容&ndash;&gt;-->
+            <!--<div class="carousel-inner content1Block row introduce swiper-wrapper">-->
+                <!--&lt;!&ndash;背景1&ndash;&gt;-->
+                <!--<div class="carousel_index_center item active col-lg-4 col-md-4 col-sm-4 col-xs-12 people">-->
+                                <!--<div class="icImg" align="center"><img src="${res!}/resources/images/about/Alex_pic.png" alt="" class="img-responsive"/></div>-->
+                                <!--<h4><span>Alexandre Yokoyama</span>CEO</h4>-->
+                                <!--<p>Alex is a Brazilian-Japanese passionate about technology that can improve people lives. He is is a farmer by nature and hunter by dedication, with solid experience in collaboration software and media sales. With GNum since Sep/2014, he is committed to grow the business and go global.</p>-->
+
+                        <!--</div>-->
+                <!--&lt;!&ndash;背景2&ndash;&gt;-->
+                <!--<div class="carousel_index_center item col-lg-4 col-md-4 col-sm-4 col-xs-12 people">-->
+                                <!--<div class="icImg" align="center"><img src="${res!}/resources/images/about/zhiyong_pic.png" alt="" class="img-responsive"/></div>-->
+                                <!--<h4><span>Zhiyong Han</span>CTO</h4>-->
+                                <!--<p>Zhiyong has over 7 years engineering experience in telecom software product development, and over 5 years experience in project management and engineers management. His areas of expertise include telecom, mobile app development, VoIP, mobile VAS product development and deployment. Also a master in managing cross-cultural teams.</p>-->
+
+                <!--</div>-->
+                <!--&lt;!&ndash;背景3&ndash;&gt;-->
+                <!--<div class="carousel_index_center item col-lg-4 col-md-4 col-sm-4 col-xs-12 people">-->
+                                <!--<div class="icImg" align="center"><img src="${res!}/resources/images/about/Kai_pic.png" alt="" class="img-responsive"/></div>-->
+                                <!--<h4><span>Kai Choong Cheong</span>Regional Director</h4>-->
+                                <!--<p>KC is a veteran with over 20  years of sales management experience in the APAC telecom market industry. He held top management positions in major vendors and startups, successfully helping the organisations in developing sales opportunities and lasting business relationships with carriers, partners and system integrators.</p>-->
+
+                        <!--</div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;内容&ndash;&gt;-->
+        <!--</div>-->
+
+                        <hr/>
+                        <div id="contact" class="contact">
+                            <h4><span>Contact</span><a href="${res!}/support"><img src="${res!}/resources/images/about/callmebtn.png" alt=""/></a></h4>
+                            <p><strong>Address</strong>GNum, 10 Ubi Crescent, Lobby B #02-21, Ubi Techpark Singapore 408564</p>
+                            <!--<p><strong>Support Matters</strong>For support, enquiry of feedback, you can email to <a href="mailto:support@gnum.com">support@gnum.com</a></p>-->
+
+                            <!--form begin 表单内容-->
+                            <form role="form" id="about-email-support" action="${path!}/emailsupport/newEmail/" method="post">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 form-group">
+                                        <select name="category" id="" class="form-control">
+                                            <option value="default category">*Select Categories</option>
+                                            <option value="Technical">Technical</option>
+                                            <option value="Business">Business</option>
+                                            <option value="Technical">General</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 form-group no-right-padding-md no-right-padding-sm">
+                                        <label class="sr-only" for="name">Name</label>
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="*Name">
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 form-group">
+                                        <label class="sr-only" for="eamil">Email address</label>
+                                        <input type="email" class="form-control" id="eamil" name="email" placeholder="*Email Address">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="textSubject" class="sr-only">Email address</label>
+                                    <input type="text" class="form-control" id="textSubject" name="subject" placeholder="*Subject">
+                                </div>
+                                <div class="form-group">
+                                    <label for="textMessage" class="sr-only">Email address</label>
+                                    <textarea class="form-control" id="textMessage" name="content" placeholder="*Message" rows="10"></textarea>
+                                </div>
+
+                                <div class="row pos-relative">
+                                    <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12 form-group hidden-xs">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" class=""> I'm not a robot
+                                            </label>
+                                            <div>
+                                                <img src="${res!}/resources/images/support/recaptcha.png" alt=""/><br/>
+                                                <span>reCAPTCHA</span><br/><a href="${res!}/privacy/">Privacy</a>&nbsp;<a href="${res!}/terms/">Terms</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-0 col-sm-6 col-xs-12 form-group"></div>
+
+                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 form-group btn-wrapper">
+                                        <button type="submit" class="form-control btn btn-default">SEND</button>
+                                    </div>
+                                </div>
+                                <ul id="errorBox"></ul>
+                            </form>
+                            <!--form end 表单内容-->
+                        </div>
+
+
+                    </div>
+
+                    <!--内容-->
+                    <div class="col-lg-3 col-md-8 col-sm-1 col-xs-0"></div>
+                </div>
+            <!--content end 内容-->
+        </div>
+    <!--content end 主页面主要内容-->
+
+    <!--map begin-->
+    <div id="map"></div>
+    <!--map end-->
+
+    <!--foot begin-->
+    <div class="foot">
+    	[#include "common/foot.html" ]
+    </div>
+    <!--foot end-->
+    [#include "common/common-js.html" ]
+
+	<script type="text/javascript" src="${res!}/resources/js/about.js"></script>
+    [#include "common/common-js-validate.html"/]
+    <script type="text/javascript">
+        //            $('.carousel').carousel({interval: 1500});//控制图片切换时间
+        var swiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            spaceBetween: 30
+        });
+    </script>
+    <style>
+        .swiper-container {
+            width: 100%;
+            height: auto;
+            text-align: center;
+            padding-top: 60px;
+            /*padding: 15px;*/
+        }
+        .swiper-pagination-bullet-active{
+            background-color: #11c9c3;
+        }
+        .swiper-pagination-bullet{
+            width: 10px;
+            height: 10px;
+        }
+        .swiper-container-horizontal>.swiper-pagination{
+            bottom: 0;
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,50 @@
+[@gnum_opt_query
+	verificationName="${verificationName!}"  
+	;userVerification]
+	[#if userVerification??]
+	<table>
+		<tr>
+			<th>VERIFICATION NAME</th>
+			<th>OTP</th>
+			<th>TYPE</th>
+			<th>PURPOSE</th>
+			<th>USER ID</th>
+			<th>STATUS</th>
+			<th>CODE LIFE</th>
+			<th>MAX LIMIT</th>
+			<th>CURRENT VALUE</th>
+			<th>CREATE ON</th>
+		</tr>
+		<tr>
+			<td>${userVerification.verificationName!}</td>
+			<td style="color: #ff0000;font-weight: bold;">${userVerification.code!}</td>
+			<td>${userVerification.type!}</td>
+			<td>${userVerification.purpose!}</td>
+			<td>${userVerification.userId!}</td>
+			<td>${userVerification.status!}</td>
+			<td>${userVerification.codeLife!}</td>
+			<td>${userVerification.maxLimit!}</td>
+			<td>${userVerification.currentValue!}</td>
+			<td>${userVerification.createOn?string("yyyy-MM-dd HH:mm:ss")}</td>
+		</tr>
+	</table>
+	[#else]
+	<table>
+		<tr>
+			<th>VERIFICATION NAME</th>
+			<th>OTP</th>
+			<th>TYPE</th>
+			<th>PURPOSE</th>
+			<th>USER ID</th>
+			<th>STATUS</th>
+			<th>CODE LIFE</th>
+			<th>MAX LIMIT</th>
+			<th>CURRENT VALUE</th>
+			<th>CREATE ON</th>
+		</tr>
+		<tr>
+			<td colspan="10" style="text-align: center;color: #ff0000;">No Record Find By [${verificationName!}]</td>
+		</tr>
+	</table>
+	[/#if]
+[/@gnum_opt_query]

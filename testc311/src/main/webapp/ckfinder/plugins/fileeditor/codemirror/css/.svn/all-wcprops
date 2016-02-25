@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/ckfinder/plugins/fileeditor/codemirror/css
+END
+docs.css
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/ckfinder/plugins/fileeditor/codemirror/css/docs.css
+END
+csscolors.css
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/ckfinder/plugins/fileeditor/codemirror/css/csscolors.css
+END
+font.js
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/ckfinder/plugins/fileeditor/codemirror/css/font.js
+END
+xmlcolors.css
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/ckfinder/plugins/fileeditor/codemirror/css/xmlcolors.css
+END
+jscolors.css
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/ckfinder/plugins/fileeditor/codemirror/css/jscolors.css
+END
+sparqlcolors.css
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/ckfinder/plugins/fileeditor/codemirror/css/sparqlcolors.css
+END

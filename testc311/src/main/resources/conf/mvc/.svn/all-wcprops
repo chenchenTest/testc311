@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/resources/conf/mvc
+END
+spring-mvc.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/resources/conf/mvc/spring-mvc.xml
+END
+static-mvc.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/resources/conf/mvc/static-mvc.xml
+END

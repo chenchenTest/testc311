@@ -1,0 +1,70 @@
+html{
+    font-size: 62.5%;
+}
+body{
+    font-family: "lato-Regular";
+}
+a{
+    -webkit-transition: all 0.3s;   /* Safari and Chrome */
+    -moz-transition: all 0.3s;     /* Firefox */
+    -ms-transition: all 0.3s;      /*ie内核*/
+    -o-transition: all 0.3s;     /* Opera */
+    transition: all 0.3s;
+}
+
+.terms{
+    background-color: #F3F3F3;
+    margin-top: 110px;
+    padding-bottom: 100px;
+}
+.terms h3{
+    font-family: "Lato-Italic";
+    font-size: 5rem;
+    color: #313131;
+}
+.terms .sub span{
+    color: #CCCCCC;
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+    width: auto;
+    height: auto;
+    background-color: #ffffff;
+    padding: 2% 2%;
+    font-size: 1.8rem;
+}
+.terms .sub .sub1{
+    margin-right: 5%;
+    color: #00A593;
+}
+.terms .sub a{
+    color: #c8c8c8;
+}
+.terms .sub a:hover{
+    color: #00A593;
+}
+.terms .text h5{
+    font-size: 2rem;
+    color: #333333;
+    margin: 3% 0;
+}
+.terms .text p{
+    font-size: 1.5rem;
+    color: #333333;
+}
+.terms .text a{
+    font-family: "lato-bold";
+    color: #00A593;
+    font-size: 1.5rem;
+}
+
+/*mobile screen begin*/
+@media screen and  (max-width: 768px){
+    .terms h3{
+        font-size: 30px;
+    }
+    .terms .sub span{
+        font-size: 14px;
+    }
+}
+/*mobile screen end*/

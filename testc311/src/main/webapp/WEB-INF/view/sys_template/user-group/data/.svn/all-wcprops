@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/data
+END
+data_html_department_role_list.html
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/data/data_html_department_role_list.html
+END
+data_json_role.html
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/data/data_json_role.html
+END
+data_json_department.html
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/data/data_json_department.html
+END
+data_html_privilege.html
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/data/data_html_privilege.html
+END
+data_html_user_role_list.html
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/data/data_html_user_role_list.html
+END
+data_html_user_parent.html
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/data/data_html_user_parent.html
+END
+data_json_privilege.html
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/data/data_json_privilege.html
+END
+data_html_menu.html
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/data/data_html_menu.html
+END
+menuIteration.html
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/data/menuIteration.html
+END
+data_json_user.html
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/pfingo_pms/!svn/ver/1/grcms-web/src/main/webapp/WEB-INF/view/sys_template/user-group/data/data_json_user.html
+END

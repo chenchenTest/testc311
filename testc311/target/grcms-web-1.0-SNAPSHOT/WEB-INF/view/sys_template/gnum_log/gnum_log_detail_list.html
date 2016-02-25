@@ -1,0 +1,124 @@
+<div class="easyui-layout" data-options="fit:true"
+	style="width: 600px; height: 750px;">
+	<script type="text/javascript">
+		$(function() {
+			operator.dataTable({
+				url : '${path}/gnum/log/list',
+				table : "#gnumLogContentDataTable",
+				toolbar : "#gnumLogContentToolBar",
+				onSelect : function(rowIndex, rowData) {
+					detail($("#gnumLogContent"), '${path}/gnum/log/detail',
+							rowData.id);
+				}
+			});
+
+		});
+		function getImage(value, row, index) {
+			if (value) {
+				return '<img src='+value+' />';
+			}
+			return '';
+		};
+
+		function detail(selector, url, id) {
+			var $selector = $(selector);
+			$selector.empty().append("Loading....");
+			$.ajax({
+				type : "POST",
+				url : url,
+				data : 'id=' + id,
+				success : function(data) {
+					$selector.empty();
+					if (data) {
+						$selector.append(data);
+					} else {
+						$selector.append("Load error.");
+					}
+				}
+			});
+		}
+	</script>
+	<div data-options="region:'center',border:false,split:true">
+		<div class="EC-right-content">
+			<div class="easyui-panel" title="查询信息" style="margin-bottom: 20px;">
+				<div class="EC-search-pannel EC-fieldset">
+					<form id="gnumLogContentSearchForm" method="post"
+						action="${path}/gnum/log/list">
+						<label>CALL ID:</label><input type="text" name="callId"
+							class="EC-form-input" /> <label>被叫:</label><input type="text"
+							name="callee" class="EC-form-input" /> <label>IP:</label><input
+							type="text" name="remoteIP" class="EC-form-input" /> <input
+							type="hidden" name="dateFields" value="callStartTime" /> <input
+							type="hidden" name="formatter" value="yyyy-MM-dd" /> <label>开始时间:</label>
+						<input id="startTime" type="text"
+							class="EC-form-input EC-form-search Wdate" name="startTime"
+							readonly="readonly" onkeydown="repeal(event);"
+							onFocus="timePannel();" /> <label>到</label> <input id="endTime"
+							type="text" class="EC-form-input EC-form-search Wdate"
+							name="endTime" readonly="readonly" onkeydown="repeal(event);"
+							onFocus="timePannel({min:'startTime'});" /> <br /> <br /> <label>浏览器:</label><input
+							type="text" name="browser" class="EC-form-input" /> <a
+							href="javascript:void(0);"
+							onclick="submitReq(this,'#gnumLogContentDataTable');"
+							class="btn easyui-linkbutton" iconCls="icon-search">搜索</a>
+					</form>
+				</div>
+			</div>
+
+			<div id="dataWrap">
+				<div id="gnumLogContentToolBar" class="datagrid-toolbar"
+					style="padding: 5px;">
+					<table cellspacing="0" cellpadding="0">
+						<tr>
+							<td><a href="javascript:void(0);"
+								onclick="
+									operator.refresh({
+						    			table:'#gnumLogContentDataTable'
+						    		});"
+								class="easyui-linkbutton"
+								data-options="iconCls:'icon-reload',plain:true">刷新</a></td>
+						</tr>
+					</table>
+				</div>
+				<table id="gnumLogContentDataTable" title="日志列表"
+					class="easyui-datagrid">
+					<thead>
+						<tr>
+							<th
+								data-options="field:'aid',width:100,align:'center',styler:tdPadding">ID</th>
+							<th data-options="field:'status',width:100,align:'center'">状态</th>
+							<th
+								data-options="field:'callId',width:100,align:'center',sortable:true">CALL
+								ID</th>
+							<th data-options="field:'osName',width:100,align:'center'">系统名称</th>
+							<th
+								data-options="field:'browser',width:100,align:'center',sortable:true">浏览器</th>
+							<th
+								data-options="field:'browserVersion',width:100,align:'center',sortable:true">浏览器版本</th>
+							<th
+								data-options="field:'flashVersion',width:100,align:'center',sortable:true">Flash
+								版本</th>
+							<th
+								data-options="field:'remoteIP',width:100,align:'center',sortable:true">IP</th>
+							<th
+								data-options="field:'callee',width:100,align:'center',sortable:true">被叫</th>
+							<th
+								data-options="field:'callStartTime',width:100,align:'center',sortable:true">开始时间</th>
+							<th
+								data-options="field:'statusCode',width:100,align:'center',sortable:true">状态码</th>
+							<th data-options="field:'codeDesc',width:100,align:'center'">状态码说明</th>
+							<th
+								data-options="field:'success',width:100,align:'center',formatter: getImage">成功</th>
+						</tr>
+					</thead>
+
+				</table>
+			</div>
+		</div>
+	</div>
+	<div data-options="region:'south',border:false,split:true"
+		style="height: 200px; padding: 5px;" title="日志内容">
+		<div id="gnumLogContent" style="padding: 5px;"></div>
+	</div>
+</div>
+<!-- 工具栏 -->

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <title>demo</title>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="theme/modalbox-call/call_theme_modalbox.css">
+        <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="css/bootstrap.min.js"></script>
+        <script type="text/javascript" src="css/respond.min.js"></script>
+        <script type="text/javascript" src="grcaller.min.js"></script>
+        <style type="text/css">
+            .gnumCall {
+                width: 300px;
+            }
+            span:hover {
+                cursor: pointer;
+            }
+            .oper {
+                display: none;
+                background-color: #eee;
+                padding: 10px;
+                padding-left: 30px;
+                margin: 5px;
+            }
+            .desc {
+                height: 20px;
+                color: #999;
+                margin-bottom: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="text-info text-center">GR CALLER TEST PAGE</h1>
+        <div class="container" style="margin-top: 100px;">
+            <div class="row">
+                <div class="col-md-6 col-lg-6">
+                    <form id="callnameForm">
+                        <div class="form-group">
+                            <label for="callname">输入Callname:</label>
+                            <input type="text" class="form-control" id="callname" placeholder="输入存在的callname"/>
+                        </div>
+                        <button type="submit" class="btn btn-info">确定</button>
+                    </form>
+                </div>
+                <div class="col-md-6 col-lg-6" id="callbox">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-lg-12">
+                    <hr/>
+                    <button class="btn btn-danger btn-sm" onclick="$('#log').empty();">清空LOG</button>
+                    <div id="log"></div>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        
+        <script type="text/javascript">
+
+            $(function() {
+                $("#callnameForm").submit(function(){
+                     var callname = $("#callname").val();
+                    if(GRCaller.detect.isSupportWebRTC()){
+                        WebRTCCall(callname);
+                    }
+                    else{
+                        if(navigator.userAgent.indexOf("Android") > 0){
+                            callAndroidApp(callname);
+                        }else if(navigator.userAgent.indexOf("iPhone") > 0){
+                            callIOSApp(callname);
+                        }
+                    }
+                    return false;
+                });
+            })
+
+            function WebRTCCall(callname){
+                if(callname == null || callname == "") {
+                    alert("请输入callname");
+                    return false;
+                }
+                $("#callbox").load("demo.html",function(){
+                    $(".callname").text(callname);
+                    $("#makecall").attr("data-gnumcall",callname);
+                });
+            }
+            function callAndroidApp(callname){
+                var agent = navigator.userAgent;
+                var isChorme = (agent.indexOf("Chrome") != -1);
+                var chromeVersion = getChromeVersion(agent);
+
+                //如果是chrome并且版本高于25，则使用intent方式
+                if(agent != null && isChorme && chromeVersion > 25){
+                    window.location.href = 'intent://flash.dev.gnum.com:25080/call?code=8935d06a969b7c84adaa4bc32774e733fc88b1b25fc3401aea9e4aeb649e73ac&uname=' + callname + '&host=flash.dev.gnum.com:25080&userId=#Intent;scheme=gnum;package=com.globalroam.android.gnum;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails?id=com.globalroam.android.gnum&hl=en;end';
+                }else{
+                    document.write('<iframe style="border:none; width:1px; height:1px;" src="gnum://flash.dev.gnum.com:25080/call?code=8935d06a969b7c84adaa4bc32774e733fc88b1b25fc3401aea9e4aeb649e73ac&uname=' + callname + '&host=flash.dev.gnum.com:25080&userId="></iframe>');
+                }
+                location.href = "/gnumCall";
+            }
+
+            function callIOSApp(callname){
+                var toUseAppURL = "gnum://flash.dev.gnum.com:25080/call?code=8935d06a969b7c84adaa4bc32774e733fc88b1b25fc3401aea9e4aeb649e73ac&uname=" + callname + "&host=flash.dev.gnum.com:25080&userId=";
+                document.write('<iframe style="border:none; width:1px; height:1px;" src="gnum://flash.dev.gnum.com:25080/call?code=8935d06a969b7c84adaa4bc32774e733fc88b1b25fc3401aea9e4aeb649e73ac&uname=' + callname + '&host=flash.dev.gnum.com:25080&userId="></iframe>');
+                location.href = "/gnumCall";
+            }
+
+            function getChromeVersion(agent){
+                var agentArray = agent.split(" ");
+                for(var i=0;i < agentArray.length;i++) {
+                    if(agentArray[i].indexOf("Chrome") != -1){
+                        var targetArray = agentArray[i].split("/");
+                        var version = targetArray[targetArray.length-1];
+                        var versionArray = version.split("\.");
+                        var versionNum = versionArray[0];
+                        return versionNum;
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>

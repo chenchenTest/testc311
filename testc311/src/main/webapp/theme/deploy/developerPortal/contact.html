@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+[#include "inc_res.html"/]
+</head>
+<body>
+<!-- header -->
+	<div class="banner1">
+		<div class="header">
+			[#include "inc_menu.html"/]	 
+		</div>
+		<div class="container">	
+			<h2>Contact</h2>
+		</div>
+	</div>
+<!-- header -->
+<!-- contact-section -->
+	<div class="contact-section">
+		<div class="container">
+			<div class="map">	
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106034.86973547915!2d151.21288358178987!3d-33.84869089455211!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b129838f39a743f%3A0x3017d681632a850!2sSydney+NSW%2C+Australia!5e0!3m2!1sen!2sin!4v1413550737925" width="" height="" frameborder="0" style="border:0"></iframe>
+			</div>
+			<div class="get-touch">
+					<h5>${node.fields["title"]!}</h5>
+					<p>${node.fields['address']!} </p>
+				<div class="col-md-12 get-touch1">
+					<form>
+						<input type="text" class="text" value="FIRST NAME" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'FIRST NAME';}">
+						<input type="text" class="text" value="LAST NAME" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'LAST NAME';}">
+						<input type="text" class="text" value="E-MAIL ADDRESS" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-MAIL ADDRESS ';}">
+					</form>
+					<div class="text-field-area-">
+						<form>
+							<textarea value="MESSAGE:" onfocus="if(this.value == 'MESSAGE') this.value='';" onblur="if(this.value == '') this.value='MESSAGE';">MESSAGE</textarea>
+						</form>
+					</div>
+					<div class="button-1">
+						<form>
+							<input type="submit" value="send message">
+						</form>
+					</div>
+				</div>	
+			</div>
+		</div>
+	</div>
+<!-- contact-section  -->
+<!-- footer -->
+	<div class="footer">
+		<div class="container">
+			<p>Template by <a href="http://w3layouts.com" target="_blank"> w3layouts</a></p>
+		</div>	
+	</div>
+	[#include "inc_js.html"/]
+<!-- footer -->
+</body>
+</html>

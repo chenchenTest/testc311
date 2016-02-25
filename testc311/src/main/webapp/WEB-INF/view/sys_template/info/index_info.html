@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        [#include "/sys_template/common/resources.html"/]
+    </head>
+
+    <body class="easyui-layout">
+        <!-- 顶部菜单 开始 -->
+        <div data-options="region:'north',border:false,split:false">
+            [#include "/sys_template/common/top-nav.html"]
+               
+            [#include "/sys_template/common/nav.html"]
+        </div>
+        <!-- 顶部菜单 结束 -->
+
+        <!-- 左侧菜单 开始 -->
+        <div title="导航菜单" style="width:180px;position: relative;" data-options="region:'west',split:false,iconCls:'icon-menu'">
+           [#include "/sys_template/common/side-nav.html"] 
+        </div>
+        <!-- 左侧菜单 结束 -->
+
+        <!-- 内容区域 开始 -->
+        <div data-options="region:'center',border:false" class="EC-region"> 
+            <div id="tab" class="easyui-tabs">
+                <div title="内容说明" id="infoIndex" data-options="iconCls:'icon-help'">
+                    <div class="EC-right-content">
+                    </div>
+                </div>            
+            </div>
+        </div>
+        <!-- 内容区域 结束 -->
+        
+        <!-- 底部区域 开始 -->
+        <div data-options="region:'south',iconCls:'icon-ok'" style="height: 25px;line-height: 25px;">
+            <center>Copyright @2014</center>
+        </div>
+        <!-- 底部区域 结束 -->
+    </body>
+</html>

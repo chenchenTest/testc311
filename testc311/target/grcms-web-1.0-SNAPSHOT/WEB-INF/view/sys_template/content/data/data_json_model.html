@@ -1,0 +1,49 @@
+[@ec_model
+	queryType = "list"
+;list]
+{
+"data":[
+[#if list?? && (list?size > 0)]
+[#list list as m]
+    {
+    "id":"<label><input type='checkbox' name='id' value='${m.id!}'/><span class='lbl'></span></label>"
+    ,"modelName":"${m.modelName!}"
+    ,"code":"${m.code!}"
+    ,"links":[
+    	[@ec_privilege_check uri="/management/content/model/edit"]
+    	{
+	    	"title":"${AUTH_MENU.name!}"
+	    	,"onclick":"loadFile('${path}${AUTH_MENU.privilege.uri!}?id=${m.id!}')"
+	    	,"icon":"icon-edit"
+	    	,"clz":"btn-info"
+    	},
+    	[/@ec_privilege_check]
+    	
+    	[@ec_privilege_check uri="/management/content/model/fields"]
+    	{
+	    	"title":"${AUTH_MENU.name!}"
+	    	,"onclick":"loadFile('${path}${AUTH_MENU.privilege.uri!}?modelId=${m.id!}')"
+	    	,"icon":"icon-sitemap"
+	    	,"clz":"btn-yellow"
+    	},
+    	[/@ec_privilege_check]
+    	
+    	[@ec_privilege_check uri="/management/content/model/delete"]
+    	{
+	    	"title":"${AUTH_MENU.name!}"
+	    	,"onclick":"confirm('${path}${AUTH_MENU.privilege.uri!}?id=${m.id!}')"
+	    	,"icon":"icon-trash"
+	    	,"clz":"btn-danger"
+    	},
+    	[/@ec_privilege_check]
+    	
+    	{}
+    	]
+    }
+    [#if m_index != (list?size - 1)]
+    ,
+    [/#if]
+[/#list]
+[/#if]
+]}
+[/@ec_model]

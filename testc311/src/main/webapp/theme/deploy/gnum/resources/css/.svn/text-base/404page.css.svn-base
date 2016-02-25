@@ -1,0 +1,45 @@
+
+.fzfPage .pageImg {
+	margin-top:120px;
+}
+
+.fzfPage .Ftips{
+	margin-top: 30px;
+}
+
+.fzfPage .Ttips{
+	margin-top: 24px;
+	margin-bottom: 240px;
+}
+
+.fzfPage .msgAh {
+	font-family: LATO REGULER;
+	font-size: 40px;
+	color: #00938e;
+}
+
+.fzfPage .msgExist {
+    font-family: lato-bold;
+    font-size: 40px;
+    color: #00938e;
+    line-height: 44px;
+}
+.fzfPage .small {
+    font-size: 30px;
+}
+
+.fzfPage .msgToHome{
+    font-family: lato;
+    font-weight: 500;
+    font-size: 18px;
+    color: #3C3C3C;
+}
+
+.fzfPage .msgHref{
+    font-size: 18px;
+    color: #00938e;
+    font-family: lato;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+}

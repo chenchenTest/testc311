@@ -1,0 +1,10 @@
+<option value="">--无--</option>
+[@ec_role queryType="tree";list]
+[#-- 修改部门时选择最高职务 --]
+[#if (department.id)?? && (department.topRoles)??]
+	[@EC.ec_select_tree nodes=list selectId=(department.topRole.id)!0/]
+[#-- 添加部门时选择最高职务 --]
+[#else]
+		[@EC.ec_select_tree nodes=list selectId=0/]
+[/#if]
+[/@ec_role] 

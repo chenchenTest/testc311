@@ -1,0 +1,33 @@
+<div class="contact-table-list">
+ [#include "../../macro/macros.html"/]
+[@gnum_contacts pagesize="${pagesize!10}" pageNum = "${pageNum!1}" groupNumber="${groupNumber!''}" searchKey="${searchKey!''}"]
+	<table class="table contacts-table">
+       <tbody>
+       [#if page??] 
+       	[#if (page.datas??) && (page.datas?size > 0)] 
+				[#list page.datas as contact]
+        <tr>
+        	[#if contact.avator?? && contact.avator != ""]
+            <td class=table-col-1"><img src="${contact.avator!}" class="img-circle" height="60px"><span>${contact.name}</span><span class="g-color"> - ${contact.name}</span></td>
+        	[#else]
+            <td class=table-col-1"><img src="${res!}/resources/images/default_avatar.png" class="img-circle" height="60px"><span>${contact.name}</span><span class="g-color"> - ${contact.name}</span></td>
+        	[/#if]
+            <td class=table-col-2" align="right"><a class="delete-btn" onclick="deleteContacts('${res!}/contacts/${contact.contactId!}/?_method=delete','${res!}/contacts/data/');"></a><a class="call-btn" href="${res!}/${contact.phonenumber}"></a></td>
+        </tr>
+      			 [/#list] 
+		 [/#if] 
+        [/#if]
+        
+       </tbody>
+    </table>
+	[@gnum_page_pannel pageNum="${page.pageNum}"
+					pagesize="${page.pagesize}" 
+					start="${page.startPage}"
+					end="${page.endPage}" 
+					pageCount="${page.pageCount}" 
+					totalCounts = "${page.totalCounts}"
+					url = "${res!}/contacts/data/"
+					/]
+					
+[/@gnum_contacts]
+</div>

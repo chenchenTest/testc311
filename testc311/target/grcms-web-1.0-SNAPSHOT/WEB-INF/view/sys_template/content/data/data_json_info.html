@@ -1,0 +1,44 @@
+[@ec_info
+	queryType = "list"
+	nodeId = "${(form.nodeId)!}"
+	pageable = 0
+;list]
+{
+"data":[
+[#if list?? && (list?size > 0)]
+[#list list as info]
+    {
+    "id":"<label><input type='checkbox' name='id' value='${info.id!}'/><span class='lbl'></span></label>"
+    ,"name":"${info.name!}"
+    ,"group":"${info.groupName!}"
+    ,"uri":"<a href='${host!}/${info.uri!}' target='_blank'>${info.uri!}</a>"
+    ,"nodeName":"${(info.node.name)!}"
+    ,"links":[
+    	[@ec_privilege_check uri="/management/content/info/edit"]
+    	{
+	    	"title":"${AUTH_MENU.name!}"
+	    	,"onclick":"loadFile('${path}${AUTH_MENU.privilege.uri!}?id=${info.id!}','#EC-side-container')"
+	    	,"icon":"icon-edit"
+	    	,"clz":"btn-info"
+    	},
+    	[/@ec_privilege_check]
+    	
+    	[@ec_privilege_check uri="/management/content/info/delete"]
+    	{
+	    	"title":"${AUTH_MENU.name!}"
+	    	,"onclick":"confirm('${path}${AUTH_MENU.privilege.uri!}?id=${info.id!}',refreshTree)"
+	    	,"icon":"icon-trash"
+	    	,"clz":"btn-danger"
+    	},
+    	[/@ec_privilege_check]
+    	
+    	{}
+    	]
+    }
+    [#if info_index != (list?size - 1)]
+    ,
+    [/#if]
+[/#list]
+[/#if]
+]}
+[/@ec_info]

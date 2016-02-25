@@ -1,0 +1,64 @@
+[@ec_databases;databases]
+[#if !databases?? || (databases?size == 0)]
+	[#assign total=0/]
+[#else]
+	[#assign total=databases?size/]
+[/#if]
+	{"total":${total!0},"rows":[
+[#if databases?? && (databases?size > 0)]
+[#list databases as db]
+	    {
+	    "id":"${db.name!}"
+	    ,"databaseName":"${db.name!}"
+	    ,"size":"${db.size}"
+	    ,"createtime":"${db.lastModifyTime}"
+	    ,"links":[
+	    	[@ec_privilege_check uri="/management/settings/db/recover"]
+		    {
+		    	"title":"${AUTH_MENU.name}"
+		    	,"content":"确定要恢复该备份?"
+		    	,"url":"${path}${AUTH_MENU.uri}?names=${db.name!}"
+		    	,"table":"#dbDataTable"
+		    	,"func":"remote"
+		    	,"cls":"EC-btn-edit"
+		    	,"success":{"title":"恢复成功","content":"恢复成功"}
+		    	,"failed":{"title":"恢复失败","content":"恢复失败"}
+	    	},
+	    	[/@ec_privilege_check]
+	    	
+	    	[@ec_privilege_check uri="/management/settings/db/download"]
+		    {
+		    	"title":"${AUTH_MENU.name}"
+		    	,"content":"确定要下载该备份?"
+		    	,"url":"${path}${AUTH_MENU.uri}?names=${db.name!}"
+		    	,"table":"#dbDataTable"
+		    	,"func":"remote"
+		    	,"cls":"EC-btn-add"
+		    	,"ajax":false
+		    	,"success":{"title":"下载成功","content":"下载成功"}
+		    	,"failed":{"title":"下载失败","content":"下载失败"}
+	    	},
+	    	[/@ec_privilege_check]
+	    	
+	    	[@ec_privilege_check uri="/management/settings/db/delete"]
+		    {
+		    	"title":"${AUTH_MENU.name}"
+		    	,"content":"确定要删除该备份?"
+		    	,"url":"${path}${AUTH_MENU.uri}?names=${db.name!}"
+		    	,"table":"#dbDataTable"
+		    	,"func":"remote"
+		    	,"cls":"EC-btn-remove"
+		    	,"success":{"title":"删除成功","content":"删除成功"}
+		    	,"failed":{"title":"删除失败","content":"删除失败"}
+	    	},
+	    	[/@ec_privilege_check]
+	    	{}
+	    ]
+	    }
+	    [#if db_index != (databases?size - 1)]
+	    ,
+	    [/#if]
+[/#list]
+[/#if]
+	]}
+[/@ec_databases] 

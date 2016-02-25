@@ -1,0 +1,60 @@
+<!--header begin 头部-->
+<nav class="navbar navbar-default navbar-static-top head headWhite">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-head">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            [@ec_node code="common";nod]
+            <a class="navbar-brand" href="${path!}/"><img src="${path!}/${nod.fields['top-logo']}" alt="" class="logo"/>
+            <input value="${path!}/${nod.fields['top-logo-scroll']}" type="hidden" id="topbar_logo_active"></a>
+            [/@ec_node]
+        </div>
+
+        <!--right begin-->
+        <div class="collapse navbar-collapse" id="navbar-collapse-head">
+            <ul class="nav navbar-nav navbar-right">
+                [@ec_nav queryType="tree";nodes]
+                [#if nodes?? && (nodes?size > 0)]
+               [#list nodes as node]
+                <li><a href="${path!}/${node.uri!}">${node.name!}</a></li>
+                [/#list]
+                [/#if]
+                [/@ec_nav]
+                [#--
+                <li><a href="${path!}/#indexContent" class="productIndex">PRODUCT</a></li>
+                <li><a href="${path!}/price/">PRICING</a></li>
+                <li><a href="${path!}/about/#contact">CONTACT</a></li>
+                --]
+                [#if user??]
+                <!--登陆-->
+                <li class="signed hidden-xs">
+                [#if user.avatar?? && user.avatar != ""]
+                    <img src="${user.avatar!}" alt="" class="img-circle" />
+                [#else]
+                	<img src="${res!}/resources/images/default_avatar.png" alt="" class="img-circle" />
+                [/#if]   
+                    <ul class="hoverSigned">
+                        <!--<img src="${res!}/resources/images/trangle.png" alt="" class="trangle"/>-->
+                        <div class='icon'><img src='${res!}/resources/images/footer_topnavi/dashboard_top_navi.png'
+                                               class='popoverImg' alt='dashboard'></div>
+                        <li><a href='${path!}/main/'>DASHBOARD</a></li>
+                        <li><a href='${path!}/signout/'>SIGN OUT</a></li>
+                    </ul>
+                </li>
+                <li class="userName hidden-xs">${user.nickname!}</li>
+                <li class="visible-xs"><a href='${path!}/main/'>DASHBOARD</a></li>
+                <li class="visible-xs"><a href='${path!}/signout/'>SIGN OUT</a></li>
+                [#else]
+                <!--未登录-->
+                <li class="sign_up"><a href="${path!}/register/" class="btn">SIGN UP</a></li>
+                <li class="sign_in"><a href="${path!}/signin/" class="btn">LOG IN</a></li>
+                [/#if]
+            </ul>
+        </div>
+        <!--right end-->
+    </div>
+</nav>

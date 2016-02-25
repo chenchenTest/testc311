@@ -1,0 +1,17 @@
+body {
+	font-size: 12px;
+	margin: 0px;
+	padding: 0px;
+	font-family: "微软雅黑", "黑体", Arial, Helvetica, sans-serif;
+	color: #666;
+	background: #051433 url("../images/bg_1.jpg") no-repeat center 0px;
+}
+
+a {
+	color: #0691cc;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #fda937;
+}

@@ -1,0 +1,65 @@
+[@ec_field modelId="${(node.nodeModel.infoModel.id)!}" queryType="list";fields]
+[#if fields?? && (fields?size > 0)]
+
+[#assign count = 0/]
+[#list fields as f]
+[#if f.colspan]
+	[#if count == 1]
+	</div>
+	[/#if]
+	[#assign count = 0/]
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="control-group">
+			    <label class="control-label" for="${f.fieldCode}">${f.fieldName!}:</label>
+			    <div class="controls">
+			    	[#if f.fieldCode?starts_with("c_")]
+			    		[#assign code=f.fieldCode?substring(2,f.fieldCode?length)]
+			    	[#else]
+			    		[#assign code=f.fieldCode]
+			    	[/#if]
+			    	[@EC.form type="${f.fieldType}" 
+			    		name="custom_${f.fieldCode}" 
+			    		id="${f.fieldCode}" 
+			    		value="${f.defaultValue!}" 
+			    		url = "${path}/management/upload"
+			    		class="${f.required?string('required','')}"
+					/]
+			    </div>
+			</div>
+		</div>
+	</div>
+[#else]
+	[#assign count = count + 1/]
+	[#if count == 1]
+	<div class="row-fluid">
+	[/#if]
+	   	<div class="span6">
+			<div class="control-group">
+			    <label class="control-label" for="${f.fieldCode}">${f.fieldName!}:</label>
+			    <div class="controls">
+			    	[#if f.fieldCode?starts_with("c_")]
+			    		[#assign code=f.fieldCode?substring(2,f.fieldCode?length)]
+			    	[#else]
+			    		[#assign code=f.fieldCode]
+			    	[/#if]
+			    	[@EC.form type="${f.fieldType}" 
+			    		name="custom_${f.fieldCode}" 
+			    		id="${f.fieldCode}" 
+			    		value="${f.defaultValue!}" 
+			    		url = "${path}/management/upload"
+			    		class="${f.required?string('required','')}"
+			    		/]
+			    </div>
+			</div>
+	   	</div>
+	[#if count == 2]
+	[#assign count = 0/]
+	</div>
+	[/#if]
+
+[/#if]
+[/#list]
+
+[/#if]
+[/@ec_field]

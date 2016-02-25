@@ -1,0 +1,21 @@
+.gnumcall{
+    cursor: pointer;
+}
+.modal-call{
+    width: 400px;
+}
+.avatar {
+    display:block;
+    margin:0px auto;
+    /*border-radius: 50%;*/
+    border: 2px solid #333;
+    width: 100px;
+    height: 100px;
+}
+.callname{
+    text-align: center;
+    color: #3399D5;
+}
+.callback-msg{
+    text-align: center;
+}

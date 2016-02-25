@@ -1,0 +1,25 @@
+[@gnum_callnumber;page]
+[#if page.datas?? && (page.datas?size > 0)]
+	[#list page.datas as callnumber]
+		[#if callnumber.current]
+			<div class="form-group form-group-custom">
+				<label class="col-md-12 col-lg-2 control-label grey">mobile</label>
+				<div class="col-md-12 col-lg-6">
+				    <p class="form-control-static"><span>+${callnumber.countryCode!'65'} ${callnumber.phoneNumber!}</span><span class="primary-mobile">-primary</span></p>
+				</div>
+			</div>
+		[#else]
+			<div class="form-group form-group-custom">
+			    <label class="col-md-2 col-lg-2 control-label hidden-xs hidden-md sr-only">secondary mobile</label>
+			    <div class="col-md-10 col-lg-6">
+			        <p class="form-control-static secondary-mobile">
+			            <span>+${callnumber.countryCode!'65'} ${callnumber.phoneNumber!}</span>
+			            <a href="#">Set as Primary</a>
+			            <a href="#">Remove</a></p>
+			    </div>
+			    
+			</div>
+		[/#if]
+	[/#list]
+[/#if]
+[/@gnum_callnumber]

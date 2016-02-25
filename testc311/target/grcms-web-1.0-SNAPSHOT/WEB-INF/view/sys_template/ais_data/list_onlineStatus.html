@@ -1,0 +1,78 @@
+[@EC.breadcrumbs/]
+
+<div id="page-content" class="clearfix">
+    <div class="page-header position-relative">
+        <h1>Online Status</h1>
+        
+    </div><!--/page-header-->
+
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="widget-box">
+                <div class="widget-header widget-header-blue widget-header-flat wi1dget-header-large">
+                    <h4 class="lighter">Online Status</h4>
+                    <div class="widget-toolbar">
+                        <div class="btn-group">
+                            <button class="btn btn-small btn-info" onclick="dataTable.refresh();">
+                                <i class="icon-refresh"></i>Refresh
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div class="widget-main">
+                        <table id="onlineStatusTable" class="table table-striped table-bordered table-hover"> 
+                            <thead>
+                                <tr>
+                                    <!-- <th class="center sorting_disabled">
+	                                    <label>
+	                                        <input type="checkbox" onclick="checkAll(this);"/>
+	                                        <span class="lbl"></span>
+	                                    </label> 
+                                    </th> -->
+                                    <th>No.</th>
+                                    <th>Login Id</th>
+                                    <th class="hidden-480">Online Status</th>
+                                    <th class="">Last update login date time</th>
+                                    <th style="display:none"></th>
+                                </tr>
+                            </thead>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- PAGE CONTENT ENDS HERE -->
+    </div>
+</div>
+
+<script type="text/javascript">
+	$(function() {
+		dataTable.initTable({
+			"serverSide":true,
+			"tableID":"#onlineStatusTable",
+			//对每列设置排序规则
+			//列的长度必须对应，如果表格有7列，必须写7个，否则会报错
+			"columns": [
+			            {
+			    		  "data":"no"
+			            },
+			            {
+			    		  "data":"loginId"
+			            },
+			            {
+				    	   "data":"onlineStatus"
+				        },
+			            {
+			    		  "data":"lastUpdateLoginTime"
+			            },{
+			            	"data":"nothing"
+			            }
+	        ],
+	      "url": "${path}${current_uri}",
+	      /* "order": [[1, "asc" ]], */
+	      "bLengthChange":false
+		});
+	})
+</script>

@@ -1,0 +1,53 @@
+[@gnum_rollback_user
+	linkId="${linkId!}"  
+	;rollbackUser]
+	[#if rollbackUser??]
+	<table>
+		<tr>
+			<th>LINK ID</th>
+			<th>USER ID</th>
+			<th>LINK HOST</th>
+			<th>LINK TYPE</th>
+			<th>STATUS</th>
+			<th>CREATE ON</th>
+			<th>OPERATION</th>
+		</tr>
+		<tr>
+			<td>${rollbackUser.linkId}</td>
+			<td>${rollbackUser.userId}</td>
+			<td>${rollbackUser.linkHost}</td>
+			<td>${rollbackUser.linkType}</td>
+			<td>${rollbackUser.status}</td>
+			<td>${rollbackUser.createOn?string("yyyy-MM-dd HH:mm:ss")}</td>
+			<td>
+			[@ec_privilege_check uri="/gnum/user/delete"]
+			<a href="javascript:void(0);" class="EC-btn-remove" onclick="operator.remote({
+				url:'${path}/gnum/user/delete?linkId=${rollbackUser.linkId}&providerId=GLOBALROAM',
+				checkboxValid:false,
+				confirm:true,
+				title:'删除用户'	,
+				content:'您确定要执行删除操作?一旦删除将不可恢复',
+				callback : function(data,rows) {
+					$('.rollback-user-info').empty();
+				}
+						});">Delete</a>
+			[/@ec_privilege_check]
+			</td>
+		</tr>
+	</table>
+	[#else]
+	<table>
+		<tr>
+			<th>LINK ID</th>
+			<th>USER ID</th>
+			<th>LINK HOST</th>
+			<th>LINK TYPE</th>
+			<th>STATUS</th>
+			<th>OPERATION</th>
+		</tr>
+		<tr>
+			<td colspan="6" style="text-align: center;color: #ff0000;">No Record Find By [${linkId!}]</td>
+		</tr>
+	</table>
+	[/#if]
+[/@gnum_rollback_user]

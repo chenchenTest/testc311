@@ -1,0 +1,43 @@
+[@ec_node
+	queryType = "list"
+	hidden = -1
+	parentId = "${(form.parentId)!}"
+;list]
+{
+"data":[
+[#if list?? && (list?size > 0)]
+[#list list as n]
+    {
+    "id":"<label><input type='checkbox' name='id' value='${n.id!}'/><span class='lbl'></span></label>"
+    ,"name":"${n.name!}"
+    ,"code":"${n.code!}"
+    ,"uri":"${n.uri!}"
+    ,"links":[
+    	[@ec_privilege_check uri="/management/content/node/edit"]
+    	{
+	    	"title":"${AUTH_MENU.name!}"
+	    	,"onclick":"loadFile('${path}${AUTH_MENU.privilege.uri!}?id=${n.id!}','#EC-side-container')"
+	    	,"icon":"icon-edit"
+	    	,"clz":"btn-info"
+    	},
+    	[/@ec_privilege_check]
+    	
+    	[@ec_privilege_check uri="/management/content/node/delete"]
+    	{
+	    	"title":"${AUTH_MENU.name!}"
+	    	,"onclick":"confirm('${path}${AUTH_MENU.privilege.uri!}?id=${n.id!}',refreshTree)"
+	    	,"icon":"icon-trash"
+	    	,"clz":"btn-danger"
+    	},
+    	[/@ec_privilege_check]
+    	
+    	{}
+    	]
+    }
+    [#if n_index != (list?size - 1)]
+    ,
+    [/#if]
+[/#list]
+[/#if]
+]}
+[/@ec_node]

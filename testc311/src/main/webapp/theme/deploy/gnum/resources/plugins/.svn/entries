@@ -1,0 +1,46 @@
+10
+
+dir
+1
+http://10.0.1.4:81/svn/pfingo_pms/grcms-web/src/main/webapp/theme/deploy/gnum/resources/plugins
+http://10.0.1.4:81/svn/pfingo_pms
+
+
+
+2015-12-02T07:14:51.151103Z
+1
+chenyi
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+02ec0b45-c00b-41d5-9642-175cfe1ab1af
+
+Font-Awesome-3.2.1
+dir
+
+bootstrap-3.3.4-dist
+dir
+
+jquery
+dir
+
+plupload
+dir
+
+validate
+dir
+
+zclip
+dir
+

@@ -1,0 +1,69 @@
+    <div class="modal" tabindex="-1" role="dialog" data-backdrop="static" id="ajaxLoginModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title"><span class="label label-info  arrowed-right"><i class="icon-user"></i></span>Login</h4>
+                </div>
+                <form class="form-horizontal" action="${path}/management/authorization" method="post" id="ajaxLogin" >
+                <div class="modal-body">
+                        <div class="control-group">
+                            <label class="control-label" for="name">Username:</label>
+                            <div class="controls">
+                                <input type="text" name="username" id="name" placeholder=""/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="password">Password:</label>
+                            <div class="controls">
+                                <input type="password" name="password" id="password" placeholder="password">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="confirmPassword">Verify Code:</label>
+                            <div class="controls">
+                                <input type="text" name="verifyCode" style="width:70px;" placeholder="Click to show verify code"/>
+								<a href="javascript:void(0);" onclick="verifycode(this,'${path}/management/verifycode');">Click to show verify code</a>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-loading-text="loging..."><i class="icon-ok"></i>Login</button>
+                </div>
+                    </form>
+            </div>
+        </div>
+<script type="text/javascript">
+	$(function(){
+		var $loginForm = $("#ajaxLogin");
+		var $ajaxLoginModal = $("#ajaxLoginModal");
+		$loginForm.validate({
+			rules : loginValid.rules
+        	,messages : loginValid.messages
+        	,submitHandler:function(form){
+        		var $form = $(form);
+            	var url = $form.attr("action");
+            	var method = $form.attr("method");
+            	var nvp = $form.serialize();
+            	$.ajax({
+        			url:url,
+        			type:method,
+        			data:nvp,
+        			success:function(data){
+        				var data = eval('(' + data + ')');
+                         if(data.code == "1000"){
+           	              	tips.success("Login Success");
+           	             $loginForm.closest("div.modal").modal("hide");
+           	             	$ajaxLoginModal.remove();
+                         }else{
+                        	tips.error("Login Failed,Error Code:" + data.code + ",Message:" + data.message);
+                         }
+        			}
+        		});
+        	}
+		})
+	}); 
+</script>
+    </div>

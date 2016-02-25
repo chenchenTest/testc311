@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd   
+    http://www.springframework.org/schema/tx  
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+    http://www.springframework.org/schema/context  
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+    http://www.springframework.org/schema/data/jpa   
+    http://www.springframework.org/schema/data/jpa/spring-jpa.xsd  
+    http://www.springframework.org/schema/aop  
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+
+	<jpa:repositories base-package="com.easycms.*"
+		entity-manager-factory-ref="entityManagerFactoryOracle"
+		transaction-manager-ref="jpaTransactionManagerOracle" />
+
+	<!-- C3P0数据源 -->
+	<bean id="c3p0DataSourceOracle" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${oracle.jdbc.driverClassName}"></property>
+		<property name="jdbcUrl" value="${oracle.jdbc.url}"></property>
+		<property name="user" value="${oracle.jdbc.username}"></property>
+		<property name="password" value="${oracle.jdbc.password}"></property>
+
+		<property name="maxStatements" value="${c3p0.maxStatements}"></property>
+		<property name="acquireIncrement" value="${c3p0.acquireIncrement}"></property>
+		<property name="initialPoolSize" value="${c3p0.initialPoolSize}"></property>
+		<property name="maxIdleTime" value="${c3p0.maxIdleTime}"></property>
+		<property name="maxPoolSize" value="${c3p0.maxPoolSize}"></property>
+		<property name="minPoolSize" value="${c3p0.minPoolSize}"></property>
+
+		<property name="acquireRetryDelay" value="1000"></property>
+		<property name="acquireRetryAttempts" value="60"></property>
+		<property name="breakAfterAcquireFailure" value="false"></property>
+	</bean>
+
+	<bean id="entityManagerFactoryOracle"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<!-- 指定数据源 -->
+		<property name="dataSource" ref="c3p0DataSourceOracle"></property>
+		<!-- 扫描ORM实体 -->
+		<property name="packagesToScan" value="com.easycms.*"></property>
+		<property name="persistenceUnitName" value="API Security" />
+		<property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapterOracle"></property>
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.hbm2ddl.auto">${oracle.hibernate.hbm2ddl.auto}</prop>
+				<prop key="hibernate.dialect">${oracle.hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">${oracle.hibernate.show_sql}</prop>
+				<prop key="hibernate.format_sql">${oracle.hibernate.format_sql}</prop>
+				<!-- 配置EHCache -->
+				<!--<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>-->
+				<prop key="hibernate.cache.provider_configuration_file_resource_path">classpath:/conf/cache/ehcache.xml</prop>
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.use_sql_comments">false</prop>
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="javax.persistence.sharedCache.mode">ENABLE_SELECTIVE</prop>
+				<prop key="hibernate.generate_statistics">true</prop>
+<!-- 				<prop key="hibernate.cache.provider_configuration_file_resource_path">WEB-INF/conf/cache/ehcache.xml</prop> -->
+
+			</props>
+		</property>
+	</bean>
+
+	<!-- JPA适配器 -->
+	<bean id="hibernateJpaVendorAdapterOracle"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="databasePlatform" value="${oracle.hibernate.dialect}"></property>
+	</bean>
+
+	<!-- JPA事务管理 -->
+	<bean id="jpaTransactionManagerOracle" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory">
+			<ref local="entityManagerFactoryOracle" />
+		</property>
+	</bean>
+	<tx:annotation-driven transaction-manager="jpaTransactionManagerOracle" />
+
+	<!-- Ehcache配置信息 -->
+	<!-- spring提供的ehcache 工厂 -->
+	<!-- <bean id="cacheManagerFactory"
+		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation" value="/WEB-INF/conf/cache/ehcache.xml" />
+		<property name="name" value="default" />
+	</bean>
+
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+		<property name="cacheManager" ref="cacheManagerFactory" />
+	</bean> -->
+
+</beans>

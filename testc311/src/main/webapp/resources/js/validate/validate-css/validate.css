@@ -1,0 +1,90 @@
+/**
+ * 表单验证样式
+ */
+input.validate-error{
+	border:1px #FFAD77 solid;
+	background-color:#FFFFD0;
+}
+.error-tips{
+	position:relative;
+	border:1px solid #FF0000;
+	/*background-color:#FFF5F5;*/
+	color:#ff0000;
+	padding:5px;
+	border-radius:3px;
+	left:15px;
+	padding-top:6px;
+	border-left:none;
+	padding-left:20px;
+	margin-right:20px;
+	background:#FFF5F5 url("images/unchecked.gif") no-repeat 0px center;
+}
+.error-tips:before{
+	display: inline;
+    position: absolute;
+    height: 30px;
+    left: -8px;
+    top: -1px;
+    width: 10px;
+	content:"";
+	background:#FFF5F5 url("images/error-tips-bg.png") no-repeat 0px 0px;
+}
+.error-tips-left-arrow{
+	position:absolute;
+	left:-7px;
+	top:8px;
+	height:11px;
+	width:7px;
+	background:url("images/error-tips-icons.png") no-repeat -9px 0px;
+}
+
+/**
+ * ************************
+ *	validate css
+ * *************************
+ */
+.normalError {
+	display:block;
+}
+#signUp p.form-wrap {
+	position:relative;
+}
+.normal-error-wraper {
+	display: block;
+}
+.input-error-msg,.input-success-msg,.input-waiting-msg {
+	border: 1px solid #FFC7C7;
+	font-size: 12px;
+	color: #9f3a1c;
+	border-radius:3px;
+	padding-left:18px;
+	padding-right:4px;
+	line-height:20px;
+	word-break:break-all;
+	word-wrap:break-word;
+	background:#FFECEC url("images/unchecked.gif") no-repeat 2px 1px;
+	text-indent:20px;
+}
+.input-waiting-msg {
+	background:url("images/onLoad_3.gif") no-repeat 2px 2px;
+	color:#00a6ff;
+	text-indent:22px;
+	border: none;
+}
+.input-success-msg {
+	background: url("images/checked.gif") no-repeat 2px 2px;
+	color: #4E8D1A;
+	width:20px;
+	border: none;
+	height:30px;
+}
+
+.input-error {
+	border: 1px solid #FFC7C7 !important;
+	background-color: #FFECEC !important;
+}
+
+.input-success {
+	border: 1px solid #ADDA72 !important;
+	background-color: #d1f0bf !important;
+}

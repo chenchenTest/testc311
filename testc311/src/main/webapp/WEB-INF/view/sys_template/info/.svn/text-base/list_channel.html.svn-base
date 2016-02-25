@@ -1,0 +1,145 @@
+<script type="text/javascript">
+    $(function(){
+        //进行表单验证
+        var $form = $('#userSearchForm');
+        var table = "#userDataTable";
+        var $table = $(table);
+        var url = $form.attr("action"); 
+        var $btn = $form.find("a.btn").eq(0);
+        var colLength = $table.find("tr").eq(0).find("th").length;
+        
+        $form.form({
+          url:url,
+          onSubmit: function(){
+                if(isFormEmpty($form)) {
+                    $.messager.alert("警告","请输入查询内容!","warning");
+                    return false
+                }
+                var isValid = $form.form('validate');       
+                if(isValid){
+                    disableBtn($btn);
+                }
+                return isValid; // 返回false,将阻止表单提交 
+            },
+          success:function(data){
+              enableBtn($btn);
+              $table.datagrid("loadData",$.parseJSON(data));
+          }
+       });
+    
+    $table.datagrid({
+    	url:'${path}/management/user'
+            ,method:'post'
+            ,checkOnSelect:false
+            ,iconCls:'icon-user'
+            ,fitColumns:true
+            ,pagination:true
+            ,pageSize:20
+            ,rowStyler:function(index,row){
+            	return {'class':'EC-table-row'};
+            }
+            ,toolbar: [
+   	            	[@ec_privilege_check uri="/management/user/add"]
+   			    	{
+   		            	iconCls: 'icon-add',
+   				    	text:'新建',
+   				    	plain:true,
+   				    	cls:"easyui-linkbutton",
+   				    	handler: function(){
+   				    		operator.openDialog({
+   				    			table:table
+   				    			,title:'新建用户'
+   				    			,url:'${path!}/management/user/add'
+   				    			,icon:'icon-user-add'
+   				    		});
+   						}
+   	            	},
+   	            	[/@ec_privilege_check]
+   	            	
+   					[@ec_privilege_check uri="/management/user/delete"]
+   			    	{
+   			    		iconCls: 'icon-remove',
+   				    	text:'删除',
+   				    	plain:true,
+   				    	handler: function(){
+   				    		operator.remote({
+   				    			table:table
+   				    			,url:'${path!}/management/user/delete'
+   				    			,key:"ids"
+   				    			,checkboxValid:true
+   				    			,confirm:true
+   				    			,title:"删除用户"
+   				    			,content:"您确定要执行删除操作?一旦删除将不可恢复"
+   				    		})
+   						}
+   			    	},
+   	            	[/@ec_privilege_check]
+   	            	{
+   			    		iconCls: 'icon-reload',
+   		 		    	text:'刷新',
+   		 		    	plain:true,
+   		 		    	handler: function(){
+   		 		    		operator.refresh({
+	   		 		    		table:table
+	   		 		    	});
+   		 				}
+   	            	}
+   			    ]
+            ,onLoadSuccess:function(data){
+    	        	if(data.total == 0){
+    	        		$table.datagrid('appendRow',{
+    	        			id: '没有记录'
+    	        		});
+    	        		$table.datagrid('mergeCells',{
+    	        			index: 0,
+    	        			field: 'id',
+    	        			colspan:colLength - 1
+    	        		});
+    	        	}
+    	        }
+    });
+    
+    
+    });
+    
+</script>
+<!-- 工具栏 -->
+<div class="EC-right-content">
+    <h2 class="EC-title-1">当前位置:<i class="icon-user EC-icon-layout"></i>[@EC.location /]</h2>
+    <div class="easyui-panel" title="查询信息" style="margin-bottom: 20px;">
+        <div class="EC-search-pannel EC-fieldset">
+        <form id="userSearchForm" method="post" action="${path}/management/user">
+	        <input type="hidden" name="queryType" value="search" />
+	        <input type="hidden" name="formatter" value="yyyy-MM-dd" />
+	        <label>用户名:</label><input type="text" name="username" class="EC-form-input EC-form-search "/>
+            <label>真实姓名:</label><input type="text" name="realname" class="EC-form-input EC-form-search "/>
+            <label>电子邮件:</label><input type="text" name="email" class="EC-form-input EC-form-search easyui-validatebox" data-options="validType:'email'"/>
+            <label>注册时间:</label><input type="hidden" name="dateFields" value="registerTime"/>
+            <label>从</label>
+			<input id="startTime" type="text" class="EC-form-input EC-form-search Wdate" name="startTime" readonly="readonly" 
+			onkeydown="repeal(event);"
+			onFocus="timePannel();"/> 
+			<label>到</label>
+			<input id="endTime" type="text" class="EC-form-input EC-form-search Wdate" name="endTime" readonly="readonly" 
+			onkeydown="repeal(event);"
+			onFocus="timePannel({min:'startTime'});"/>
+            <a href="javascript:void(0);" onclick="submitReq(this);" class="btn easyui-linkbutton" iconCls="icon-search">搜索</a>
+        </form>
+        </div>
+    </div>
+    
+        <table id="userDataTable" title="用户列表">
+            <thead>
+                <tr>
+                    <th data-options="field:'ids',checkbox:true">ID</th>
+                    <th data-options="field:'id',width:25,align:'center',sortable:true,styler:tdPadding">ID</th>
+                    <th data-options="field:'username',width:25,align:'center',sortable:true">用户名</th>
+                    <th data-options="field:'realname',width:25,align:'center',sortable:true">真实姓名</th>
+                    <th data-options="field:'email',width:25,align:'center',sortable:true">电子邮件</th>
+                    <th data-options="field:'role',width:25,align:'center'">角色</th>
+                    <th data-options="field:'operation',width:25,align:'center',formatter:operator.links">操作</th>
+                </tr>
+            </thead>
+            
+        </table>
+    </div>

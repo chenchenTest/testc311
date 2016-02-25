@@ -1,0 +1,162 @@
+[@EC.breadcrumbs/]
+
+<div id="page-content" class="clearfix">
+    <div class="page-header position-relative">
+        <h1>Call History</h1>
+        
+    </div><!--/page-header-->
+
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="widget-box">
+                <div class="widget-header widget-header-blue widget-header-flat wi1dget-header-large">
+                    <h4 class="lighter">Call History</h4>
+                    <div class="widget-toolbar">
+                        <div class="btn-group">
+                            <button class="btn btn-small btn-info" onclick="dataTable.refresh();">
+                                <i class="icon-refresh"></i>Refresh
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div class="widget-main">
+                    	<!-- [@EC.form_date id="startDate" name="startDate" class="${class!'Wdate'}"/]  -->
+                        <table id="callHistoryTable" class="table table-striped table-bordered table-hover"> 
+                            <thead>
+                                <tr>
+                                    <!-- <th class="center sorting_disabled">
+	                                    <label>
+	                                        <input type="checkbox" onclick="checkAll(this);"/>
+	                                        <span class="lbl"></span>
+	                                    </label> 
+                                    </th> -->
+                                    <th>No.</th>
+                                    <th>Login Id</th>
+                                    <th class="hidden-480">Start Date Time</th>
+                                    <th class="hidden-480">End Date Time</th>
+                                    <th class="hidden-phone">Calling Party Address</th>
+                                    <th class="hidden-480">Called Party Address</th>
+                                    <th class="hidden-480">Call Status</th>
+                                    <th class="hidden-480">Call Cause</th>
+                                    <th class="hidden-480">Call Direction</th>
+                                    <th class="hidden-480">Duration</th>
+                                    <th class="hidden-480">Call Type</th>
+                                    <th style="display:none"></th>
+                                </tr>
+                            </thead>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- PAGE CONTENT ENDS HERE -->
+    </div>
+</div>
+
+<script type="text/javascript">
+	var tbl;
+	$(function() {
+		debugger;
+		tbl = dataTable.initTable({
+			"serverSide":true,
+			"tableID":"#callHistoryTable",
+			//对每列设置排序规则
+			//列的长度必须对应，如果表格有7列，必须写7个，否则会报错
+			"columns": [
+			            {
+			    		  "data":"no"
+			            },
+			            {
+			    		  "data":"loginId"
+			            },
+			            {
+				    	   "data":"startDateTime",
+				        },
+			            {
+			    		  "data":"endDateTime"
+			            },
+			            {
+			    		  "data":"callingPartyAddress"
+			            },
+			            {
+			    		  "data":"calledPartyAddress"
+			            },
+			            {
+			    		  "data":"callStatus"
+			            },
+			            {
+				    		"data":"callCause"
+				        },
+				        {
+					    	"data":"callDirection"
+					    },
+					    {
+						    "data":"duration"
+						},
+						{
+							"data":"callType"
+						},
+						{
+							"data":"nothing"
+						}
+	        ],
+	      "url": "${path}${current_uri}",
+	      "order": [[1, "asc" ]],
+		  "bLengthChange":false,
+			/* "ServerParams": function(aoData) {
+					console.info("caonima===="+aoData);
+		           aoData.push({
+		               "name": "bNeedPaging",
+		               "value": "true"
+		           });
+		           var searchPara = "sss";
+		           aoData.push({
+		               "name": "searchPara",
+		               "value": searchPara
+		           });
+		       } */
+		});
+		console.info("tbl======="+tbl);
+		$("#callHistoryTable_filter").append("<label>Start Date:<input type='search' id='startTime' aria-controls='callHistoryTable'></input></label>");
+		
+		/* $("#callHistoryTable_filter").append("<input type='text'  id='startDate'  value=''  onFocus="+"WdatePicker({skin:'',startDate:'%y-%M-%d',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true,lang:''}) readonly='readonly'/>"); */
+		$("#callHistoryTable_filter").append("<input type='button' value='search' id='timeSearch'></input>"); 
+		$("#timeSearch").on("click",function(){
+			debugger;
+			var startDate = $("#startTime").val();
+			var loginId    = $("#callHistoryTable_filter").find("label").eq(0).find("input").val();
+			tbl.url='/management/callHistory/search?search='+loginId;
+			tbl.refresh();
+			/* $.ajax({
+				type:"post",
+				data:{"startDate":startDate,"loginId":loginId},
+				url:path+"/management/callHistory",
+				success:function(data){
+					debugger;
+					console.info(data);
+					var obj = JSON.parse(data);
+					console.info(obj.data);
+					var dd = [{ "no":1
+					    ,"loginId":"8618583660308"
+					        ,"startDateTime":"2016-01-23 08:37:15"
+					        ,"endDateTime":"2016-01-23 08:37:15"
+					        ,"callingPartyAddress":"sip:8618583660308@sip.ais.com"
+					        ,"calledPartyAddress":"sip:66612680083@sip.ais.com"
+					        ,"callStatus":"Not connected"
+					        ,"callCause":"487"
+					        ,"callDirection":"inbound"
+					        ,"duration":"0"
+					        ,"callType":"V02"},];
+					$("#callHistoryTable").DataTable().destroy();
+					$("#callHistoryTable").DataTable({
+						"serverSide":false,
+						"data":dd
+						
+					})
+				} 
+			}) */
+		})
+	})
+</script>

@@ -1,0 +1,21 @@
+ <ul class="nav ace-nav pull-right">
+    <li class="green">
+        <a href="${path}/" target="_blank"> <i class="icon-home"></i>Index Page</a>
+    </li>
+    <li class="light-blue user-profile">
+        <a class="user-menu dropdown-toggle" href="#" data-toggle="dropdown">
+        	<span id="user_info"><small>Hello,</small> ${(CMS_USER_KEY.name)!} </span> <i class="icon-caret-down"></i> </a>
+        <ul id="user_menu" class="pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
+           <!-- <li>
+                <a href="javascript:loadFile('${path}/management/personal')"><i class="icon-user"></i> Profile</a>
+            </li>-->
+            <li>
+                <a href="javascript:loadFile('${path}/management/personal/password')"><i class="icon-lock"></i> Update Password</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="${path}/management/authorization/logout"><i class="icon-off"></i>Quit</a>
+            </li>
+        </ul>
+    </li>
+</ul>

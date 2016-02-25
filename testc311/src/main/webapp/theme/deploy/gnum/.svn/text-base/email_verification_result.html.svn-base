@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    [#include 'common/common-css.html'/]
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/plugins/bootstrap-3.3.4-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/css/common.css">
+    <script type="text/javascript" src="${res!}/resources/plugins/jquery/jquery-1.9.1.min.js"></script>
+    <title>password reset email</title>
+    <style>
+       .message-area p {
+            font-size: 20px;
+            padding: 44px;
+        }
+       nav.navbar.navbar-default.navbar-static-top.head {
+           margin-bottom: 0;
+       }
+       span.text-danger {
+           color: red;
+       }
+       .container-fluid.message-area {
+           min-height: 500px;
+       }
+    </style>
+</head>
+
+<body>
+[#include "common/google-tag-manager.html" /]
+<div id="head">
+    [#include "common/head.html" ]
+</div>
+<div class="container-fluid message-area">
+    <div class="row">
+        <div class="col-md-8 col-lg-8 center-grid">
+            <h2>Email Verification</h2>
+            <hr>
+            <div class="row">
+                <div class="col-md-12 col-lg-12 center-grid text-center">
+                    [#if success==true]
+                        <p>You have successfully verified ${email!}</p>
+                    [#else]
+                        <p><span class="text-danger">The verification link is no longer valid or has expired.</span>You can send a new one from the email settings on after you've logged in.</p>
+                    [/#if]
+                </div>
+                <div class="col-md-offset-4 col-md-4 center-grid">
+                    <a href="${res!}/signin/" class="btn btn-default btn-a btn-custom btn-color-a">Sign In</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--foot begin-->
+<div class="foot">
+    [#include "common/foot.html" ]
+</div>
+<!--foot end-->
+<script type="text/javascript" src="${res!}/resources/plugins/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

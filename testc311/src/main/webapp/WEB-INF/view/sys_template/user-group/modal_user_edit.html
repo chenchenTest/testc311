@@ -1,0 +1,67 @@
+    <!-- Edit User Form -->
+    <div class="modal" tabindex="-1" role="dialog" data-backdrop="static" style="display: none;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title"><span class="label label-info  arrowed-right"><i class="icon-user"></i></span>Edit User</h4>
+                </div>
+                [@ec_user id=form.id;u]
+                <form class="form-horizontal" action="${path}/management/user/edit" method="post" id="editUser" >
+                <input type="hidden" name="id" value="${u.id!}" />
+                <div class="modal-body">
+                        <div class="control-group">
+                            <label class="control-label" for="username">Username:</label>
+                            <div class="controls">
+                                <input type="text" value="${u.name!}" name="name" placeholder="username" class="valid"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="realname">Realname:</label>
+                            <div class="controls">
+                                <input type="text" value="${u.realname!}" name="realname"  placeholder="realname" class="valid"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="email">Email:</label>
+                            <div class="controls">
+                                <input type="text" value="${u.email!}" name="email" placeholder="realname" class="valid"/>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-small" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary btn-small" data-loading-text="Saving...">Save</button>
+                </div>
+                </form>
+                [/@ec_user]
+            </div>
+<script type="text/javascript">
+    $(document).ready(function(){
+    	formValidtor.modalValid({
+    		handler:"#editUser",
+    		rules : {
+        		name : {
+        			required : true
+        			,remote : "${path}/management/user?func=edit&id=${form.id!}"
+        		},
+        		realname : {
+        			required : true
+        		},
+        		email : {
+        			email:true
+        		}
+        	}
+        	,messages : {
+        		username : {
+        			remote:"The usename has been used,please change another one."
+        		}
+        	}
+    	})
+	});
+</script>
+        </div>
+    </div>
+

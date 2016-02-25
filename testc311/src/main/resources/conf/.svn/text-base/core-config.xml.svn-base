@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+ http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+        >
+
+    <!-- 自动扫描包 -->
+    <context:component-scan base-package="com.*" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+    </context:component-scan>
+
+    <!-- 认证器 -->
+    <bean id="authemtocator" class="com.grcms.core.strategy.authorization.Authenticator">
+        <constructor-arg ref="defaultAuth"></constructor-arg>
+    </bean>
+    <bean id="defaultAuth" class="com.grcms.core.strategy.authorization.DefaultAuth"></bean>
+    <bean id="frontendAuth" class="com.grcms.frontend.strategy.FrontendAuth"></bean>
+    <!-- <bean id="ldapAuth" class="com.easycms.smartfoundry.strategy.LdapAuth"></bean> -->
+
+    <!-- 注册器 -->
+    <bean id="registryExecutor" class=" com.grcms.core.strategy.register.RegistryExecutor">
+        <constructor-arg ref="defaultRegister"></constructor-arg>
+    </bean>
+    <bean id="defaultRegister" class="com.grcms.core.strategy.register.DefaultRegister"></bean>
+    <!-- <bean id="ldapRegister" class="com.easycms.smartfoundry.strategy.LdapRegister" /> -->
+    <bean id="frontendRegister" class="com.grcms.frontend.strategy.FrontendRegister"/>
+
+    <!-- LDAP 连接 -->
+    <!-- <ldap:context-source id="contextSource"
+                         url="ldap://10.0.1.6:389"
+                         username="cn=gr"
+                         password="123456"
+                         base="dc=starhub,dc=com" />
+
+    <ldap:ldap-template id="ldapTemplate" context-source-ref="contextSource"/> -->
+
+
+    <!-- 文件上传 -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- set the max upload size100MB -->
+        <property name="maxUploadSize">
+            <value>1048576000</value>
+        </property>
+        <property name="maxInMemorySize">
+            <value>4096</value>
+        </property>
+    </bean>
+
+    <!-- 验证码 -->
+    <bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">
+        <property name="config">
+            <bean class="com.google.code.kaptcha.util.Config">
+                <constructor-arg>
+                    <props>
+                        <prop key="kaptcha.background.clear.from">196,210,223</prop>
+                        <prop key="kaptcha.background.clear.to">233,234,235</prop>
+                        <prop key="kaptcha.noise.color">255,128,64</prop>
+                        <prop key="kaptcha.border">no</prop>
+                        <prop key="kaptcha.border.color">156,179,90</prop>
+                        <prop key="kaptcha.textproducer.font.color">82,176,70</prop>
+                        <prop key="kaptcha.image.width">140</prop>
+                        <prop key="kaptcha.image.height">40</prop>
+                        <prop key="kaptcha.textproducer.char.space">5</prop>
+                        <prop key="kaptcha.textproducer.font.size">30</prop>
+                        <prop key="kaptcha.session.key">code</prop>
+                        <prop key="kaptcha.textproducer.char.length">5</prop>
+                        <prop key="kaptcha.textproducer.font.names">verdana,Georgia,Arial,Comic Sans
+                            MS,verdana,宋体,楷体,微软雅黑
+                        </prop>
+                    </props>
+                </constructor-arg>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- freemarker配置 -->
+    <bean id="freemarkerConfig"
+          class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="/"/>
+        <property name="defaultEncoding" value="utf-8"/>
+        <property name="freemarkerSettings">
+            <props>
+                <prop key="template_update_delay">0</prop>
+                <prop key="locale">zh_CN</prop>
+                <prop key="datetime_format">yyyy-MM-dd HH:mm</prop>
+                <prop key="date_format">yyyy-MM-dd</prop>
+                <prop key="number_format">#.##</prop>
+                <prop key="auto_import">/WEB-INF/view/macro/spring.ftl as spring,/WEB-INF/view/macro/macros.ftl as EC
+                </prop>
+                <prop key="tag_syntax">auto_detect</prop>
+            </props>
+        </property>
+    </bean>
+
+    <context:property-placeholder
+            location="classpath:oracle_jdbc_api.properties,classpath:oracle_hibernate.properties,classpath:jdbc.properties,classpath:c3p0.properties,classpath:hibernate.properties"
+            ignore-unresolvable="true"/>
+
+    <!-- C3P0数据源 -->
+    <bean id="c3p0DataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+          destroy-method="close">
+        <property name="driverClass" value="${jdbc.driverClassName}"></property>
+        <property name="jdbcUrl" value="${jdbc.url}"></property>
+        <property name="user" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+
+        <property name="maxStatements" value="${c3p0.maxStatements}"></property>
+        <property name="acquireIncrement" value="${c3p0.acquireIncrement}"></property>
+        <property name="initialPoolSize" value="${c3p0.initialPoolSize}"></property>
+        <property name="maxIdleTime" value="${c3p0.maxIdleTime}"></property>
+        <property name="maxPoolSize" value="${c3p0.maxPoolSize}"></property>
+        <property name="minPoolSize" value="${c3p0.minPoolSize}"></property>
+
+        <property name="acquireRetryDelay" value="1000"></property>
+        <property name="acquireRetryAttempts" value="60"></property>
+        <property name="breakAfterAcquireFailure" value="false"></property>
+    </bean>
+    <!-- 导入SPRING DATA JPA配置文件 -->
+    <import resource="spring-jpa/spring-data-jpa-oracle.xml"/>
+    <import resource="spring-jpa/spring-data-jpa.xml" />
+    <!--<import resource="mybatis/spring-mybatis.xml"/>-->
+
+    <!-- <import resource="/email/spring-email.xml"/> -->
+</beans>

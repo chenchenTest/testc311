@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd>
+<html>
+
+<head>
+    [#include 'common/common-meta.html'/]
+    <title>GNum Log In</title>
+
+    [#include "macro/macros.html"/]
+    [#include "common/common-js.html" /]
+    [#include "common/common-css.html" /]
+    [#include "common/common-js-validate.html" /]  
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/plugins/bootstrap-3.3.4-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/css/common.css">
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/css/signin.css">
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/css/head.css"/>
+    <link rel="stylesheet" type="text/css" href="${res!}/resources/css/foot.css"/>
+    
+</head>
+
+<body>
+[#include "common/google-tag-manager.html" /]
+<div id="head">
+	[#include "common/head.html" ]
+</div>
+    <div class="container-fluid signup-area signin-area">
+        <div class="row">
+            <div class="col-md-8 col-lg-8 center-grid">
+                <h2 class="title">Log In</h2>
+                <hr>
+                <div class="row row-signin">
+                    <div class="col-md-6 col-lg-4 center-grid col-sm-4">
+                        <form class="signin-form" id="formSignIn" action="${res!}/signin/" method="post">
+                            <div class="form-group callnameInput">
+                                <label for="username" class="sr-only">callname</label>
+                                <input type="text" class="form-control" id="username" name="account" value="${(signinForm.account)!}" placeholder="CallName" autofocus="autofocus">
+                            </div>
+                            <div class="form-group pwdInput">
+                                <label for="password" class="sr-only">password</label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-default btn-custom btn-a btn-login"  onclick="">log in</button>
+                            </div>
+                        </form>
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 center-grid col-lg-4 text-center form-tips">
+                        <div class="row">
+                            <div class="col-md-6 text-left forgetC"><a href="${res!}/forget/handle/">Forgot CallName?</a></div>
+                            <div class="col-md-6 text-right forgetP"><a href="${res!}/forget/pwd/">Forgot Password?</a></div>
+                        </div>
+                    </div>
+                </div>
+                <ul id="errorBox"></ul>
+            </div>
+        </div>
+    </div>
+
+<!--foot begin-->
+<div class="foot">
+	[#include "common/foot.html" ]
+</div>
+<!--foot end-->
+
+</body>
+
+</html>
